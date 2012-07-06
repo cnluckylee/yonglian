@@ -7,8 +7,8 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'我的永链',
-	'siteUrl'=>'http://teshu.com/yii/yonglian/',
+	'name'=>'我的测试',
+	//'siteUrl'=>'http://teshu.com/yii/yonglian/',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -21,7 +21,9 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-	
+		'Admin'=>array(
+				'class'=>'application.modules.Admin.AdminModule',
+		),
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
 			'password'=>'a',
@@ -58,11 +60,9 @@ return array(
 			),
 		),
 		*/
-		/*
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+		'cache'=>array(
+		    'class'=>'system.caching.CFileCache',
 		),
-		*/
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
