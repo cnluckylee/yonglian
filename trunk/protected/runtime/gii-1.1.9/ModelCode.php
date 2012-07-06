@@ -1,7 +1,7 @@
 <?php
 return array (
   'template' => 'default',
-  'tablePrefix' => 'yl_users',
+  'tablePrefix' => 'yl_',
   'modelPath' => 'application.models',
   'baseClass' => 'CActiveRecord',
   'buildRelations' => '1',
