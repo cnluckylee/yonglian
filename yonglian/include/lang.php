@@ -1,0 +1,99 @@
+<?php
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+$packurl = 'http://'.$_SERVER['HTTP_HOST'].'/';
+foreach($met_langok as $key=>$val){
+$indexmark=($val[mark]==$met_index_type)?"index.":"index_".$val[mark].".";
+$val[met_weburl]=$val[met_weburl]<>""?$val[met_weburl]:$met_weburl;
+$val[met_htmtype]=$val[met_htmtype]<>""?$val[met_htmtype]:$met_htmtype;
+if($val[useok]){
+   $met_index_url[$val[mark]]=$val[met_webhtm]?$val[met_weburl].$indexmark.$val[met_htmtype]:$val[met_weburl]."index.php?lang=".$val[mark];
+   if($met_pseudo)$met_index_url[$val['mark']] = $val['met_weburl'].'index-'.$val['mark'].'.html';
+   if($htmpack && $met_htmpack)$met_index_url[$val['mark']]=$packurl.$met_htmpack_url.$indexmark.$val['met_htmtype'];
+   if($val[mark]==$met_index_type)$met_index_url[$val[mark]]=$val[met_weburl];
+   if($htmpack && $met_htmpack && $val[mark]==$met_index_type)$met_index_url[$val[mark]]=$packurl.$met_htmpack_url;
+   if($val[link]!="")$met_index_url[$val[mark]]=$val[link];
+   if(!strstr($val[flag], 'http://')){
+   if($index=="index"){
+   $met_langlogoarray=explode("../",$val[flag]);
+   $val[flag]=$met_langlogoarray[1];
+   }
+   }
+  $met_langok[$val[mark]]=$val;
+ }
+}
+//2.0
+$index_c_url=$met_index_url[cn];
+$index_e_url=$met_index_url[en];
+$index_o_url=$met_index_url[other];
+//2.0
+$searchurl           =$met_weburl."search/search.php?lang=".$lang;
+$file_basicname      =ROOTPATH."lang/language_".$lang.".ini";
+$file_name           =ROOTPATH."templates/".$met_skin_user."/lang/language_".$lang.".ini";
+
+if(file_exists($file_basicname)){
+$fp = @fopen($file_basicname, "r") or die("Cannot open $file_basicname");
+while ($conf_line = @fgets($fp, 1024)){    
+if(substr($conf_line,0,1)=="#"){   
+$line = ereg_replace("#.*$", "", $conf_line);
+}else{
+$line = $conf_line;
+}
+if (trim($line) == "") continue;
+$linearray=explode ('=', $line);
+$linenum=count($linearray);
+if($linenum==2){
+list($name, $value) = explode ('=', $line);
+}else{
+
+  for($i=0;$i<$linenum;$i++){
+
+     $linetra=$i?$linetra."=".$linearray[$i]:$linearray[$i].'metinfo_';
+   }
+list($name, $value) = explode ('metinfo_=', $linetra);
+}
+$value=str_replace("\"","&quot;",$value);
+list($value, $valueinfo)=explode ('/*', $value);
+$name = 'lang_'.daddslashes(trim($name),1,'metinfo');
+$$name= trim($value);
+}
+fclose($fp) or die("Can't close file $file_basicname");
+}
+if(!file_exists($file_name)){
+  if(file_exists(ROOTPATH."templates/".$met_skin_user.'/lang/language_cn.ini')){
+ $file_name           =ROOTPATH."templates/".$met_skin_user.'/lang/language_cn.ini';
+ }else{
+ $file_name           =ROOTPATH."templates/".$met_skin_user.'/lang/language_china.ini';
+ }}
+if(file_exists($file_name)){
+$fp = @fopen($file_name, "r") or die("Cannot open $file_name");
+while ($conf_line = @fgets($fp, 1024)){    
+if(substr($conf_line,0,1)=="#"){   
+$line = ereg_replace("#.*$", "", $conf_line);
+}else{
+$line = $conf_line;
+}
+if (trim($line) == "") continue;
+$linearray=explode ('=', $line);
+$linenum=count($linearray);
+if($linenum==2){
+list($name, $value) = explode ('=', $line);
+}else{
+
+  for($i=0;$i<$linenum;$i++){
+
+     $linetra=$i?$linetra."=".$linearray[$i]:$linearray[$i].'metinfo_';
+   }
+list($name, $value) = explode ('metinfo_=', $linetra);
+}
+$value=str_replace("\"","&quot;",$value);
+list($value, $valueinfo)=explode ('/*', $value);
+$name = 'lang_'.daddslashes(trim($name),1,'metinfo');
+$$name= trim($value);
+}
+fclose($fp) or die("Can't close file $file_name");
+}
+
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
+?>

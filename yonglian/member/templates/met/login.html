@@ -1,0 +1,108 @@
+<!--<?php
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+echo <<<EOT
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$lang_memberLogin}--$met_webname</title>
+</head>
+<script type="text/javascript">
+   function form_zc(){
+        window.open("register.php","_blank");  
+          window.close();
+   }
+   function check_main_login()
+{
+	var m=document.main_login;
+	if(m.login_name.value.length=="")
+	{
+		alert("{$lang_memberRegisterName}");
+		m.login_name.focus();
+		return false;
+	}
+	if(m.login_pass.value.length=="")
+	{
+		alert("{$lang_memberPassword}");
+		m.login_pass.focus();
+		return false;
+	}
+}
+function pressCaptcha(obj)//MetInfo
+  {
+    obj.value = obj.value.toUpperCase();
+  }
+function checkcookie()
+{
+	if (document.cookie == "") 
+	{	
+		var tmp=document.getElementById('remember');
+		alert('{$lang_memberCookie}');
+		tmp.checked=false;
+	}
+
+}
+</script>
+<link href="templates/met/css/style.css" type="text/css" rel="stylesheet" />
+<link href="../public/css/reset.css" rel="stylesheet" />
+<style type="text/css">
+<!--
+body {
+	font-size: $lang_fontsize; 
+	font-family:$lang_fontfamily;
+	}
+-->
+</style>
+<body>
+
+<div class="main_deng">
+   <div class="login_top">{$lang_memberLogin}</div>
+  <form method="post" action="login_check.php?lang=$lang" name="main_login" onSubmit="javascript: return check_main_login()">
+	<input type="hidden" name="action" value="login"/>
+	<input type="hidden" name="lang" value="$lang"/>
+	<br />
+	<p>
+		<span style="display:block; float:right; margin:0px 30px 0px 0px; _margin:0px 15px 0px 0px;"><label>{$lang_memberName}:
+		<input name="login_name" type="text" class="input_text"/></label></span>
+	</p>
+	<p>
+     <span style="display:block; float:right; margin:0px 30px 0px 0px; _margin:2px 15px 0px 0px;"><label> {$lang_memberPs}:
+		<input name="login_pass" type="password" class="input_text" id="user_pass"  value="" size="20" style="height:18px;"  /></label></span>
+	</p>
+
+<!--
+EOT;
+if($met_memberlogin_code==1){
+echo <<<EOT
+-->
+	<p class="zcm">
+		<span style="display:block; float:right; margin:0px 30px 0px 0px; _margin:4px 15px 0px 0px; line-height:20px;"><label>
+{$lang_memberImgCode}: <input name="code" onKeyUp="pressCaptcha(this)" type="text" class="inp" id="code" size="6" maxlength="8" style="width:67px; height:18px;" />
+<img align="absbottom" src="ajax.php?action=code"  onclick=this.src="ajax.php?action=code&"+Math.random() style="cursor: pointer;" title="{$lang_memberTip1}"/><br />
+</label></span></p>
+<!--
+EOT;
+}
+echo <<<EOT
+-->
+<p class="zcm">
+<span style="display:block; float:right; width:100%; line-height:15px; text-align:center;">
+</span>
+	</p>
+	<p class="submit">
+	<span style="display:block; float:right; width:100%; line-height:20px;  text-align:center;">
+		<input type="submit" value="{$lang_memberGo}" /><a href="register_include.php?lang=$lang">{$lang_memberRegister}</a>&nbsp;<span><a href="getpassword.php?lang=$lang">{$lang_memberForget}</a></span></span>
+	</p>
+</form>
+
+</div>
+
+</body>
+</html>
+<!--
+EOT;
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
+?>-->
