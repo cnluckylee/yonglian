@@ -1,0 +1,16 @@
+<!--<?php
+# 文件名称
+require_once template('head'); 
+require_once template('webbar'); 
+echo <<<EOT
+-->
+        <div class="memberbox webbox">
+            <iframe id="iframe" onload="Iframedom()" name="main" src="index_member.php?lang=$lang" width="100%" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+<!--
+EOT;
+require_once template('foot'); 
+?>

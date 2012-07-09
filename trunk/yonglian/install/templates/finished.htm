@@ -1,0 +1,32 @@
+<!--<?php
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+require_once template('head'); 
+echo <<<EOT
+-->
+<script language="javascript">
+parent.document.getElementById("license").className='stepnowno';
+parent.document.getElementById("inspect").className='stepnowno';
+parent.document.getElementById("databasesetup").className='stepnowno';
+parent.document.getElementById("db_setup").className='stepnowno';
+parent.document.getElementById("adminsetup").className='stepnowno';
+parent.document.getElementById("finished").className='stepnow';
+</script>
+<body>
+<div class="contenttext">
+<h1 class="title">安装成功！</h1>
+<div style="text-align:center; margin-left:210px;">
+<a class="getweburl" href="../" target="_parent" style="margin-right:40px; font-size:14px; font-weight:bold;">进入网站</a>
+<a class="getweburl" href="../admin/" target="_parent" style="font-size:14px; font-weight:bold;">管理网站</a>
+<div style="clear: both; "></div>
+</div>
+<p><STRONG style="font-size:14px;color:#466A86;">安全建议：</STRONG></p>
+<p>1、基于安全考虑，<strong>config/config_db.php</strong>文件的权限，已默认设为只读。</p>
+<p style="color:red;">2、请登陆后台通过《安全与效率》设置删除<strong>/install</strong>目录，以防止再次安装而覆盖数据。</p>
+</div>
+</body></html>
+<!--
+EOT;
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
+?>-->
