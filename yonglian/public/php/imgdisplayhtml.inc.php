@@ -1,6 +1,6 @@
 <?php
-# MetInfo Enterprise Content Management System
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
 
 function methtml_imgdisplay($type='img'){
 global $img_paraimg,$img,$product,$product_paraimg,$lang_BigPicture,$met_url,$met_img_x,$met_img_y,$met_imgdetail_x,$met_imgdetail_y,$met_img_detail,$met_productdetail_x,$met_productdetail_y,$met_product_detail,$lang_displayimg,$lang_defualt;
@@ -48,8 +48,8 @@ case 1:
    $metinfo.="</script>\n";
    $metinfo.="<span class='info_img' id='imgqwe'><a id='view_bigimg' href='".$img[imgurl]."' title=".$lang_BigPicture." target='_blank'><img id='view_img' border='0' alt='".$img[title]."' title='".$img[title]."' width=".$met_imgdetail_x." height=".$met_imgdetail_y." src='".$img[imgurl]."'></a></span>\n";
    $metinfo.="<script type='text/javascript'>";
-   $metinfo.="var zoomImagesURI   = '".$met_url."images/zoom/';";
-   $metinfo.="</script>\n";
+   $metinfo.="var zoomImagesURI   = '".$met_url."images/zoom/';"; 
+   $metinfo.="</script>\n"; 
    $metinfo.="<script src='".$met_url."js/metzoom.js' language='JavaScript' type='text/javascript'></script>\n";
    $metinfo.="<script src='".$met_url."js/metzoomHTML.js' language='JavaScript' type='text/javascript'></script>\n";
    $metinfo.="<script type='text/javascript'>	window.onload==setupZoom();	</script>\n";
@@ -315,10 +315,10 @@ if($img[$val[para]]<>''){
   $metinfo.="</div>\n";
   $metinfo.="</div>\n";
 break;
-}
+}  
 
  }else{
- $imgarr = getimagesize($img[imgurl]);
+ $imgarr = getimagesize($img[imgurl]); 
  $imgxx=$imgarr[0]/$imgarr[1];
  $imgyy=$met_imgdetail_x/$met_imgdetail_y;
  if($imgxx>$imgyy){
@@ -330,8 +330,8 @@ break;
  }
  $metinfo.="<span class='info_img' id='imgqwe'><a href='".$img[imgurl]."' title=".$lang_BigPicture." target='_blank'><img src=".$img[imgurl]." alt='".$img[title]."' title='".$img[title]."' width=".$met_imgdetail_x1." height=".$met_imgdetail_y1."  /></a></span>\n";
  $metinfo.="<script type='text/javascript'>";
- $metinfo.="var zoomImagesURI   = '".$met_url."images/zoom/';";
- $metinfo.="</script>\n";
+ $metinfo.="var zoomImagesURI   = '".$met_url."images/zoom/';"; 
+ $metinfo.="</script>\n"; 
  $metinfo.="<script src='".$met_url."js/metzoom.js' language='JavaScript' type='text/javascript'></script>\n";
  $metinfo.="<script src='".$met_url."js/metzoomHTML.js' language='JavaScript' type='text/javascript'></script>\n";
  $metinfo.="<script type='text/javascript'>	window.onload==setupZoom();	</script>\n";

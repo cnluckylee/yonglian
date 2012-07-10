@@ -164,13 +164,7 @@ switch ($action)
 					  usertype        	 = '3',
 					  admin_ok           = '1'";
 			mysql_query($query) or die('写入数据库失败: ' . mysql_error());
-			@chmod('../config/config_db.php',0554);
-			$spt = '<script type="text/javascript" src="http://www.metinfo.cn/record.php?';
-			$spt .= "url=" .$install_url;
-			$spt .= "&email=".$email."&installtime=".$m_now_date."&softtype=1";
-			$spt .= "&version=".VERSION."&php_ver=" .PHP_VERSION. "&mysql_ver=" .mysql_get_server_info();
-			$spt .= '"></script>';
-			echo $spt;			
+			@chmod('../config/config_db.php',0554);			
 			define('ROOTPATH', substr(dirname(__FILE__), 0, -7));		
 			$localurl="http://";
 			$localurl.=$_SERVER['HTTP_HOST'].$_SERVER["PHP_SELF"];

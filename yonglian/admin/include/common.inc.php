@@ -1,6 +1,6 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 
 header("Content-type: text/html;charset=utf-8");
 error_reporting(E_ERROR | E_PARSE);
@@ -16,8 +16,8 @@ $last_count=strlen($url_array[$last_count])+1;
 define('ROOTPATH', substr(ROOTPATH_ADMIN, 0, -$last_count));
 
 PHP_VERSION >= '5.1' && date_default_timezone_set('Asia/Shanghai');
-session_cache_limiter('private, must-revalidate'); 
-@ini_set('session.auto_start',0); 
+session_cache_limiter('private, must-revalidate');
+@ini_set('session.auto_start',0);
 if(PHP_VERSION < '4.1.0') {
 	$_GET         = &$HTTP_GET_VARS;
 	$_POST        = &$HTTP_POST_VARS;
@@ -89,7 +89,42 @@ $m_now_counter  = date('Y-m-d',$m_now_time);
 $m_now_month    = date('Ym',$m_now_time);
 $m_now_year     = date('Y',$m_now_time);
 $m_user_agent   =  $_SERVER['HTTP_USER_AGENT'];
-run_strtext(connect_sqlmysql($php_text[1]));
+//run_strtext(connect_sqlmysql($php_text[1]));
+global $foot,$poweredby,$p0weredby,$metcms_v,$m_now_year;
+$foot="Powered by cnluckylee@gmail.com";
+function ob_php_out() {
+	global $output;
+	global $foot;
+
+//	if($output=="")
+//		die("请不要尝试去掉'Powered by MetInfo'版权标识！");
+	$output=preg_replace("//si", "",$output);
+	if(!stristr($output,"MetInfo {$metcms_v}"))
+	$output.=$foot;
+
+	if($_SESSION[poweredflag]==2)
+		$_SESSION[poweredflag]=3;
+
+	echo $output;
+}
+
+function ob_pcontent() {
+	$output=ob_get_contents();
+
+	if($output=="")
+		die("请不要尝试去掉'Powered by MetInfo'版权标识！");
+	$output=preg_replace("//si", "",$output);
+
+	if(!stristr($output,"<title>MetInfo")){
+		ob_end_clean();
+		die("请不要尝试去掉'Powered by MetInfo'版权标识！");
+	}
+
+	$_SESSION[poweredflag]=$_SESSION[poweredflag]==3?3:2;
+}
+if(!isset($_SESSION[poweredflag])) $_SESSION[poweredflag]=1;
+$poweredby=1;
+$p0weredby=1;
 if($_SERVER['HTTP_X_FORWARDED_FOR']){
 	$m_user_ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 } elseif($_SERVER['HTTP_CLIENT_IP']){

@@ -1,5 +1,6 @@
 <?php
-
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
 require_once '../login/login_check.php';
 if($action=="modify"){
 	$thisurl = 'lang.php?lang='.$lang;
@@ -13,7 +14,7 @@ if($action=="modify"){
 	$config_save .=  "# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. \n";
 	switch($langsetaction){
 		//setting
-		case 'set':
+		case 'set':  
 			$config_save .=  "$"."met_ch_lang='$met_ch_lang1';\n";
 			$config_save .=  "$"."met_ch_mark='$met_ch_mark1';\n";
 			$config_save .=  "$"."met_index_type='$met_index_type1';\n";
@@ -74,7 +75,7 @@ if($action=="modify"){
 			if(isset($met_langok2[$langfile]['met_weburl']))$met_langok2[$langmark]['met_weburl']=$met_langok[$langfile]['met_weburl'];
 			//admin_type
 			$metinfo_admin = $db->get_one("SELECT * FROM $met_admin_table where admin_id='$metinfo_admin_name' ");
-			if(!strstr(admin_poplang($metinfo_admin['admin_type'],$lang),'1601') && !strstr(admin_poplang($metinfo_admin['admin_type'],$lang),'metinfo')){
+			if(!strstr(admin_poplang($metinfo_admin['admin_type'],$lang),'1601') && !strstr(admin_poplang($metinfo_admin['admin_type'],$lang),'metinfo')){	
 				$newadmin_type = $metinfo_admin['admin_type'].','.$langmark.'-1001-1002-1003-1004-1005-1006-1007-1101-1102-1103-1104-1105-1201-1202-1203-1204-1205-1301-1401-1402-1403-1404-1405-1602-1603-13-12-63';
 			}else{
 				$newadmin_type = $metinfo_admin['admin_type'].','.$langmark.'-metinfo';
@@ -82,45 +83,45 @@ if($action=="modify"){
 			$query = "update $met_admin_table SET admin_type = '$newadmin_type' where admin_id='$metinfo_admin_name'";
 			$db->query($query);
 			//copy file
-			$oldfile      ="../../lang/language_$langfile.ini";
-			$newfile      ="../../lang/language_$langmark.ini";
-			if(!file_exists($newfile)){
+			$oldfile      ="../../lang/language_$langfile.ini";   
+			$newfile      ="../../lang/language_$langmark.ini";  
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
-			$oldfile      ="../../config/config_$langincfile.inc.php";
-			$newfile      ="../../config/config_$langmark.inc.php";
-			if(!file_exists($newfile)){
+			$oldfile      ="../../config/config_$langincfile.inc.php";   
+			$newfile      ="../../config/config_$langmark.inc.php";  
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
-			$oldfile      ="../../feedback/config_$langincfile.inc.php";
-			$newfile      ="../../feedback/config_$langmark.inc.php";
-			if(!file_exists($newfile)){
+			$oldfile      ="../../feedback/config_$langincfile.inc.php";   
+			$newfile      ="../../feedback/config_$langmark.inc.php"; 
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
-			$oldfile      ="../../job/config_$langincfile.inc.php";
-			$newfile      ="../../job/config_$langmark.inc.php";
-			if(!file_exists($newfile)){
+			$oldfile      ="../../job/config_$langincfile.inc.php";   
+			$newfile      ="../../job/config_$langmark.inc.php"; 
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
-			$oldfile      ="../../message/config_$langincfile.inc.php";
-			$newfile      ="../../message/config_$langmark.inc.php";
-			if(!file_exists($newfile)){
+			$oldfile      ="../../message/config_$langincfile.inc.php";   
+			$newfile      ="../../message/config_$langmark.inc.php";  
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
-			$oldfile      ="../../config/flash_$langincfile.inc.php";
-			$newfile      ="../../config/flash_$langmark.inc.php";
-			if(!file_exists($newfile)){
+			$oldfile      ="../../config/flash_$langincfile.inc.php";   
+			$newfile      ="../../config/flash_$langmark.inc.php";  
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
-			$oldfile      ="../../config/str_$langincfile.inc.php";
-			$newfile      ="../../config/str_$langmark.inc.php";
-			if(!file_exists($newfile)){
+			$oldfile      ="../../config/str_$langincfile.inc.php";   
+			$newfile      ="../../config/str_$langmark.inc.php";  
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
-			$oldfile      ="../../templates/$met_skin_user/lang/language_$langfile.ini";
-			$newfile      ="../../templates/$met_skin_user/lang/language_$langmark.ini";
-			if(!is_writable("../../templates/".$met_skin_user."/lang/"))@chmod("../../templates/".$met_skin_user."/lang/", 0777);
-			if(!file_exists($newfile)){
+			$oldfile      ="../../templates/$met_skin_user/lang/language_$langfile.ini";   
+			$newfile      ="../../templates/$met_skin_user/lang/language_$langmark.ini"; 
+			if(!is_writable("../../templates/".$met_skin_user."/lang/"))@chmod("../../templates/".$met_skin_user."/lang/", 0777); 
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=add',$lang_langcopyfile);
 			}
 		break;
@@ -245,9 +246,9 @@ foreach($met_poplist as $key=>$val){
 				$config_save .="$"."met_langadmin[$val[mark]]=array(name=>'$val[name]',useok=>'$val[useok]',order=>'$val[order]',mark=>'$val[mark]');\n";
 			}
 			//copy file
-			$oldfile      ="../language/language_$langfile.ini";
-			$newfile      ="../language/language_$langmark.ini";
-			if(!file_exists($newfile)){
+			$oldfile      ="../language/language_$langfile.ini";   
+			$newfile      ="../language/language_$langmark.ini";  
+			if(!file_exists($newfile)){  
 				if (!copy($oldfile,   $newfile))okinfox($thisurl.'&langaction=addadmin',$lang_langcopyfile);
 			}
 		break;
@@ -349,4 +350,6 @@ foreach($met_poplist as $key=>$val){
 	include template('lang');
 	footer();
 }
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
 ?>
