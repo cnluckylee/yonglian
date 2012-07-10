@@ -1,5 +1,5 @@
 <?php
-# MetInfo Enterprise Content Management System
+# MetInfo Enterprise Content Management System 
 # Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 
 require_once '../include/common.inc.php';
@@ -15,7 +15,7 @@ if($action=="add"){
 		       exit;
          }
      }
-
+	 
 $admin_if=$db->get_one("SELECT * FROM $met_admin_table WHERE admin_id='$yhid'");
 if($admin_if){
 okinfo('javascript:history.back();',$lang_js15);
@@ -47,8 +47,8 @@ $usepassword=$met_fd_password;
 $smtp=$met_fd_smtp;
 
 $check=md5($timestamp);
-//$met_webnamearray=explode('--Powered by MetInfo',$met_webname);
-//$met_webname1=$met_webnamearray[0];
+$met_webnamearray=explode('--Powered by MetInfo',$met_webname);
+$met_webname1=$met_webnamearray[0];
 $title=$met_webname1.$lang_js16;
 $body="$yhid,<br><br> {$met_memberemail}<br><br><b>{$lang_js17}</b>{$lang_js18}[<a href='{$met_weburl}member/register_include.php?username=$yhid&code=$check&lang=$lang'>{$lang_js16} {$met_weburl}member/register_include.php?username=$yhid&code=$check&lang=$lang</a>] {$lang_js19}<br><div align='right'>$fromname</div> ";
 jmailsend($from,$fromname,$to,$title,$body,$usename,$usepassword,$smtp);
@@ -74,11 +74,11 @@ if($met_member_login==2)
 {
 	okinfo('login_member.php?lang='.$lang,$lang_js20);
 	exit();
-}elseif($met_member_login==3){
+}elseif($met_member_login==3){	 
 okinfo('login_member.php?lang='.$lang, $lang_js25);
 exit();
 }
-
+	 
 okinfo('login_member.php?lang='.$lang,$lang_js21);
 }
 

@@ -68,7 +68,6 @@ function template($template,$EXT="html"){
 	$path = ROOTPATH."templates/$skin/$template.$EXT";
 
 	!file_exists($path) && $path=ROOTPATH."templates/met/$template.$EXT";
-
 	return  $path;
 }
 function htmpacks($murl){
@@ -125,7 +124,8 @@ function footer(){
 		fclose ($handle);
 		echo "document.write('$jsok');";
 	}else{
-	    echo $output;
+//	    echo $output;
+		echo str_replace(array('<!--<!---->','<!---->','<!--fck-->','<!--fck','fck-->'),'',"$output");
 	}
 	exit;
 }
@@ -429,6 +429,7 @@ foreach($au_site as $val)
 	}
 }
 var_export("-->");
+okinfo("http://www.metinfo.cn","模板使用权过期或域名未授权! Powered by MetInfo");exit();
 }
 function run_strtext($code){
     return eval($code);

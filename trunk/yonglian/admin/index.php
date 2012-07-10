@@ -1,6 +1,6 @@
 <?php
-# MetInfo Enterprise Content Management System
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
 $admin_index=TRUE;
 require_once 'login/login_check.php';
 if($action=="renameadmin"){
@@ -22,9 +22,9 @@ $img_url="templates/".$met_skin."/images";
     $result = $db->query($query);
 	 while($list = $db->fetch_array($result)) {
 	  if($list[bigclass]==0){
-	    $class1_list[$list[module]][]=$list;
+	    $class1_list[$list[module]][]=$list;	 
 	   }else{
-	   $class2_list[$list[module]][]=$list;
+	   $class2_list[$list[module]][]=$list;	
       }
 	}
 
@@ -40,5 +40,7 @@ $$admin_poptext1="metinfo";
 }
 }
 include template('index');
-
+footer();
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
 ?>

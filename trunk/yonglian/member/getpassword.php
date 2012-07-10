@@ -1,5 +1,5 @@
 <?php
-# MetInfo Enterprise Content Management System
+# MetInfo Enterprise Content Management System 
 # Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 require_once '../include/common.inc.php';
 if($action=="getpassword"){
@@ -21,12 +21,12 @@ $getpass=$passwords;
 $passwords=md5($passwords);
 
 $query = "update $met_admin_table SET
-          admin_pass         = '$passwords'
+          admin_pass         = '$passwords' 
 		  where admin_id='$admin_name'";
 $db->query($query);
 
-//$met_webnamearray=explode('--Powered by MetInfo',$met_webname);
-//$met_webname1=$met_webnamearray[0];
+$met_webnamearray=explode('--Powered by MetInfo',$met_webname);
+$met_webname1=$met_webnamearray[0];
 
 $title=$met_webname1.$lang_getNotice;
 $body="$lang_getTip1 [".$met_webname1."]".$met_weburl.$lang_getTip2.$getpass.$lang_getTip3;
