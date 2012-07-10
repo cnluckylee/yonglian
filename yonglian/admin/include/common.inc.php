@@ -1,6 +1,6 @@
 <?php
-# MetInfo Enterprise Content Management System
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
 
 header("Content-type: text/html;charset=utf-8");
 error_reporting(E_ERROR | E_PARSE);
@@ -16,8 +16,8 @@ $last_count=strlen($url_array[$last_count])+1;
 define('ROOTPATH', substr(ROOTPATH_ADMIN, 0, -$last_count));
 
 PHP_VERSION >= '5.1' && date_default_timezone_set('Asia/Shanghai');
-session_cache_limiter('private, must-revalidate');
-@ini_set('session.auto_start',0);
+session_cache_limiter('private, must-revalidate'); 
+@ini_set('session.auto_start',0); 
 if(PHP_VERSION < '4.1.0') {
 	$_GET         = &$HTTP_GET_VARS;
 	$_POST        = &$HTTP_POST_VARS;
