@@ -1,8 +1,8 @@
 <?php
-# MetInfo Enterprise Content Management System
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
 
-/**
+/** 
 function
 */
 function daddslashes($string, $force = 0) {
@@ -35,6 +35,7 @@ function footer(){
 	global $output;
 	$output = str_replace(array('<!--<!---->','<!---->','<!--fck-->','<!--fck','fck-->','',"\r",substr($admin_url,0,-1)),'',ob_get_contents());
     ob_end_clean();
+	//$poweredby && die("请不要尝试去掉'Powered by MetInfo'版权标识！");
 	ob_php_out();
 	mysql_close();
 	exit;
@@ -48,7 +49,7 @@ exit;
 function okinfo($url = '../site/sysadmin.php',$metck,$mettext){
 $url = strtr($url,'&','$');
 echo("<script type='text/javascript'>location.href='../set/turnover.php?geturl=$url&metck=$metck&mettext=$mettext'; </script>");
-exit;
+exit; 
 }
 function okinfox($url,$error){
 $url = strtr($url,'&','$');
@@ -178,7 +179,7 @@ if($indexy)$fromurl.='&indexy='.$indexy;
 echo "<script language='javascript' src='../../".$fromurl."'></script>";
 }
 
-//order
+//order 
 function list_order($listid){
 switch($listid){
 case '0':
@@ -233,7 +234,8 @@ function isblank($str) {
 $php_text=$db->get_one("SELECT * FROM $met_mysql where id=1");
 
  function authcode($string, $operation = 'DECODE', $key = '', $expiry = 0) {
-        $ckey_length = 4;
+
+        $ckey_length = 4; 
 
         $key = md5($key ? $key : UC_KEY);
         $keya = md5(substr($key, 0, 16));
@@ -390,7 +392,7 @@ $pagename=$foldername.$id;
 break;
 }
 
-if($class1_info[module]<6){
+if($class1_info[module]<6){ 
 $total_count = $db->counter($tablename, " where lang='".$lang."' and class1=".$class1, "*");
 }elseif($class1_info[module]==7){
 $settings = parse_ini_file('../../message/config.inc.php');
@@ -557,7 +559,7 @@ $filename="../../".$foldername."/".$pagename.$met_htmtypeadmin;
 //$filename=mb_convert_encoding($filename, "gb2312", 'UTF-8'); //where html page name enabled and the language is not english are used
 if(file_exists($filename))@unlink($filename);
 }
-eval(base64_decode($php_text[0]));
+eval(base64_decode($php_text[0])); 
 function showhtm($id,$htmway=0,$htmpack=0){
 	global $db,$lang,$met_webhtm,$met_htmway,$met_column,$met_index_type,$met_class,$met_class2a,$met_class1;
 	$met_htmway=$htmway?0:$met_htmway;
@@ -602,19 +604,19 @@ if(!function_exists('file_put_contents')) {
       fclose($fp);
     }
   }
- if( !function_exists('scandir') ) {
-     function scandir($directory, $sorting_order = 0) {
-         $dh  = opendir($directory);
-         while( false !== ($filename = readdir($dh)) ) {
-             $files[] = $filename;
-         }
-         if( $sorting_order == 0 ) {
-             sort($files);
-         } else {
-             rsort($files);
-         }
-         return($files);
-     }
+ if( !function_exists('scandir') ) {   
+     function scandir($directory, $sorting_order = 0) {   
+         $dh  = opendir($directory);   
+         while( false !== ($filename = readdir($dh)) ) {   
+             $files[] = $filename;   
+         }   
+         if( $sorting_order == 0 ) {   
+             sort($files);   
+         } else {   
+             rsort($files);   
+         }   
+         return($files);   
+     }   
  }
 function Copyfile($address,$newfile){
 	$oldcont  = "<?php\nrequire_once '$address';\n?>";
@@ -716,7 +718,7 @@ function admin_popes($type,$lang,$nolang){
 	for($i=0;$i<$popnum;$i++){
 		$admin_pops=explode('-',$admin_pop[$i]);
 		$popnums=count($admin_pops);
-		for($k=0;$k<$popnums;$k++){
+		for($k=0;$k<$popnums;$k++){	
 			if($k==$popnums-1){
 			$admin_poparry[$admin_pops[0]].=$admin_pops[$k];
 			}else{

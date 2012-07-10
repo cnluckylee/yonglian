@@ -1,5 +1,6 @@
 <?php
-
+# MetInfo Enterprise Content Management System 
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
 function daddslashes1($string, $force = 0) {
 	!defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
 	if(!MAGIC_QUOTES_GPC || $force) {
@@ -51,5 +52,6 @@ $name = 'lang_'.daddslashes1(trim($name),1);
 $$name=preg_replace('/\r|\n/', '', $value);
 }
 fclose($fp) or die("Can't close file $file_name");
-
+# This program is an open source system, commercial use, please consciously to purchase commercial license.
+# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
 ?>
