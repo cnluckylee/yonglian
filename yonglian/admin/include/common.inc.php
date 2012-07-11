@@ -112,12 +112,11 @@ function ob_pcontent() {
 	$output=ob_get_contents();
 
 	if($output=="")
-		die("请不要尝试去掉'Powered by MetInfo'版权标识！");
+		die("请不要尝试去掉'Powered by cnluckylee'版权标识！");
 	$output=preg_replace("//si", "",$output);
-
-	if(!stristr($output,"<title>MetInfo")){
+	if(!stristr($output,"<title>cnluckylee")){
 		ob_end_clean();
-		die("请不要尝试去掉'Powered by MetInfo'版权标识！");
+		die("请不要尝试去掉'Powered by cnluckylee'版权标识！");
 	}
 
 	$_SESSION[poweredflag]=$_SESSION[poweredflag]==3?3:2;

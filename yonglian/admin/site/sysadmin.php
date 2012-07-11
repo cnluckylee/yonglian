@@ -14,6 +14,4 @@ $message = $db->counter($met_message, " where readok=0 and lang='$lang' ", "*");
 $link = $db->counter($met_link, " where show_ok=0 and lang='$lang' ", "*");
 $member = $db->counter($met_admin_table, " where admin_approval_date is null and lang='$lang' and usertype<3 ", "*");
 include template('sysadmin');
-
-
 ?>
