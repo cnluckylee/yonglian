@@ -1,6 +1,6 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+# MetInfo Enterprise Content Management System
+# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
 require_once '../login/login_check.php';
 if($action=="modify"){
 $file_basicname      =ROOTPATH."config/lang.inc.php";
@@ -9,7 +9,7 @@ if(file_exists($file_basicname)){
 $fp = @fopen($file_basicname, "r") or die("Cannot open $file_basicname");
 $k=0;
 while ($conf_line = @fgets($fp, 1024)){
-if(!(strstr($conf_line, "$"."met_langok[".$lang."][met_webhtm]") or strstr($conf_line, "$"."met_langok[".$lang."][met_htmtype]"))){   
+if(!(strstr($conf_line, "$"."met_langok[".$lang."][met_webhtm]") or strstr($conf_line, "$"."met_langok[".$lang."][met_htmtype]"))){
 $linenum = $conf_line;
 $linelist[$k]=$linenum;
 $k++;
@@ -54,8 +54,8 @@ okinfot($meturl,$meturn,$lang_js21);
  $query = "SELECT * FROM $met_column where (bigclass=0 or releclass!=0) and if_in=0 and lang='$lang'";
  $result = $db->query($query);
   while($list= $db->fetch_array($result)){
-   $dir="../../".$list['foldername']; 
-   $file=scandir($dir);  
+   $dir="../../".$list['foldername'];
+   $file=scandir($dir);
    foreach ($file as $value){
 if($lang==$met_index_type){
    if($value != "." && $value !=".."){
@@ -63,19 +63,19 @@ if($lang==$met_index_type){
 	  $k=count($langmarkarray)-1;
 	  $langmark=$k?$langmarkarray[$k]:"";
       if((substr($value,-4,4)=="html" || substr($value,-3,3)=="htm") and (!strstr($htmlang, "_".$langmark) || $langmark=="")){
-	  
-	  unlink($dir."/".$value); 
+
+	  unlink($dir."/".$value);
 	  }
-	  } 
+	  }
    }else{
     if($value != "." && $value !=".."){
 		if(strstr($value,".htm")){
 		unlink($dir."/".$value);
-		}	
-	} 
+		}
+	}
    }
-   } 
-  } 
+   }
+  }
    $meturn='sethtm.php?lang='.$lang;
    okinfo($meturn);
 }
@@ -103,7 +103,7 @@ for($i=1;$i<$wnum;$i++){
 $css_url="../templates/".$met_skin."/css";
 $img_url="../templates/".$met_skin."/images";
 include template('sethtm');
-footer();
+
 }
 # This program is an open source system, commercial use, please consciously to purchase commercial license.
 # Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.

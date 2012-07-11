@@ -1,6 +1,9 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved.
+/*
+ * Create Date:2012-07-10
+ * Creater:cnluckylee
+ * Creater mail:cnluckylee@gmail.com
+ */
 if(!file_exists('config/install.lock')){
  header("location:install/index.php");exit;
 }
@@ -34,7 +37,7 @@ if($dataoptimize[$pagemark]['job']){
 	 switch($met_htmpagename){
      case 0:
 	 $htmname="job/showjob".$list[id];
-	 $phpname="job/showjob.php?id=".$list[id];	
+	 $phpname="job/showjob.php?id=".$list[id];
 	 break;
 	 case 1:
 	 $htmname="job/".date('Ymd',strtotime($list[addtime])).$list[id];
@@ -42,13 +45,13 @@ if($dataoptimize[$pagemark]['job']){
 	 break;
 	 case 2:
 	 $htmname="job/job".$list[id];
-	 $phpname="job/showjob.php?id=".$list[id];	
+	 $phpname="job/showjob.php?id=".$list[id];
 	 break;
 	 }
 	$list[url]=$met_webhtm?$htmname.$met_htmtype:$phpname."&lang=".$lang;
 	$list[addtime] = date($met_listtime,strtotime($list[addtime]));
 	if($met_member_use==2){
-     if(intval($metinfo_member_type)>=intval($list[access])){  
+     if(intval($metinfo_member_type)>=intval($list[access])){
     $listall[job][]=$list;
 	}
 	}else{
@@ -62,13 +65,13 @@ if($dataoptimize[$pagemark]['job']){
 	$list[news]=(((strtotime($m_now_date)-strtotime($list[addtime]))/86400)<$met_newsdays)?"<img src='".$navurl.$img_url."news.gif"."' />":"";
 	switch($met_htmpagename){
      case 0:
-	 $htmname="showjob".$list[id];	
+	 $htmname="showjob".$list[id];
 	 break;
 	 case 1:
 	 $htmname=date('Ymd',strtotime($list[addtime])).$list[id];
 	 break;
 	 case 2:
-	 $htmname="job".$list[id];	
+	 $htmname="job".$list[id];
 	 break;
 	 }
 	 if($met_submit_type==1){
@@ -81,11 +84,11 @@ if($dataoptimize[$pagemark]['job']){
 	$htmname=($list['filename']<>"" and $metadmin['pagename'])?$filename."/".$list['filename']:$filename."/".$htmname;
 	$panyid = $list['filename']!=''?$list['filename']:$list['id'];
 	$met_ahtmtype = $list['filename']<>""?$met_chtmtype:$met_htmtype;
-	$phpname=$met_pseudo?$filename."/".$panyid.'-'.$lang.'.html':$filename."/show".$pagename.".php?".$langmark."&id=".$list['id'];	
+	$phpname=$met_pseudo?$filename."/".$panyid.'-'.$lang.'.html':$filename."/show".$pagename.".php?".$langmark."&id=".$list['id'];
 	$list['url']=$met_pseudo?$phpname:($met_webhtm?$htmname.$met_ahtmtype:$phpname);
 	$list['addtime'] = date($met_listtime,strtotime($list['addtime']));
 	if($met_member_use==2){
-     if(intval($metinfo_member_type)>=intval($list[access])){  
+     if(intval($metinfo_member_type)>=intval($list[access])){
       $listall[job][]=$list;
 	}
 	}else{

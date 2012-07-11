@@ -1,6 +1,5 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+
 require_once '../login/login_check.php';
 if($action=="modify"){
 	$met_weburl = ereg_replace(" ","",$met_weburl);
@@ -13,7 +12,7 @@ if($action=="modify"){
 		$fp = @fopen($file_basicname, "r") or okinfox('basic.php?lang='.$lang,$lang_Cannotopen.$file_basicname);
 		$k=0;
 		while ($conf_line = @fgets($fp, 1024)){
-			if(!strstr($conf_line, "$"."met_langok[".$lang."][met_weburl")){   
+			if(!strstr($conf_line, "$"."met_langok[".$lang."][met_weburl")){
 				$linenum = $conf_line;
 				$linelist[$k]=$linenum;
 				$k++;
@@ -45,8 +44,7 @@ if($action=="modify"){
 	$css_url="../templates/".$met_skin."/css";
 	$img_url="../templates/".$met_skin."/images";
 	include template('set_basic');
-	footer();
+
 }
-# This program is an open source system, commercial use, please consciously to purchase commercial license.
-# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
+
 ?>
