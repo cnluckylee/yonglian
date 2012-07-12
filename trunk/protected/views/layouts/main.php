@@ -17,11 +17,11 @@
 	$superfishpath = Yii::app()->assetManager->publish(Yii::app()->basePath.'/scripts/jqueryslidemenu/');
 	//Register jQuery, JS and CSS files
 	Yii::app()->clientScript->registerCoreScript('jquery');
-	Yii::app()->clientScript->registerCssFile($superfishpath.'/jqueryslidemenu.css');	
+	Yii::app()->clientScript->registerCssFile($superfishpath.'/jqueryslidemenu.css');
 	Yii::app()->clientScript->registerScriptFile($superfishpath.'/jqueryslidemenu.js');
-	
-?>	
-	
+
+?>
+
 </head>
 
 <body>
@@ -36,28 +36,42 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array
 			(
-				array('label'=>'首页', 'url'=>array('/site/index')),
-				array('label'=>'关于', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'内容', 'url'=>array('/site/contact')),
-				array('label'=>'jqSlideMenuTest', 'url'=>array('#'), 'items'=>array
+				array('label'=>'永链全貌', 'url'=>array('/site/index'),'items'=>array(
+					array('label'=>'企业秀台', 'url'=>array('/site/index')),
+					array('label'=>'企业动态', 'url'=>array('/site/index')),
+					array('label'=>'携手发展', 'url'=>array('/site/index')),
+					array('label'=>'舵主风采', 'url'=>array('/site/index')),
+					array('label'=>'团队闪耀', 'url'=>array('/site/index')),
+				)),
+				array('label'=>'管理经典', 'url'=>array('/site/page', 'view'=>'about'),'items'=>array(
+					array('label'=>'专家新论', 'url'=>array('/site/index')),
+					array('label'=>'管理技术', 'url'=>array('/site/index')),
+					array('label'=>'管理案例', 'url'=>array('/site/index')),
+					array('label'=>'永链观点', 'url'=>array('/site/index')),
+
+				)),
+				array('label'=>'用户之窗', 'url'=>array('/site/contact'),'items'=>array(
+					array('label'=>'政策精选', 'url'=>array('/site/index')),
+					array('label'=>'电子刊期', 'url'=>array('/site/index')),
+					array('label'=>'常用工具', 'url'=>array('/site/index')),
+					array('label'=>'用户体验', 'url'=>array('/site/index')),
+				)),
+				array('label'=>'永链擂台', 'url'=>array('/site/contact'), 'items'=>array
 				(
-					array('label'=>'Home', 'url'=>array('/site/index')),
-					array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-					array('label'=>'Contact', 'url'=>array('/site/contact'), 'items'=>array
-					(
-						array('label'=>'Home', 'url'=>array('/site/index')),
-						array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-						array('label'=>'Contact', 'url'=>array('/site/contact'), 'items'=>array
-						(
-							array('label'=>'Home', 'url'=>array('/site/index')),
-							array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-							array('label'=>'Contact', 'url'=>array('/site/contact'),'items'=>array
-							(
-								array('label'=>'Contact', 'url'=>array('/site/contact'))
-							)),
-						)), 
-					)),				
-				)),				
+					array('label'=>'项目报名', 'url'=>array('/site/index')),
+					array('label'=>'赛况介绍', 'url'=>array('/site/page', 'view'=>'about')),
+				)),
+				array('label'=>'永链概况', 'url'=>array('yonglian'),'items'=>array(
+					array('label'=>'公司介绍', 'url'=>array('/site/index')),
+					array('label'=>'公司新闻', 'url'=>array('/site/index')),
+					array('label'=>'活动分享', 'url'=>array('/site/index')),
+					array('label'=>'项目合作', 'url'=>array('/site/index')),
+					array('label'=>'永链团队', 'url'=>array('/site/index')),
+					array('label'=>'永链产品', 'url'=>array('/site/index')),
+					array('label'=>'员工招聘', 'url'=>array('/site/index')),
+					array('label'=>'联系我们', 'url'=>array('/site/index')),
+
+				)),
 				array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
