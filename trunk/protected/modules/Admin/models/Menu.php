@@ -91,6 +91,7 @@ class Menu extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'dataProvider'=>$dataProvider
 		));
 	}
 }
