@@ -1,93 +1,64 @@
 <?php
-$this->breadcrumbs=array(
-	"后台管理",
-);
+Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl . '/js/admin_index.js');
 ?>
-<h1>后台使用细则</h1>
-<hr/>
-<h5 style="color:#f67600">请注意状态的使用，一定要是状态为正常的才可以在首页显示，其他的都为不显示，无论你怎么设置。并且默认的正常状态值为1，请在数据库清理后做处理。仔细阅读本页说明文字，谢谢。</h5>
-<hr/>
-<h3>0.基本操作模式</h3>
-<ol>
-	<li>准备
-    	<ol>
-        	<li>添加状态(所有显示与否的决定因素)</li>
-        	<li>添加新闻类型</li>
-        	<li>创建班级</li>
-        	<li>下载类型</li>
-        	<li>性别默认男/女，无需创建</li>
-    	</ol>
-	</li>
-	<li>填充
-    	<ol>
-        	<li>添加新闻(使用：状态，新闻类型)</li>
-        	<li>添加下载(使用：状态，下载类型)</li>
-        	<li>添加宣传图片(使用：状态)</li>
-        	<li>添加用户(使用：状态，班级信息，性别)</li>
-    	</ol>
-	</li>
-	<li>管理
-    	<ol>
-        	<li>新闻管理</li>
-        	<li>宣传图片管理</li>
-        	<li>用户管理</li>
-        	<li>班级管理</li>
-        	<li>其他管理，包括首页导航，首页背景图片，状态，类型等...</li>
-    	</ol>
-	</li>
-		<li>附加
-    	<ol>
-        	<li>添加首页导航(1级导航)</li>
-        	<li>添加首页背景图片</li>
-    	</ol>
-	</li>
-</ol>
-<hr/>
-<h3>1.功能介绍</h3>
-<ul>
-	<li>首先你可以在本后台进行如下操作：
-			<ol>
-			<li>人员管理</li>
-			<li>新闻管理(包括：新闻，公告 3个类型)</li>
-			<li>下载管理</li>
-			<li>首页二级菜单管理(默认使用上面提到的新闻类别)</li>
-			<li>首页宣传图片管理(轮换式)</li>
-			<li>首页一级菜单管理</li>
-			<li>首页背景图片管理</li>
-			</ol>
-	</li>
-	<li>如下操作将在接下来很短的时间内完成：
-			<ol>
-			<li>用户中心，不同于当前后台</li>
-			<li>下载权限管理</li>
-			</ol>
-	</li>			
-</ul>
-<hr/>
-<h3>2.路径导航</h3>
-<p>所有已经实现的操作，都在侧栏上可以找到对应的链接，简单明了就可以进行操作。</p>
-<hr/>
-<h3>3.约定</h3>
-<ol>
-  <li> 宣传图片尺寸 320px * 510px jpg格式 </li>
-  <li> 首页背景图片尺寸 1000px * 200px png格式，边缘透明 </li>
-  <li> 其他格式 见页面说明，或出错提示 </li>
-</ol>
-<hr/>
-<h3>4.缓存，整站使用文件级缓存，暂使用4处</h3>
-<ol>
-  <li>1级导航菜单，1小时刷新一次</li>
-  <li>2级分类菜单，1小时刷新一次</li>
-  <li>首页宣传图片，1小时刷新一次</li>
-  <li>首页背景图片集合，1小时刷新一次，此处只缓存了全部图片，每次访问还是会显示不同的图片，缓存的只是总集合。</li>
-  <li>强制刷新：删除/protected/runtime/cache/内容，稍候做个按钮实现</li>
-</ol>
-<hr/>
-<h3>5.URL格式化</h3>
-<ol>
-  <li>隐藏index.php</li>
-  <li>.html伪静态后缀名</li>
-  <li>前台Action＋参数形成1级文件名，实现简洁URL</li>
-  <li>前台地址:<?php echo Yii::app()->homeUrl;?></li>
-  <li>后台地址:<?php echo $this->createUrl('/Admin')?></li>
-</ol>
+
+<DIV class="ui-layout-north heaber" >
+	<div class="heaber_top">
+
+		<div class="heaber_top"> 欢迎你，<?php echo $this->getUser()->name; ?>(<?php echo $this->getUser()->role; ?>)&nbsp;&nbsp;[<a target="layout_center" title="设置" href="<?php echo $this->createUrl('my/index'); ?>">个人设置</a>]&nbsp;&nbsp;[<a title="退出登录" href="<?php echo $this->createUrl('logout'); ?>">退出</a>]
+		</div>
+	</div>
+	<div class="heaber_nav">
+		<ul class="ui_heaber_nav">
+			<?php
+			$i = 0;
+			foreach ($topmenus as $mid):
+				$i++;
+				?>
+				<li class="ui_heaber_nav_item <?php if ($i == 1): ?>ui_heaber_nav_item_current<?php endif; ?>" <?php if ($i == 1): ?>state="current"<?php endif; ?>><span>
+						<?php if ($i == 1): ?>
+							<a href="<?php echo $this->createUrl('/' . $menus[$mid]['modules'] . '/' . $menus[$mid]['controller'] . '/' . $menus[$mid]['action']); ?>" target="layout_center" style="background:url(<?php echo $this->module->assetsUrl; ?>/images/ico/<?php echo $menus[$mid]['ico']; ?>) no-repeat" id="ui_heaber_nav_<?php echo $i ?>" menuid="<?php echo $menus[$mid]['id'] ?>"><?php echo $menus[$mid]['name']; ?></a>
+						<?php else: ?>
+							<a href="javascript:void(0)" style="background:url(<?php echo $this->module->assetsUrl; ?>/images/ico/<?php echo $menus[$mid]['ico']; ?>) no-repeat" id="ui_heaber_nav_<?php echo $i ?>" menuid="<?php echo $menus[$mid]['id'] ?>"><?php echo $menus[$mid]['name']; ?></a>
+						<?php endif; ?>
+
+					</span></li>
+			<?php endforeach; ?>
+
+		</ul>
+	</div>
+</DIV>
+<DIV class="ui-layout-west">
+	<?php
+	foreach ($topmenus as $menuid):
+		if (isset($menukeys[$menuid]) && is_array($menukeys[$menuid])):
+			?>
+			<div id="left_menu_<?php echo $menuid ?>" class="left_menu_accordion" style="display:none">
+				<?php
+				foreach ($menukeys[$menuid] as $mid):
+					if (isset($menukeys[$mid]) && is_array($menukeys[$mid])):
+						?>
+						<h3><a href="javascript:void(0)"><?php echo $menus[$mid]['name'] ?></a></h3>
+						<div>
+							<ul>
+								<?php
+								foreach ($menukeys[$mid] as $id):
+									?>
+									<li class="left_menu_accordion_menu_item"><span class="ui-icon ui-icon-triangle-1-e"></span>
+										<a href="<?php echo $this->createUrl('/' . $menus[$id]['modules'] . '/' . $menus[$id]['controller'] . '/' . $menus[$id]['action']); ?>" target="layout_center"><?php echo $menus[$id]['name'] ?></a></li>
+									<?php
+								endforeach;
+								?>
+							</ul>
+						</div>
+						<?php
+					endif;
+				endforeach;
+				?>
+			</div>
+			<?php
+		endif;
+	endforeach;
+	?>
+</DIV>
+<iframe class="ui-layout-center" name="layout_center" src="<?php echo $this->createUrl('default/main'); ?>" frameborder="0" scrolling="auto" style="background:#e0eaf7"></iframe>

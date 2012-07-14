@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'我的测试',
+	'name'=>'我的永链',
 	//'siteUrl'=>'http://teshu.com/yii/yonglian/',
 
 	// preloading 'log' component
@@ -21,7 +21,7 @@ return array(
 
 	'modules'=>array(
 		// uncomment the following to enable the Gii tool
-		'Admin'=>array(
+		'admin'=>array(
 				'class'=>'application.modules.Admin.AdminModule',
 		),
 		'gii'=>array(
@@ -30,7 +30,7 @@ return array(
 		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
-		
+
 	),
 
 	// application components
@@ -64,7 +64,7 @@ return array(
 		    'class'=>'system.caching.CFileCache',
 		),
 		// uncomment the following to use a MySQL database
-		
+
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=yonglian',
 			'emulatePrepare' => true,
@@ -73,7 +73,7 @@ return array(
 			'charset' => 'utf8',
 			'tablePrefix'=>'yl_',
 		),
-		
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
@@ -81,11 +81,11 @@ return array(
 		'log'=>array(
 			'class'=>'CLogRouter',
 			'routes'=>array(
-				array(
-					'class'=>'CWebLogRoute',
-					  'levels'=>'trace',
-					  'categories'=>'system.db.*',
-				),
+//				array(
+//					'class'=>'CWebLogRoute',
+//					  'levels'=>'trace',
+//					  'categories'=>'system.db.*',
+//				),
 				// uncomment the following to show log messages on web pages
 				/*
 				array(
