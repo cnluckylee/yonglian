@@ -39,7 +39,7 @@ met_jiathis       = "<script type='text/javascript' src='http://v1.jiathis.com/c
 met_alt           = "图片关键词";
 met_atitle        = "链接关键词";
 met_linkname      = "某某公司网站";
-met_online_type   = "2";
+met_online_type   = "3";
 met_footright     = "";
 met_footaddress   = "";
 met_foottel       = "";
@@ -96,7 +96,7 @@ met_onlineright_top ="110";
 met_onlineright_right ="158";
 met_onlineleft_top  ="118";
 met_onlineleft_left ="0";
-met_onlinenameok    ="";
+met_onlinenameok    ="1";
 met_file_format   = "rar|zip|doc|pdf|jpg|xls|png|gif|mp3";
 met_file_maxsize  = "5";
 met_memberlogin_code= "0";

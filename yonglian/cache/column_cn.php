@@ -525,7 +525,7 @@
   18 => 
   array (
     'id' => '1',
-    'name' => '关于我们',
+    'name' => '公司介绍',
     'foldername' => 'about',
     'filename' => 'about',
     'bigclass' => '0',
@@ -569,7 +569,7 @@
   19 => 
   array (
     'id' => '2',
-    'name' => '新闻中心',
+    'name' => '公司新闻',
     'foldername' => 'news',
     'filename' => '',
     'bigclass' => '0',
@@ -598,7 +598,7 @@
   20 => 
   array (
     'id' => '3',
-    'name' => '产品中心',
+    'name' => '永链产品',
     'foldername' => 'product',
     'filename' => '',
     'bigclass' => '0',
@@ -635,7 +635,7 @@
     'no_order' => '4',
     'wap_ok' => '0',
     'if_in' => '0',
-    'nav' => '3',
+    'nav' => '0',
     'ctitle' => '',
     'keywords' => '',
     'content' => '',
@@ -685,7 +685,7 @@
   23 => 
   array (
     'id' => '6',
-    'name' => '招聘中心',
+    'name' => '员工招聘',
     'foldername' => 'job',
     'filename' => '',
     'bigclass' => '0',
