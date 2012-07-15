@@ -53,7 +53,7 @@
 				array('label'=>'用户之窗', 'url'=>array('/site/contact'),'items'=>array(
 					array('label'=>'政策精选', 'url'=>array('/site/index')),
 					array('label'=>'电子刊期', 'url'=>array('/site/index')),
-					array('label'=>'常用工具', 'url'=>array('/site/index')),
+					array('label'=>'常用工具', 'url'=>array('/download')),
 					array('label'=>'用户体验', 'url'=>array('/site/index')),
 				)),
 				array('label'=>'永链擂台', 'url'=>array('/site/contact'), 'items'=>array
@@ -62,7 +62,7 @@
 					array('label'=>'赛况介绍', 'url'=>array('/site/page', 'view'=>'about')),
 				)),
 				array('label'=>'永链概况', 'url'=>array('yonglian'),'items'=>array(
-					array('label'=>'公司介绍', 'url'=>array('/site/index')),
+					array('label'=>'公司介绍', 'url'=>array('http://yonglian.com')),
 					array('label'=>'公司新闻', 'url'=>array('/site/index')),
 					array('label'=>'活动分享', 'url'=>array('/site/index')),
 					array('label'=>'项目合作', 'url'=>array('/site/index')),
