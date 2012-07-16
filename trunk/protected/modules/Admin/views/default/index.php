@@ -10,7 +10,7 @@ Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl . '/js/adm
 	</div>
 	<div class="heaber_nav">
 		<ul class="ui_heaber_nav">
-			<?php
+			<?php		
 			$i = 0;
 			foreach ($topmenus as $mid):
 				$i++;
@@ -45,8 +45,15 @@ Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl . '/js/adm
 								foreach ($menukeys[$mid] as $id):
 									?>
 									<li class="left_menu_accordion_menu_item"><span class="ui-icon ui-icon-triangle-1-e"></span>
-										<a href="<?php echo $this->createUrl('/' . $menus[$id]['modules'] . '/' . $menus[$id]['controller'] . '/' . $menus[$id]['action']); ?>" target="layout_center"><?php echo $menus[$id]['name'] ?></a></li>
-									<?php
+										<?php if($menus[$id]['modules'] == "yonglian"):?>
+										<?php 
+										
+										echo CHtml::link($menus[$id]['name'],$menus[$id]['data'],array('target'=>'layout_center'));?>
+									</li>
+										<?php else: ?>
+											<a href="<?php echo $this->createUrl('/' . $menus[$id]['modules'] . '/' . $menus[$id]['controller'] . '/' . $menus[$id]['action']); ?>" target="layout_center"><?php echo $menus[$id]['name'] ?></a></li>
+									<?php	
+										endif;									
 								endforeach;
 								?>
 							</ul>

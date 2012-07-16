@@ -1,6 +1,5 @@
 <?php
-# MetInfo Enterprise Content Management System 
-# Copyright (C) MetInfo Co.,Ltd (http://www.metinfo.cn). All rights reserved. 
+
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
 if($admin_index){
@@ -13,10 +12,18 @@ require_once '../include/common.inc.php';
 }
 $force_index="";
 if($force_index!="metinfo"){
-  if(!$admin_index){
-  if (!strstr($_SERVER['HTTP_REFERER'],$_SERVER ['HTTP_HOST'])){
-  die($lang_loginNomeet);
-  }}
+//判断来路
+
+  if (!strstr($_SERVER['HTTP_REFERER'],$_SERVER ['HTTP_HOST']) && !$admin_index){
+
+  	die($lang_loginNomeet);
+  }else{
+  	if(isset($_SESSION['admin__userInfo'])){
+  		$metinfo_admin_name = $_SESSION['admin__userInfo']['username'];
+  	}else{
+  		die($lang_loginNomeet);
+  	}
+  }
 
   if($action=="login"){
   $metinfo_admin_name     = $login_name;
@@ -31,7 +38,6 @@ if($force_index!="metinfo"){
 		       exit;
          }
      }
-
    $admincp_list = $db->get_one("SELECT * FROM $met_admin_table WHERE admin_id='$metinfo_admin_name' and usertype='3' ");
           if (!$admincp_list){
 		       echo("<script type='text/javascript'> alert('$lang_loginname');location.href='login.php';</script>");
@@ -41,7 +47,7 @@ if($force_index!="metinfo"){
 		   echo("<script type='text/javascript'> alert('$lang_loginpass');location.href='login.php';</script>");
 		   exit;
 		  }
-		  else{ 
+		  else{
 
 		  $admincp_list['admin_type']=admin_popes($admincp_list['admin_type'],$lang);
 		  session_start();
@@ -52,7 +58,7 @@ if($force_index!="metinfo"){
 		  $_SESSION['metinfo_admin_pop']  = $admincp_list['admin_type'];
 		  $_SESSION['metinfo_admin_time'] = $m_now_time;
 		  $_SESSION['metinfo_admin_lang'] = $admincp_list[langok];
-		  $query="update $met_admin_table set 
+		  $query="update $met_admin_table set
 		  admin_modify_date='$m_now_date',
 		  admin_login=admin_login+1,
 		  admin_modify_ip='$m_user_ip'
@@ -60,13 +66,13 @@ if($force_index!="metinfo"){
 		  $db->query($query);
 		  }
   $adminlang=explode('-',$admincp_list[langok]);
-  
+
   if($admincp_list[langok]<>'metinfo' and (!strstr($admincp_list[langok],"-".$met_index_type."-")))$lang=$adminlang[1];
 $filejs = ROOTPATH_ADMIN.'include/metvar.js';
 $strlen = file_put_contents($filejs, $js);
 echo "<script type='text/javascript'> var nowurl=parent.location.href; var metlogin=(nowurl.split('login')).length-1; if(metlogin==0)location.href='../site/sysadmin.php?lang=$lang'; if(metlogin!=0)location.href='../index.php?lang=$lang';</script>";
   }
-  else{  
+  else{
   if(!$metinfo_admin_name||!$metinfo_admin_pass){
     if($admin_index){
 	session_unset();
@@ -134,6 +140,4 @@ echo "<script type='text/javascript'> var nowurl=parent.location.href; var metlo
    }
   }
 }
-# This program is an open source system, commercial use, please consciously to purchase commercial license.
-# Copyright (C) MetInfo Co., Ltd. (http://www.metinfo.cn). All rights reserved.
 ?>
