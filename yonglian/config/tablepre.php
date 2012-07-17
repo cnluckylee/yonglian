@@ -21,4 +21,5 @@
 				   $met_cv = $tablepre."cv";
 				   $met_plist = $tablepre."plist";
 				   $met_flist = $tablepre."flist";
+				   $met_admin_session = $tablepre."admin_session";
  ?>
