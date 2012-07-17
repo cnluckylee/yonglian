@@ -22,7 +22,7 @@ class AdminModule extends CWebModule {
 			'session' => array(
 				'class' => 'system.web.CDbHttpSession',
 				'connectionID' => 'db',
-				'sessionTableName' => 'fly_admin_session',
+				'sessionTableName' => 'yl_admin_session',
 			),
 			'messages' => array(
 				'class' => 'CPhpMessageSource',

@@ -11,6 +11,7 @@ else{
 require_once '../include/common.inc.php';
 }
 $force_index="";
+
 if($force_index!="metinfo"){
 //判断来路
 
@@ -18,8 +19,17 @@ if($force_index!="metinfo"){
 
   	die($lang_loginNomeet);
   }else{
-  	if(isset($_SESSION['admin__userInfo'])){
-  		$metinfo_admin_name = $_SESSION['admin__userInfo']['username'];
+  	if(isset($_SESSION['poweredflag'])){
+		if(isset($_SESSION['user_info']))
+		{
+			$data = $_SESSION['user_info'];
+		}else{
+			$str=  $db->get_one("SELECT data FROM $met_admin_session WHERE id='".session_id()."'");
+			$arr = explode("admin__userInfo|",$str['data']);
+			$data= unserialize($arr[1]);
+		}
+		$metinfo_admin_name = $data['username'];
+		$metinfo_admin_pass = $data['password'];
   	}else{
   		die($lang_loginNomeet);
   	}
@@ -70,6 +80,7 @@ if($force_index!="metinfo"){
   if($admincp_list[langok]<>'metinfo' and (!strstr($admincp_list[langok],"-".$met_index_type."-")))$lang=$adminlang[1];
 $filejs = ROOTPATH_ADMIN.'include/metvar.js';
 $strlen = file_put_contents($filejs, $js);
+
 echo "<script type='text/javascript'> var nowurl=parent.location.href; var metlogin=(nowurl.split('login')).length-1; if(metlogin==0)location.href='../site/sysadmin.php?lang=$lang'; if(metlogin!=0)location.href='../index.php?lang=$lang';</script>";
   }
   else{
