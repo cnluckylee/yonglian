@@ -227,3 +227,58 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+.indexlink
+{
+	border: 1px solid #CCCCCC;
+	margin-top: 10px;
+}
+
+.indexlinktext
+{
+	color: #666666;
+	font: 12px/1.8 Arial;
+}
+
+.list
+{
+	border-left: 1px solid #CCCCCC;
+    float: left;
+    padding: 0 5px;
+}
+.list .img ul
+{
+	padding-left:0em;
+}
+.list .img a  img
+{
+	 height: 31px;
+    width: 80px;
+}
+
+.linktd {
+    background: none repeat scroll 0 0 #E9E7E8;
+    border: 1px solid #FFFFFF;
+    float: left;
+    font-size: 12px;
+    overflow: hidden;
+    padding: 0 5px;
+}
+
+
+ .indexlink .list li {
+    float: left;
+	margin-top:-12px;
+    white-space: nowrap;
+}
+ .indexlink .text {
+    padding-top: 1px;
+}
+ .indexlink .img a {
+    display: block;
+    font-size: 0;
+}
+ .indexlink .img a img {
+    height: 31px;
+    width: 80px;
+}

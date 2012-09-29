@@ -29,7 +29,16 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		/**
+		 * 底部信息
+		 */
+		$footer_arr = link::model()->findAll();
+		
+		foreach($footer_arr as  $k=>$v)
+		{
+			$footer_link[$v->link_type] = $v;
+		}
+		$this->render('index',array('footer_link'=>$footer_link));
 	}
 
 	/**
@@ -100,4 +109,7 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+	
+
+
 }
