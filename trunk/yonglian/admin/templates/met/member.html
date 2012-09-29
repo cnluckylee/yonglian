@@ -59,10 +59,10 @@ echo <<<EOT
 <input name="action" type="hidden" id="action" value="del">
 			  <input name="allid" type="hidden" id="allid" value=""></form>
    	   <tr> 
-            <td width="40" class="all"><input name="chkAll" type="checkbox" id="chkAll" onclick="CheckAllx($(this),'del')" value="checkbox" /></td>
+            <td width="40" class="all"><input name="chkAll" type="checkbox" id="chkAll" onClick="CheckAllx($(this),'del')" value="checkbox" /></td>
             <td width="50" class="all"><label for="chkAll">{$lang_selectall}</label></td>
 			  <td class="all-submit" align="left" colspan="5">
-			  <input name="submit" type='submit' value='{$lang_deleteselected}' class="submit li-submit" onclick="return met_modify($(this),'del','del');" /> 
+			  <input name="submit" type='submit' value='{$lang_deleteselected}' class="submit li-submit" onClick="return met_modify($(this),'del','del');" /> 
 			<div class="li-submit">
 			<form method="POST" name="search" action="index.php?search=detail_search&lang=$lang" target="_self">
 			&nbsp;&nbsp;{$lang_memberSearch}&nbsp;<input name="admin_id" type="text" />
@@ -74,7 +74,7 @@ echo <<<EOT
               </td>
           </tr>
 		 <tr>
-		  <td class="footer" colspan="7">$foot</td>
+		  
 	  </tr>
 </table>
 <script type='text/javascript'>
