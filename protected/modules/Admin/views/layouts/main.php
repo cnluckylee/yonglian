@@ -2,7 +2,7 @@
 $cs=Yii::app()->clientScript;
 $cs->registerCoreScript('jquery');
 $cs->registerCoreScript('jquery.ui');
-
+$baseUrl=$this->module->assetsUrl;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,7 +19,11 @@ $cs->registerCoreScript('jquery.ui');
 <script language="javascript" src="<?php echo $this->module->assetsUrl; ?>/js/jquery/form/jquery.form.js"></script>
 <script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/jquery/artdialog/artDialog.min.js"></script>
 <script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/jquery/artdialog/artDialog.plugins.min.js"></script>
-<?php endif;?>
+ 
+<?php
+Yii::app()->clientScript->registerScriptFile( $this->module->assetsUrl.'/js/plugins/kindeditor/kindeditor-min.js');
+
+endif;?>
 </head>
 
 <body class="<?php if($this->getId()=='default' && $this->getAction()->getId()=='index') echo 'index'; else echo 'bodyClass';?>">

@@ -253,3 +253,19 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 .table_form .tip .onFocus_top, .table_form .tip .onError_top{
 	padding:0 10px 0px 40px;
 }
+
+/* 图片按比例缩小放大 */
+.thumbimage {
+    max-width: 150px;
+    max-height: 150px;
+	width: expression(this.width > 150 && this.width > this.height ? 150 : true);
+    height: expresion(this.height > 150 ? 50 : true);
+}
+
+/* 图片按比例缩小放大 */
+.thumbimage_100 img{
+    max-width: 100px;
+    max-height: 100px;
+	width: expression(this.width > 100 && this.width > this.height ? 100 : true);
+    height: expresion(this.height > 100 ? 50 : true);
+}

@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 	'dataProvider'=>$dataProvider,
 	'htmlOptions'=>array('width'=>'100%'),
 	'columns'=>array(
-	array('name'=>'序号',value=>id,'htmlOptions'=>array('width'=>'40')),
+	array('name'=>'序号','value'=>'id','htmlOptions'=>array('width'=>'40')),
 	array('name'=>'标题','value'=>'StrUtils::truncate_utf8_string($data->title,20,false)'),
 	array('name'=>'更新时间','value'=>'date("Y-m-d", strtotime($data->updatetime))'),
 	array('name'=>'简介','value'=>'StrUtils::truncate_utf8_string($data->content,30,false)'),

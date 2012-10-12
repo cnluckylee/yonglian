@@ -137,3 +137,11 @@ body .fn-hide {
 .fn-right {
 	float:right;
 }
+
+/* 图片按比例缩小放大 */
+.thumbimage {
+    max-width: 150px;
+    max-height: 150px;
+	width: expression(this.width > 150 && this.width > this.height ? 150 : true);
+    height: expresion(this.height > 150 ? 50 : true);
+}
