@@ -98,8 +98,10 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 
 		 */
 		array(
+			
 			'class' => 'CButtonColumn',
 			'class' => 'CButtonColumn',
+			'header' => '操作',
 			'template' => '{update} {delete}',
 		),
 	),
