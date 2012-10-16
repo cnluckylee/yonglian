@@ -1,36 +1,16 @@
 /* CSS Document */
 <!--
-#Layer1 {
-	position:absolute;
-	left:10px;
-	top:1px;
-	width:%px;
-	height:%px;
-	z-index:1;
-}
-#Layer2 {
-	position:absolute;
-	left:30px;
-	top:353px;
-	width:%px;
-	height:%px;
-	z-index:1;
-}
-#Layer3 {
-	position:absolute;
-	left:30px;
-	top:420px;
-	width:%px;
-	height:%px;
-	z-index:1;
+body{margin:0 auto;}
+#top{
+	width: 1030px; 
+	margin: 0pt auto; 
+	padding-left:20px;
+
 }
 #Layer4 {
-	position:absolute;
 	left:310px;
-	top:358px;
-	width:%px;
-	height:%px;
-	z-index:1;
+	margin-top:-90px;
+	background-image:url(../images/site title/site-title2.gif) no-repeat;
 }
 body,td,th {
 	font-family: 宋体;
@@ -38,60 +18,39 @@ body,td,th {
 }
 .STYLE1 {color: #0000FF}
 #Layer5 {
-	position:absolute;
+
 	left:588px;
 	top:3px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer6 {
-	position:absolute;
-	left:38px;
-	top:103px;
-	width:%px;
-	height:%px;
-	z-index:1;
+
+margin-top:-340px;
+margin-left:30px;
+
 }
 #Layer7 {
-	position:absolute;
-	left:320px;
-	top:84px;
-	width:%px;
-	height:%px;
-	z-index:1;
+	margin-top:-250px;
+	margin-left:310px;
 }
 #Layer8 {
 	position:absolute;
 	left:899px;
 	top:278px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer9 {
 	position:absolute;
 	left:380px;
 	top:438px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer10 {
 	position:absolute;
 	left:699px;
 	top:1289px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer11 {
 	position:absolute;
 	left:319px;
 	top:494px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 .STYLE3 {font-family: "华文行楷"}
 .STYLE4 {font-size: 16px}
@@ -103,108 +62,69 @@ body,td,th {
 	position:absolute;
 	left:317px;
 	top:666px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer13 {
 	position:absolute;
 	left:683px;
 	top:1035px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 .STYLE14 {font-style: italic}
 #Layer14 {
 	position:absolute;
 	left:314px;
 	top:1035px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer15 {
 	position:absolute;
 	left:321px;
 	top:1388px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 .STYLE15 {font-style: italic; font-family: "华文行楷"; }
-#Layer16 {
+#footer {
 	position:absolute;
 	left:101px;
-	top:2107px;
-	width:%px;
-	height:%px;
-	z-index:1;
-	height: 155px;
+	top::1200px;
 }
 .STYLE16 {font-family: "华文行楷"; font-size: 24px; }
 #Layer17 {
 	position:absolute;
 	left:6px;
 	top:2271px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer18 {
 	position:absolute;
 	left:26px;
 	top:2295px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer19 {
 	position:absolute;
 	left:-1px;
 	top:480px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer20 {
 	position:absolute;
 	left:-1px;
 	top:674px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer21 {
 	position:absolute;
 	left:-1px;
 	top:868px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer22 {
 	position:absolute;
 	left:-1px;
 	top:1062px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer23 {
 	position:absolute;
 	left:-1px;
 	top:1256px;
-	width:%px;
-	height:%px;
-	z-index:1;
 }
 #Layer24 {
 	position:absolute;
 	left:25px;
 	top:1448px;
-	width:%px;
-	height:%px;
-	z-index:1;
+
 }
 -->
