@@ -1,15 +1,17 @@
 /* CSS Document */
 <!--
 body{margin:0 auto;}
-#top{
+#main{
+	background-repeat: no-repeat;
+	background-image:url('images/site_title1.gif') no-repeat fixed;
 	width: 1030px; 
 	margin: 0pt auto; 
 	padding-left:20px;
-
+	
 }
 #Layer4 {
-	left:310px;
 	margin-top:-90px;
+	margin-left:310px;
 	background-image:url(../images/site title/site-title2.gif) no-repeat;
 }
 body,td,th {
@@ -18,9 +20,9 @@ body,td,th {
 }
 .STYLE1 {color: #0000FF}
 #Layer5 {
-
-	left:588px;
-	top:3px;
+position:absolute;
+	margin-top:-440px;
+	margin-left:580px;
 }
 #Layer6 {
 
@@ -29,55 +31,34 @@ margin-left:30px;
 
 }
 #Layer7 {
-	margin-top:-250px;
+	margin-top:-230px;
 	margin-left:310px;
 }
-#Layer8 {
-	position:absolute;
-	left:899px;
-	top:278px;
-}
-#Layer9 {
-	position:absolute;
-	left:380px;
-	top:438px;
-}
-#Layer10 {
-	position:absolute;
-	left:699px;
-	top:1289px;
-}
-#Layer11 {
-	position:absolute;
-	left:319px;
-	top:494px;
-}
+
 .STYLE3 {font-family: "华文行楷"}
 .STYLE4 {font-size: 16px}
 .STYLE5 {font-size: 16px; color: #0000FF; }
 .STYLE6 {font-size: 16px; color: #0000FF; font-style: italic; }
 .STYLE7 {font-size: 18px}
-.STYLE13 {font-family: "宋体"; font-size: 16px; }
+.STYLE13 {font-family: "宋体"; font-size: 16px;}
+#Layer10 {
+	margin-top:-80px;
+	margin-left:380px;
+}
 #Layer12 {
-	position:absolute;
-	left:317px;
-	top:666px;
+margin-top:-40px;
+	
 }
 #Layer13 {
-	position:absolute;
-	left:683px;
-	top:1035px;
+margin-left:370px;
+margin-top:25px;
 }
 .STYLE14 {font-style: italic}
 #Layer14 {
-	position:absolute;
-	left:314px;
-	top:1035px;
+margin-top:-215px;
 }
 #Layer15 {
-	position:absolute;
-	left:321px;
-	top:1388px;
+margin-top:-52px;
 }
 .STYLE15 {font-style: italic; font-family: "华文行楷"; }
 #footer {
@@ -86,45 +67,15 @@ margin-left:30px;
 	top::1200px;
 }
 .STYLE16 {font-family: "华文行楷"; font-size: 24px; }
-#Layer17 {
-	position:absolute;
-	left:6px;
-	top:2271px;
-}
-#Layer18 {
-	position:absolute;
-	left:26px;
-	top:2295px;
-}
-#Layer19 {
-	position:absolute;
-	left:-1px;
-	top:480px;
-}
-#Layer20 {
-	position:absolute;
-	left:-1px;
-	top:674px;
-}
-#Layer21 {
-	position:absolute;
-	left:-1px;
-	top:868px;
-}
-#Layer22 {
-	position:absolute;
-	left:-1px;
-	top:1062px;
-}
-#Layer23 {
-	position:absolute;
-	left:-1px;
-	top:1256px;
-}
-#Layer24 {
-	position:absolute;
-	left:25px;
-	top:1448px;
 
+
+#body_right {
+position:relative;
+margin-left:300px;
+margin-top:40px;
 }
--->
+#main_left {
+
+margin-left:90px;
+margin-top:40px;
+}>
