@@ -7,7 +7,6 @@ body{margin:0 auto;}
 	width: 1030px; 
 	margin: 0pt auto; 
 	padding-left:20px;
-	
 }
 #Layer4 {
 	margin-top:-90px;
@@ -42,40 +41,44 @@ margin-left:30px;
 .STYLE7 {font-size: 18px}
 .STYLE13 {font-family: "宋体"; font-size: 16px;}
 #Layer10 {
-	margin-top:-80px;
-	margin-left:380px;
+margin-top:30px;
 }
 #Layer12 {
 margin-top:-40px;
 	
 }
 #Layer13 {
-margin-left:370px;
-margin-top:25px;
+margin-top:20px;
 }
 .STYLE14 {font-style: italic}
 #Layer14 {
-margin-top:-215px;
+float:left;
 }
 #Layer15 {
 margin-top:-52px;
 }
 .STYLE15 {font-style: italic; font-family: "华文行楷"; }
 #footer {
-	position:absolute;
-	left:101px;
-	top::1200px;
+position:absolute;
+bottom:9px;
 }
 .STYLE16 {font-family: "华文行楷"; font-size: 24px; }
 
 
 #body_right {
-position:relative;
-margin-left:300px;
 margin-top:40px;
+margin-left:-80px;
+left:100px;
+float:right;
 }
 #main_left {
-
-margin-left:90px;
+float:left;
+margin-top:80px;
+}
+.body_table
+{
+margin-top:-50px;
+}
+.body_img{
 margin-top:40px;
-}>
+}
