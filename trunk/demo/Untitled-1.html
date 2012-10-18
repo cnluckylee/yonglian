@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>无标题文档</title>
+<style type="text/css">
+<!--
+
+body{
+	margin:0 auto;
+　　text-align:center;
+　　} 
+
+.top {
+	
+	background:url(images/site_title1.gif) no-repeat; 
+	background-position: center; 
+　　width: 1010px;
+	height:350px;
+	
+}
+.login{
+position:absolute;
+margin-left:100px;
+}
+-->
+</style>
+</head>
+
+<body>
+<div class="top" align="center">
+  <div class="login">
+  <form id="form1" name="form1" method="get" action="">
+    <table width="259" height="200" border="0"cellpadding=1 cellspacing=1>
+      <tr>
+        <td colspan="2">
+            <label> 　　　　
+            <input type="radio" name="radiobutton" value="radiobutton"  checked="checked" onclick="index_choose_login_type(1)"/>
+            </label>
+            企业
+            <label>
+            <input type="radio" name="radiobutton" value="radiobutton" onclick="index_choose_login_type(2)" />
+            </label>
+            个人          </td>
+      </tr>
+      <tr id="depart">
+        <td width="61">部&nbsp;&nbsp;门：</td>
+        <td width="182"><input type="text" name="txt_darpart" id="txt_darpart" size="25" style="BORDER: blue 1px solid;" /></td>
+　　　</tr>	  
+      <tr>
+        <td>用户名：</td>
+        <td><input type="text" name="txt_uname" id="txt_uname" size="25" style="BORDER: blue 1px solid;" /></td>
+　　　</tr>
+      <tr>
+        <td>密　码：</td>
+        <td ><input type="text" name="txt_upwd" id="txt_upwd" size="25" style="BORDER: blue 1px solid;" /></td>
+      </tr>
+      <tr>
+        <td height="16" colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="2"><div align="center"><img src="images/Window button/login.gif" width="140" height="30" style="cursor:pointer;" onclick="index_login_form_submit()"/></div></td>
+      </tr>
+      <tr>
+        <td colspan="2"><div align="center"  ><img src="images/Window button/registered.gif" width="140" height="30" style="cursor:pointer;" onclick="index_jump_register()"/></div></td>
+      </tr>
+      <tr>
+        <td height="40" colspan="2"><span class="STYLE5">热线电话：400-800-400-800</span></td>
+      </tr>
+    </table>
+	</form>
+  </div>
+
+
+</div>
+</body>
+</html>
