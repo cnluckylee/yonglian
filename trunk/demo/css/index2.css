@@ -1,0 +1,305 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	margin:0 auto;
+
+} 
+
+.top {
+　　width:1010px;
+	height:350px;
+	margin:0px auto;
+	text-align:center;
+	background:url(../images/site_title1.gif) no-repeat;	
+}
+.login{
+padding-left:25px;
+padding-top:90px;
+_margin-left:-725px;
+_margin-top:-45px;
+}
+
+.Picture_Carousel
+{
+	margin-left:310px;
+	margin-top:-260px;
+}
+
+.Picture_Carousel_ul
+{
+	margin-top:-50px;
+	margin-left:500px;
+}
+
+.Picture_Carousel_ul li
+{
+display:inline;
+
+}
+.nav{
+	float: right;
+    height: 35px;
+    width: 540px;
+}
+
+.nav ul
+{
+	font-family: Tahoma;
+    height: 35px;
+	margin-top:-1px;
+}	
+
+.nav ul li
+{
+	display:inline;
+	padding:5px;
+}
+
+.nav ul li a
+{
+	text-decoration: none;
+	color:#0033FF;
+}
+
+.nav_line{
+	margin:0px auto;
+	text-align:center;
+	background:url(../images/site_title2.gif) no-repeat;
+}
+
+
+
+
+.nav_line_ul1
+{
+	font-family: Tahoma;
+    height: 5px;
+	margin-top:-1px;
+}	
+
+
+.nav_line_ul1 li
+{
+	display:inline;
+	padding:5px;
+	font-size:24px;
+}
+
+.nav_line_ul1 li a
+{
+	text-decoration: none;
+	color:#0033FF;
+}
+
+.nav_line_ul2
+{
+	font-family: Tahoma;
+	margin-top:30px;
+	_margin-top:-12px;
+}
+
+.nav_line_ul2 li
+{
+	display:inline;
+	padding:5px;
+	font-size:18px;
+}
+
+.nav_line_ul2 li a
+{
+	text-decoration: none;
+	color:#0033FF;
+}
+
+.nav_line_bottom{
+	margin:-15px auto;
+	text-align:center;
+
+}
+.nav_line_bottom ul li{
+	display:inline;
+	padding:10px;
+}
+
+.main_body
+{
+	margin:0px auto;
+	width:1010px;
+	margin-top:auto;
+}
+
+.main_body_left ul li
+{
+	display:inherit;
+	margin-left:-30px;
+}
+.main_body_left
+{
+	float:left;
+	width:300px;
+	margin-bottom: 10px;
+}
+.main_body_right
+{
+	float: right;
+
+	margin-bottom: 10px;
+
+}
+.clear
+{
+	clear:both;
+}
+.case_show{
+position:absolute;
+margin-left:380px;
+margin-top:-90px;
+_margin-top:-105px;
+}
+
+#links {
+width:1010px;
+    border: 1px solid #CCCCCC;
+    clear: both;
+    margin-bottom: 6px;
+}
+
+#links h2 {
+    background: url("../images/title_bgr_silver.gif") repeat-x scroll 0 0 transparent;
+    height: 33px;
+    line-height: 33px;
+	margin-top:2px;
+    text-indent: 11px;
+}
+#links ul {
+    line-height: 20px;
+    padding: 10px;
+}
+#links ul li {
+    display: inline;
+    overflow: hidden;
+    padding-right: 14px;
+}
+#links ul li a {
+    color: #666666;
+    text-decoration: none;
+}
+#links ul li a:hover {
+    text-decoration: underline;
+}
+#job {
+    float: left;
+    width: 300px;
+
+}
+
+#job ul {
+    margin: 0 auto;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 100%;
+}
+#job ul li {
+display:inherit;
+  
+}
+#job em a {
+    background: url("../images/arrow.jpg") no-repeat scroll 0 0 transparent;
+    color: #005A98;
+    font-size: 12px;
+    padding-left: 18px;
+    text-decoration: none;
+}
+#job em a:hover {
+    color: #FF0000;
+    text-decoration: underline;
+}
+#job ul li a {
+    color: #005A98;
+    text-decoration: none;
+}
+#job ul li a:hover {
+    color: #FF0000;
+    text-decoration: underline;
+}
+#resource {
+    border-right: 1px solid #CCCCCC;
+    float: left;
+    height: 295px;
+    margin-left: 9px;
+    width: 281px;
+}
+#resource h1 {
+    border-bottom: 1px solid #CCCCCC;
+    color: #CC0000;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    width: 95%;
+}
+#resource h1 span {
+    color: #CCCCCC;
+    font-weight: normal;
+}
+#resource em {
+    float: right;
+    font-style: normal;
+    font-weight: normal;
+}
+#resource strong {
+    color: #333333;
+    cursor: pointer;
+    padding: 0 5px;
+}
+#resource strong.hover {
+    -moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #CCCCCC #CCCCCC -moz-use-text-color;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    color: #CC0000;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 5px;
+    padding: 0 5px;
+}
+#resource ul {
+    margin: 0 auto;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    width: 95%;
+}
+#resource ul li {
+    height: 21px;
+    line-height: 21px;
+    overflow: hidden;
+}
+#resource ul li.safe {
+    background: url("../images/safe.jpg") no-repeat scroll 0 4px transparent;
+    padding-left: 15px;
+}
+#resource em a {
+    background: url("../images/arrow.jpg") no-repeat scroll 0 0 transparent;
+    color: #005A98;
+    font-size: 12px;
+    padding-left: 18px;
+    text-decoration: none;
+}
+#resource em a:hover {
+    color: #FF0000;
+    text-decoration: underline;
+}
+#resource ul li a {
+    color: #005A98;
+    text-decoration: none;
+}
+#resource ul li a:hover {
+    color: #FF0000;
+    text-decoration: underline;
+}
