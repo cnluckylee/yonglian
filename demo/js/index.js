@@ -3,19 +3,17 @@
 *
 *
 */
-//
-function $$(id)
-{
-	return document.getElementById(id);
-}
+
 //登录用户类型
 function index_choose_login_type(type)
 {
 	if(type == 1)
 	{
 		$("#depart").show();
+		$("#Picture_Carousel").css("margin-top","-260px");
 	}else{
 		$("#depart").hide();
+		$("#Picture_Carousel").css("margin-top","-237px");
 	}
 	
 }
