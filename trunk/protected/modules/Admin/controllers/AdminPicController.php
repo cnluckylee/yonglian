@@ -2,23 +2,23 @@
 
 class AdminPicController extends AdminController
 {
-	
+
 	/**
 	 * 首页列表.
 	 */
 	public function actionIndex()
-	{	
-		
+	{
+
 		$model=new AdminPic('search');
 		$model->unsetAttributes();  // 清理默认值
 		if(isset($_GET['adminPic']))
 			$model->attributes=$_GET['adminPic'];
-			
-		$categorys = array(1=>'首页图片',2=>'内页图片');	
+
+		$categorys = array(1=>'首页图片',2=>'内页图片');
 		$this->render('index',array(
 			'categorys'=>$categorys,
 			'model'=>$model,
-			
+
 		));
 	}
 
@@ -34,8 +34,8 @@ class AdminPicController extends AdminController
 
 		if(isset($_POST['adminPic']))
 		{
-			
-			$model->attributes=$_POST['adminPic'];	
+
+			$model->attributes=$_POST['adminPic'];
 			$model->imgurl=CUploadedFile::getInstance($model,'imgurl');
 			$root = Yii::getPathOfAlias('webroot') ;
 			$ext = $model->imgurl->extensionName;//上传文件的扩展名
@@ -43,17 +43,17 @@ class AdminPicController extends AdminController
 			$pic_path = $root.'/uploads'.'/'.date('Ym');
 			$uploadfile = $pic_path . '/'.$filename . '.' . $ext; //保存的路径
 			@mkdir($pic_path);
-			$model->imgurl->saveAs($uploadfile);	
+			$model->imgurl->saveAs($uploadfile);
 			$model->imgurl = '/uploads'.'/'.date('Ym') .'/'.$filename . '.' . $ext; //保存的路径
 			if($model->save())
 			{
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 				exit;
 			}
-				
+
 		}
 		$categorys = array(1=>'首页图片',2=>'内页图片');
-	
+
 		$this->render('create',array(
 			'model'=>$model,
 			'categorys' => $categorys,
@@ -70,19 +70,19 @@ class AdminPicController extends AdminController
 		$model->setScenario('update');
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
-		
+
 		if(isset($_POST['adminPic']))
-		{	
-					
+		{
+
 			$model->attributes=$_POST['adminPic'];
-	
+
 			$root = Yii::getPathOfAlias('webroot') ;
 			$ext = $model->imgurl->extensionName;//上传文件的扩展名
 			$filename = time();
 			$pic_path = $root.'/uploads'.'/'.date('Ym');
 			$uploadfile = $pic_path . '/'.$filename . '.' . $ext; //保存的路径
 			@mkdir($pic_path);
-			$model->imgurl->saveAs($uploadfile);	
+			$model->imgurl->saveAs($uploadfile);
 			$model->imgurl = '/uploads'.'/'.date('Ym') .'/'.$filename . '.' . $ext; //保存的路径
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -101,7 +101,7 @@ class AdminPicController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -115,9 +115,9 @@ class AdminPicController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
 
-	
+
+
 
 	/**
 	 * 载入
@@ -143,6 +143,6 @@ class AdminPicController extends AdminController
 			Yii::app()->end();
 		}
 	}
-	
+
 
 }

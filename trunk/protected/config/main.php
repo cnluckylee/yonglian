@@ -50,6 +50,9 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+		'smarty'=>array(
+		    'class'=>'application.extensions.CSmarty',
+		),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
