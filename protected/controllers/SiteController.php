@@ -32,13 +32,31 @@ class SiteController extends Controller
 		/**
 		 * 底部信息
 		 */
-		$footer_arr = link::model()->findAll();
-		
-		foreach($footer_arr as  $k=>$v)
-		{
-			$footer_link[$v->link_type] = $v;
-		}
-		$this->render('index',array('footer_link'=>$footer_link));
+		$link_arr = link::model()->findAll(
+							array(
+							'select'=>'webname,weburl,weblogo,link_type'
+							)
+						);
+		$data['link'] = array_map(create_function('$record','return $record->attributes;'),$link_arr);
+
+		$ad_arr = adminPic::model()->findAll(
+							array(
+							'select'=>'imgurl,remark'
+							)
+						);
+
+		$data['adv'] = array_map(create_function('$record','return $record->attributes;'),$ad_arr);
+
+		$smarty = Yii::app()->smarty;
+		$smarty->_smarty->assign($data);
+		$smarty->_smarty->display('index.tpl');
+
+
+//		foreach($footer_arr as  $k=>$v)
+//		{
+//			$footer_link[$v->link_type] = $v;
+//		}
+//		$this->render('index',array('footer_link'=>$footer_link));
 	}
 
 	/**
@@ -94,7 +112,7 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())		
+			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
@@ -109,7 +127,7 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-	
+
 
 
 }
