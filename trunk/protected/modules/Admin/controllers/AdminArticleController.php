@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors',1);
 class AdminArticleController extends AdminController
 {
 	
@@ -31,15 +31,11 @@ class AdminArticleController extends AdminController
 		if(isset($_POST['AdminArticle']))
 		{
 			$model->attributes=$_POST['AdminArticle'];
-			$model->imgurl=CUploadedFile::getInstance($model,'imgurl');
-			$root = Yii::getPathOfAlias('webroot') ;
-			$ext = $model->imgurl->extensionName;//上传文件的扩展名
-			$filename = time();
-			$pic_path = $root.'/uploads'.'/'.date('Ym');
-			$uploadfile = $pic_path . '/'.$filename . '.' . $ext; //保存的路径
-			@mkdir($pic_path);
-			$model->imgurl->saveAs($uploadfile);
-			$model->imgurl = '/uploads'.'/'.date('Ym') .'/'.$filename . '.' . $ext; //保存的路径
+				$upload=CUploadedFile::getInstance($model,'imgurl');
+				if(!empty($upload))
+				{
+					$model->imgurl=Upload::createFile($upload,'article','create');
+				}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}

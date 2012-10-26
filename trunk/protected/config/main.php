@@ -53,6 +53,9 @@ return array(
 		'smarty'=>array(
 		    'class'=>'application.extensions.CSmarty',
 		),
+		'Upload'=>array(
+			'class'=>'application.extensions.Upload',
+		),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
@@ -103,7 +106,10 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'type' => array( 1=>array('id'=>'1','name'=>'新闻'),
+				2=>array('id'=>'2','name'=>'广告'),
+				3=>array('id'=>'3','name'=>'财经'),
+				4=>array('id'=>'4','name'=>'政策'),
+		),
 	),
 );

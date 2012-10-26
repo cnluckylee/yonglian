@@ -1,15 +1,15 @@
 <?php
-//CMSÓ¦ÓÃ²ÎÊýÅäÖÃ
-return array(
+//CMSåº”ç”¨å‚æ•°é…ç½®
+ array(
 	'siteurl'=>'/',
-	//ÄÚÖÃÄ£¿éID
+	//å†…ç½®æ¨¡å—ID
 	'actionInfo'=>array(
-		'saveSuccess'=>'ÐÅÏ¢Ìí¼Ó³É¹¦£¡Çë¼ÌÐøÌí¼Ó¡£',
-		'saveFail'=>'ÐÅÏ¢Ìí¼ÓÊ§°Ü£¡ÇëÖØÐÂÌí¼Ó¡£',
-		'updateSuccess'=>'ÐÅÏ¢¸üÐÂ³É¹¦£¡',
-		'updateFail'=>'ÐÅÏ¢¸üÐÂÊ§°Ü£¡ÇëÖØÐÂ±£´æ¡£',
-		'deleteSuccess'=>'ÐÅÏ¢É¾³ý³É¹¦£¡',
-		'deleteFail'=>'ÐÅÏ¢É¾³ýÊ§°Ü£¡',
+		'saveSuccess'=>'ä¿¡æ¯æ·»åŠ æˆåŠŸï¼è¯·ç»§ç»­æ·»åŠ ã€‚',
+		'saveFail'=>'ä¿¡æ¯æ·»åŠ å¤±è´¥ï¼è¯·é‡æ–°æ·»åŠ ã€‚',
+		'updateSuccess'=>'ä¿¡æ¯æ›´æ–°æˆåŠŸï¼',
+		'updateFail'=>'ä¿¡æ¯æ›´æ–°å¤±è´¥ï¼è¯·é‡æ–°ä¿å­˜ã€‚',
+		'deleteSuccess'=>'ä¿¡æ¯åˆ é™¤æˆåŠŸï¼',
+		'deleteFail'=>'ä¿¡æ¯åˆ é™¤å¤±è´¥ï¼',
 	),
 	'module'=>array(
 		'article'=>1,
@@ -20,8 +20,8 @@ return array(
 		'brand'=>6,
 	),
 	'pager'=>array(
-		'prevPageLabel'=>'ÉÏÒ»Ò³',
-    	'nextPageLabel'=>'ÏÂÒ»Ò³',
+		'prevPageLabel'=>'ä¸Šä¸€é¡µ',
+    	'nextPageLabel'=>'ä¸‹ä¸€é¡µ',
     	'header'=>'',
 	),
 	'pagesize'=>array(
@@ -32,7 +32,11 @@ return array(
 		'isstop'=>0,
 		'ischecked'=>1,
 	),
-
+	'type' => array( 1=>array('id'=>'1','name'=>'æ–°é—»'),
+				2=>array('id'=>'2','name'=>'å¹¿å‘Š'),
+				3=>array('id'=>'3','name'=>'è´¢ç»'),
+				4=>array('id'=>'4','name'=>'æ”¿ç­–'),
+	),
 
 	'copyrightInfo'=>'Copyright &copy; 20011 by Magnet.',
 );

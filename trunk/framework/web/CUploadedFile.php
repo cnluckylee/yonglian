@@ -83,7 +83,7 @@ class CUploadedFile extends CComponent
 	{
 		if(null===self::$_files)
 			self::prefetchFiles();
-
+		
 		return isset(self::$_files[$name]) && self::$_files[$name]->getError()!=UPLOAD_ERR_NO_FILE ? self::$_files[$name] : null;
 	}
 

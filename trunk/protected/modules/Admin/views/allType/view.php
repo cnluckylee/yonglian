@@ -19,8 +19,10 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'cid',
+		'parentid',
 		'name',
 		'type',
+		'listorder',
+		'display',
 	),
 )); ?>

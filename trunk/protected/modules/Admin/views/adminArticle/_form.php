@@ -2,6 +2,8 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'admin-article-form',
 	'enableAjaxValidation'=>true,
+	'focus'=>array($model,'title'),
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 )); ?>
 
 <table width="100%" class="table_form table">
@@ -36,7 +38,9 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'cid'); ?>
+        <select name="AdminArticle[cid]" id="AdminArticle_cid">
+            <?php echo AllType::getSelectTree();?>
+        </select>
 		<?php echo $form->error($model,'cid'); ?>
         </div>
         </td>
