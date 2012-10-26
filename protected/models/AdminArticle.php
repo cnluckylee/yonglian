@@ -6,12 +6,12 @@
  * The followings are the available columns in table '{{article}}':
  * @property integer $id
  * @property integer $cid
- * @property string $imgurl
  * @property string $content
  * @property string $remark
  */
-class AdminArticle extends CActiveRecord
+class AdminArticle extends BaseModel
 {
+	public $imgurl;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -39,7 +39,7 @@ class AdminArticle extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('cid', 'numerical', 'integerOnly'=>true),
-			array('imgurl', 'length', 'max'=>255),
+			array('imgurl','file','allowEmpty'=>true,'types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 10,'tooLarge'=>'上传图片已超过10M'),
 			array('content, remark', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.

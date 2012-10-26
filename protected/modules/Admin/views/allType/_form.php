@@ -12,12 +12,14 @@
       <tbody>
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cid'); ?>
+		<?php echo $form->labelEx($model,'parentid'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'cid'); ?>
-		<?php echo $form->error($model,'cid'); ?>
+		<select name="AdminMenu[parentid]" id="AdminMenu_parentid">
+            <?php echo AllType::getSelectTree('顶级菜单',$model->parentid);?>
+        </select>
+		<?php echo $form->error($model,'parentid'); ?>
         </div>
         </td>
 	</tr>
@@ -40,8 +42,34 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'type'); ?>
+        	<select name="AllType[type]" id="AllType_type">
+            	<?php echo AllType::getAllType($model->type);?>
+            </select>
 		<?php echo $form->error($model,'type'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'listorder'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'listorder'); ?>
+		<?php echo $form->error($model,'listorder'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'display'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->radioButtonList($model,'display', AllType::$isDisplay); ?>
+		<?php echo $form->error($model,'display'); ?>
         </div>
         </td>
 	</tr>

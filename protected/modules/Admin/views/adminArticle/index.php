@@ -6,7 +6,10 @@
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php 
+$pager = Yii::app()->params['type'];
+
+$this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'admin-article-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -24,7 +27,7 @@
 			array(
 
 						'name' => 'cid',
-
+						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -33,10 +36,11 @@
 			array(
 
 						'name' => 'imgurl',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
+						'type' => 'image',
+						
+						'htmlOptions' => array(
+								'class' => 'thumbimage_100',
+						),
 				),
 
 			array(
@@ -67,7 +71,7 @@
 			array(
 
 						'name' => 'updtime',
-
+						'value' => 'date("Y-m-d",$data->updtime)',
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),

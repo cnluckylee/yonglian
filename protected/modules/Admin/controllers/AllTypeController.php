@@ -6,24 +6,42 @@ class AllTypeController extends AdminController
 	/**
 	 * 首页列表.
 	 */
-	public function actionIndex()
+	public function actionIndex($type = null)
 	{
-		$model=new AllType('search');
-		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['AllType']))
-			$model->attributes=$_GET['AllType'];
-		$this->render('index',array(
-			'model'=>$model,
+		
+		
+		$menus = AllType::getTreeTypeDATA('*', false,$type);	
+		$tree = new Tree();
+		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
+		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
+		foreach ($menus as $r) {
+
+			$r['str_manage'] = '<a href="' . $this->createUrl('create', array('parentid' => $r['id'],'type' => $r['type'])) . '">添加子栏目</a> |
+				<a  href="' . $this->createUrl('update', array('id' => $r['id'])) . '">修改</a> |
+                                    <a class="del" href="' . $this->createUrl('delete', array('id' => $r['id'])) . '" msg="确定删除.' . $r['name'] . '">删除</a> ';
+			$array[] = $r;
+		}
+		$str = "<tr>
+					<td><input name='listorders[\$id]' type='text' size='3' value='\$listorder' class='input-text-c'></td>
+					<td >\$spacer\$name</td>
+					<td ><a href='\".Yii::app()->createUrl(\$modules.'/'.\$controller.'/'.\$action).\"'>\".Yii::app()->createUrl(\$modules.'/'.\$controller.'/'.\$action).\"</td>
+					<td>\$str_manage</td>
+				</tr>";
+		
+		$tree->init($array);
+		$this->render('index', array(
+				'menuTree' => $tree->get_tree('0', $str)
 		));
+		
+		
 	}
 
 	/**
 	 * 创建
 	 */
-	public function actionCreate()
+	public function actionCreate($parentid = 0,$type = 0)
 	{
 		$model=new AllType;
-
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -33,7 +51,10 @@ class AllTypeController extends AdminController
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
-
+		if ($parentid){
+			$model->parentid = $parentid;
+			$model->type = $type;
+		}
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -112,4 +133,6 @@ class AllTypeController extends AdminController
 			Yii::app()->end();
 		}
 	}
+	
+
 }

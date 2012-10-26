@@ -111,8 +111,7 @@ class Tree {
 	 */
 	public function get_tree($myid, $str, $sid = 0, $adds = '', $str_group = '') {
 		$number = 1;
-		$child = $this->get_child($myid);
-		
+		$child = $this->get_child($myid);		
 		if (is_array($child)) {
 			$total = count($child);
 			foreach ($child as $id => $a) {

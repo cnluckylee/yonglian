@@ -25,13 +25,13 @@
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'cid'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'parentid'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'cid'); ?>
+		<?php echo $form->textField($model,'parentid'); ?>
 		</div>
         </td>
 
@@ -56,6 +56,30 @@
 		
 		
 		<?php echo $form->textField($model,'type'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'listorder'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'listorder'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'display'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'display'); ?>
 		</div>
         </td>
 

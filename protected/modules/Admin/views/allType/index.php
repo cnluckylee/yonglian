@@ -1,93 +1,65 @@
-
-<?php
-Yii::app()->clientScript->registerScript('search', "
-var searchFromHtml = '';
-var searchFromDialog = null;
-var getSearchFromHtml = function() {
-	if(searchFromHtml== '') {
-		searchFromHtml = $('.search-form').html();
-		$('.search-form').remove();
-	}
-	
-	return searchFromHtml;	
-}
-var searchFromDialog = art.dialog({
-	title: '高级搜索',
-	okValue: '搜索',
-	visible: false,
-	padding: '5px 5px',
-	ok:function(){
-		$.fn.yiiGridView.update('admin-role-grid', {
-			data: $('#all-type-grid-search-form form').serialize()
-		});
-		this.hidden();
+<script language="javascript">
+$(document).ready(function(){
+$('.del').click(function(){
+		affirm = confirm($(this).attr('msg'));
+		if(affirm) {
+			$.ajax({
+				url:$(this).attr('href'),
+				type: 'post',
+				dataType : 'json',
+				success:function(data){
+					if(data.status) {
+						window.location.reload()
+					} else {
+						alert(data.info);
+					}
+	  			},
+				
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					alert(XMLHttpRequest.responseText);
+				}
+			});
+		}
 		return false;
-	},
-	content:getSearchFromHtml()
+	});
+	$("form").submit(function() {
+		$this = $(this);
+		
+  		var formdata = $(this).formSerialize();
+		
+		$.post('<?php echo $this->createUrl('listorder');?>', formdata,function(data){
+			if(!data.status) 
+				alert(data.info);
+			else if(data.status) {
+				window.location.reload();
+			}
+		 },"json");
+		 return false;
+	});
 });
-$('.search-button').click(function(){
-	searchFromDialog.visible();
-	return false;
-});
+</script>
+<div class="topBut"><a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a></div>
+<form action="<?php echo $this->createUrl('listorder');?>" method="post" name="form1" id="form1">
+  <table width="100%" class="table_list table">
+    <thead>
+      <tr class="title">
+        <th colspan="4"> 菜单管理 </th>
+      </tr>
+      <tr>
+        <th width="80" style="text-align:center">排序</th>
+        <th>菜单名称</th>
+        <th>URL</th>
+        <th>管理操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php echo $menuTree;?>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th style="padding:5px" colspan="4"><a buttype="submit" href="javascript:void(0)" class="button"><span>排序</span></a></th>
+      </tr>
+    </tfoot>
+  </table>
+</form>
 
-");
-?>
-<div class="topBut">
-<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a>
-<a class="button search-button" href="javascript:void(0)" ><span>高级搜索</span></a>
-</div>
-
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
-
-<?php $this->widget('admin.widgets.grid.AdminGridView', array(
-	'id'=>'all-type-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		array(
-
-						'name' => 'id',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'cid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'name',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'type',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-			'class'=>'CButtonColumn',
-			'class' => 'CButtonColumn',
-			'template' => '{update} {delete}',
-		),
-	),
-)); ?>
