@@ -14,9 +14,9 @@ class AdminPicController extends AdminController
 		if(isset($_GET['adminPic']))
 			$model->attributes=$_GET['adminPic'];
 
-		$categorys = array(1=>'首页图片',2=>'内页图片');
+		$picType = Alltype::getAllPicType();
 		$this->render('index',array(
-			'categorys'=>$categorys,
+			'picType'=>$picType,
 			'model'=>$model,
 
 		));
@@ -36,15 +36,14 @@ class AdminPicController extends AdminController
 		{
 
 			$model->attributes=$_POST['adminPic'];
-			$model->imgurl=CUploadedFile::getInstance($model,'imgurl');
-			$root = Yii::getPathOfAlias('webroot') ;
-			$ext = $model->imgurl->extensionName;//上传文件的扩展名
-			$filename = time();
-			$pic_path = $root.'/uploads'.'/'.date('Ym');
-			$uploadfile = $pic_path . '/'.$filename . '.' . $ext; //保存的路径
-			@mkdir($pic_path);
-			$model->imgurl->saveAs($uploadfile);
-			$model->imgurl = '/uploads'.'/'.date('Ym') .'/'.$filename . '.' . $ext; //保存的路径
+			
+			
+			$upload=CUploadedFile::getInstance($model,'imgurl');
+			if(!empty($upload))
+			{
+				$model->imgurl=Upload::createFile($upload,'advPic','create');
+			}
+			
 			if($model->save())
 			{
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -52,8 +51,7 @@ class AdminPicController extends AdminController
 			}
 
 		}
-		$categorys = array(1=>'首页图片',2=>'内页图片');
-
+		
 		$this->render('create',array(
 			'model'=>$model,
 			'categorys' => $categorys,
@@ -68,6 +66,7 @@ class AdminPicController extends AdminController
 	{
 		$model=$this->loadModel($id);
 		$model->setScenario('update');
+		$old_imgurl = $model->imgurl;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -76,14 +75,13 @@ class AdminPicController extends AdminController
 
 			$model->attributes=$_POST['adminPic'];
 
-			$root = Yii::getPathOfAlias('webroot') ;
-			$ext = $model->imgurl->extensionName;//上传文件的扩展名
-			$filename = time();
-			$pic_path = $root.'/uploads'.'/'.date('Ym');
-			$uploadfile = $pic_path . '/'.$filename . '.' . $ext; //保存的路径
-			@mkdir($pic_path);
-			$model->imgurl->saveAs($uploadfile);
-			$model->imgurl = '/uploads'.'/'.date('Ym') .'/'.$filename . '.' . $ext; //保存的路径
+			$upload=CUploadedFile::getInstance($model,'imgurl');
+			if(!empty($upload))
+			{
+				$model->imgurl=Upload::createFile($upload,'advPic','update');
+			}else{
+				$model->imgurl = $old_imgurl;
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}

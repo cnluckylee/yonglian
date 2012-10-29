@@ -32,7 +32,7 @@
 		'isstop'=>0,
 		'ischecked'=>1,
 	),
-	'type' => array( 1=>array('id'=>'1','name'=>'新闻'),
+	'type' => array(1=>array('id'=>'1','name'=>'新闻'),
 				2=>array('id'=>'2','name'=>'广告'),
 				3=>array('id'=>'3','name'=>'财经'),
 				4=>array('id'=>'4','name'=>'政策'),

@@ -70,7 +70,7 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'remark',
+						'name' => 'pinyin',
 
 						//'htmlOptions' => array(
 								//'width' => '60',

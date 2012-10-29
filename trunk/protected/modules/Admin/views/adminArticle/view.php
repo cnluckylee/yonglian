@@ -8,7 +8,7 @@ $this->menu=array(
 	array('label'=>'List AdminArticle', 'url'=>array('index')),
 	array('label'=>'Create AdminArticle', 'url'=>array('create')),
 	array('label'=>'Update AdminArticle', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete AdminArticle', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete AdminArticle', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'确定要删除吗?')),
 	array('label'=>'Manage AdminArticle', 'url'=>array('admin')),
 );
 ?>

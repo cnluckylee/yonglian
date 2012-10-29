@@ -20,8 +20,8 @@
         <td ><div class="row"> <?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?> </div></td>
       </tr>
       <tr>
-        <th width="100" align="right"><span class="row"><?php echo $form->label($model,'remark'); ?> </span></th>
-        <td ><div class="row"> <?php echo $form->textField($model,'remark',array('size'=>60,'maxlength'=>255)); ?> </div></td>
+        <th width="100" align="right"><span class="row"><?php echo $form->label($model,'pinyin'); ?> </span></th>
+        <td ><div class="row"> <?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>255)); ?> </div></td>
       </tr>
     </tbody>
     <tfoot>

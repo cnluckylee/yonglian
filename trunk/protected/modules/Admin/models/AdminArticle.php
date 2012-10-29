@@ -40,10 +40,10 @@ class AdminArticle extends CActiveRecord
 		return array(
 			array('cid', 'numerical', 'integerOnly'=>true),
 			array('imgurl','file','allowEmpty'=>true,'types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 10,'tooLarge'=>'上传图片已超过10M'),
-			array('content, remark', 'safe'),
+			array('title, content, remark', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, cid, imgurl, content, remark', 'safe', 'on'=>'search'),
+			array('id, title, cid, content, remark', 'safe', 'on'=>'search'),
 		);
 	}
 

@@ -8,7 +8,7 @@ $this->menu=array(
 	array('label'=>'List adminPic', 'url'=>array('index')),
 	array('label'=>'Create adminPic', 'url'=>array('create')),
 	array('label'=>'Update adminPic', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete adminPic', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'È·¶¨ÒªÉ¾³ýÂð?')),
+	array('label'=>'Delete adminPic', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'ç¡®å®šè¦åˆ é™¤å—ï¼Ÿ')),
 	array('label'=>'Manage adminPic', 'url'=>array('admin')),
 );
 ?>

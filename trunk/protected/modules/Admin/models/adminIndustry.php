@@ -6,7 +6,7 @@
  * The followings are the available columns in table '{{industry}}':
  * @property integer $id
  * @property string $name
- * @property string $remark
+ * @property string $pinyin
  */
 class adminIndustry extends CActiveRecord
 {
@@ -38,10 +38,10 @@ class adminIndustry extends CActiveRecord
 		return array(
 			array('id', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>100),
-			array('remark', 'length', 'max'=>255),
+			array('pinyin', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, remark', 'safe', 'on'=>'search'),
+			array('id, name, pinyin', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,8 +63,8 @@ class adminIndustry extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'remark' => 'Remark',
+			'name' => '名称',
+			'pinyin' => '拼音',
 		);
 	}
 
@@ -81,7 +81,7 @@ class adminIndustry extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-		$criteria->compare('remark',$this->remark,true);
+		$criteria->compare('pinyin',$this->pinyin,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

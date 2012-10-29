@@ -201,7 +201,7 @@ class CButtonColumn extends CGridColumn
 		if($this->deleteButtonImageUrl===null)
 			$this->deleteButtonImageUrl=$this->grid->baseScriptUrl.'/delete.png';
 		if($this->deleteConfirmation===null)
-			$this->deleteConfirmation=Yii::t('zii','Are you sure you want to delete this item?');
+			$this->deleteConfirmation=Yii::t('zii','确定要删除吗?');
 
 		foreach(array('view','update','delete') as $id)
 		{

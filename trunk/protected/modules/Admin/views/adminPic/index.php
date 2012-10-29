@@ -43,13 +43,12 @@ $('.search-button').click(function(){
 	
 	$this->renderPartial('_search', array(
 		'model' => $model,
-		'categorys' => $categorys,
+		'picType' => $picType,
 	));
 	?>
 </div><!-- search-form -->
 
 <?php
-
 $this->widget('admin.widgets.grid.AdminGridView', array(
 	'id' => 'admin-pic-grid',
 	'dataProvider' => $model->search(),
@@ -73,7 +72,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		
 		array(
 			'name' => 'type',
-			'value' => '$data->type',
+			'value' => $picType[$data->type],
 			
 		//'htmlOptions' => array(
 		//'width' => '60',
@@ -82,7 +81,6 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		array(
 			'name' => 'imgurl',
 			'type' => 'image',
-
 			'htmlOptions' => array(
 				'class' => 'thumbimage_100',
 			),
@@ -104,8 +102,9 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		array(
 			
 			'class' => 'CButtonColumn',
+			'class' => 'CButtonColumn',
 			'header'=>'操作',
-			'template' => '{delete}',
+			'template' => '{update}{delete}',
 		),
 	),
 ));

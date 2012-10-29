@@ -106,10 +106,11 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-		'type' => array( 1=>array('id'=>'1','name'=>'新闻'),
+		'NewsType' => array( 1=>array('id'=>'1','name'=>'新闻'),
 				2=>array('id'=>'2','name'=>'广告'),
 				3=>array('id'=>'3','name'=>'财经'),
 				4=>array('id'=>'4','name'=>'政策'),
 		),
+		'PicType' => array( 1=>'首页图片',2=>'内页图片'),
 	),
 );

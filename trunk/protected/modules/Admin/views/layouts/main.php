@@ -19,9 +19,9 @@ $baseUrl=$this->module->assetsUrl;
 <script language="javascript" src="<?php echo $this->module->assetsUrl; ?>/js/jquery/form/jquery.form.js"></script>
 <script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/jquery/artdialog/artDialog.min.js"></script>
 <script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/jquery/artdialog/artDialog.plugins.min.js"></script>
+<script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/kindeditor-min.js"></script>
  
 <?php
-Yii::app()->clientScript->registerScriptFile( $this->module->assetsUrl.'/js/plugins/kindeditor/kindeditor-min.js');
 
 endif;?>
 </head>

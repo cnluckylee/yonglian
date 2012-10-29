@@ -153,10 +153,10 @@ class AllType extends CActiveRecord
 	);
 	
 	
-	//所以类型列表
-	public static function getAllType($pid = null)
+	//所有文章类型列表
+	public static function getAllNewsType($pid = null)
 	{
-		$type = Yii::app()->params['type'];
+		$type = Yii::app()->params['NewsType'];
 			 
 		foreach($type as  $k=>$v)
 		{
@@ -171,5 +171,17 @@ class AllType extends CActiveRecord
 		}
 		
 		return $str;
+	}
+	
+	//所有图片类型列表
+	public static function getAllPicType($typeId = null)
+	{
+		$type = Yii::app()->params['PicType'];
+		if(!empty($typeId))
+		{
+			return $type[$typeId];
+		}else{
+			return $type;
+		}
 	}
 }

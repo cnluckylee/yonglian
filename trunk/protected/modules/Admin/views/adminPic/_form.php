@@ -31,7 +31,7 @@
         <td >
         <div class="row">
 
-		<?php echo $form->dropDownList($model,'type',$categorys); ?>
+		<?php echo $form->dropDownList($model,'type',AllType::getAllPicType()); ?>
 		<?php echo $form->error($model,'type'); ?>
         </div>
         </td>
