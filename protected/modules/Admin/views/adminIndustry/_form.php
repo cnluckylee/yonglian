@@ -24,12 +24,12 @@
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'remark'); ?>
+		<?php echo $form->labelEx($model,'pinyin'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'remark',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'remark'); ?>
+		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'pinyin'); ?>
         </div>
         </td>
 	</tr>

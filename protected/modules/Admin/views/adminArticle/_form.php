@@ -75,38 +75,6 @@
         </div>
         </td>
 	</tr>
-<tr>
-<td colspan="2">
-	<div style="width:90%;margin-left:5%">
-		<fieldset>
-    		<legend><strong>相关设置</strong></legend>
-    		
-    		<?php 
-    		if(Yii::app()->params['recommend']['article_display']){
-    		?>
-    		<div class="row">
-			<?php echo $form->labelEx($model,'recommend'); ?>
-			<?php echo $form->dropDownList($model,'recommend',Yii::app()->params['recommend']['article']); ?>
-			</div>
-			<?php }?>
-    		<?php 
-    		if(Yii::app()->params['recommend_level']['article_display']){
-    		?>
-    		<div class="row">
-			<?php echo $form->labelEx($model,'recommend_level'); ?>
-			<?php echo $form->dropDownList($model,'recommend_level',Yii::app()->params['recommend_level']['article']); ?>
-			<p class="hint">数值越大排序越靠前</p>
-			</div>
-			<?php }?>
-    		
-			<div class="row">
-			<?php echo $form->labelEx($model,'remark'); ?>
-			<?php echo $form->textArea($model,'remark',array('cols'=>45,'rows'=>5)); ?>
-			</div>
-  		</fieldset>
-	</div>
-   </td> 
-<tr>
 </tbody>
       <tfoot>
         <tr class="title">

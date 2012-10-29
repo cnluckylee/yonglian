@@ -31,11 +31,11 @@ class AdminArticleController extends AdminController
 		if(isset($_POST['AdminArticle']))
 		{
 			$model->attributes=$_POST['AdminArticle'];
-				$upload=CUploadedFile::getInstance($model,'imgurl');
-				if(!empty($upload))
-				{
-					$model->imgurl=Upload::createFile($upload,'article','create');
-				}
+			$upload=CUploadedFile::getInstance($model,'imgurl');
+			if(!empty($upload))
+			{
+				$model->imgurl=Upload::createFile($upload,'article','create');
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -51,14 +51,24 @@ class AdminArticleController extends AdminController
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
-
+		 $model = $this->loadModel($id);
+		 $old_imgurl = $model->imgurl;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
-
+		
 		if(isset($_POST['AdminArticle']))
 		{
+			
 			$model->attributes=$_POST['AdminArticle'];
+			
+			$upload=CUploadedFile::getInstance($model,'imgurl');		
+			if(!empty($upload))
+			{
+				$model->imgurl=Upload::createFile($upload,'article','update');
+			}else{
+				$model->imgurl = $old_imgurl;
+			}
+
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}

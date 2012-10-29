@@ -23,7 +23,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
 								//'width' => '60',
 						//),
 				),
+			array(
 
+						'name' => 'title',
+						
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
 			array(
 
 						'name' => 'cid',

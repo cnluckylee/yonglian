@@ -120,9 +120,4 @@ class adminPic extends CActiveRecord
 		else
 			return false;
 	}
-	
-	public function afterFind()
-	{
-		$_POST['adminPic']['imgurl'] = $this->imgurl;
-	}
 }
