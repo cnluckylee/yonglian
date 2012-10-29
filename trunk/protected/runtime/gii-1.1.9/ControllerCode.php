@@ -2,5 +2,5 @@
 return array (
   'template' => 'default',
   'baseClass' => 'AdminController',
-  'actions' => 'IDs',
+  'actions' => '',
 );
