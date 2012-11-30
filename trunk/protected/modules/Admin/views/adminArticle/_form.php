@@ -63,13 +63,13 @@
 	</tr>
 
 	<tr>
+   
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
         </th>
-        <?php Yii::app()->clientScript->registerScript("AdminArticle_content","KE.show({id:'AdminArticle_content'});")?>
         <td >
-        
         <div class="row">
+         <?php Yii::app()->clientScript->registerScript("AdminArticle_content","KE.show({id:'AdminArticle_content'});")?>
 		<?php echo $form->textArea($model,'content',array('style'=>'width:70%;height:300px')); ?>
 		<?php echo $form->error($model,'content'); ?>
         </div>

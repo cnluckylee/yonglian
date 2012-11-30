@@ -53,8 +53,6 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 	'id' => 'admin-pic-grid',
 	'dataProvider' => $model->search(),
 	'filter' => $model,
-	
-	
 	'columns' => array(
 		array(
 			'name' => 'id',
@@ -72,7 +70,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		
 		array(
 			'name' => 'type',
-			'value' => $picType[$data->type],
+			
 			
 		//'htmlOptions' => array(
 		//'width' => '60',

@@ -2,7 +2,7 @@
 ini_set('display_errors',1);
 class AdminArticleController extends AdminController
 {
-	
+
 	/**
 	 * 首页列表.
 	 */
@@ -36,6 +36,7 @@ class AdminArticleController extends AdminController
 			{
 				$model->imgurl=Upload::createFile($upload,'article','create');
 			}
+			print_r($_POST);exit;
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -55,13 +56,13 @@ class AdminArticleController extends AdminController
 		 $old_imgurl = $model->imgurl;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
-		
+
 		if(isset($_POST['AdminArticle']))
 		{
-			
+
 			$model->attributes=$_POST['AdminArticle'];
-			
-			$upload=CUploadedFile::getInstance($model,'imgurl');		
+
+			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
 				$model->imgurl=Upload::createFile($upload,'article','update');
@@ -86,7 +87,7 @@ class AdminArticleController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -100,9 +101,9 @@ class AdminArticleController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
 
-	
+
+
 
 	/**
 	 * 载入

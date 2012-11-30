@@ -18,7 +18,6 @@ class AdminPicController extends AdminController
 		$this->render('index',array(
 			'picType'=>$picType,
 			'model'=>$model,
-
 		));
 	}
 
@@ -36,14 +35,25 @@ class AdminPicController extends AdminController
 		{
 
 			$model->attributes=$_POST['adminPic'];
-			
-			
+
+
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
+				$im = null;
+
+				$imagetype = strtolower($upload->extensionName);
+				if($imagetype == 'gif')
+				    $im = imagecreatefromgif($upload->tempName);
+				else if ($imagetype == 'jpg')
+				    $im = imagecreatefromjpeg($upload->tempName);
+				else if ($imagetype == 'png')
+				    $im = imagecreatefrompng($upload->tempName);
+				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
+
 				$model->imgurl=Upload::createFile($upload,'advPic','create');
 			}
-			
+
 			if($model->save())
 			{
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -51,7 +61,7 @@ class AdminPicController extends AdminController
 			}
 
 		}
-		
+		$categorys = Alltype::getAllPicType();
 		$this->render('create',array(
 			'model'=>$model,
 			'categorys' => $categorys,
@@ -99,9 +109,10 @@ class AdminPicController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
+			$imgurl = $this->loadModel($id)->imgurl;
 
+			Upload::delFile($imgurl);
 			$this->loadModel($id)->delete();
-
 			// 如果是 AJAX 操作返回
 			if (Yii::app()->request->isAjaxRequest) {
 				$this->success('删除成功！');
