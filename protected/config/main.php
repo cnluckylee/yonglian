@@ -56,6 +56,9 @@ return array(
 		'Upload'=>array(
 			'class'=>'application.extensions.Upload',
 		),
+		'thumb'=>array(
+			  'class'=>'application.extensions.CThumb',
+			  ),
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
