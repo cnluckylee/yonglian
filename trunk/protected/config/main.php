@@ -59,6 +59,7 @@ return array(
 		'thumb'=>array(
 			  'class'=>'application.extensions.CThumb',
 			  ),
+
 		// uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
@@ -109,11 +110,7 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-		'NewsType' => array( 1=>array('id'=>'1','name'=>'新闻'),
-				2=>array('id'=>'2','name'=>'广告'),
-				3=>array('id'=>'3','name'=>'财经'),
-				4=>array('id'=>'4','name'=>'政策'),
-		),
+		'AllType' => array( 1=>'文章',2=>'图片'),
 		'PicType' => array( 1=>'首页图片',2=>'内页图片'),
 		//信息分类
 		'InfoType' => array( 1=>'市场信息',2=>'管理信息',3=>'法规信息',4=>'技术信息',5=>'随机信息'),

@@ -70,7 +70,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		
 		array(
 			'name' => 'type',
-			
+			'value' =>array($this,getValueByKey),
 			
 		//'htmlOptions' => array(
 		//'width' => '60',
