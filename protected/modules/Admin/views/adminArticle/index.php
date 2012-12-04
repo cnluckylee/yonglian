@@ -6,9 +6,8 @@
 )); ?>
 </div><!-- search-form -->
 
-<?php 
+<?php
 $pager = Yii::app()->params['type'];
-
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'admin-article-grid',
 	'dataProvider'=>$model->search(),
@@ -34,10 +33,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			array(
 
 						'name' => 'cid',
-						
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
+						'value' =>array($this,getValueByKey),
+					
 				),
 
 			array(
@@ -51,12 +48,11 @@ $this->widget('zii.widgets.grid.CGridView', array(
 				),
 
 			array(
-
 						'name' => 'content',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
+						'value' => 'Helper::truncate_utf8_string($data->content,30)',
+						'htmlOptions' => array(
+								'width' => '60',
+						),
 				),
 
 			array(
@@ -84,10 +80,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
 						//),
 				),				
 			array(
-			'class'=>'CButtonColumn',
+			'header'=>'操作',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
-			'template' => '{view} {update} {delete}',
+			'template' => '{update} {delete}',
 		),
 	),
 )); ?>

@@ -15,8 +15,10 @@ class AdminArticleController extends AdminController
 
 		$this->render('index',array(
 			'model'=>$model,
+
 		));
 	}
+
 
 	/**
 	 * 创建
@@ -36,7 +38,7 @@ class AdminArticleController extends AdminController
 			{
 				$model->imgurl=Upload::createFile($upload,'article','create');
 			}
-			print_r($_POST);exit;
+
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -102,8 +104,16 @@ class AdminArticleController extends AdminController
 	}
 
 
-
-
+/**
+ * 查看
+ */
+	public function actionView($id)
+	{
+		$model = $this->loadModel($id);
+		$this->render('view',array(
+			'model'=>$model,
+		));
+	}
 
 	/**
 	 * 载入
@@ -129,4 +139,12 @@ class AdminArticleController extends AdminController
 			Yii::app()->end();
 		}
 	}
+	/**
+	 * 取value
+	 */
+	 public function getValueByKey($data, $row, $c)
+	 {
+	 	$NewsType = AllType::getAllType(1);
+		return $NewsType[$data->cid]['name'];
+	 }
 }

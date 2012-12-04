@@ -38,6 +38,7 @@ class AdminArticle extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title, cid, content', 'required'),
 			array('cid', 'numerical', 'integerOnly'=>true),
 			array('imgurl','file','allowEmpty'=>true,'types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 10,'tooLarge'=>'上传图片已超过10M'),
 			array('title, content, remark', 'safe'),
@@ -94,12 +95,11 @@ class AdminArticle extends CActiveRecord
 		$criteria->compare('remark',$this->remark,true);
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);
-
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
@@ -117,5 +117,5 @@ class AdminArticle extends CActiveRecord
 		else
 			return false;
 	}
-		
+
 }

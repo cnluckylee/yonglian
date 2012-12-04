@@ -2,15 +2,15 @@
 
 class AllTypeController extends AdminController
 {
-	
+
 	/**
 	 * 首页列表.
 	 */
 	public function actionIndex($type = null)
 	{
-		
-		
-		$menus = AllType::getTreeTypeDATA('*', false,$type);	
+
+
+		$menus = AllType::getTreeTypeDATA('*', false,$type);
 		$tree = new Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
@@ -27,13 +27,13 @@ class AllTypeController extends AdminController
 					<td ><a href='\".Yii::app()->createUrl(\$modules.'/'.\$controller.'/'.\$action).\"'>\".Yii::app()->createUrl(\$modules.'/'.\$controller.'/'.\$action).\"</td>
 					<td>\$str_manage</td>
 				</tr>";
-		
+
 		$tree->init($array);
 		$this->render('index', array(
 				'menuTree' => $tree->get_tree('0', $str)
 		));
-		
-		
+
+
 	}
 
 	/**
@@ -48,8 +48,9 @@ class AllTypeController extends AdminController
 		if(isset($_POST['AllType']))
 		{
 			$model->attributes=$_POST['AllType'];
+			$type = $model->attributes->type;
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index&type'.$type));
 		}
 		if ($parentid){
 			$model->parentid = $parentid;
@@ -91,7 +92,7 @@ class AllTypeController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -105,9 +106,9 @@ class AllTypeController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
 
-	
+
+
 
 	/**
 	 * 载入
@@ -133,6 +134,6 @@ class AllTypeController extends AdminController
 			Yii::app()->end();
 		}
 	}
-	
+
 
 }

@@ -1,9 +1,9 @@
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'admin-article-form',
-	'enableAjaxValidation'=>true,
+	'enableAjaxValidation'=>false,
 	'focus'=>array($model,'title'),
-	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','onsubmit'=>'setData()'),
 )); ?>
 
 <table width="100%" class="table_form table">
@@ -39,13 +39,23 @@
         <td >
         <div class="row">
         <select name="AdminArticle[cid]" id="AdminArticle_cid">
-            <?php echo AllType::getSelectTree();?>
+            <?php echo AllType::getSelectTree('',$model->cid);?>
         </select>
 		<?php echo $form->error($model,'cid'); ?>
         </div>
         </td>
 	</tr>
-
+	<tr>
+    <th width="100" align="right">
+		<?php echo $form->labelEx($model,'remark'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->textArea($model,'remark',array('style'=>'width:70%;height:100px')); ?>
+		<?php echo $form->error($model,'imgurl'); ?>
+        </div>
+        </td>
+	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>
@@ -62,16 +72,19 @@
         </td>
 	</tr>
 
+
+    
 	<tr>
    
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'content'); ?>
+		 <?php echo $form->labelEx($model,'content'); ?>
         </th>
         <td >
+      
+          
         <div class="row">
-         <?php Yii::app()->clientScript->registerScript("AdminArticle_content","KE.show({id:'AdminArticle_content'});")?>
-		<?php echo $form->textArea($model,'content',array('style'=>'width:70%;height:300px')); ?>
-		<?php echo $form->error($model,'content'); ?>
+          
+		  <?php echo $form->textArea($model,'content',array('style'=>'width:70%;height:300px')); ?>
         </div>
         </td>
 	</tr>
@@ -86,4 +99,17 @@
 
 <?php $this->endWidget(); ?>
 
+<script language="javascript">
+ 	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('#AdminArticle_content', {
+					resizeType : 2,
+					uploadJson : '<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/php/upload_json.php' // 相对于当前页面的路径
+		});
+	});
+	function setData()
+	{
+		editor.sync(); 
+	}
+</script>
 </div>

@@ -95,14 +95,14 @@ class AllType extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	//后台菜单
 	public static function getTreeTypeDATA($select = null,$cache = TRUE,$type = null) {
 		$cacheId = 'all_type'.($select !== null?'_'.$select:'');
 		if($cache) {
-	
+
 			$menus = Yii::app()->getCache()->get($cacheId);
-	
+
 			if($menus)
 				return $menus;
 		}
@@ -119,9 +119,9 @@ class AllType extends CActiveRecord
 			$model->select($select);
 		else
 			$model->select ('id,parentid,name');
-	
+
 		$menus = $model->queryAll();
-	
+
 		$array = array();
 		foreach($menus as $menu) {
 			$array[$menu['id']] = $menu;
@@ -133,55 +133,68 @@ class AllType extends CActiveRecord
 	//类型下来列表
 	public static function getSelectTree($empty = NULL, $pid = 0,$type = null) {
 		$menus = self::getTreeTypeDATA(null, FALSE,$type);
+
 		$tree = new tree();
 		$array = array();
 		foreach ($menus as $r) {
 			$r['selected'] = ($pid != 0 && $pid === $r['id']) ? 'selected' : '';
 			$array[] = $r;
 		}
-		
+
 		$str = "<option value='\$id' \$selected>\$spacer \$name</option>";
-		$tree->init($array);	
-		if ($empty !== NULL)
+		$tree->init($array);
+		if ($empty !== NULL && $empty!="")
 			return '<option value="0">' . $empty . '</option>' . $tree->get_tree('0', $str);
 		else
 			return $tree->get_tree('0', $str);
 	}
-	
+
 	public static $isDisplay= array(
 			'否', '是'
 	);
-	
-	
+
+
 	//所有文章类型列表
-	public static function getAllNewsType($pid = null)
+	public static function getAllTypeForSelect($pid = null)
 	{
-		$type = Yii::app()->params['NewsType'];
-			 
+		$type = Yii::app()->params['AllType'];
+
 		foreach($type as  $k=>$v)
 		{
-			if($v['id'] == $pid)
+			if($k == $pid)
 			{
-				$str .= "<option value='".$v['id']."' selected>".$v['name']."</option>";
+				$str .= "<option value='".$k."' selected>".$v."</option>";
 			}else
 			{
-				$str .= "<option value='".$v['id']."'>".$v['name']."</option>";
+				$str .= "<option value='".$k."'>".$v."</option>";
 			}
-				
+
 		}
-		
+
 		return $str;
 	}
-	
-	//所有图片类型列表
-	public static function getAllPicType($typeId = null)
+
+	/**
+	 * 所有类型列表,读取all_type表;
+	 * type:1文章类型;2图片
+	 */
+	public static function getAllType($type,$typeId = null)
 	{
-		$type = Yii::app()->params['PicType'];
+		$type = self::getTreeTypeDATA(null, FALSE,$type);
 		if(!empty($typeId))
 		{
 			return $type[$typeId];
 		}else{
 			return $type;
 		}
+	}
+
+	//根据传递过来的值，从数组中去除相应的value
+	public static function getValueByKey($data,$key,$value=null)
+	{
+		if(empty($value))
+			return $data[$key];
+		else
+			return $data[$key][$value];
 	}
 }

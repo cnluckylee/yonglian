@@ -14,9 +14,9 @@ class AdminPicController extends AdminController
 		if(isset($_GET['adminPic']))
 			$model->attributes=$_GET['adminPic'];
 
-		$picType = Alltype::getAllPicType();
+
 		$this->render('index',array(
-			'picType'=>$picType,
+
 			'model'=>$model,
 		));
 	}
@@ -35,8 +35,6 @@ class AdminPicController extends AdminController
 		{
 
 			$model->attributes=$_POST['adminPic'];
-
-
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
@@ -61,10 +59,11 @@ class AdminPicController extends AdminController
 			}
 
 		}
-		$categorys = Alltype::getAllPicType();
+		$categorys = Alltype::getAllType(2);
 		$this->render('create',array(
 			'model'=>$model,
 			'categorys' => $categorys,
+			'type'=>2
 		));
 	}
 
@@ -153,5 +152,13 @@ class AdminPicController extends AdminController
 		}
 	}
 
+	/**
+	 * 取value
+	 */
+	 public function getValueByKey($data, $row, $c)
+	 {
+		$picType = Alltype::getAllType(2);
+		return $picType[$data->type]['name'];
+	 }
 
 }

@@ -19,8 +19,8 @@ $baseUrl=$this->module->assetsUrl;
 <script language="javascript" src="<?php echo $this->module->assetsUrl; ?>/js/jquery/form/jquery.form.js"></script>
 <script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/jquery/artdialog/artDialog.min.js"></script>
 <script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/jquery/artdialog/artDialog.plugins.min.js"></script>
-<script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/kindeditor-min.js"></script>
- 
+<script language="javascript" charset="utf-8" src="<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/kindeditor.js"></script>
+<script language="javascript" charset="utf-8" src="<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/lang/zh_CN.js"></script>
 <?php
 
 endif;?>

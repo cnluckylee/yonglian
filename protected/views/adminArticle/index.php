@@ -59,8 +59,8 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'cid',
-
+						'name' => 'type',
+						'value' => $NewsType[$data->cid]['name'],
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),

@@ -43,7 +43,7 @@
         <td >
         <div class="row">
         	<select name="AllType[type]" id="AllType_type">
-            	<?php echo AllType::getAllType($model->type);?>
+            	<?php echo AllType::getAllTypeForSelect($model->type);?>
             </select>
 		<?php echo $form->error($model,'type'); ?>
         </div>
@@ -81,8 +81,6 @@
         </tr>
       </tfoot>
     </table>
-	
-
 <?php $this->endWidget(); ?>
 
 </div>
