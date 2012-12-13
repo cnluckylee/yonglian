@@ -51,7 +51,7 @@ $('.search-button').click(function(){
 		array(
 
 						'name' => 'id',
-						'value' => '$row+1',
+
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -68,7 +68,7 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'pinyin',
+						'name' => 'city',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -77,7 +77,16 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'summary',
+						'name' => 'city_id',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'type',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -93,64 +102,10 @@ $('.search-button').click(function(){
 						//),
 				),
 
-			array(
-
-						'name' => 'addr',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
 			/*
 		array(
 
-						'name' => 'zip',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'mail',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'fax',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'salesline',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'serviceline',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'website',
+						'name' => 'product',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -159,7 +114,6 @@ $('.search-button').click(function(){
 
 			*/
 		array(
-			'header' => '操作',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

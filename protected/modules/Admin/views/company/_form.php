@@ -16,7 +16,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>20,'maxlength'=>20)); ?>
 		<?php echo $form->error($model,'name'); ?>
         </div>
         </td>
@@ -24,24 +24,24 @@
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pinyin'); ?>
+		<?php echo $form->labelEx($model,'city'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'pinyin'); ?>
+		<?php echo $form->textField($model,'city',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->error($model,'city'); ?>
         </div>
         </td>
 	</tr>
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'summary'); ?>
+		<?php echo $form->labelEx($model,'type'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textArea($model,'summary',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'summary'); ?>
+		<?php echo $form->dropDownList($model,'type',CHtml::listData(AllType::getAllType(3),'id','name')); ?>
+		<?php echo $form->error($model,'type'); ?>
         </div>
         </td>
 	</tr>
@@ -60,84 +60,12 @@
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'addr'); ?>
+		<?php echo $form->labelEx($model,'product'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'addr',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'addr'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'zip'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'zip'); ?>
-		<?php echo $form->error($model,'zip'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'mail'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'mail',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'mail'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'fax'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'fax',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'fax'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'salesline'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'salesline',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'salesline'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'serviceline'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'serviceline',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'serviceline'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'website'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'website',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'website'); ?>
+		<?php echo $form->textField($model,'product',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->error($model,'product'); ?>
         </div>
         </td>
 	</tr>

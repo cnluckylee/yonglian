@@ -104,10 +104,9 @@
 <div class="main_body">
 	<div class="main_body_left">
      <ul>
-
-    {foreach from=$adv item=item key=key name=link}
-    <li><a href="{$item.remark}" target="_blank"><img src="{$item.imgurl}"></a></li> 
-	{/foreach}
+    {{foreach from=$adv item=item key=key name=link}}
+    <li><a href="{{$item.remark}}" target="_blank"><img src="{{$item.imgurl}}"></a></li> 
+	{{/foreach}}
  	</ul>
     </div>
     <div class="main_body_right">
@@ -351,9 +350,9 @@
  <div id="links">
  <h2>友情链接:</h2>
  <ul>
-    {foreach from=$link item=item key=key name=link}
-    <li><a href="{$item.weburl}" target="_blank"><img width="120" height="40" src="{$item.weblogo}"></a></li> 
-	{/foreach}
+    {{foreach from=$link item=item key=key name=link}}
+    <li><a href="{{$item.weburl}}" target="_blank"><img width="120" height="40" src="{{$item.weblogo}}"></a></li> 
+	{{/foreach}}
 </ul>
 
 </div>

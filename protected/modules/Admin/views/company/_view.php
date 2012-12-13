@@ -8,47 +8,25 @@
 	<?php echo CHtml::encode($data->name); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('pinyin')); ?>:</b>
-	<?php echo CHtml::encode($data->pinyin); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('city')); ?>:</b>
+	<?php echo CHtml::encode($data->city); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('summary')); ?>:</b>
-	<?php echo CHtml::encode($data->summary); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('city_id')); ?>:</b>
+	<?php echo CHtml::encode($data->city_id); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
+	<?php echo CHtml::encode($data->type); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('desc')); ?>:</b>
 	<?php echo CHtml::encode($data->desc); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('addr')); ?>:</b>
-	<?php echo CHtml::encode($data->addr); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('product')); ?>:</b>
+	<?php echo CHtml::encode($data->product); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('zip')); ?>:</b>
-	<?php echo CHtml::encode($data->zip); ?>
-	<br />
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('mail')); ?>:</b>
-	<?php echo CHtml::encode($data->mail); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('fax')); ?>:</b>
-	<?php echo CHtml::encode($data->fax); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('salesline')); ?>:</b>
-	<?php echo CHtml::encode($data->salesline); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('serviceline')); ?>:</b>
-	<?php echo CHtml::encode($data->serviceline); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('website')); ?>:</b>
-	<?php echo CHtml::encode($data->website); ?>
-	<br />
-
-	*/ ?>
 
 </div>

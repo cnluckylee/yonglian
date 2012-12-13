@@ -1,0 +1,205 @@
+@charset "utf-8";
+/* CSS Document */
+<style type="text/css">
+<!--
+#Layer1 {
+	position:absolute;
+	left:10px;
+	top:4px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer2 {
+	position:absolute;
+	left:320px;
+	top:85px;
+	width:%px;
+	height:%px;
+	z-index:1;
+	height: 249px;
+}
+body,td,th {
+	font-family: 宋体;
+	font-size: 14px;
+}
+#Layer3 {
+	position:absolute;
+	left:30px;
+	top:354px;
+	width:%px;
+	height:%px;
+	z-index:1;
+	width: 880;
+	height: 65px;
+}
+#Layer4 {
+	position:absolute;
+	left:320px;
+	top:366px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+.STYLE2 {color: #0000FF}
+#Layer5 {
+	position:absolute;
+	left:320px;
+	top:435px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer6 {
+	position:absolute;
+	left:371px;
+	top:442px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer7 {
+	position:absolute;
+	left:517px;
+	top:435px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer8 {
+	position:absolute;
+	left:569px;
+	top:442px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer9 {
+	position:absolute;
+	left:909px;
+	top:435px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer10 {
+	position:absolute;
+	left:910px;
+	top:482px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer11 {
+	position:absolute;
+	left:320px;
+	top:527px;
+	width:%px;
+	height:%px;
+	z-index:1;
+	height: 605px;
+}
+#Layer12 {
+	position:absolute;
+	left:466px;
+	top:481px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer13 {
+	position:absolute;
+	left:30px;
+	top:420px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer14 {
+	position:absolute;
+	left:16px;
+	top:10px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer15 {
+	position:absolute;
+	left:320px;
+	top:1138px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer16 {
+	position:absolute;
+	left:320px;
+	top:1180px;
+	width:%px;
+	height:%px;
+	z-index:1;
+	height: 203px;
+}
+#Layer17 {
+	position:absolute;
+	left:26px;
+	top:51px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer18 {
+	position:absolute;
+	left:10px;
+	top:472px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer19 {
+	position:absolute;
+	left:10px;
+	top:656px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer20 {
+	position:absolute;
+	left:10px;
+	top:842px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+#Layer21 {
+	position:absolute;
+	left:20px;
+	top:1028px;
+	width:%px;
+	height:%px;
+	z-index:1;
+}
+.STYLE3 {
+	font-family: "华文行楷";
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.main_body_left ul li
+{
+	display:inherit;
+	margin-top:5px;
+	margin-left:-30px;
+}
+.main_body_left
+{
+	float:left;
+	width:300px;
+	margin-bottom: 10px;
+	margin-top:100px;
+}
+
+-->
+</style>
+
