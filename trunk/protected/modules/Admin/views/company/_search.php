@@ -31,31 +31,43 @@
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>20,'maxlength'=>20)); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'pinyin'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'city'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'city',array('size'=>20,'maxlength'=>20)); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'summary'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'city_id'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textArea($model,'summary',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textField($model,'city_id'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'type'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'type'); ?>
 		</div>
         </td>
 
@@ -73,85 +85,13 @@
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'addr'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'product'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'addr',array('size'=>60,'maxlength'=>200)); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'zip'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'zip'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'mail'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'mail',array('size'=>60,'maxlength'=>200)); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'fax'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'fax',array('size'=>60,'maxlength'=>200)); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'salesline'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'salesline',array('size'=>60,'maxlength'=>200)); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'serviceline'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'serviceline',array('size'=>60,'maxlength'=>200)); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'website'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'website',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'product',array('size'=>60,'maxlength'=>200)); ?>
 		</div>
         </td>
 

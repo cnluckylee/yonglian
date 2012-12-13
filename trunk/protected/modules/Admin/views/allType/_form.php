@@ -16,7 +16,7 @@
         </th>
         <td >
         <div class="row">
-		<select name="AdminMenu[parentid]" id="AdminMenu_parentid">
+		<select name="AllType[parentid]" id="AllType_parentid">
             <?php echo AllType::getSelectTree('顶级菜单',$model->parentid);?>
         </select>
 		<?php echo $form->error($model,'parentid'); ?>

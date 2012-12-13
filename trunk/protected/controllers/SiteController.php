@@ -59,6 +59,29 @@ class SiteController extends Controller
 //		$this->render('index',array('footer_link'=>$footer_link));
 	}
 
+
+	/**
+	 * 企业全貌
+	 */
+	public function actionCompanyshow()
+	{
+
+
+		$company = array_map(create_function('$company','return $company->attributes;'),
+								company::model()->findAll(array('select'=>'name, id,product , desct')));
+		$adv = array_map(create_function('$adv','return $adv->attributes;'),
+								adminPic::model()->findAll(array('select'=>'imgurl,imglink,id',
+																'condition'=>'type=:type',
+																'params'=>array(':type'=>'14'))));
+		$smarty = Yii::app()->smarty;
+		$data = array();
+		$data['company'] = $company;
+		$data['adv'] = $adv;
+		$smarty->_smarty->assign($data);
+		$smarty->_smarty->display('site/company_show.html');
+	}
+
+
 	/**
 	 * This is the action to handle external exceptions.
 	 */

@@ -158,7 +158,7 @@ class AllType extends CActiveRecord
 	public static function getAllTypeForSelect($pid = null)
 	{
 		$type = Yii::app()->params['AllType'];
-
+		$str = "";
 		foreach($type as  $k=>$v)
 		{
 			if($k == $pid)

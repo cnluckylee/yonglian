@@ -110,7 +110,7 @@ return array(
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
 	'params'=>array(
-		'AllType' => array( 1=>'文章',2=>'图片'),
+		'AllType' => array( 1=>'文章',2=>'图片',3=>'企业'),
 		'PicType' => array( 1=>'首页图片',2=>'内页图片'),
 		//信息分类
 		'InfoType' => array( 1=>'市场信息',2=>'管理信息',3=>'法规信息',4=>'技术信息',5=>'随机信息'),

@@ -31,7 +31,7 @@
         <td >
         <div class="row">
 
-		<?php echo $form->dropDownList($model,'type',AllType::getAllType(2)); ?>
+		<?php echo $form->dropDownList($model,'type',CHtml::listData(AllType::getAllType(2),'id','name')); ?>
 		<?php echo $form->error($model,'type'); ?>
         </div>
         </td>
