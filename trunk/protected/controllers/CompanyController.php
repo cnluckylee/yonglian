@@ -8,10 +8,10 @@ class CompanyController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new company('search');
+		$model=new Company('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['company']))
-			$model->attributes=$_GET['company'];
+		if(isset($_GET['Company']))
+			$model->attributes=$_GET['Company'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -23,14 +23,14 @@ class CompanyController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new company;
+		$model=new Company;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['company']))
+		if(isset($_POST['Company']))
 		{
-			$model->attributes=$_POST['company'];
+			$model->attributes=$_POST['Company'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -51,9 +51,9 @@ class CompanyController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['company']))
+		if(isset($_POST['Company']))
 		{
-			$model->attributes=$_POST['company'];
+			$model->attributes=$_POST['Company'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -95,7 +95,7 @@ class CompanyController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=company::model()->findByPk($id);
+		$model=Company::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;

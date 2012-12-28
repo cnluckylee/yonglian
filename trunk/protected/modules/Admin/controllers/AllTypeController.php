@@ -135,5 +135,12 @@ class AllTypeController extends AdminController
 		}
 	}
 
+	/**
+	 * 查询城市
+	 */
+	public function actiongetCity()
+	{
+		return AllType::getCity();
+	}
 
 }
