@@ -2,10 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <title>无标题文档</title>
 <link rel="stylesheet" type="text/css" href="css/index2.css" />
 <script language="javascript" src="js/jquery.min.js"></script>
 <script language="javascript" src="js/index.js"></script>
+
 </head>
 
 <body>
@@ -315,34 +317,128 @@
         <td colspan="3" style="BORDER-bottom: gray 1px solid;BORDER-right: gray 1px solid;"><div align="center" class="STYLE11"><strong>本站企业</strong></div></td>
       </tr>
       <tr>
-        <td><img width="50" height="20" src="images/Web button/To select digital left1.gif"></td>
-        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">永链数据 永链数据 永链数据 永链数据</td>
-        <td colspan="2">永链数据 永链数据 永链数据 永链数据</td>
-        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/Web button/To select digital right1.gif"></td>
+        <td><img width="50" height="20" src="images/lineNumber/line_left_1.gif"></td>
+        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">
+        {{if $rec_company.1}}
+        	<ul>
+        	{{foreach item=item from=$rec_company.1}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+         {{/if}}
+        </td>
+        <td colspan="2">
+        {{if $company.1}}
+        	<ul>
+        	{{foreach item=item from=$company.1}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+         {{/if}}
+        </td>
+        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/lineNumber/line_right_1.gif"></td>
       </tr>
       <tr>
-        <td><img width="50" height="20" src="images/Web button/To select digital left2.gif"></td>
-        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">永链数据 永链数据 永链数据 永链数据</td>
-        <td colspan="2">永链数据 永链数据 永链数据 永链数据</td>
-        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/Web button/To select digital right2.gif"></td>
+        <td><img width="50" height="20" src="images/lineNumber/line_left_2.gif"></td>
+        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">
+         {{if $rec_company.2}}
+        	<ul>
+        	{{foreach item=item from=$rec_company.2}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+         {{/if}}
+        </td>
+        <td colspan="2">
+         {{if $company.2}}
+        	<ul>
+        	{{foreach item=item from=$company.2}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+         {{else}}
+            &nbsp;&nbsp;  
+         {{/if}}
+        </td>
+        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/lineNumber/line_right_2.gif"></td>
       </tr>
       <tr>
-        <td><img width="50" height="20" src="images/Web button/To select digital left3.gif"></td>
-        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">永链数据 永链数据 永链数据 永链数据</td>
-        <td colspan="2">永链数据 永链数据 永链数据 永链数据</td>
-        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/Web button/To select digital right3.gif"></td>
+        <td><img width="50" height="20" src="images/lineNumber/line_left_3.gif"></td>
+        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">
+        
+         {{if $rec_company.3}}
+        	<ul>
+        	{{foreach item=item from=$rec_company.3}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+            {{else}}
+            &nbsp;&nbsp;
+         {{/if}}
+        </td>
+        <td colspan="2">
+        {{if $company.3}}
+        	<ul>
+        	{{foreach item=item from=$company.3}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+         {{else}}
+            &nbsp;&nbsp;  
+         {{/if}}
+        </td>
+        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/lineNumber/line_right_3.gif"></td>
       </tr>
       <tr>
-        <td><img width="50" height="20" src="images/Web button/To select digital left4.gif"></td>
-        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">永链数据 永链数据 永链数据 永链数据</td>
-        <td colspan="2">永链数据 永链数据 永链数据 永链数据</td>
-        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/Web button/To select digital right4.gif"></td>
+        <td><img width="50" height="20" src="images/lineNumber/line_left_4.gif"></td>
+        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;">
+           {{if $rec_company.4}}
+        	<ul>
+        	{{foreach item=item from=$rec_company.4}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+           {{else}}
+            &nbsp;&nbsp; 
+         {{/if}}
+        </td>
+        <td colspan="2">
+        {{if $company.4}}
+        	<ul>
+        	{{foreach item=item from=$company.4}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+         {{else}}
+            &nbsp;&nbsp;  
+         {{/if}}</td>
+        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;"><img width="50" height="20" src="images/lineNumber/line_right_4.gif"></td>
       </tr>
       <tr>
-        <td style="BORDER-bottom: gray 1px solid;"><img width="50" height="20" src="images/Web button/To select digital left5.gif"></td>
-        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;BORDER-bottom: gray 1px solid;">永链数据 永链数据 永链数据 永链数据</td>
-        <td colspan="2" style="BORDER-bottom: gray 1px solid;">永链数据 永链数据 永链数据 永链数据</td>
-        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;BORDER-bottom: gray 1px solid;"><img width="50" height="20" src="images/Web button/To select digital right5.gif"></td>
+        <td style="BORDER-bottom: gray 1px solid;"><img width="50" height="20" src="images/lineNumber/line_left_5.gif"></td>
+        <td height="30" style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;BORDER-bottom: gray 1px solid;">
+          {{if $rec_company.5}}
+        	<ul>
+        	{{foreach item=item from=$rec_company.5}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+            {{else}}
+            &nbsp;&nbsp; 
+         {{/if}}
+        </td>
+        <td colspan="2" style="BORDER-bottom: gray 1px solid;">
+        {{if $company.5}}
+        	<ul>
+        	{{foreach item=item from=$company.5}}
+            	<li style=" display:inline;">{{$item.name}}</li>
+            {{/foreach}}
+            <ul>
+         {{else}}
+            &nbsp;&nbsp;  
+         {{/if}}
+        </td>
+        <td style="BORDER-left: gray 1px solid;BORDER-right: gray 1px solid;BORDER-bottom: gray 1px solid;"><img width="50" height="20" src="images/lineNumber/line_right_5.gif"></td>
       </tr>
     </tbody></table>      
  </div>
@@ -357,5 +453,6 @@
 
 </div>
  </div>
+<script language="JavaScript" src="http://tongji.living1010.info/start.php?wid=1&uid=1"></script>
 </body>
 </html>

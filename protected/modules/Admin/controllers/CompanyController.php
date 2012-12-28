@@ -2,7 +2,7 @@
 
 class CompanyController extends AdminController
 {
-	
+
 	/**
 	 * 首页列表.
 	 */
@@ -28,9 +28,13 @@ class CompanyController extends AdminController
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['company']))
+		if(isset($_POST['Company']))
 		{
-			$model->attributes=$_POST['company'];
+			$model->attributes=$_POST['Company'];
+			if(!isset($_POST['Company']['rec']))
+			{
+				$model->rec = 0;
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -51,9 +55,17 @@ class CompanyController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['company']))
+
+		if(isset($_POST['Company']))
 		{
-			$model->attributes=$_POST['company'];
+
+			$model->attributes=$_POST['Company'];
+			if(!isset($_POST['Company']['rec']))
+			{
+				$model->rec = 0;
+			}
+
+			$model->city = City::model()->findByPk($model->city_id)->city_name;
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -71,7 +83,7 @@ class CompanyController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -85,9 +97,9 @@ class CompanyController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
 
-	
+
+
 
 	/**
 	 * 载入
@@ -112,5 +124,11 @@ class CompanyController extends AdminController
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+
+	public function getValueByKey($data, $row, $c)
+	{
+		$recType = array(0=>'不推荐',1=>'推荐');
+		return $recType[$data->rec];
 	}
 }

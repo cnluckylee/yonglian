@@ -5,8 +5,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List company', 'url'=>array('index')),
-	array('label'=>'Create company', 'url'=>array('create')),
+	array('label'=>'List Company', 'url'=>array('index')),
+	array('label'=>'Create Company', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -44,12 +44,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'name',
+		'pinyin',
 		'city',
 		'city_id',
 		'type',
-		'desc',
 		/*
+		'desct',
 		'product',
+		'rec',
 		*/
 		array(
 			'class'=>'CButtonColumn',

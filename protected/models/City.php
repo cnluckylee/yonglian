@@ -1,25 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "{{company}}".
+ * This is the model class for table "{{city}}".
  *
- * The followings are the available columns in table '{{company}}':
- * @property integer $id
- * @property string $name
- * @property string $pinyin
- * @property string $city
+ * The followings are the available columns in table '{{city}}':
  * @property integer $city_id
- * @property integer $type
- * @property string $desct
- * @property string $product
- * @property integer $rec
+ * @property integer $parent_id
+ * @property string $city_name
+ * @property integer $city_type
+ * @property integer $agency_id
  */
-class Company extends CActiveRecord
+class City extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Company the static model class
+	 * @return City the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -31,7 +27,7 @@ class Company extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{company}}';
+		return '{{city}}';
 	}
 
 	/**
@@ -42,14 +38,11 @@ class Company extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('city_id, type, rec', 'numerical', 'integerOnly'=>true),
-			array('name, city', 'length', 'max'=>20),
-			array('pinyin', 'length', 'max'=>100),
-			array('product', 'length', 'max'=>200),
-			array('desct', 'safe'),
+			array('parent_id, city_type, agency_id', 'numerical', 'integerOnly'=>true),
+			array('city_name', 'length', 'max'=>120),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pinyin, city, city_id, type, desct, product, rec', 'safe', 'on'=>'search'),
+			array('city_id, parent_id, city_name, city_type, agency_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -70,20 +63,14 @@ class Company extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => '名称',
-			'pinyin' => '拼音',
-			'city' => '所属城市',
 			'city_id' => 'City',
-			'type' => '类型',
-			'desct' => '描述',
-			'product' => '产品',
-			'rec' => '是否推荐',
+			'parent_id' => 'Parent',
+			'city_name' => 'City Name',
+			'city_type' => 'City Type',
+			'agency_id' => 'Agency',
 		);
 	}
-    public static $sec= array(
-	'否', '是'
-    );
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
@@ -95,15 +82,11 @@ class Company extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id',$this->id);
-		$criteria->compare('name',$this->name,true);
-		$criteria->compare('pinyin',$this->pinyin,true);
-		$criteria->compare('city',$this->city,true);
 		$criteria->compare('city_id',$this->city_id);
-		$criteria->compare('type',$this->type);
-		$criteria->compare('desct',$this->desct,true);
-		$criteria->compare('product',$this->product,true);
-		$criteria->compare('rec',$this->rec);
+		$criteria->compare('parent_id',$this->parent_id);
+		$criteria->compare('city_name',$this->city_name,true);
+		$criteria->compare('city_type',$this->city_type);
+		$criteria->compare('agency_id',$this->agency_id);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

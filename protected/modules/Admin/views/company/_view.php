@@ -8,6 +8,10 @@
 	<?php echo CHtml::encode($data->name); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('pinyin')); ?>:</b>
+	<?php echo CHtml::encode($data->pinyin); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('city')); ?>:</b>
 	<?php echo CHtml::encode($data->city); ?>
 	<br />
@@ -20,13 +24,19 @@
 	<?php echo CHtml::encode($data->type); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('desc')); ?>:</b>
-	<?php echo CHtml::encode($data->desc); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('desct')); ?>:</b>
+	<?php echo CHtml::encode($data->desct); ?>
 	<br />
 
+	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('product')); ?>:</b>
 	<?php echo CHtml::encode($data->product); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('rec')); ?>:</b>
+	<?php echo CHtml::encode($data->rec); ?>
+	<br />
+
+	*/ ?>
 
 </div>

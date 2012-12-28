@@ -37,6 +37,18 @@
 
 	</tr>
 	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'pinyin'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>100)); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
           <th width="100" align="right"><span class="row"><?php echo $form->label($model,'city'); ?>
 </span></th>
         <td >
@@ -73,13 +85,13 @@
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'desc'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'desct'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textArea($model,'desc',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'desct',array('rows'=>6, 'cols'=>50)); ?>
 		</div>
         </td>
 
@@ -92,6 +104,18 @@
 		
 		
 		<?php echo $form->textField($model,'product',array('size'=>60,'maxlength'=>200)); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'rec'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'rec'); ?>
 		</div>
         </td>
 

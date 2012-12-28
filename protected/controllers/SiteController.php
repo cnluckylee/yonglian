@@ -40,12 +40,40 @@ class SiteController extends Controller
 		$data['link'] = array_map(create_function('$record','return $record->attributes;'),$link_arr);
 
 		$ad_arr = adminPic::model()->findAll(
-							array(
-							'select'=>'imgurl,remark'
-							)
+							array('select'=>'imgurl,remark')
 						);
 
 		$data['adv'] = array_map(create_function('$record','return $record->attributes;'),$ad_arr);
+
+		/**
+		 * 推荐企业信息
+		 */
+		$company = Company::model()->findAll();
+		$company = array_map(create_function('$record','return $record->attributes;'),$company);
+		$rec_company = $tmp_company = array();
+		$i = $count = 0;
+		foreach($company as $k=>$v)
+		{
+			if($v['rec'] == 1)
+			{
+				if($k%4>0)
+				{
+					$rec_company[$count][] = $v;
+				}else{
+					$count++;
+					$rec_company[$count][] = $v;
+				}
+			}
+			if($k%4>0)
+			{
+				$tmp_company[$i][] = $v;
+			}else{
+				$i++;
+				$tmp_company[$i][] = $v;
+			}
+		}
+		$data['rec_company'] =$rec_company;
+		$data['company'] =$tmp_company;
 
 		$smarty = Yii::app()->smarty;
 		$smarty->_smarty->assign($data);

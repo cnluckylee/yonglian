@@ -68,7 +68,7 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'city',
+						'name' => 'pinyin',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -77,12 +77,14 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'city_id',
+						'name' => 'city',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
+
+		
 
 			array(
 
@@ -92,18 +94,19 @@ $('.search-button').click(function(){
 								//'width' => '60',
 						//),
 				),
+				
 
-			array(
+			
+		array(
 
-						'name' => 'desc',
+						'name' => 'desct',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
-			/*
-		array(
+			array(
 
 						'name' => 'product',
 
@@ -112,8 +115,19 @@ $('.search-button').click(function(){
 						//),
 				),
 
-			*/
+			array(
+
+						'name' => 'rec',
+						'value' =>array($this,getValueByKey),
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			
 		array(
+			'header' =>'操作',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

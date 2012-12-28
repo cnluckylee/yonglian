@@ -15,6 +15,7 @@ class CSmarty
 		$this->_smarty->cache_lifetime = 0;
 		$this->_smarty->left_delimiter = "{{";
 		$this->_smarty->right_delimiter = "}}";
+		$this->_smarty->compile_check = false;
     }
 
     function init(){

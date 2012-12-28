@@ -197,4 +197,27 @@ class AllType extends CActiveRecord
 		else
 			return $data[$key][$value];
 	}
+
+	/**
+	 * 城市列表
+	 */
+	 public static function getCity()
+	 {
+
+	 	$Company = Yii::app()->request->getPost('Company');
+		$city_id = intval($Company['city']?$Company['city']:1);
+	 	if($city_id == 1)
+	 	{
+	 		$data=City::model()->findAll('parent_id='.$city_id,array('city_id'=>'desc'));
+	 		$data=CHtml::listData($data,'city_id','city_name');
+	 	}else{
+			$data=City::model()->findAll('parent_id='.$city_id.' and city_type=2');
+			$data=CHtml::listData($data,'city_id','city_name');
+		   foreach($data as $value=>$name)
+		   {
+		        echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
+		   }
+	 	}
+		return $data;
+	 }
 }
