@@ -115,7 +115,7 @@
     <div class="clear" style="height:15px;"></div>
     <table width="702" cellspacing="0" cellpadding="0" border="0">
       <tbody><tr>
-        <td width="77" height="31" style="BORDER-top: gray 1px solid;BORDER-left: gray 1px solid;"><a target="_blank" href="company_show.html">企业秀台</a></td>
+        <td width="77" height="31" style="BORDER-top: gray 1px solid;BORDER-left: gray 1px solid;"><a target="_blank" href="?r=site/companyshow">企业秀台</a></td>
         <td width="77" style="BORDER-top: gray 1px solid;">专家新论</td>
         <td width="77" style="BORDER-top: gray 1px solid;">政策精选</td>
         <td width="77" style="BORDER-top: gray 1px solid;">政策精选</td>
