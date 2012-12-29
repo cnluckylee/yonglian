@@ -23,7 +23,7 @@ $welive_onlines  = array (
       array (
         'username' => 'msli',
         'type' => '1',
-        'isonline' => '1',
+        'isonline' => '0',
         'isbusy' => '0',
         'userfrontname' => '李晴晴',
         'userfrontename' => 'Ms.Li',
