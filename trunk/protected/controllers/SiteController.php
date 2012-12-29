@@ -74,7 +74,6 @@ class SiteController extends Controller
 		}
 		$data['rec_company'] =$rec_company;
 		$data['company'] =$tmp_company;
-
 		$smarty = Yii::app()->smarty;
 		$smarty->_smarty->assign($data);
 		$smarty->_smarty->display('index.tpl');

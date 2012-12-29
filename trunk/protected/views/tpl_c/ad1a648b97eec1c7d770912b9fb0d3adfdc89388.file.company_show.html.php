@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2012-12-13 16:45:28
+<?php /* Smarty version Smarty-3.1.12, created on 2012-12-29 11:49:53
          compiled from "E:\wwwroot\yonglian\protected\views\tpl\site\company_show.html" */ ?>
-<?php /*%%SmartyHeaderCode:2752550c995a8ee34a2-82338645%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2526350de68615fea31-35592690%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ad1a648b97eec1c7d770912b9fb0d3adfdc89388' => 
     array (
       0 => 'E:\\wwwroot\\yonglian\\protected\\views\\tpl\\site\\company_show.html',
-      1 => 1355388289,
+      1 => 1356752988,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2752550c995a8ee34a2-82338645',
+  'nocache_hash' => '2526350de68615fea31-35592690',
   'function' => 
   array (
   ),
@@ -23,9 +23,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_50c995a8f09d95_80302278',
+  'unifunc' => 'content_50de686164cde0_18983054',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50c995a8f09d95_80302278')) {function content_50c995a8f09d95_80302278($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_50de686164cde0_18983054')) {function content_50de686164cde0_18983054($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -151,7 +151,7 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 <div id="Layer15">
   <table width="710" border="0"cellpadding=0 cellspacing=0>
     <tr>
-      <td width="90"><img src="images/Window button/Online communication1.gif" width="90" height="30" /></td>
+      <td width="90"></td>
       <td width="85" height="30">&nbsp;</td>
       <td width="90"><img src="images/Web button/Start page.gif" width="90" height="30" /></td>
       <td width="90"><img src="images/Web button/The next page.gif" width="90" height="30" /></td>
@@ -207,8 +207,10 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 	<?php } ?>
  	</ul>
   </div>
-
+	
 </div>
+
+<script src="weblive/welive.php" language="javascript"></script>
 </body>
 </html>
 <?php }} ?>
