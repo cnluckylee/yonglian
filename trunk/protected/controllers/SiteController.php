@@ -104,10 +104,34 @@ class SiteController extends Controller
 		$data = array();
 		$data['company'] = $company;
 		$data['adv'] = $adv;
+		$data['city'] = AllType::getcity(1);
 		$smarty->_smarty->assign($data);
 		$smarty->_smarty->display('site/company_show.html');
 	}
 
+
+	public function actionGetcity()
+	{
+		$city_id = Yii::app()->request->getPost('city',1);
+
+	 	if($city_id == 1)
+	 	{
+	 		$data=City::model()->findAll('parent_id='.$city_id,array('city_id'=>'desc'));
+	 		$data=CHtml::listData($data,'city_id','city_name');
+	 		foreach($data as $value=>$name)
+		   {
+		        echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
+		   }
+	 	}else{
+			$data=City::model()->findAll('parent_id='.$city_id.' and city_type=2');
+			$data=CHtml::listData($data,'city_id','city_name');
+		   foreach($data as $value=>$name)
+		   {
+		        echo CHtml::tag('option',array('value'=>$value),CHtml::encode($name),true);
+		   }
+	 	}
+		return $data;
+	}
 
 	/**
 	 * This is the action to handle external exceptions.

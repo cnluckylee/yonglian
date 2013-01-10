@@ -201,11 +201,14 @@ class AllType extends CActiveRecord
 	/**
 	 * 城市列表
 	 */
-	 public static function getCity()
+	 public static function getCity($city_id=1)
 	 {
 
-	 	$Company = Yii::app()->request->getPost('Company');
-		$city_id = intval($Company['city']?$Company['city']:1);
+	 	if(empty($city_id))
+	 	{
+	 		$Company = Yii::app()->request->getPost('Company');
+			$city_id = intval($Company['city']?$Company['city']:1);
+	 	}
 	 	if($city_id == 1)
 	 	{
 	 		$data=City::model()->findAll('parent_id='.$city_id,array('city_id'=>'desc'));
