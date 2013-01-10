@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2012-12-29 11:49:53
+<?php /* Smarty version Smarty-3.1.12, created on 2013-01-10 18:07:37
          compiled from "E:\wwwroot\yonglian\protected\views\tpl\site\company_show.html" */ ?>
-<?php /*%%SmartyHeaderCode:2526350de68615fea31-35592690%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:112150ee92e929feb7-51594731%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ad1a648b97eec1c7d770912b9fb0d3adfdc89388' => 
     array (
       0 => 'E:\\wwwroot\\yonglian\\protected\\views\\tpl\\site\\company_show.html',
-      1 => 1356752988,
+      1 => 1357812449,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2526350de68615fea31-35592690',
+  'nocache_hash' => '112150ee92e929feb7-51594731',
   'function' => 
   array (
   ),
@@ -20,12 +20,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'company' => 0,
     'item' => 0,
     'adv' => 0,
+    'city' => 0,
+    'key' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_50de686164cde0_18983054',
+  'unifunc' => 'content_50ee92e92d2ec4_47420444',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50de686164cde0_18983054')) {function content_50de686164cde0_18983054($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_50ee92e92d2ec4_47420444')) {function content_50ee92e92d2ec4_47420444($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -35,6 +37,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </head>
 
 <body>
+<style type="text/css">
+<!--
+*{ margin:0; padding:0;}
+* html{ background-image:url(about:blank); background-attachment:fixed;}
+.wrap{ height:5000px;}
+.btn{ position:fixed; _position:absolute; left:50%; top:50%; display:block; width:200px; height:50px; font:18px/50px Microsoft Yahei,Arial,'\5b8b\4f53',sans-serif; margin-left:-100px; margin-top:-25px; line-height:50px; text-align:center; color:#666; border:1px solid #999; -moz-box-shadow:0 0 5px #ccc; -webkit-box-shadow:0 0 5px #ccc; box-shadow:0 0 5px #ccc;}
+.btn:hover{ color:#111; border-color:#111;}
+
+.popup_box{ width:400px; padding:15px; background:#fff; border:5px solid #444; font-family:Arial,'\5b8b\4f53',sans-serif; -moz-border-radius:10px; -webkit-border-radius:10px; border-radius:10px; -moz-box-shadow:0 0 5px #ccc; -webkit-box-shadow:0 0 5px #ccc; box-shadow:0 0 5px #ccc; display:none}
+
+.popup_box .close{}
+.popup_box_head{ height:18px;}
+.popup_box_head .h_tl{ float:left; font:18px/1 Microsoft Yahei,'\5b8b\4f53',sans-serif;}
+.popup_box_head .close{ float:right; font-style:normal; font:bold 14px/1 Tahoma,'\5b8b\4f53',sans-serif; color:#666; text-decoration:none;}
+.popup_box_head .close:hover{ color:#333;}
+.popup_box_content{ padding-top:10px; line-height:1.5; font-size:14px; color:#474747;}
+-->
+</style>
+<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
+<script language="javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <div style="width: 1030px; margin: 0pt auto; position: relative; height: 2500;">
 
 <div id="Layer1"><img src="images/site title/site-title4.gif" width="1010" height="350" /></div>
@@ -68,7 +90,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div id="Layer6">
   <table width="106" border="0">
     <tr>
-      <td style="BORDER-top: blue 1px solid;BORDER-left: blue 1px solid;BORDER-right: blue 1px solid;BORDER-bottom: blue 1px solid;"width="62">请选地区</td>
+      <td width="62">
+
+	<input type="text" size="10" value="请选地区" onclick="$('#popup_box').window('open')"/>
+</td>
     </tr>
   </table>
 </div>
@@ -209,8 +234,51 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
   </div>
 	
 </div>
-
+<div id="popup_box" class="easyui-window" title="Modal Window" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:500px;height:200px;padding:10px;">
+	<select id="city" name="city" onchange="changecity()">
+   	 <option value="">请选择</option>
+     <?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['city']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+     	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</option>
+     <?php } ?>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <select id="city_id" name="city_id">
+    	<option value="">请选择</option>
+    </select>
+</div>
 <script src="weblive/welive.php" language="javascript"></script>
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="js/easyui/demo.css">
+<script language="javascript">
+	
+	function changecity()
+	{
+		var city = $("#city").val();
+		if(city)
+		{
+			$.ajax({
+				  type: "Post",
+				  url: "?r=site/getcity",
+				  data: "city="+city,
+				  success: function(msg){
+							 $("#city_id").html(msg);
+						   }
+				}); 
+		}else{
+			 $("#city_id").html('<option value="">请选择</option>');
+		}
+		
+	}
+</script>
 </body>
 </html>
 <?php }} ?>
