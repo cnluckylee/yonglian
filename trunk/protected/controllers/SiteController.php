@@ -105,6 +105,7 @@ class SiteController extends Controller
 		$data['company'] = $company;
 		$data['adv'] = $adv;
 		$data['city'] = AllType::getcity(1);
+		$data['industry'] = adminIndustry::model()->findAll();
 		$smarty->_smarty->assign($data);
 		$smarty->_smarty->display('site/company_show.html');
 	}

@@ -1,33 +1,34 @@
-<?php /* Smarty version Smarty-3.1.12, created on 2013-01-10 18:07:37
+<?php /* Smarty version Smarty-3.1.12, created on 2013-01-11 17:07:07
          compiled from "E:\wwwroot\yonglian\protected\views\tpl\site\company_show.html" */ ?>
-<?php /*%%SmartyHeaderCode:112150ee92e929feb7-51594731%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1964050efd63be2bfe5-70378703%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ad1a648b97eec1c7d770912b9fb0d3adfdc89388' => 
     array (
       0 => 'E:\\wwwroot\\yonglian\\protected\\views\\tpl\\site\\company_show.html',
-      1 => 1357812449,
+      1 => 1357895222,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '112150ee92e929feb7-51594731',
+  'nocache_hash' => '1964050efd63be2bfe5-70378703',
   'function' => 
   array (
   ),
   'variables' => 
   array (
-    'company' => 0,
+    'industry' => 0,
+    'key' => 0,
     'item' => 0,
+    'company' => 0,
     'adv' => 0,
     'city' => 0,
-    'key' => 0,
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.12',
-  'unifunc' => 'content_50ee92e92d2ec4_47420444',
+  'unifunc' => 'content_50efd63c0ccca8_47900312',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_50ee92e92d2ec4_47420444')) {function content_50ee92e92d2ec4_47420444($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php if ($_valid && !is_callable('content_50efd63c0ccca8_47900312')) {function content_50efd63c0ccca8_47900312($_smarty_tpl) {?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -55,8 +56,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 .popup_box_content{ padding-top:10px; line-height:1.5; font-size:14px; color:#474747;}
 -->
 </style>
-<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
-<script language="javascript" src="js/easyui/jquery.easyui.min.js"></script>
+
 <div style="width: 1030px; margin: 0pt auto; position: relative; height: 2500;">
 
 <div id="Layer1"><img src="images/site title/site-title4.gif" width="1010" height="350" /></div>
@@ -79,56 +79,31 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   </table>
 </div>
 
-<div id="Layer5">
-  <table width="30" height="20" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Window button/Choose area.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
 
 <div id="Layer6">
-  <table width="106" border="0">
-    <tr>
-      <td width="62">
-
-	<input type="text" size="10" value="请选地区" onclick="$('#popup_box').window('open')"/>
-</td>
-    </tr>
+  <table width="100%" border="0">
+  <tr>
+    <td width="150"><img src="images/Window button/Choose area.gif" width="40" height="30" />&nbsp;&nbsp;<input type="text" size="10" id="search_city_name" value="请选地区" onclick="$('#popup_box').window('open')"/></td>
+    <td width="150"><img src="images/Window button/Choose industry.gif" width="40" height="30" />&nbsp;&nbsp;<select id="search_industry" name="search_industry">
+      	<?php  $_smarty_tpl->tpl_vars['item'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['item']->_loop = false;
+ $_smarty_tpl->tpl_vars['key'] = new Smarty_Variable;
+ $_from = $_smarty_tpl->tpl_vars['industry']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['item']->key => $_smarty_tpl->tpl_vars['item']->value){
+$_smarty_tpl->tpl_vars['item']->_loop = true;
+ $_smarty_tpl->tpl_vars['key']->value = $_smarty_tpl->tpl_vars['item']->key;
+?>
+        	<option value="<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['item']->value->name;?>
+</option>
+        <?php } ?>
+      </select></td>
+    <td width="150" height="40"><input type="text" value="输入企业名称" name="search_company"  id="search_company" onclick="check_value()" onblur="check_value()"/></td>
+    <td><img src="images/easyui/searchbox_button.png"/></td>
+  </tr>
   </table>
 </div>
 
-<div id="Layer7">
-  <table width="40" height="30" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Window button/Choose industry.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
 
-<div id="Layer8">
-  <table width="301" border="0">
-    <tr>
-      <td style="BORDER-top: blue 1px solid;BORDER-left: blue 1px solid;BORDER-right: blue 1px solid;BORDER-bottom: blue 1px solid;"width="248">请选行业</td>
-    </tr>
-  </table>
-</div>
-
-<div id="Layer9">
-  <table width="40" height="30" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Web button/Increase search.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
-
-<div id="Layer10">
-  <table width="40" height="30" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Web button/Reduce search.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
 
 <div id="Layer11">
   <div id="Layer14">
@@ -162,15 +137,6 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
     </table>
   </div>
   <img src="images/background/background2.gif" width="710" height="600" /></div>
-
-<div id="Layer12">
-  <table width="368" border="0">
-    <tr>
-      <td width="362" style="BORDER-top: blue 1px solid;BORDER-left: blue 1px solid;BORDER-right: blue 1px solid;BORDER-bottom: blue 1px solid;">请填企业名称</td>
-    </tr>
-  </table>
-</div>
-
 <div id="Layer13"><img src="images/site title/site-title3.gif" width="280" height="30" /></div>
 
 <div id="Layer15">
@@ -253,7 +219,12 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
     <select id="city_id" name="city_id">
     	<option value="">请选择</option>
     </select>
+    
+    <input type="button" value="确定"  onclick="set_data()" />
 </div>
+<input type="hidden" id="search_city" name="search_city" />
+<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
+<script language="javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script src="weblive/welive.php" language="javascript"></script>
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">
@@ -277,6 +248,20 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 			 $("#city_id").html('<option value="">请选择</option>');
 		}
 		
+	}
+	function set_data()
+	{
+		var search_city = $("#city_id").val();
+		$("#search_city_name").val($("#city_id>option:selected").get(0).text); 
+		$("#search_city").val(search_city);
+		$('#popup_box').window('close');
+	}
+	function check_value()
+	{
+		if($("#search_company").val()=="输入企业名称")
+			$("#search_company").val("");
+		else
+			$("#search_company").val("输入企业名称");
 	}
 </script>
 </body>

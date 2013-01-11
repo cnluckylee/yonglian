@@ -26,8 +26,7 @@
 .popup_box_content{ padding-top:10px; line-height:1.5; font-size:14px; color:#474747;}
 -->
 </style>
-<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
-<script language="javascript" src="js/easyui/jquery.easyui.min.js"></script>
+
 <div style="width: 1030px; margin: 0pt auto; position: relative; height: 2500;">
 
 <div id="Layer1"><img src="images/site title/site-title4.gif" width="1010" height="350" /></div>
@@ -50,56 +49,23 @@
   </table>
 </div>
 
-<div id="Layer5">
-  <table width="30" height="20" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Window button/Choose area.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
 
 <div id="Layer6">
-  <table width="106" border="0">
-    <tr>
-      <td width="62">
-
-	<input type="text" size="10" value="请选地区" onclick="$('#popup_box').window('open')"/>
-</td>
-    </tr>
+  <table width="100%" border="0">
+  <tr>
+    <td width="150"><img src="images/Window button/Choose area.gif" width="40" height="30" />&nbsp;&nbsp;<input type="text" size="10" id="search_city_name" value="请选地区" onclick="$('#popup_box').window('open')"/></td>
+    <td width="150"><img src="images/Window button/Choose industry.gif" width="40" height="30" />&nbsp;&nbsp;<select id="search_industry" name="search_industry">
+      	{{foreach item=item from=$industry key=key}}
+        	<option value="{{$key}}">{{$item->name}}</option>
+        {{/foreach}}
+      </select></td>
+    <td width="150" height="40"><input type="text" value="输入企业名称" name="search_company"  id="search_company" onclick="check_value()" onblur="check_value()"/></td>
+    <td>&nbsp;&nbsp;<img src="images/easyui/searchbox_button.png"/></td>
+  </tr>
   </table>
 </div>
 
-<div id="Layer7">
-  <table width="40" height="30" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Window button/Choose industry.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
 
-<div id="Layer8">
-  <table width="301" border="0">
-    <tr>
-      <td style="BORDER-top: blue 1px solid;BORDER-left: blue 1px solid;BORDER-right: blue 1px solid;BORDER-bottom: blue 1px solid;"width="248">请选行业</td>
-    </tr>
-  </table>
-</div>
-
-<div id="Layer9">
-  <table width="40" height="30" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Web button/Increase search.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
-
-<div id="Layer10">
-  <table width="40" height="30" border="0">
-    <tr>
-      <td width="40" height="30"><img src="images/Web button/Reduce search.gif" width="40" height="30" /></td>
-    </tr>
-  </table>
-</div>
 
 <div id="Layer11">
   <div id="Layer14">
@@ -126,15 +92,6 @@
     </table>
   </div>
   <img src="images/background/background2.gif" width="710" height="600" /></div>
-
-<div id="Layer12">
-  <table width="368" border="0">
-    <tr>
-      <td width="362" style="BORDER-top: blue 1px solid;BORDER-left: blue 1px solid;BORDER-right: blue 1px solid;BORDER-bottom: blue 1px solid;">请填企业名称</td>
-    </tr>
-  </table>
-</div>
-
 <div id="Layer13"><img src="images/site title/site-title3.gif" width="280" height="30" /></div>
 
 <div id="Layer15">
@@ -201,7 +158,12 @@ width="132" height="40" ><span class="STYLE3">著名商标：</span></td>
     <select id="city_id" name="city_id">
     	<option value="">请选择</option>
     </select>
+    
+    <input type="button" value="确定"  onclick="set_data()" />
 </div>
+<input type="hidden" id="search_city" name="search_city" />
+<script language="javascript" src="js/jquery-1.8.0.min.js"></script>
+<script language="javascript" src="js/easyui/jquery.easyui.min.js"></script>
 <script src="weblive/welive.php" language="javascript"></script>
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css">
@@ -225,6 +187,20 @@ width="132" height="40" ><span class="STYLE3">著名商标：</span></td>
 			 $("#city_id").html('<option value="">请选择</option>');
 		}
 		
+	}
+	function set_data()
+	{
+		var search_city = $("#city_id").val();
+		$("#search_city_name").val($("#city_id>option:selected").get(0).text); 
+		$("#search_city").val(search_city);
+		$('#popup_box').window('close');
+	}
+	function check_value()
+	{
+		if($("#search_company").val()=="输入企业名称")
+			$("#search_company").val("");
+		else
+			$("#search_company").val("输入企业名称");
 	}
 </script>
 </body>
