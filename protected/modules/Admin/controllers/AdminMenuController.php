@@ -105,6 +105,7 @@ class AdminMenuController extends AdminController {
 					<td>\$str_manage</td>
 				</tr>";
 		$tree->init($array);
+
 		$this->render('index', array(
 			'menuTree' => $tree->get_tree('0', $str)
 		));

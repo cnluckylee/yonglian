@@ -125,17 +125,6 @@ class Tree {
 				$spacer = $adds ? $adds . $j : '';
 				$selected = $id == $sid ? 'selected' : '';
 				@extract($a);
-
-
-$string = 'cup';
-$name = 'coffee';
-$str = 'This is a $string with my $name in it.';
-echo $str. "\n";
-echo "2222<br>111";
-eval("\$str = \"$str\";");
-echo "3333<br>";
-echo $str. "\n";
-				exit;
 				$parentid == "0" && $str_group ? eval("\$nstr = \"$str_group\";") : eval("\$nstr = \"$str\";");
 				$this->ret .= $nstr;
 				$nbsp = $this->nbsp;
