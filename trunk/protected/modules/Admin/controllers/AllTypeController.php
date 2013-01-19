@@ -8,8 +8,6 @@ class AllTypeController extends AdminController
 	 */
 	public function actionIndex($type = null)
 	{
-
-
 		$menus = AllType::getTreeTypeDATA('*', false,$type);
 		$tree = new Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
@@ -21,10 +19,10 @@ class AllTypeController extends AdminController
                                     <a class="del" href="' . $this->createUrl('delete', array('id' => $r['id'])) . '" msg="确定删除.' . $r['name'] . '">删除</a> ';
 			$array[] = $r;
 		}
+
 		$str = "<tr>
 					<td><input name='listorders[\$id]' type='text' size='3' value='\$listorder' class='input-text-c'></td>
 					<td >\$spacer\$name</td>
-					<td ><a href='\".Yii::app()->createUrl(\$modules.'/'.\$controller.'/'.\$action).\"'>\".Yii::app()->createUrl(\$modules.'/'.\$controller.'/'.\$action).\"</td>
 					<td>\$str_manage</td>
 				</tr>";
 
@@ -48,7 +46,8 @@ class AllTypeController extends AdminController
 		if(isset($_POST['AllType']))
 		{
 			$model->attributes=$_POST['AllType'];
-			$type = $model->attributes->type;
+
+			$type = $model->attributes['type'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index&type'.$type));
 		}

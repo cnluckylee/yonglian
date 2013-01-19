@@ -14,7 +14,7 @@ $('.del').click(function(){
 						alert(data.info);
 					}
 	  			},
-				
+
 				error: function(XMLHttpRequest, textStatus, errorThrown){
 					alert(XMLHttpRequest.responseText);
 				}
@@ -24,11 +24,11 @@ $('.del').click(function(){
 	});
 	$("form").submit(function() {
 		$this = $(this);
-		
+
   		var formdata = $(this).formSerialize();
-		
+
 		$.post('<?php echo $this->createUrl('listorder');?>', formdata,function(data){
-			if(!data.status) 
+			if(!data.status)
 				alert(data.info);
 			else if(data.status) {
 				window.location.reload();
@@ -48,7 +48,6 @@ $('.del').click(function(){
       <tr>
         <th width="80" style="text-align:center">排序</th>
         <th>菜单名称</th>
-        <th>URL</th>
         <th>管理操作</th>
       </tr>
     </thead>
