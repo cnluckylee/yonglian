@@ -69,7 +69,7 @@ class Tree {
 	 */
 	public function get_child($myid) {
 		$a = $newarr = array();
-	
+
 		if (is_array($this->arr)) {
 			foreach ($this->arr as $id => $a) {
 				if ($a['parentid'] === $myid)
@@ -111,7 +111,7 @@ class Tree {
 	 */
 	public function get_tree($myid, $str, $sid = 0, $adds = '', $str_group = '') {
 		$number = 1;
-		$child = $this->get_child($myid);		
+		$child = $this->get_child($myid);
 		if (is_array($child)) {
 			$total = count($child);
 			foreach ($child as $id => $a) {
@@ -125,11 +125,21 @@ class Tree {
 				$spacer = $adds ? $adds . $j : '';
 				$selected = $id == $sid ? 'selected' : '';
 				@extract($a);
-				
-				$parentid == '0' && $str_group ? eval("\$nstr = \"$str_group\";") : eval("\$nstr = \"$str\";");
+
+
+$string = 'cup';
+$name = 'coffee';
+$str = 'This is a $string with my $name in it.';
+echo $str. "\n";
+echo "2222<br>111";
+eval("\$str = \"$str\";");
+echo "3333<br>";
+echo $str. "\n";
+				exit;
+				$parentid == "0" && $str_group ? eval("\$nstr = \"$str_group\";") : eval("\$nstr = \"$str\";");
 				$this->ret .= $nstr;
 				$nbsp = $this->nbsp;
-				
+
 				$this->get_tree($id, $str, $sid, $adds . $k . $nbsp, $str_group);
 				$number++;
 			}

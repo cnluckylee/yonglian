@@ -8,9 +8,9 @@ class CompanyController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new company('search');
+		$model=new Company('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['company']))
+		if(isset($_GET['Company']))
 			$model->attributes=$_GET['company'];
 
 		$this->render('index',array(
@@ -23,7 +23,7 @@ class CompanyController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new company;
+		$model=new Company;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
