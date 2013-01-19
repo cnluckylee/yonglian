@@ -8,8 +8,8 @@ var getSearchFromHtml = function() {
 		searchFromHtml = $('.search-form').html();
 		$('.search-form').remove();
 	}
-	
-	return searchFromHtml;	
+
+	return searchFromHtml;
 }
 var searchFromDialog = art.dialog({
 	title: '高级搜索',
@@ -84,7 +84,7 @@ $('.search-button').click(function(){
 						//),
 				),
 
-		
+
 
 			array(
 
@@ -94,9 +94,9 @@ $('.search-button').click(function(){
 								//'width' => '60',
 						//),
 				),
-				
 
-			
+
+
 		array(
 
 						'name' => 'desct',
@@ -118,14 +118,14 @@ $('.search-button').click(function(){
 			array(
 
 						'name' => 'rec',
-						'value' =>array($this,getValueByKey),
+						'value' =>array($this,"getValueByKey"),
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
-			
+
 		array(
 			'header' =>'操作',
 			'class'=>'CButtonColumn',

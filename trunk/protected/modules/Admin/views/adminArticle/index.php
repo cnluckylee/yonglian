@@ -25,7 +25,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			array(
 
 						'name' => 'title',
-						
+
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -33,15 +33,15 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			array(
 
 						'name' => 'cid',
-						'value' =>array($this,getValueByKey),
-					
+						'value' =>array($this,"getValueByKey"),
+
 				),
 
 			array(
 
 						'name' => 'imgurl',
 						'type' => 'image',
-						
+
 						'htmlOptions' => array(
 								'class' => 'thumbimage_100',
 						),
@@ -78,7 +78,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),				
+				),
 			array(
 			'header'=>'操作',
 			'class'=>'CButtonColumn',

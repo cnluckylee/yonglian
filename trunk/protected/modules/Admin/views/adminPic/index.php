@@ -9,8 +9,8 @@ var getSearchFromHtml = function() {
 		searchFromHtml = $('.search-form').html();
 		$('.search-form').remove();
 	}
-	
-	return searchFromHtml;	
+
+	return searchFromHtml;
 }
 var searchFromDialog = art.dialog({
 	title: '高级搜索',
@@ -40,10 +40,10 @@ $('.search-button').click(function(){
 
 <div class="search-form" style="display:none">
 	<?php
-	
+
 	$this->renderPartial('_search', array(
 		'model' => $model,
-		'picType' => $picType,
+
 	));
 	?>
 </div><!-- search-form -->
@@ -67,11 +67,11 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		//'width' => '60',
 		//),
 		),
-		
+
 		array(
 			'name' => 'type',
-			'value' =>array($this,getValueByKey),
-			
+			'value' =>array($this,"getValueByKey"),
+
 		//'htmlOptions' => array(
 		//'width' => '60',
 		//),
@@ -98,7 +98,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		//),
 		),
 		array(
-			
+
 			'class' => 'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'header'=>'操作',
