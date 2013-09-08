@@ -5,7 +5,7 @@
 <meta name="language" content="en" />
 <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 <!-- blueprint CSS framework -->
-<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
+<!--<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />-->
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
 <!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
@@ -22,57 +22,34 @@
 ?>
 </head>
 <body>
-<div class="container" id="page">
-  <div id="header">
-    <div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-  </div>
-  <!-- header -->
-  <div id="myslidemenu" class="jqueryslidemenu">
-    <?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array
-			(
-				array('label'=>'永链全貌', 'url'=>array('/site/index'),'items'=>array(
-					array('label'=>'企业秀台', 'url'=>array('/site/index')),
-					array('label'=>'企业动态', 'url'=>array('/site/index')),
-					array('label'=>'携手发展', 'url'=>array('/site/index')),
-					array('label'=>'舵主风采', 'url'=>array('/site/index')),
-					array('label'=>'团队闪耀', 'url'=>array('/site/index')),
-				)),
-				array('label'=>'管理经典', 'url'=>array('/site/page', 'view'=>'about'),'items'=>array(
-					array('label'=>'专家新论', 'url'=>array('/site/index')),
-					array('label'=>'管理技术', 'url'=>array('/site/index')),
-					array('label'=>'管理案例', 'url'=>array('/site/index')),
-					array('label'=>'永链观点', 'url'=>array('/site/index')),
+<div class="main">
 
-				)),
-				array('label'=>'用户之窗', 'url'=>array('/site/contact'),'items'=>array(
-					array('label'=>'政策精选', 'url'=>array('/site/index')),
-					array('label'=>'电子刊期', 'url'=>array('/site/index')),
-					array('label'=>'常用工具', 'url'=>array('/download')),
-					array('label'=>'用户体验', 'url'=>array('/site/index')),
-				)),
-				array('label'=>'永链擂台', 'url'=>array('/site/contact'), 'items'=>array
-				(
-					array('label'=>'项目报名', 'url'=>array('/site/index')),
-					array('label'=>'赛况介绍', 'url'=>array('/site/page', 'view'=>'about')),
-				)),
-				array('label'=>'永链概况', 'url'=>array('yonglian'),'items'=>array(
-					array('label'=>'公司介绍', 'url'=>'yonglian/about/','linkOptions'=>array('target'=>'_blank')),
-					array('label'=>'公司新闻', 'url'=>'yonglian/news/','linkOptions'=>array('target'=>'_blank')),
-					array('label'=>'活动分享', 'url'=>array('/site/index')),
-					array('label'=>'项目合作', 'url'=>array('/site/index')),
-					array('label'=>'永链团队', 'url'=>array('/site/index')),
-					array('label'=>'永链产品', 'url'=>'yonglian/product/','linkOptions'=>array('target'=>'_blank')),
-					array('label'=>'员工招聘', 'url'=>'yonglian/job/','linkOptions'=>array('target'=>'_blank')),
-					array('label'=>'联系我们', 'url'=>'yonglian/about/show.php?lang=cn&id=15','linkOptions'=>array('target'=>'_blank')),
+<div class="header">
+<div class="l">
+<div class="website_title">---永链工社---</div>
+<hr>
+<p class="website_url">http://myjs.chinaz.com</p>
+</div>
 
-				)),
-				array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-    <br style="clear: left" />
-  </div>
+
+
+<div  class="r"><!--网页公链开始-->
+<table border="3"  cellpadding="5" cellspacing="5" bgcolor="#CCCCCC">
+<tr>
+<td>桌面快捷</td>
+<td>用户注册</td>
+<td>企业公告</td>
+</tr>
+<tr>
+<td>永链数据</td>
+<td>联系我们</td>
+<td>招贤纳士</td>
+</tr>
+</table>
+</div><!--网页公链结束-->
+</div>
+<div class="top_hr"></div>
+
   <!-- mainmenu -->
   <?php if(isset($this->breadcrumbs)):?>
   <?php $this->widget('zii.widgets.CBreadcrumbs', array(
@@ -89,7 +66,7 @@
         <div class="img">
           <ul>
          <?php
-		 
+
 		  $linklist=Link::model()->findAll();
 		  foreach($linklist as $key=>$item):?>
 		  	<li><a target="_blank" href="<?php echo $item->weburl ?>"><img alt="MetInfo企业网站管理系统" src="<?php echo $item->weblogo ?>"></a></li>
@@ -106,7 +83,7 @@
     </div>
     <div class="clear"></div>
   </div>
-  <div id="footer"> 
+  <div id="footer">
   <?php
   	$settings = parse_ini_file("config_cn.inc.php");
   ?>
@@ -119,3 +96,4 @@
 <!-- page -->
 </body>
 </html>
+
