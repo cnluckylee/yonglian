@@ -203,6 +203,13 @@ class SiteController extends Controller
 		$this->redirect(Yii::app()->homeUrl);
 	}
 
+	/**
+	 * 新的首页
+	 */
+	public function actionNewIndex()
+	{
+		$this->render('newindex');
+	}
 
 
 }
