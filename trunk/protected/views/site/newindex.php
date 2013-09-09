@@ -1,5 +1,5 @@
-
-<div style="width:300px;margin:0pt auto; position:relative; height:347px;float:left;border:0px solid silver;"><!--信息索取&按钮开始-->
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/index.css" />
+<div class="info"><!--信息索取&按钮开始-->
 <div id="inquires0"><div id="bt1">信息索取：解除搜索之困 本社供您所需</div></div>
 <div id="inquires1"><!--信息索取开始-->
 <div id="getId">
@@ -77,30 +77,22 @@
 <a href="MemberRegistered.html"target="_blank"style="color:#009900">注册登录</a>
 </div></div><!--按钮结束-->
 </div><!--信息索取&按钮结束-->
-<div style="width:820px; margin:0pt auto; position:relative; height:347px;float:right;border:0px solid silver;"><!--海报&公告开始-->
-<div id="gglw"><br/><!--公告栏外开始-->
+<div class="poster"><!--海报&公告开始-->
+    <div class="item">
+    <a onclick="javasctipt:tj(15,'PCIndex')"  alt="首页" href="http://www.wochacha.com/m" target="_blank"> 
+      <img alt="首页" src="images/p1.gif">
+    </a> 
+    </div>
+</div>
+
+
+<!--公告栏外开始-->
+
+<div class="box">
 <p>　　本网即日始，推出软件系列产品优惠套餐</p>
 <div id="bt6">公告名称</div>
-</div><!--公告栏外结束-->
-<div id="posters"><!--海报开始-->
-<div id="box">
-<div class="list">
-<div class="imga"><a href="DateNews.html"target="_blank"><img src="images/p1.gif" width="686" height="343" /></a></div>
-</div>
-<div class="list">
-<div class="imga"><a href="DateActivity.html"target="_blank"><img src="images/p2.gif" width="686" height="343" /></a></div>
-</div>
-<div class="list">
-<div class="imga"><a href="DateProject.html"target="_blank"><img src="images/p3.gif" width="686" height="343" /></a></div>
-</div>
-<div class="list">
-<div class="imga"><a href="DateProduct.html"target="_blank"><img src="images/p4.gif" width="686" height="343" /></a></div>
-</div>
-<div class="list">
-<div class="imga"><a href="DateTeam.html"target="_blank"><img src="images/p5.gif" width="686" height="343" /></a></div>
-</div>
 </div></div><!--海报结束-->
-</div><!--海报&公告结束-->
+<!--海报&公告结束-->
 <div style="width:1130px; margin:0pt auto; position:relative; height:7px;float:right;"></div><!--间隔层-->
 <div style="width:300px;margin:0pt auto;position:relative;height:738px;float:left;border-bottom:0px solid #d0d0d0;"><!--广告栏开始-->
 <div style="width:300px;position:relative;height:170px;float:left;border-bottom:0px solid blue;"><!--广告1开始-->
@@ -2258,53 +2250,3 @@ autoplay(0);
 </table>
 </div>
 <div id="quick2"><div id="bt5">迅捷遴选：助您锁定合作伙伴群 打造业内最佳产业链</div></div>
-<script for="d" event="onclick">
-<!--点击本站号码变色控制-->
-this.style.color="#ffffff";
-this.style.backgroundColor="#f00";
-if(clickOBJD!=null)clickOBJD.style.color="";
-if(clickOBJD!=null)clickOBJD.style.backgroundColor="";
-clickOBJD=this;
-</script>
-<script for="dj" event="onclick">
-<!--点击推荐号码变色控制-->
-this.style.color="#ffffff";
-this.style.backgroundColor="#f00";
-if(clickOBJDJ!=null)clickOBJDJ.style.color="";
-if(clickOBJDJ!=null)clickOBJDJ.style.backgroundColor="";
-clickOBJDJ=this;
-</script>
-</div><!--迅捷遴选结束-->
-<!--间隔层-->
-<div style="width:1130px; margin:0pt auto; position:relative; height:30px;float:left;border:0px solid silver;background:#fdfdfd"></div>
-<!--友情链接开始-->
-<div style="width:1120px; margin:0pt auto;position:relative;height:62px;float:left;border:5px solid #d0d0d0;font-weight:normal;background:#fdfdfd">
-<table width="%" cellspacing="0" cellpadding="0" >
-<tr>
-<td width="80" height="62" bgcolor="#96C2F1"align="center"style="font-weight:bold;color:#ffffff;font-size:16px;">友情链接</td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>
-<td width="80" height="62"align="center"><a href="CPSingleEnterprise.html"target="_blank">友情链接</a></td>    
-</tr>
-</table>
-</div>
-<!--友情链接结束-->
-<!--间隔层开始-->
-<div style="width:1130px; margin:0pt auto; position:relative; height:7px;border:0px solid silver;float:left;background:">
-</div><!--间隔层结束--
-<!--间隔层-->
-<div style="width:1130px; margin:0pt auto; position:relative; height:70px;float:left;border:0px solid silver;background:#fdfdfd"></div>
-
-
