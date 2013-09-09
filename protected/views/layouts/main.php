@@ -59,11 +59,13 @@
   <?php endif;?>
   <?php echo $content; ?>
   <div class="clear"></div>
-  <div class="indexlink" style="height: 33px;">
-    <h3 class="linktd" style="line-height: 31px;">友情链接</h3>
-    <div style="overflow: hidden; width: 876px; height: 33px;" id="linksandy" class="indexlinktext">
+   <div class="indexlink">
+   	<div class="l">
+   	 <h3 class="linktd" style="line-height: 31px;">友情链接</h3>
+    </div>
+    <div id="linksandy" class="indexlinktext">
       <div class="list">
-        <div class="img">
+
           <ul>
          <?php
 
@@ -79,7 +81,7 @@
           </ul>
           <div class="clear"></div>
         </div>
-      </div>
+
     </div>
     <div class="clear"></div>
   </div>
