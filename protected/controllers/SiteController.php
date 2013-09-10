@@ -210,6 +210,12 @@ class SiteController extends Controller
 	{
 		$this->render('newindex');
 	}
-
+	/**
+	 * 企业秀台
+	 */
+	public function actionCPBooth()
+	{
+		$this->render('CPBooth');
+	}
 
 }
