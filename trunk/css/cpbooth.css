@@ -1,0 +1,13 @@
+.video{
+	width:330px;
+	height:211px;
+	float:left;
+	border:5px solid #d0d0d0
+}
+
+.lanmu_content{
+	float: left;
+    width: 750px;
+	line-height: 30px;
+	padding: 5px;
+}
