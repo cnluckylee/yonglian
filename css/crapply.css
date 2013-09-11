@@ -52,10 +52,100 @@
 	width:20px;
 	height:400px;
 	background-color:#96c2f1;
+	float: left;
 }
 
 .title span{
 	width:20px;
 	word-wrap: break-word;
     letter-spacing: 20px; 
+}
+
+
+
+.picscroll .scrolllist {
+    height: 135px;
+    margin: 0 auto;
+    width: 1024px;
+}
+
+a.abtn {
+    background: url("../images/recomBtn.png") no-repeat scroll -65px -80px transparent;
+    display: block;
+    height: 130px;
+    outline: medium none;
+    overflow: hidden;
+    padding-top: 150px;
+    width: 45px;
+}
+a.aright {
+    background-position: -180px -80px;
+    float: right;
+}
+a.aright:hover {
+    background-position: -395px -80px;
+}
+.scrolllist .imglist_w li a img {
+    height: 120px;
+    width: 120px;
+}
+.scrolllist .imglist_w li p {
+    overflow: hidden;
+    padding-top: 20px;
+}
+.scrolllist .imglist_w li p a.title {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 40px;
+    line-height: 20px;
+    margin-left: 0;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+
+.scrolllist .imglist_w {
+    float: left;
+    height: 135px;
+    left: 15px;
+    overflow: hidden;
+    position: relative;
+    width: 900px;
+}
+
+.scrolllist .imglist_w ul {
+    left: 0;
+    position: absolute;
+    text-align: center;
+
+    width: auto;
+}
+.scrolllist .imglist_w li {
+    float: left;
+    height: 120px;
+    padding: 0 7px;
+    width: 135px;
+}
+a.aleft {
+    float: left;
+}
+a.aleft:hover {
+    background-position: -280px 60px;
+}
+
+.picscroll{
+	width:1000px;
+	float:left;
+}
+
+.content{
+	float:left;
+	width:500px;
+}
+
+.video{
+	float:right;
+	width:500px;
 }
