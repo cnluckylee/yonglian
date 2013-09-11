@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+.topMenu{
+	background-color:#96C2F1;
+	height:30px;
+	text-align:center;
+}
+
+.topMenu li{
+	display:inline;
+	color:#fff;
+	width:200px;
+	font-size:18px;
+	font-weight:bold;
+	margin-right: 10px;
+}
+
+.poster{
+	background:#d0d0d0;
+	width:994px;
+	height:470px;
+	margin:0 auto;
+}
+
+
+#ssbt1, #ssbt2, #ssbt3, #ssbt4, #ssbt5, #ssbt6 {
+    background: none repeat scroll 0 0 #96C2F1;
+    color: #FFFFFF;
+    font-size: 30px;
+    left: 0;
+    position: absolute;
+    top: 30px;
+    z-index: 1;
+}
+
+
+#ssbt1, #ssbt2, #ssbt3, #ssbt4, #ssbt5, #ssbt6 {
+    background: none repeat scroll 0 0 #96C2F1;
+    color: #FFFFFF;
+    font-size: 30px;
+    left: 0;
+    position: absolute;
+    top: 30px;
+    z-index: 1;
+}
+
+.sports{
+	width:1130px;
+}
+
+.title {
+	width:20px;
+	height:400px;
+	background-color:#96c2f1;
+}
+
+.title span{
+	width:20px;
+	word-wrap: break-word;
+    letter-spacing: 20px; 
+}
