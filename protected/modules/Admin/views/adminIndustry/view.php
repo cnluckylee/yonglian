@@ -20,6 +20,10 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'name',
-		'remark',
+		'pinyin',
+		'parentid',
+		'listorder',
+		'addTime',
+		'updTime',
 	),
 )); ?>

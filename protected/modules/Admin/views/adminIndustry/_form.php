@@ -10,13 +10,20 @@
         </tr>
       </thead>
       <tbody>
+      <tr>
+        <th width="100" align="right"><?php echo $form->labelEx($model,'parentid'); ?></th>
+        <td><select name="AdminIndustry[parentid]" id="adminIndustry_parentid">
+            <?php echo adminIndustry::getSelectTree('顶级菜单',$model->parentid);?>
+          </select>
+          <?php echo $form->error($model,'parentid'); ?> </td>
+      </tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
         </div>
         </td>
@@ -33,6 +40,19 @@
         </div>
         </td>
 	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'listorder'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'listorder'); ?>
+		<?php echo $form->error($model,'listorder'); ?>
+        </div>
+        </td>
+	</tr>
+
 
 </tbody>
       <tfoot>

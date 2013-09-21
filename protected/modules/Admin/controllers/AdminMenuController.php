@@ -14,7 +14,6 @@ class AdminMenuController extends AdminController {
 
 		if (isset($_POST['AdminMenu'])) {
 			$model->attributes = $_POST['AdminMenu'];
-
 			if ($model->save()) {
 				if (Yii::app()->request->getPost('crud', FALSE)) {
 					foreach (array('create' => '创建', 'update' => '修改', 'delete' => '删除') as $k => $act) {
