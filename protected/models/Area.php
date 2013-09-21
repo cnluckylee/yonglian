@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{admin_industry}}".
+ * This is the model class for table "{{area}}".
  *
- * The followings are the available columns in table '{{admin_industry}}':
+ * The followings are the available columns in table '{{area}}':
  * @property integer $id
  * @property string $name
  * @property string $pinyin
@@ -12,12 +12,12 @@
  * @property string $addTime
  * @property string $updTime
  */
-class AdminIndustry extends CActiveRecord
+class Area extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return AdminIndustry the static model class
+	 * @return Area the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -29,7 +29,7 @@ class AdminIndustry extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{admin_industry}}';
+		return '{{area}}';
 	}
 
 	/**
@@ -41,7 +41,8 @@ class AdminIndustry extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('parentid, listorder', 'numerical', 'integerOnly'=>true),
-			array('name, pinyin', 'length', 'max'=>255),
+			array('name', 'length', 'max'=>20),
+			array('pinyin', 'length', 'max'=>50),
 			array('addTime, updTime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -70,7 +71,7 @@ class AdminIndustry extends CActiveRecord
 			'name' => '名称',
 			'pinyin' => '拼音',
 			'listorder' => '排序',
-			'parentid' =>'上级行业',
+			'parentid'=>'上级地区',
 		);
 	}
 
@@ -98,15 +99,15 @@ class AdminIndustry extends CActiveRecord
 		));
 	}
 
-	 public static function getTreeDATA($select = null,$cache = TRUE) {
-        $cacheId = 'industry'.($select !== null?'_'.$select:'');
+public static function getTreeDATA($select = null,$cache = TRUE) {
+        $cacheId = 'area'.($select !== null?'_'.$select:'');
         if($cache) {
             $menus = Yii::app()->getCache()->get($cacheId);
             if($menus)
                 return $menus;
         }
         $model = self::model()->getDbConnection()->createCommand()
-                ->from('{{admin_industry}}')
+                ->from('{{area}}')
                 ->order('listorder DESC');
         if ($select !== null)
             $model->select($select);
@@ -114,6 +115,7 @@ class AdminIndustry extends CActiveRecord
             $model->select ('id,parentid,name');
 
         $menus = $model->queryAll();
+
         $array = array();
         foreach($menus as $menu) {
             $array[$menu['id']] = $menu;

@@ -12,5 +12,21 @@
 	<?php echo CHtml::encode($data->pinyin); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('parentid')); ?>:</b>
+	<?php echo CHtml::encode($data->parentid); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('listorder')); ?>:</b>
+	<?php echo CHtml::encode($data->listorder); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('addTime')); ?>:</b>
+	<?php echo CHtml::encode($data->addTime); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('updTime')); ?>:</b>
+	<?php echo CHtml::encode($data->updTime); ?>
+	<br />
+
 
 </div>

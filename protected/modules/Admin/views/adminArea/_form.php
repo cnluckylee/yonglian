@@ -1,8 +1,7 @@
 <div class="form">
-
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'admin-area-form',
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -11,30 +10,50 @@
         </tr>
       </thead>
       <tbody>
+      <tr>
+        <th width="100" align="right"><?php echo $form->labelEx($model,'parentid'); ?></th>
+        <td><select name="adminArea[parentid]" id="adminArea_parentid">
+            <?php echo Area::getSelectTree('顶级菜单',$model->parentid);?>
+          </select>
+          <?php echo $form->error($model,'parentid'); ?> </td>
+      </tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'name',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'name'); ?>
         </div>
         </td>
 	</tr>
 
 	<tr>
-      <th width="100" align="right">
+          <th width="100" align="right">
 		<?php echo $form->labelEx($model,'pinyin'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'pinyin',array('size'=>50,'maxlength'=>50)); ?>
-			
+		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'pinyin'); ?>
         </div>
         </td>
 	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'listorder'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'listorder'); ?>
+		<?php echo $form->error($model,'listorder'); ?>
+        </div>
+        </td>
+	</tr>
+
+
 </tbody>
       <tfoot>
         <tr class="title">
@@ -42,6 +61,8 @@
         </tr>
       </tfoot>
     </table>
+	
+
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div>
