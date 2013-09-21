@@ -6,36 +6,53 @@ class AdminAreaController extends AdminController
 	 * 首页列表.
 	 */
 	public function actionIndex()
-	{	
-		
-		$model=new AdminArea('search');
-	
-		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['adminArea']))
-			$model->attributes=$_GET['adminArea'];
+	{
 
-		$this->render('index',array(
-			'model'=>$model,
+		$menus = Area::getTreeDATA('*', false);
+		$tree = new Tree();
+		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
+		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
+		foreach ($menus as $r) {
+
+			$r['str_manage'] = '<a href="' . $this->createUrl('create', array('parentid' => $r['id'])) . '">添加子地区</a> |
+				<a  href="' . $this->createUrl('update', array('id' => $r['id'])) . '">修改</a> |
+                                    <a class="del" href="' . $this->createUrl('delete', array('id' => $r['id'])) . '" msg="确定删除.' . $r['name'] . '">删除</a> ';
+			$array[] = $r;
+		}
+		$modules = $this->getModule()->id;
+		$controller = $this->getId();  // controller
+		$action = $this->getAction()->id;  // action
+
+		$url = $modules.'/'.$controller.'/'.$action;
+		$str = "<tr>
+					<td><input name='listorders[\$id]' type='text' size='3' value='\$listorder' class='input-text-c'></td>
+					<td >\$spacer\$name</td>
+					<td ><a href='\".Yii::app()->createUrl('$url').\"'>\".Yii::app()->createUrl('$url').\"</td>
+					<td>\$str_manage</td>
+				</tr>";
+		$tree->init($array);
+		$this->render('index', array(
+			'menuTree' => $tree->get_tree('0', $str)
 		));
 	}
-	
+
 		/**
 	 * 创建
 	 */
-	public function actionCreate()
+	public function actionCreate($parentid = 0)
 	{
-		$model=new AdminArea;
+		$model=new Area;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['adminArea']))
 		{
 			$model->attributes=$_POST['adminArea'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
-
+		if ($parentid)
+			$model->parentid = $parentid;
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -53,12 +70,9 @@ class AdminAreaController extends AdminController
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['adminArea']))
-		{	
-			$password = trim($_POST['adminArea']['password']);
-			if(!empty($password))
-				$model->isUpdatePassword = true;
+		{
 			$model->attributes=$_POST['adminArea'];
-			
+
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -76,7 +90,7 @@ class AdminAreaController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -90,9 +104,9 @@ class AdminAreaController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
 
-	
+
+
 
 	/**
 	 * 载入
