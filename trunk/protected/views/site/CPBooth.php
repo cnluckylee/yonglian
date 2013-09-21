@@ -52,11 +52,11 @@
 
  <table  class="searchForm">
   <tr>
-    <td class="title">省辖市域</td>
+    <td class="title">区域选择</td>
     <td><input type="text" width="150px" /></td>
-    <td class="title">地级市域</td>
+    <td class="title">行业选择</td>
     <td><input type="text" width="150px" /></td>
-    <td class="title">区县镇域</td>
+    <td class="title">企业名称</td>
     <td><input type="text" width="150px" /></td>
   </tr>
    <tr>

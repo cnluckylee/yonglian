@@ -8,33 +8,53 @@ class AdminIndustryController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new adminIndustry('search');
-		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['adminIndustry']))
-			$model->attributes=$_GET['adminIndustry'];
+		$menus = adminIndustry::getTreeDATA('*', false);
 
-		$this->render('index',array(
-			'model'=>$model,
+		$tree = new Tree();
+		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
+		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
+		foreach ($menus as $r) {
+
+			$r['str_manage'] = '<a href="' . $this->createUrl('create', array('parentid' => $r['id'])) . '">添加子行业</a> |
+				<a  href="' . $this->createUrl('update', array('id' => $r['id'])) . '">修改</a> |
+                                    <a class="del" href="' . $this->createUrl('delete', array('id' => $r['id'])) . '" msg="确定删除.' . $r['name'] . '">删除</a> ';
+			$array[] = $r;
+		}
+		$modules = $this->getModule()->id;
+		$controller = $this->getId();  // controller
+		$action = $this->getAction()->id;  // action
+
+		$url = $modules.'/'.$controller.'/'.$action;
+		$str = "<tr>
+					<td><input name='listorders[\$id]' type='text' size='3' value='\$listorder' class='input-text-c'></td>
+					<td >\$spacer\$name</td>
+					<td ><a href='\".Yii::app()->createUrl('$url').\"'>\".Yii::app()->createUrl('$url').\"</td>
+					<td>\$str_manage</td>
+				</tr>";
+		$tree->init($array);
+		$this->render('index', array(
+			'menuTree' => $tree->get_tree('0', $str)
 		));
 	}
 
 	/**
 	 * 创建
 	 */
-	public function actionCreate()
+	public function actionCreate($parentid = 0)
 	{
 		$model=new adminIndustry;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['adminIndustry']))
+		if(isset($_POST['AdminIndustry']))
 		{
-			$model->attributes=$_POST['adminIndustry'];
+			$model->attributes=$_POST['AdminIndustry'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
-
+		if ($parentid)
+			$model->parentid = $parentid;
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -86,7 +106,16 @@ class AdminIndustryController extends AdminController
 	}
 
 
-
+	/**
+	 * 排序
+	 */
+	public function actionListorder() {
+		$orders = Yii::app()->getRequest()->getPost('listorders');
+		foreach ($orders as $k => $v) {
+			adminIndustry::model()->updateByPk($k, array('listorder' => $v));
+		}
+		$this->success('更新排序成功！');
+	}
 
 
 	/**
