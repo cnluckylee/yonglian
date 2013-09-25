@@ -8,7 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 
-	'name'=>'我的永链',
+	'name'=>'我的测试',
 	//'siteUrl'=>'http://teshu.com/yii/yonglian/',
 
 	// preloading 'log' component
