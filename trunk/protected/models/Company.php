@@ -8,11 +8,15 @@
  * @property string $name
  * @property string $pinyin
  * @property string $city
- * @property integer $city_id
- * @property integer $type
- * @property string $desct
- * @property string $product
- * @property integer $rec
+ * @property integer $distid
+ * @property integer $provid
+ * @property integer $ctid
+ * @property integer $IndustryID
+ * @property string $desc
+ * @property integer $recommend
+ * @property integer $rank
+ * @property string $updTime
+ * @property string $addTime
  */
 class Company extends CActiveRecord
 {
@@ -42,14 +46,13 @@ class Company extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('city_id, type, rec', 'numerical', 'integerOnly'=>true),
+			array('distid, provid, ctid, IndustryID, recommend, rank', 'numerical', 'integerOnly'=>true),
 			array('name, city', 'length', 'max'=>20),
 			array('pinyin', 'length', 'max'=>100),
-			array('product', 'length', 'max'=>200),
-			array('desct', 'safe'),
+			array('desc, updTime, addTime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pinyin, city, city_id, type, desct, product, rec', 'safe', 'on'=>'search'),
+			array('id, name, pinyin, city, distid, provid, ctid, IndustryID, desc, recommend, rank, updTime, addTime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,19 +74,21 @@ class Company extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => '名称',
-			'pinyin' => '拼音',
-			'city' => '所属城市',
-			'city_id' => 'City',
-			'type' => '类型',
-			'desct' => '描述',
-			'product' => '产品',
-			'rec' => '是否推荐',
+			'name' => 'Name',
+			'pinyin' => 'Pinyin',
+			'city' => 'City',
+			'distid' => 'Distid',
+			'provid' => 'Provid',
+			'ctid' => 'Ctid',
+			'IndustryID' => '行业',
+			'CompanyID' => '公司',
+			'desc' => 'Desc',
+			'recommend' => 'Recommend',
+			'rank' => 'Rank',
+			
 		);
 	}
-    public static $sec= array(
-	'否', '是'
-    );
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
@@ -99,14 +104,70 @@ class Company extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('pinyin',$this->pinyin,true);
 		$criteria->compare('city',$this->city,true);
-		$criteria->compare('city_id',$this->city_id);
-		$criteria->compare('type',$this->type);
-		$criteria->compare('desct',$this->desct,true);
-		$criteria->compare('product',$this->product,true);
-		$criteria->compare('rec',$this->rec);
+		$criteria->compare('distid',$this->distid);
+		$criteria->compare('provid',$this->provid);
+		$criteria->compare('ctid',$this->ctid);
+		$criteria->compare('IndustryID',$this->IndustryID);
+		$criteria->compare('desc',$this->desc,true);
+		$criteria->compare('recommend',$this->recommend);
+		$criteria->compare('rank',$this->rank);
+		$criteria->compare('updTime',$this->updTime,true);
+		$criteria->compare('addTime',$this->addTime,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	public static function getTreeDATA($select = null,$cache = TRUE) {
+ 		$cacheId = 'company'.($select !== null?'_'.$select:'');
+// 		if($cache) {
+// 			$menus = Yii::app()->getCache()->get($cacheId);
+// 			if($menus)
+// 				return $menus;
+// 		}
+		$model = self::model()->getDbConnection()->createCommand()
+		->from('{{company}}')
+		->order('rank DESC');
+		if ($select !== null)
+			$model->select($select);
+		else
+			$model->select ('id,name');
+	
+		$menus = $model->queryAll();
+	
+		$array = array();
+		foreach($menus as $menu) {
+			$menu['parentid'] = '0';
+			$array[$menu['id']] = $menu;
+			
+		}
+		$menus = $array;
+
+		if($cache)  Yii::app()->getCache()->set($cacheId,$menus);
+		return $menus;
+	}
+	
+	public static function getSelectTree($empty = NULL, $pid = 0) {
+	
+		$menus = self::getTreeDATA(null, FALSE);
+		$tree = new tree();
+		$array = array();
+		if($pid)
+		{
+			foreach ($menus as $r) {
+				$r['selected'] = ($pid != 0 && $pid === $r['id']) ? 'selected' : '';
+				$array[] = $r;
+			}
+		}else{
+			$array = $menus;
+		}
+		$str = "<option value='\$id' \$selected>\$spacer \$name</option>";
+		$tree->init($array);
+	
+		if ($empty !== NULL)
+			return '<option value="0">' . $empty . '</option>' . $tree->get_tree('0', $str);
+		else
+			return $tree->get_tree('0', $str);
 	}
 }

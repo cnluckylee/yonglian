@@ -35,73 +35,121 @@
 	</tr>
 
 	<tr>
-        <th width="100" align="right">
+          <th width="100" align="right">
 		<?php echo $form->labelEx($model,'city'); ?>
         </th>
         <td >
         <div class="row">
-		<?php  echo CHtml::dropDownList('Company[city]',$model->city, AllType::getCity(1),
-										array(
-										'ajax' => array(
-										'type'=>'POST', //url请求类型
-										'url'=>CController::createUrl('AllType/getCity'), //要调用的url.
-										//Style: CController::createUrl('currentController/methodToCall')
-										'update'=>'#Company_city_id', //ajax请求要更新的目的元素，这里是城市下拉列表
-										//'data'=>'js:javascript statement'
-										//这里不设置data，默认将传递当前表单form中的所有元素数据
-										)));
- 		?>
-        &nbsp;&nbsp;
-        <?php  echo CHtml::dropDownList('Company[city_id]','',array('请选择'));?>
-		<?php echo $form->error($model,'city_id'); ?>
+		<?php echo $form->textField($model,'city',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->error($model,'city'); ?>
         </div>
         </td>
 	</tr>
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'type'); ?>
+		<?php echo $form->labelEx($model,'distid'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->dropDownList($model,'type',CHtml::listData(AllType::getAllType(3),'id','name')); ?>
-		<?php echo $form->error($model,'type'); ?>
+		<?php echo $form->textField($model,'distid'); ?>
+		<?php echo $form->error($model,'distid'); ?>
         </div>
         </td>
 	</tr>
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'desct'); ?>
+		<?php echo $form->labelEx($model,'provid'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textArea($model,'desct',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'desct'); ?>
+		<?php echo $form->textField($model,'provid'); ?>
+		<?php echo $form->error($model,'provid'); ?>
         </div>
         </td>
 	</tr>
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'product'); ?>
+		<?php echo $form->labelEx($model,'ctid'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'product',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'product'); ?>
+		<?php echo $form->textField($model,'ctid'); ?>
+		<?php echo $form->error($model,'ctid'); ?>
         </div>
         </td>
 	</tr>
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'rec'); ?>
+		<?php echo $form->labelEx($model,'IndustryID'); ?>
         </th>
         <td >
         <div class="row">
-        <?php echo CHtml::checkBox('Company[rec]', $model->rec) ?>
-		<?php echo $form->error($model,'rec'); ?>
+		<?php echo $form->textField($model,'IndustryID'); ?>
+		<?php echo $form->error($model,'IndustryID'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'desc'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textArea($model,'desc',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'desc'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'recommend'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'recommend'); ?>
+		<?php echo $form->error($model,'recommend'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'rank'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'rank'); ?>
+		<?php echo $form->error($model,'rank'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'updTime'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'updTime'); ?>
+		<?php echo $form->error($model,'updTime'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'addTime'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'addTime'); ?>
+		<?php echo $form->error($model,'addTime'); ?>
         </div>
         </td>
 	</tr>

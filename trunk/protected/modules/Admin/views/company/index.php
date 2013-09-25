@@ -8,8 +8,8 @@ var getSearchFromHtml = function() {
 		searchFromHtml = $('.search-form').html();
 		$('.search-form').remove();
 	}
-
-	return searchFromHtml;
+	
+	return searchFromHtml;	
 }
 var searchFromDialog = art.dialog({
 	title: '高级搜索',
@@ -84,22 +84,28 @@ $('.search-button').click(function(){
 						//),
 				),
 
-
-
 			array(
 
-						'name' => 'type',
+						'name' => 'distid',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
+			array(
 
+						'name' => 'provid',
 
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			/*
 		array(
 
-						'name' => 'desct',
+						'name' => 'ctid',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -108,7 +114,7 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'product',
+						'name' => 'IndustryID',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -117,17 +123,51 @@ $('.search-button').click(function(){
 
 			array(
 
-						'name' => 'rec',
-						'value' =>array($this,"getValueByKey"),
+						'name' => 'desc',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
+			array(
 
+						'name' => 'recommend',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'rank',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'updTime',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'addTime',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			*/
 		array(
-			'header' =>'操作',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',
