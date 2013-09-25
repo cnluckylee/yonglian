@@ -61,61 +61,109 @@
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'city_id'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'distid'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'city_id'); ?>
+		<?php echo $form->textField($model,'distid'); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'type'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'provid'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'type'); ?>
+		<?php echo $form->textField($model,'provid'); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'desct'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'ctid'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textArea($model,'desct',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textField($model,'ctid'); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'product'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'IndustryID'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'product',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'IndustryID'); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'rec'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'desc'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'rec'); ?>
+		<?php echo $form->textArea($model,'desc',array('rows'=>6, 'cols'=>50)); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'recommend'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'recommend'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'rank'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'rank'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'updTime'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'updTime'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'addTime'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'addTime'); ?>
 		</div>
         </td>
 
