@@ -74,7 +74,7 @@ class Company extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
+			'name' => '名称',
 			'pinyin' => 'Pinyin',
 			'city' => 'City',
 			'distid' => 'Distid',
@@ -83,7 +83,7 @@ class Company extends CActiveRecord
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
 			'desc' => 'Desc',
-			'recommend' => 'Recommend',
+			'recommend' => '是否推荐',
 			'rank' => 'Rank',
 			
 		);
@@ -170,4 +170,8 @@ class Company extends CActiveRecord
 		else
 			return $tree->get_tree('0', $str);
 	}
+	
+	public static $isDisplay= array(
+			'否', '是'
+	);
 }

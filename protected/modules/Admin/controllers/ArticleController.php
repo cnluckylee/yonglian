@@ -137,9 +137,12 @@ class ArticleController extends AdminController
 	 */
 	public function getValueByCompanyID($data, $row, $c)
 	{
-		$result = array();
-		$result = Company::model()->findByPk($data->CompanyID)->attributes;
-		return $result['name'];
+		
+		$name = '';
+		$result = Company::model()->findByPk($data->CompanyID);
+		if($result)
+			$name = $result->attributes['name'];
+		return $name;
 	}
 	
 	/**
@@ -147,9 +150,11 @@ class ArticleController extends AdminController
 	 */
 	public function getValueByIndustryID($data, $row, $c)
 	{
-		//$result = Industry::model()->find($data->IndustryID)->attributes;
-		$result['name'] = '暂时没做';
-		return $result['name'];
+		$name = '';
+		$result = AdminIndustry::model()->find($data->IndustryID);
+		if($result)
+			$name = $result->attributes['name'];
+		return $name;
 	}
 	
 	/**

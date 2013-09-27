@@ -45,9 +45,10 @@ class AdminAreaController extends AdminController
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
-		if(isset($_POST['adminArea']))
+
+		if(isset($_POST['Area']))
 		{
-			$model->attributes=$_POST['adminArea'];
+			$model->attributes=$_POST['Area'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -69,7 +70,7 @@ class AdminAreaController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['adminArea']))
+		if(isset($_POST['Area']))
 		{
 			$model->attributes=$_POST['adminArea'];
 
@@ -114,7 +115,7 @@ class AdminAreaController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=AdminArea::model()->findByPk($id);
+		$model=Area::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;

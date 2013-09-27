@@ -31,9 +31,9 @@ class CompanyController extends AdminController
 		if(isset($_POST['Company']))
 		{
 			$model->attributes=$_POST['Company'];
-			if(!isset($_POST['Company']['rec']))
+			if(!isset($_POST['Company']['recommend']))
 			{
-				$model->rec = 0;
+				$model->recommend = 0;
 			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));

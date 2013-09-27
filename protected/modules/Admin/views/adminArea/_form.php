@@ -12,7 +12,7 @@
       <tbody>
       <tr>
         <th width="100" align="right"><?php echo $form->labelEx($model,'parentid'); ?></th>
-        <td><select name="adminArea[parentid]" id="adminArea_parentid">
+        <td><select name="Area[parentid]" id="Area_parentid">
             <?php echo Area::getSelectTree('顶级菜单',$model->parentid);?>
           </select>
           <?php echo $form->error($model,'parentid'); ?> </td>
