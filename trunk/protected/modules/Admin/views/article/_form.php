@@ -39,14 +39,14 @@
 	</tr>
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'industryID'); ?>
+		<?php echo $form->labelEx($model,'IndustryID'); ?>
         </th>
         <td >
         <div class="row">
-		<select name="Article[industryID]" id="Article_industryID">
-            <?php echo Company::getSelectTree('请选择');?>
+		<select name="Article[IndustryID]" id="Article_IndustryID">
+            <?php echo AdminIndustry::getSelectTree('请选择',$model->IndustryID);?>
         </select>
-		<?php echo $form->error($model,'industryID'); ?>
+		<?php echo $form->error($model,'IndustryID'); ?>
         </div>
         </td>
 	</tr>

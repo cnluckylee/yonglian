@@ -106,18 +106,10 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'recommend'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'recommend'); ?>
-		<?php echo $form->error($model,'recommend'); ?>
-        </div>
-        </td>
-	</tr>
-
+      <tr>
+        <th align="right"><?php echo $form->labelEx($model,'recommend'); ?></th>
+        <td valign="middle"><?php echo $form->radioButtonList($model,'recommend', Company::$isDisplay); ?><?php echo $form->error($model,'recommend'); ?> </td>
+      </tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'rank'); ?>
@@ -130,29 +122,6 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'updTime'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'updTime'); ?>
-		<?php echo $form->error($model,'updTime'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'addTime'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'addTime'); ?>
-		<?php echo $form->error($model,'addTime'); ?>
-        </div>
-        </td>
-	</tr>
 
 </tbody>
       <tfoot>

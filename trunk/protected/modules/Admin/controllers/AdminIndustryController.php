@@ -71,9 +71,10 @@ class AdminIndustryController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['adminIndustry']))
+		if(isset($_POST['AdminIndustry']))
 		{
-			$model->attributes=$_POST['adminIndustry'];
+			$model->attributes=$_POST['AdminIndustry'];
+			
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
