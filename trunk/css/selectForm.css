@@ -1,0 +1,414 @@
+﻿body {
+	background:#fff;
+}
+body, div, p, span, h1, h2, h3, h4, h5, h6, b, ol, ul, li, dl, dt, dd, em, i, input {
+	font:normal 12px "\5B8B\4F53", san-serif;
+	list-style:none;
+	font-family:微软雅黑;
+}
+img {
+	border:0
+}
+.clear {
+	clear:both;
+}
+* {
+	margin:0;
+	padding:0;
+}
+.ia {
+	font-size:14px;
+	color:#3B4053;
+	display:block;
+	outline:0;
+	text-decoration:none;
+	line-height:28px;
+}
+.one {
+	color:#1e82e6;
+	font-size:24px;
+	text-align:center;
+	margin-bottom: 15px;
+	margin-top: -15px;
+}
+.two {
+	height:1px;
+	width:615px;
+	padding:1px;
+	border-top:#b4b4b4 dashed 1px;
+}
+.sidebar {
+	width:561px;
+	height:350px;
+	border: 0 none;
+}
+#menu {
+	width:80px;
+	background:#fff;
+}
+#menu li {
+	float:left;
+	width:70px;
+	height:80px;
+	display:block;
+	text-align:center;
+	background:#EDF6FF;
+	border-bottom:#EDF6FF 1px solid;
+}
+.cmsmenuleft {
+	float:left;
+	color:#ccc;
+}
+#menu li span {
+	font-size:14px;
+	color:#3B4053;
+	display:block;
+	outline:0;
+	text-decoration:none;
+	line-height:28px;
+	padding-top:30px;
+}
+#menu li a {
+	font-size:14px;
+	color:#3B4053;
+	display:block;
+	outline:0;
+	text-decoration:none;
+	font-size:12px;
+	color:#969494;
+	line-height:16px;
+}
+#menu li:hover, .cur {
+	background-color:#fff;
+}
+#menu li:hover a {
+	color:#EDF6FF;
+}
+#menu li:hover div a {
+	font-size:12px;
+	color:#969494;
+	line-height:16px;
+}
+#menu li:hover div a:hover {
+	color:#fc6597;
+}
+.cms_submenu {
+	float:left;
+	position:absolute;
+	text-align:left;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+	width:430px;
+	height:324px;
+	overflow-y:auto;
+	background:#fff;
+	left:70;
+	top:-1;
+	z-index:100;
+	display:none;
+}
+.cms_submenu2 {
+	float:left;
+	position:absolute;
+	left:80px;
+	text-align:left;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+	width:440px;
+	height:324px;
+	overflow-y:auto;
+	background:#fff;
+	top:-1;
+	z-index:100;
+	display:none;
+	margin-top: -82;
+}
+.cmsmenuleft dl {
+	border-bottom: 1px dashed #D4D4D4;
+	margin-left: 20px;
+}
+.cmsmenuleft dt, .cmsmenuright dt {
+	font-weight:bold;
+	color:#333333;
+	margin:5px 0;
+	padding:3px 0 3px 10px;
+	text-align:right;
+	width:64px;
+	float:left;
+	text-align:center;
+}
+.menu_recommend {
+	top:0;
+	position: absolute;
+	overflow: hidden;
+}
+.menu_new dd {
+	padding-left:8px;
+}
+.cmsmenuleft dd {
+	padding-left:90px;
+}
+.cmsmenuleft dd i {
+	float:left;
+	margin:3px 0;
+	white-space:nowrap;
+	width:140px;
+	text-align:left;
+	padding-top: 5px;
+	z-index:300;
+}
+.downBtn {
+	width:220px;
+	font-size:12px;
+	z-index:200;
+	position:relative;
+}
+.downBtn_img {
+	width:211px;
+	height:50px;
+	cursor:pointer;
+	font-size:12px;
+	border-top:white solid 15px;
+	position:relative;
+	z-index:300;
+	margin-top:-35px;
+	margin-left:100px;
+}
+.three {
+	height:45px;
+	position: absolute;
+	width: 500px;
+	z-index: 2;
+	margin-left:20px;
+}
+p {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: "微软雅黑";
+}
+.scope p {
+	width:100px;
+}
+.five {
+	width:500px;
+	font-family: 宋体;
+}
+.tb {
+	weiht:520px;
+	height:auto;
+	border:5px solid white;
+	padding:5px 15px 15px 0;
+	text-align:left;
+}
+td {
+	font-size:18px;
+	color:blue;
+	text-align:left;
+	width:170px;
+	height:40px;
+}
+td a {
+	color:#1e82e6;
+	font-size:12px;
+	text-decoration:none;
+	width:170px;
+	height:40px;
+	font-weight:bold;
+	font-family: "微软雅黑";
+}
+a:hover {
+	text-decoration:none;
+}
+.btn {
+	color: #1E82E6;
+	cursor: pointer;
+	font-family: 宋体;
+	font-size: 16px;
+	height: 42px;
+	line-height: 38px;
+	margin-top:15px;
+	position: relative;
+	text-align: center;
+	width: 144px;
+}
+.btn:hover {
+	background-position:  0 -96px;
+}
+.last {
+	text-align: center;
+}
+.districtName {
+	padding-top:5px;
+	padding-left:10px;
+	position:absolute;
+}
+.out {
+	width:615px;
+	height:auto;
+}
+#storeNum {
+	font-size: 14px;
+	color: #FF7200;
+	font-weight: bold;
+}
+.wu_img {
+	width: 140px;
+	height: 100px;
+	margin-top: 50px;
+	float:left;
+}
+.last_wu {
+	margin-top:75px;
+	float:right;
+	width:365px;
+	height:45px;
+}
+.btn_wu {
+	width:145px;
+	height:42px;
+	border: 0 none;
+}
+.btn_wu a {
+	width: 145px;
+	height: 40px;
+	font-size: 18px;
+	font-family: 宋体;
+	text-align: center;
+	padding-top: 7px;
+}
+.xuan {
+	width: 140px;
+	height: 33px;
+	top: 73px;
+	left: 0px;
+	position: fixed;
+	background: white;
+}
+.one_wu {
+	color: rgb(30, 130, 230);
+	font-size: 24px;
+	text-align: center;
+	width: 400px;
+	height: 40px;
+	top: 17px;
+	left: 0px;
+	position: fixed;
+	background: white;
+}
+#no_search {
+	width:430px;
+	height:300px;
+}
+.hide {
+	display:none;
+}
+.show {
+	display:block;
+}
+.districtList {
+	margin-top: -15px;
+	position: absolute;
+	border:1px solid #c9c9c9;
+	width:635px;
+	margin-left:-20px;
+}
+.city {
+	width:142px;
+	float:left;
+	margin-top:5px;
+	height:370px;
+	margin-left:9px;
+}
+.city_text {
+	font-size:13px;
+	font-weight:bold;
+	color:#1E82E6;
+	height:26px;
+	padding-top:4px;
+	padding-left:10px;
+}
+.sel_city {
+	border:1px solid #1e82e6;
+	width:140px;
+	height:334px;
+	overflow:auto;
+}
+.area {
+	width:142px;
+	float:left;
+	margin-top:5px;
+	height:370px;
+	margin-left:16px;
+}
+.sel_area {
+	border:1px solid #1e82e6;
+	width:140px;
+	height:334px;
+	overflow:auto;
+}
+.community, .industry4 {
+	width:142px;
+	float:left;
+	margin-top:5px;
+	height:370px;
+	margin-left:16px;
+}
+.sel_community, .sel_industry4 {
+	border:1px solid #1e82e6;
+	width:140px;
+	height:334px;
+	overflow:auto;
+}
+.city_list {
+	margin-top:8px;
+}
+.city_list li {
+	font-size:12px;
+	color:#000000;
+	margin-top:5px;
+	margin-left:4px;
+	padding-left:6px;
+	width:100px;
+}
+.hot_city {
+	font-size:12px;
+	font-weight:bold;
+	color:#f00000;
+	margin-top:8px;
+	margin-left:10px;
+}
+.line {
+	width:260px;
+	padding:1px;
+	border-top:#c9c9c9 solid 2px;
+	margin-top:10px;
+	font-size:12px;
+	font-weight:bold;
+}
+.city_list li a {
+	font-size:12px;
+	color:black;
+	text-decoration:none;
+}
+.tab {
+	width:260px;
+	height:auto;
+	border:10px solid white;
+	text-align:left;
+}
+.tab tr td {
+	color:#000000;
+	width:60px;
+	height:auto;
+	text-align:center;
+}
+.tab td a {
+	color:#000000;
+	font-weight:normal;
+	height:auto;
+}
+.ind1_background, .ind2_background, .ind3_background, .ind4_background {
+	background-color:#63AEF9;
+}

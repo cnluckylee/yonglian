@@ -27,7 +27,6 @@ class AdminAreaController extends AdminController
 		$str = "<tr>
 					<td><input name='listorders[\$id]' type='text' size='3' value='\$listorder' class='input-text-c'></td>
 					<td >\$spacer\$name</td>
-					<td ><a href='\".Yii::app()->createUrl('$url').\"'>\".Yii::app()->createUrl('$url').\"</td>
 					<td>\$str_manage</td>
 				</tr>";
 		$tree->init($array);
@@ -45,7 +44,6 @@ class AdminAreaController extends AdminController
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['Area']))
 		{
 			$model->attributes=$_POST['Area'];

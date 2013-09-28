@@ -8,10 +8,15 @@
  * @property string $name
  * @property string $pinyin
  * @property string $city
- * @property integer $distid
- * @property integer $provid
- * @property integer $ctid
- * @property integer $IndustryID
+ * @property integer $city1
+ * @property integer $city2
+ * @property integer $city3
+ * @property integer $city4
+ * @property string $Industry
+ * @property integer $IndustryID1
+ * @property integer $IndustryID2
+ * @property integer $IndustryID3
+ * @property integer $IndustryID4
  * @property string $desc
  * @property integer $recommend
  * @property integer $rank
@@ -46,13 +51,13 @@ class Company extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('distid, provid, ctid, IndustryID, recommend, rank', 'numerical', 'integerOnly'=>true),
+			array('city1, city2, city3, city4, IndustryID1, IndustryID2, IndustryID3, IndustryID4, recommend, rank', 'numerical', 'integerOnly'=>true),
 			array('name, city', 'length', 'max'=>20),
-			array('pinyin', 'length', 'max'=>100),
+			array('pinyin, Industry', 'length', 'max'=>100),
 			array('desc, updTime, addTime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pinyin, city, distid, provid, ctid, IndustryID, desc, recommend, rank, updTime, addTime', 'safe', 'on'=>'search'),
+			array('id, name, pinyin, city, city1, city2, city3, city4, Industry, IndustryID1, IndustryID2, IndustryID3, IndustryID4, desc, recommend, rank, updTime, addTime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -75,17 +80,22 @@ class Company extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => '名称',
-			'pinyin' => 'Pinyin',
-			'city' => 'City',
-			'distid' => 'Distid',
-			'provid' => 'Provid',
-			'ctid' => 'Ctid',
-			'IndustryID' => '行业',
-			'CompanyID' => '公司',
-			'desc' => 'Desc',
+			'pinyin' => '拼音',
+			'city' => '地区',
+			'city1' => 'City1',
+			'city2' => 'City2',
+			'city3' => 'City3',
+			'city4' => 'City4',
+			'Industry' => '行业',
+			'IndustryID1' => 'Industry Id1',
+			'IndustryID2' => 'Industry Id2',
+			'IndustryID3' => 'Industry Id3',
+			'IndustryID4' => 'Industry Id4',
+			'desc' => '描述',
 			'recommend' => '是否推荐',
-			'rank' => 'Rank',
-			
+			'rank' => '权重',
+			'updTime' => 'Upd Time',
+			'addTime' => 'Add Time',
 		);
 	}
 
@@ -104,10 +114,15 @@ class Company extends CActiveRecord
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('pinyin',$this->pinyin,true);
 		$criteria->compare('city',$this->city,true);
-		$criteria->compare('distid',$this->distid);
-		$criteria->compare('provid',$this->provid);
-		$criteria->compare('ctid',$this->ctid);
-		$criteria->compare('IndustryID',$this->IndustryID);
+		$criteria->compare('city1',$this->city1);
+		$criteria->compare('city2',$this->city2);
+		$criteria->compare('city3',$this->city3);
+		$criteria->compare('city4',$this->city4);
+		$criteria->compare('Industry',$this->Industry,true);
+		$criteria->compare('IndustryID1',$this->IndustryID1);
+		$criteria->compare('IndustryID2',$this->IndustryID2);
+		$criteria->compare('IndustryID3',$this->IndustryID3);
+		$criteria->compare('IndustryID4',$this->IndustryID4);
 		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('recommend',$this->recommend);
 		$criteria->compare('rank',$this->rank);
@@ -118,60 +133,7 @@ class Company extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
-	public static function getTreeDATA($select = null,$cache = TRUE) {
- 		$cacheId = 'company'.($select !== null?'_'.$select:'');
-// 		if($cache) {
-// 			$menus = Yii::app()->getCache()->get($cacheId);
-// 			if($menus)
-// 				return $menus;
-// 		}
-		$model = self::model()->getDbConnection()->createCommand()
-		->from('{{company}}')
-		->order('rank DESC');
-		if ($select !== null)
-			$model->select($select);
-		else
-			$model->select ('id,name');
-	
-		$menus = $model->queryAll();
-	
-		$array = array();
-		foreach($menus as $menu) {
-			$menu['parentid'] = '0';
-			$array[$menu['id']] = $menu;
-			
-		}
-		$menus = $array;
-
-		if($cache)  Yii::app()->getCache()->set($cacheId,$menus);
-		return $menus;
-	}
-	
-	public static function getSelectTree($empty = NULL, $pid = 0) {
-	
-		$menus = self::getTreeDATA(null, FALSE);
-		$tree = new tree();
-		$array = array();
-		if($pid)
-		{
-			foreach ($menus as $r) {
-				$r['selected'] = ($pid != 0 && $pid === $r['id']) ? 'selected' : '';
-				$array[] = $r;
-			}
-		}else{
-			$array = $menus;
-		}
-		$str = "<option value='\$id' \$selected>\$spacer \$name</option>";
-		$tree->init($array);
-	
-		if ($empty !== NULL)
-			return '<option value="0">' . $empty . '</option>' . $tree->get_tree('0', $str);
-		else
-			return $tree->get_tree('0', $str);
-	}
-	
 	public static $isDisplay= array(
-			'否', '是'
-	);
+	'否', '是'
+    );
 }

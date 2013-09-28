@@ -36,74 +36,16 @@
         </td>
 
 	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'pinyin'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>100)); ?>
-		</div>
-        </td>
 
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'city'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'city',array('size'=>20,'maxlength'=>20)); ?>
-		</div>
-        </td>
 
-	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'distid'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'Industry'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'distid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'provid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'provid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'ctid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'ctid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'IndustryID'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'IndustryID'); ?>
+		<?php echo $form->textField($model,'Industry'); ?>
 		</div>
         </td>
 

@@ -48,7 +48,6 @@ $('.del').click(function(){
       <tr>
         <th width="80" style="text-align:center">排序</th>
         <th>菜单名称</th>
-        <th>URL</th>
         <th>管理操作</th>
       </tr>
     </thead>

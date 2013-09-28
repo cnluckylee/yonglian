@@ -9,7 +9,9 @@ class CSmarty
 {
     function __construct()
     {
+    	
         $this->_smarty = new Smarty();
+        $this->_smarty->caching = 0;
         $this->_smarty->template_dir = SMARTY_VIEW_DIR.DS.'tpl';
         $this->_smarty->compile_dir = SMARTY_VIEW_DIR.DS.'tpl_c';
 		$this->_smarty->cache_lifetime = 0;

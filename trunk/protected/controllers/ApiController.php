@@ -29,17 +29,27 @@ class ApiController extends Controller
 	{
 		$data['company'] =array();
 		$smarty = Yii::app()->smarty;
-		$data['cssurl'] = Yii::app()->request->baseUrl;
-		$data['jsurl'] = Yii::app()->request->baseUrl;
+		$data['cssurl'] = Yii::app()->request->baseUrl.'/css/';
+		$data['jsurl'] = Yii::app()->request->baseUrl.'/js/';
 		$data['cssjsv'] = date('Ymd');
-		$model = Area::model()->findAll('parentid=0');
-		$areas = array();
-		foreach($model as $i)
-		{
-			$areas[] = $i->attributes;
-		}
-		$data['areas'] = $areas;
+		$IndustryJson = AdminIndustry::IndustryJson();
+		
+		$data['IndustryJson'] = json_encode($IndustryJson);
 		$smarty->_smarty->assign($data);
 		$smarty->_smarty->display('api/industry.tpl');
+	}
+	
+	public function actionArea()
+	{
+		$data['company'] =array();
+		$smarty = Yii::app()->smarty;
+		$data['cssurl'] = Yii::app()->request->baseUrl.'/css/';
+		$data['jsurl'] = Yii::app()->request->baseUrl.'/js/';
+		$data['cssjsv'] = date('Ymd');
+		$IndustryJson = Area::AreaJson();
+		
+		$data['IndustryJson'] = json_encode($IndustryJson);
+		$smarty->_smarty->assign($data);
+		$smarty->_smarty->display('api/area.tpl');
 	}
 }

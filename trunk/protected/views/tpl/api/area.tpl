@@ -3,7 +3,7 @@
 
 <div class="out" >
 <br>
-  <div class="one" >请选择行业</div>
+  <div class="one" >请选择地区</div>
  
   <div class="three">
   
@@ -12,7 +12,7 @@
 <div id="districtList" class="districtList">
  
  <div class="city">
- 	<div class="city_text" id="title_img0">2.请选一级行业</div>
+ 	<div class="city_text" id="title_img0">2.请选一级地区</div>
  	<div class="sel_city">
 		<ul class="city_list" id="industry1">
 		</ul>
@@ -22,7 +22,7 @@
  
  
  <div class="area">
- 	<div class="city_text" id="title_img1">2.请选二级行业</div>
+ 	<div class="city_text" id="title_img1">2.请选二级地区</div>
  	<div class="sel_area">
 		<ul class="city_list" id="industry2">
 			<li><a href="javascript:void(0);">请选择</a></li>
@@ -33,7 +33,7 @@
  
  
  <div class="community">
- 	<div class="city_text" id="title_img2">3.请选择三级行业</div>
+ 	<div class="city_text" id="title_img2">3.请选择三级地区</div>
  	<div class="sel_community">
 		<ul class="city_list" id="industry3">
 			<li><a href="javascript:void(0);">请选择</a></li>
@@ -43,7 +43,7 @@
  </div>
 
  <div class="community">
- 	<div class="city_text" id="title_img2">4.请选择四级行业</div>
+ 	<div class="city_text" id="title_img2">4.请选择四级地区</div>
  	<div class="sel_community">
 		<ul class="city_list" id="industry4">
 			<li><a href="javascript:void(0);">请选择</a></li>
@@ -54,6 +54,7 @@
  
  </div> 
 </div>
+ <div class="last"><button class="btn" id="b1" onclick="reloadParent()" >确定</button></div>
 </div>
 <input type="hidden" id='districts' value='{{$IndustryJson}}' />
 <script language="javascript" src="{{$jsurl}}/jquery.min.js?v={{$cssjsv}}"></script>
@@ -74,6 +75,7 @@ function selectCity(k,k2,k3,k4)
 	var arr_data = jQuery.parseJSON(val);
 	var data = arr_data[k]['child'];
 	var html_id ='';
+	
 	if(k4>=0)
 	{
 		$("#d_"+k4).addClass("ind4_background");
@@ -100,9 +102,9 @@ function selectCity(k,k2,k3,k4)
 		html_id = 'industry2';
 		$(".dist_background").removeClass("ind1_background");
 		$("#a_"+k).addClass("ind1_background");
-		$("#sel_city").html('<li><a href="javascript:void(0);">请选择</a></li>');
 		c1=arr_data[k].id;
 		cityname +=' '+arr_data[k].name;
+		$("#sel_city").html('<li><a href="javascript:void(0);">请选择</a></li>');
 	}
 	$.each(data,function(kk,v){
 		if(k3>=0)
@@ -128,17 +130,16 @@ function setDefalutDistrict()
 	});
 	$("#industry1").html(html);
 }
-
 function reloadParent()
 {
 	if(c1<0)
-		alert("请选择行业");
+		alert("请选择地区");
 	else{
-		$("#hid_IndustryID1",parent.document).val(c1);
-		$("#hid_IndustryID2",parent.document).val(c2);
-		$("#hid_IndustryID3",parent.document).val(c3);
-		$("#hid_IndustryID4",parent.document).val(c4);
-		$("#Company_Industry",parent.document).val(cityname);
+		$("#hid_city1",parent.document).val(c1);
+		$("#hid_city2",parent.document).val(c2);
+		$("#hid_city3",parent.document).val(c3);
+		$("#hid_city4",parent.document).val(c4);
+		$("#Company_city",parent.document).val(cityname);
 		parent.$.fancybox.close(); 
 	}
 }
