@@ -28,68 +28,36 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>50)); ?>
 		<?php echo $form->error($model,'pinyin'); ?>
         </div>
         </td>
 	</tr>
-
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'city'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'city',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->textField($model,'city',array('size'=>30,'maxlength'=>50)); ?>
+        <input type="button" value="请选择" id="area" />
 		<?php echo $form->error($model,'city'); ?>
         </div>
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'distid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'distid'); ?>
-		<?php echo $form->error($model,'distid'); ?>
-        </div>
-        </td>
-	</tr>
+
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'provid'); ?>
+		<?php echo $form->labelEx($model,'Industry'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'provid'); ?>
-		<?php echo $form->error($model,'provid'); ?>
-        </div>
-        </td>
-	</tr>
+		<?php echo $form->textField($model,'Industry',array('size'=>30,'maxlength'=>50)); ?>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'ctid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'ctid'); ?>
-		<?php echo $form->error($model,'ctid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'IndustryID'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'IndustryID'); ?>
-		<?php echo $form->error($model,'IndustryID'); ?>
+        <input type="button" value="请选择" id="industry" />
+		<?php echo $form->error($model,'Industry'); ?>
         </div>
         </td>
 	</tr>
@@ -101,6 +69,7 @@
         <td >
         <div class="row">
 		<?php echo $form->textArea($model,'desc',array('rows'=>6, 'cols'=>50)); ?>
+         
 		<?php echo $form->error($model,'desc'); ?>
         </div>
         </td>
@@ -130,8 +99,30 @@
         </tr>
       </tfoot>
     </table>
-	
-
+	<input type="text" id="hid_city1"  name="Company[city1]" value="<?php echo $model->city1;?>"/>
+    <input type="text" id="hid_city2"  name="Company[city2]" value="<?php echo $model->city2;?>"/>
+    <input type="text" id="hid_city3"  name="Company[city3]" value="<?php echo $model->city3;?>"/>
+    <input type="text" id="hid_city4"  name="Company[city4]" value="<?php echo $model->city4;?>"/>
+    
+    <input type="text" id="hid_IndustryID1"  name="Company[IndustryID1]" value="<?php echo $model->IndustryID1;?>"/>
+    <input type="text" id="hid_IndustryID2"  name="Company[IndustryID2]" value="<?php echo $model->IndustryID2;?>"/>
+    <input type="text" id="hid_IndustryID3"  name="Company[IndustryID3]" value="<?php echo $model->IndustryID3;?>"/>
+    <input type="text" id="hid_IndustryID4"  name="Company[IndustryID4]" value="<?php echo $model->IndustryID4;?>"/>
+    
+    
 <?php $this->endWidget(); ?>
 
 </div>
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+<script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("area");
+		bindiframe("industry");
+	},1000);	
+
+});
+
+</script>

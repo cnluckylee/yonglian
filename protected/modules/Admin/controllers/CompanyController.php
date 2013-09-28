@@ -11,7 +11,7 @@ class CompanyController extends AdminController
 		$model=new Company('search');
 		$model->unsetAttributes();  // 清理默认值
 		if(isset($_GET['Company']))
-			$model->attributes=$_GET['company'];
+			$model->attributes=$_GET['Company'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -60,12 +60,10 @@ class CompanyController extends AdminController
 		{
 
 			$model->attributes=$_POST['Company'];
-			if(!isset($_POST['Company']['rec']))
+			if(!isset($_POST['Company']['recommend']))
 			{
 				$model->rec = 0;
 			}
-
-			$model->city = City::model()->findByPk($model->city_id)->city_name;
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -126,9 +124,10 @@ class CompanyController extends AdminController
 		}
 	}
 
-	public function getValueByKey($data, $row, $c)
+	public function isrecommend($data, $row, $c)
 	{
-		$recType = array(0=>'不推荐',1=>'推荐');
-		return $recType[$data->rec];
+		$recType = array(0=>'否',1=>'推荐');
+		return $recType[$data->recommend];
 	}
+
 }

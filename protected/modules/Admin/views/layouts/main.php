@@ -21,6 +21,11 @@ $baseUrl=$this->module->assetsUrl;
 <script language="javascript" src="<?php echo $this->module->assetsUrl;?>/js/jquery/artdialog/artDialog.plugins.min.js"></script>
 <script language="javascript" charset="utf-8" src="<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/kindeditor.js"></script>
 <script language="javascript" charset="utf-8" src="<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/lang/zh_CN.js"></script>
+<script language="javascript" type="text/javascript">
+	var httpUrl = 'http://yonglian.com';
+	var cssUrl = <?php echo Yii::app()->request->baseUrl.'/css/'; ?>;
+	var jsUrl = <?php echo Yii::app()->request->baseUrl.'/js/'; ?>;
+</script>
 <?php
 
 endif;?>

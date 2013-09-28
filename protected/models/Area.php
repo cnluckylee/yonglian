@@ -156,4 +156,30 @@ public static function getTreeDATA($select = null,$cache = TRUE) {
             throw new CDbException('有子菜单不能删除！');
         return true;
     }
+    
+    /**
+     * 地区json数据
+     */
+    public static function AreaJson()
+    {
+    	$model = self::model()->getDbConnection()->createCommand()
+                ->from('{{area}}')
+       			->select ('id,parentid,name');
+        $data = $model->queryAll();
+    	 $result = array ();
+    	 $I = array ();
+    	 //定义索引数组，用于记录节点在目标数组的位置
+   		 foreach ($data as $val) {
+				if ($val['parentid'] == 0) {
+					$i = count($result);
+					$result[$i] = $val;
+					$I[$val['id']] = & $result[$i];
+				} else {
+					$i = @ count($I[$val['parentid']]['child']);
+					$I[$val['parentid']]['child'][$i] = $val;
+					$I[$val['id']] = & $I[$val['parentid']]['child'][$i];
+				}
+			}
+    	return $result;
+    }
 }
