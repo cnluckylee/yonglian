@@ -139,7 +139,17 @@ function reloadParent()
 		$("#hid_city2",parent.document).val(c2);
 		$("#hid_city3",parent.document).val(c3);
 		$("#hid_city4",parent.document).val(c4);
+		var Company_city_id = c1;
+		if(c2!=-1)
+			Company_city_id+='_'+c2;
+		if(c3!=-1)
+			Company_city_id+='_'+c3;
+		if(c4!=-1)
+			Company_city_id+='_'+c4;
+		
 		$("#Company_city",parent.document).val(cityname);
+		if($("#Company_city_id",parent.document).length>0)
+		$("#Company_city_id",parent.document).val(Company_city_id);
 		parent.$.fancybox.close(); 
 	}
 }

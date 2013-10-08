@@ -20,8 +20,8 @@ class CLinkPager extends CBasePager
 {
 	const CSS_FIRST_PAGE='first';
 	const CSS_LAST_PAGE='last';
-	const CSS_PREVIOUS_PAGE='previous';
-	const CSS_NEXT_PAGE='next';
+	const CSS_PREVIOUS_PAGE='上一页';
+	const CSS_NEXT_PAGE='下一页';
 	const CSS_INTERNAL_PAGE='page';
 	const CSS_HIDDEN_PAGE='hidden';
 	const CSS_SELECTED_PAGE='selected';
@@ -72,15 +72,15 @@ class CLinkPager extends CBasePager
 	public function init()
 	{
 		if($this->nextPageLabel===null)
-			$this->nextPageLabel=Yii::t('yii','Next &gt;');
+			$this->nextPageLabel=Yii::t('yii','下一页');
 		if($this->prevPageLabel===null)
-			$this->prevPageLabel=Yii::t('yii','&lt; Previous');
+			$this->prevPageLabel=Yii::t('yii','上一页');
 		if($this->firstPageLabel===null)
-			$this->firstPageLabel=Yii::t('yii','&lt;&lt; First');
+			$this->firstPageLabel=Yii::t('yii','首页');
 		if($this->lastPageLabel===null)
-			$this->lastPageLabel=Yii::t('yii','Last &gt;&gt;');
-		if($this->header===null)
-			$this->header=Yii::t('yii','Go to page: ');
+			$this->lastPageLabel=Yii::t('yii','末页');
+// 		if($this->header===null)
+// 			$this->header=Yii::t('yii','Go to page: ');
 
 		if(!isset($this->htmlOptions['id']))
 			$this->htmlOptions['id']=$this->getId();
