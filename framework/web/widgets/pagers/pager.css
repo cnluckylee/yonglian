@@ -17,10 +17,14 @@ ul.yiiPager
 	padding:0;
 	line-height:100%;
 	display:inline;
+	margin-top:10px;
+	float:right;
+	
 }
 
 ul.yiiPager li
 {
+	
 	display:inline;
 }
 

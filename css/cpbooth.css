@@ -95,10 +95,10 @@
 }
 .main_middle .searchForm{
 	float:left;
-	width:800px;
+	width:1000px;
 }
 
 .main_middle .searchForm .title{
 	text-align: center;
-    width: 150px;
+    width: 100px;
 }

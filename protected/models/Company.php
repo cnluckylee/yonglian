@@ -136,4 +136,50 @@ class Company extends CActiveRecord
 	public static $isDisplay= array(
 	'否', '是'
     );
+	
+	public static function getTreeDATA($select = null,$cache = TRUE) {
+		$cacheId = 'company'.($select !== null?'_'.$select:'');
+		if($cache) {
+			$menus = Yii::app()->getCache()->get($cacheId);
+			if($menus)
+				return $menus;
+		}
+		$model = self::model()->getDbConnection()->createCommand()
+		->from('{{company}}')
+		->order('rank DESC');
+		if ($select !== null)
+			$model->select($select);
+		else
+			$model->select ('id,name');
+	
+		$menus = $model->queryAll();
+	
+		$array = array();
+		foreach($menus as $menu) {
+			$menu['parentid'] = '0';
+			$array[$menu['id']] = $menu;
+		}
+		$menus = $array;
+		if($cache)  Yii::app()->getCache()->set($cacheId,$menus);
+		return $menus;
+	}
+	
+	public static function getSelectTree($empty = NULL, $pid = 0) {
+	
+		$menus = self::getTreeDATA(null, FALSE);
+		$tree = new tree();
+		$array = array();
+		foreach ($menus as $r) {
+			$r['selected'] = ($pid != 0 && $pid === $r['id']) ? 'selected' : '';
+			$array[] = $r;
+		}
+		// print_r($array);
+		$str = "<option value='\$id' \$selected>\$spacer \$name</option>";
+		$tree->init($array);
+	
+		if ($empty !== NULL)
+			return '<option value="0">' . $empty . '</option>' . $tree->get_tree('0', $str);
+		else
+			return $tree->get_tree('0', $str);
+	}
 }

@@ -1,0 +1,38 @@
+.searchDataForm{
+	width:1000px;
+	float: left;
+}
+
+.searchDataForm .top ul{
+	background-color:#96c2f1;
+}
+.searchDataForm .top ul li{
+	border-right: 2px solid #FFFFFF;
+	color: #FFFFFF;
+    display: table-cell;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 200px;
+}
+
+.searchDataForm .searchData .searchData_ul li
+{
+    display: table-cell;
+    font-size: 12px;
+    font-weight:normal;
+    text-align: center;
+    width: 200px;
+}
+.searchDataForm .searchData .droplist
+{
+	margin-left:-20px;
+}
+.searchDataForm .searchData .droplist  li
+{
+	display:list-item;
+	 text-align: left;
+	 overflow:hidden;
+	 width:150px;
+	
+}

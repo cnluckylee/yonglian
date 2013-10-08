@@ -20,8 +20,7 @@
 	Yii::app()->clientScript->registerScriptFile($superfishpath.'/jqueryslidemenu.js');
 
 ?>
-{{assign var=cssurl value="<?php echo Yii::app()->request->baseUrl.'/css/'; ?>"}}
-{{assign var=jsurl value="<?php echo Yii::app()->request->baseUrl.'/js/'; ?>"}}
+
 <script language="javascript" type="text/javascript">
 	var httpUrl = 'http://yonglian.com';
 	var cssUrl = <?php echo Yii::app()->request->baseUrl.'/css/'; ?>;
