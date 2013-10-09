@@ -1,21 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "{{city}}".
+ * This is the model class for table "{{member}}".
  *
- * The followings are the available columns in table '{{city}}':
- * @property integer $city_id
- * @property integer $parent_id
- * @property string $city_name
- * @property integer $city_type
- * @property integer $agency_id
+ * The followings are the available columns in table '{{member}}':
+ * @property integer $id
+ * @property string $name
+ * @property integer $pid
+ * @property string $addtime
+ * @property string $updtime
+ * @property integer $IndustryID
+ * @property integer $CompanyID
  */
-class City extends CActiveRecord
+class Member extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return City the static model class
+	 * @return Member the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -27,7 +29,7 @@ class City extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{city}}';
+		return '{{member}}';
 	}
 
 	/**
@@ -38,11 +40,12 @@ class City extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('parent_id, city_type, agency_id', 'numerical', 'integerOnly'=>true),
-			array('city_name', 'length', 'max'=>120),
+			array('pid, IndustryID, CompanyID', 'numerical', 'integerOnly'=>true),
+			array('name', 'length', 'max'=>200),
+			array('addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('city_id, parent_id, city_name, city_type, agency_id', 'safe', 'on'=>'search'),
+			array('id, name, pid, addtime, updtime, IndustryID, CompanyID', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,11 +66,13 @@ class City extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'city_id' => 'City',
-			'parent_id' => 'Parent',
-			'city_name' => 'City Name',
-			'city_type' => 'City Type',
-			'agency_id' => 'Agency',
+			'id' => 'ID',
+			'name' => '名称',
+			'pid' => '职位',
+			'addtime' => 'Addtime',
+			'updtime' => 'Updtime',
+			'IndustryID' => '行业',
+			'CompanyID' => '公司',
 		);
 	}
 
@@ -82,11 +87,13 @@ class City extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('city_id',$this->city_id);
-		$criteria->compare('parent_id',$this->parent_id);
-		$criteria->compare('city_name',$this->city_name,true);
-		$criteria->compare('city_type',$this->city_type);
-		$criteria->compare('agency_id',$this->agency_id);
+		$criteria->compare('id',$this->id);
+		$criteria->compare('name',$this->name,true);
+		$criteria->compare('pid',$this->pid);
+		$criteria->compare('addtime',$this->addtime,true);
+		$criteria->compare('updtime',$this->updtime,true);
+		$criteria->compare('IndustryID',$this->IndustryID);
+		$criteria->compare('CompanyID',$this->CompanyID);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

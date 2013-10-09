@@ -30,5 +30,12 @@ class EnterpriseController extends Controller
 			$this->render('CPBooth',$result);
 		}
 	}
+	/**
+	 * 团队闪耀
+	 */
+	public function actionCPTeam()
+	{
+		
+	}
 
 }
