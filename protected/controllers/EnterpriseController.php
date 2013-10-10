@@ -26,7 +26,7 @@ class EnterpriseController extends Controller
 								   'Company_Industry'=>$Company_Industry,
 									'keyword'=>$keyword
 					);
-
+			$this->pageTitle = '企业秀台';
 			$this->render('CPBooth',$result);
 		}
 	}
@@ -35,7 +35,22 @@ class EnterpriseController extends Controller
 	 */
 	public function actionCPTeam()
 	{
-		
+		$this->pageTitle = '团队闪耀';
+		$result = array();
+				//echo $_GET['Company_Industry_id'];exit;
+		$Company_city_id = Tools::getParam('Company_city_id');
+		$Company_Industry_id = Tools::getParam('Company_Industry_id');
+		$Company_city = Tools::getParam('Company_city');
+		$Company_Industry = Tools::getParam('Company_Industry');
+		$keyword = Tools::getParam('keyword');
+		$result['get'] = array('Company_city_id'=>$Company_city_id,
+								   'Company_Industry_id'=>$Company_Industry_id,
+								   'Company_city'=>$Company_city,
+								   'Company_Industry'=>$Company_Industry,
+									'keyword'=>$keyword
+					);
+		$result['posts'] = $result['pages']  = array();			
+		$this->render('CPTeam',$result);
 	}
 
 }
