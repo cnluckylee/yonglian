@@ -1,6 +1,6 @@
 <?php
 
-class AdminMemberController extends AdminController
+class AdminJointController extends AdminController
 {
 	
 	/**
@@ -8,10 +8,10 @@ class AdminMemberController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new Member('search');
+		$model=new Joint('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['Member']))
-			$model->attributes=$_GET['Member'];
+		if(isset($_GET['Joint']))
+			$model->attributes=$_GET['Joint'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -23,15 +23,14 @@ class AdminMemberController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new Member;
+		$model=new Joint;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Member']))
+		if(isset($_POST['Joint']))
 		{
-			$model->attributes=$_POST['Member'];
-			
+			$model->attributes=$_POST['Joint'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -52,9 +51,9 @@ class AdminMemberController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Member']))
+		if(isset($_POST['Joint']))
 		{
-			$model->attributes=$_POST['Member'];
+			$model->attributes=$_POST['Joint'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -96,7 +95,7 @@ class AdminMemberController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Member::model()->findByPk($id);
+		$model=Joint::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -108,12 +107,13 @@ class AdminMemberController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='member-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='joint-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
+	
 	/**
 	 * 取value
 	 */
@@ -129,24 +129,14 @@ class AdminMemberController extends AdminController
 	/**
 	 * 取value
 	 */
-	public function getPostByKey($data, $row, $c)
+	public function getValueByKey($data, $row, $c)
 	{
-	
+		$media = AllType::model()->findAllByAttributes('type=4');
+		print_r($media);exit;
 		$name = '';
-		$result = Post::model()->findByPk($data->pid);
+		$result = Post::model()->findByPk($data->cid);
 		if($result)
 			$name = $result->attributes['name'];
 		return $name;
 	}
-	/**
-	 * 取value
-	 */
-	public function getCategoryByKey($data, $row, $c)
-	{	
-		$name='';
-		if($data->cid)
-			$name = BaseData::CPTeamCategary($data->cid);	
-		return $name;
-	}
-	
 }

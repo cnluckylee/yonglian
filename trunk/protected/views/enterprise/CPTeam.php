@@ -53,7 +53,7 @@
   <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'cpteam-form',
 	'enableAjaxValidation'=>false,
-	'action'=>array('enterprise/CPBooth'),
+	'action'=>array('enterprise/CPTeam'),
 	'method'=>'get',
 )); ?>
   <!--商标或标志结束（身体1）-->
@@ -72,9 +72,16 @@
        
       <td class="title">企业名称</td>
       <td><input type="text" width="150px"  name="keyword" value="<?php echo $get['keyword'];?>"/></td>
-      <td>栏目类别</td>
-      <td><select name=""</td>
-      <td><input type="submit"  value="搜索" /></td>
+      <td class="title">栏目类别</td>
+      <td><select name="cid">
+      <option value="">所有栏目</option>
+      <?php foreach($cat as $cid =>$item):?>
+      
+      <option value="<?php echo $cid;?>" <?php if($get['cid'] == $cid): echo 'selected'; endif; ?>><?php echo $item ?></option>
+      <?php endforeach; ?>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      </select><input type="submit"  value="搜索" /></td>
+      <td></td>
     </tr>
   </table>
 <?php $this->endWidget(); ?>
@@ -95,9 +102,9 @@
         <li>
           <ul class="droplist">
             <?php 
-		 if(isset($row['data'][16])):
-		 foreach($row['data'][16] as $cont16):?>
-            <li><?php echo $cont16['title'];?></li>
+		 if(isset($row['data'])):
+		 foreach($row['data'] as $cont16):?>
+            <li><?php echo $cont16['name'];?></li>
             <?php
 		   endforeach; 
 		   endif;
@@ -107,9 +114,9 @@
         <li>
           <ul class="droplist">
             <?php 
-		 if(isset($row['data'][15])):
-		 foreach($row['data'][15] as $cont15):?>
-            <li><?php echo $cont15['title'];?></li>
+		 if(isset($row['data'])):
+		 foreach($row['data'] as $cont15):?>
+            <li><?php echo $cont15['pname'];?></li>
             <?php
 		   endforeach; 
 		   endif;
@@ -119,9 +126,9 @@
         <li>
           <ul class="droplist">
             <?php 
-		 if(isset($row['data'][15])):
-		 foreach($row['data'][15] as $cont15):?>
-            <li><?php echo $cont15['title'];?></li>
+		 if(isset($row['data'])):
+		 foreach($row['data'] as $cont15):?>
+            <li><?php echo $cont15['entrydate'];?></li>
             <?php
 		   endforeach; 
 		   endif;
@@ -132,7 +139,7 @@
       <?php endforeach; ?>
       <?php 
 	 //分页widget代码: 
-	// $this->widget('NewPager',array('pages'=>$pages));
+	$this->widget('NewPager',array('pages'=>$pages));
 	 ?>
     </div>
   </div>
