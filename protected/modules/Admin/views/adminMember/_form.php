@@ -48,8 +48,34 @@
         </div>
         </td>
 	</tr>
-
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'cid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<select name="Member[cid]" id="Member_cid">
+           <?php 
+		   $cat = BaseData::CPTeamCategary();
+		   foreach($cat as $cid =>$item):?>
+          <option value="<?php echo $cid; ?>"><?php echo $item ?></option>
+          <?php endforeach; ?>
+        </select>
+		<?php echo $form->error($model,'cid'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'entrydate'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<input id="Member_entrydate" type="text" name="Member[entrydate]" onclick="WdatePicker()">
+		<?php echo $form->error($model,'entrydate'); ?>
+        </div>
+        </td>
+	</tr>
 
 
 
@@ -65,3 +91,4 @@
 <?php $this->endWidget(); ?>
 
 </div>
+<script language="javascript" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/My97DatePicker/WdatePicker.js"></script>

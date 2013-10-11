@@ -36,21 +36,79 @@ class EnterpriseController extends Controller
 	public function actionCPTeam()
 	{
 		$this->pageTitle = '团队闪耀';
-		$result = array();
+		
+		
 				//echo $_GET['Company_Industry_id'];exit;
 		$Company_city_id = Tools::getParam('Company_city_id');
 		$Company_Industry_id = Tools::getParam('Company_Industry_id');
 		$Company_city = Tools::getParam('Company_city');
+		if(!$Company_city)
+			$Company_city_id = '';
+		
 		$Company_Industry = Tools::getParam('Company_Industry');
+		if(!$Company_Industry)
+			$Company_Industry_id = '';
 		$keyword = Tools::getParam('keyword');
-		$result['get'] = array('Company_city_id'=>$Company_city_id,
-								   'Company_Industry_id'=>$Company_Industry_id,
-								   'Company_city'=>$Company_city,
-								   'Company_Industry'=>$Company_Industry,
-									'keyword'=>$keyword
-					);
-		$result['posts'] = $result['pages']  = array();			
-		$this->render('CPTeam',$result);
+		$cid = Tools::getParam('cid');
+		$result = Member::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$result['cat'] = BaseData::CPTeamCategary();
+
+		if(isset($_GET['_']) && $_GET['_']>0)
+		{
+
+			$this->layout = false;
+			$this->render('CPTeamAjax',$result);
+		}else{
+
+			$result['get'] = array('Company_city_id'=>$Company_city_id,
+									   'Company_Industry_id'=>$Company_Industry_id,
+									   'Company_city'=>$Company_city,
+									   'Company_Industry'=>$Company_Industry,
+										'keyword'=>$keyword,
+										'cid'=>$cid
+						);
+			$this->render('CPTeam',$result);
+		}	
+	}
+	/**
+	 * 携手发展
+	 */
+	public function actionCPJoint()
+	{
+		$this->pageTitle = '携手发展';
+	
+	
+		//echo $_GET['Company_Industry_id'];exit;
+		$Company_city_id = Tools::getParam('Company_city_id');
+		$Company_Industry_id = Tools::getParam('Company_Industry_id');
+		$Company_city = Tools::getParam('Company_city');
+		if(!$Company_city)
+			$Company_city_id = '';
+	
+		$Company_Industry = Tools::getParam('Company_Industry');
+		if(!$Company_Industry)
+			$Company_Industry_id = '';
+		$keyword = Tools::getParam('keyword');
+		$cid = Tools::getParam('cid');
+		$result = Member::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$result['cat'] = BaseData::CPTeamCategary();
+	
+		if(isset($_GET['_']) && $_GET['_']>0)
+		{
+	
+			$this->layout = false;
+			$this->render('CPTeamAjax',$result);
+		}else{
+	
+			$result['get'] = array('Company_city_id'=>$Company_city_id,
+					'Company_Industry_id'=>$Company_Industry_id,
+					'Company_city'=>$Company_city,
+					'Company_Industry'=>$Company_Industry,
+					'keyword'=>$keyword,
+					'cid'=>$cid
+			);
+			$this->render('CPTeam',$result);
+		}
 	}
 
 }

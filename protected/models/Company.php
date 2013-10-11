@@ -182,4 +182,12 @@ class Company extends CActiveRecord
 		else
 			return $tree->get_tree('0', $str);
 	}
+	
+	/**
+	 * 获取公司并分页
+	 */
+	public static function getCompany()
+	{
+		
+	}
 }

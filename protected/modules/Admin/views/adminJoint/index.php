@@ -11,59 +11,87 @@
 </div><!-- search-form -->
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
-	'id'=>'member-grid',
+	'id'=>'adminjoint-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		array(
 
 						'name' => 'id',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
+						'value' => '$row+1',
+						'header' => '序号'
 				),
 
 			array(
 
-						'name' => 'name',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-			array(
-
-						'name' => 'CompanyID',
-						'value' =>array($this,"getCompanyByKey"),
+						'name' => 'title',
+						'header' => '项目标题'
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
-			array(
-
-						'name' => 'pid',
-						'value' =>array($this,"getPostByKey"),
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
 			array(
 
 						'name' => 'cid',
-						'value' =>array($this,"getCategoryByKey"),
+						'value' =>array($this,"getValueByKey"),
+						'header' => '分类'
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
+			array(
 
+						'name' => 'CompanyID',
+						'value' =>array($this,"getValueByCompanyID"),
+						'header' => '公司'
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),	
 
-	
+			array(
+
+						'name' => 'imgurl',
+						'type' => 'image',
+						'header' => '图片',
+						'htmlOptions' => array(
+								'class' => 'thumbimage_100',
+						),
+				),
+
+			array(
+
+						'name' => 'remark',
+						'header' => '摘要',
+						'value' => 'Helper::truncate_utf8_string($data->remark,30)',
+						'htmlOptions' => array(
+								'width' => '60',
+						),
+				),
 
 			
+			
 		array(
+
+						'name' => 'addtime',
+						'header' => '添加时间',
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'updtime',
+						'header' => '修改时间'
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+		array(
+			'header'=>'操作',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',
