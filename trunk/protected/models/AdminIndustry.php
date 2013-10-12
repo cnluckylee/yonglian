@@ -98,8 +98,8 @@ class AdminIndustry extends CActiveRecord
 		));
 	}
 
-	 public static function getTreeDATA($select = null,$cache = TRUE) {
-        $cacheId = 'industry'.($select !== null?'_'.$select:'');
+	 public static function getTreeDATA($select = null,$cache = TRUE,$type=null) {
+        $cacheId = 'industry'.($select !== null?'_'.$select:'').$type;
         if($cache) {
             $menus = Yii::app()->getCache()->get($cacheId);
             if($menus)
@@ -108,6 +108,8 @@ class AdminIndustry extends CActiveRecord
         $model = self::model()->getDbConnection()->createCommand()
                 ->from('{{admin_industry}}')
                 ->order('listorder DESC');
+        if($type)
+			$model->where('parentid='.$type);
         if ($select !== null)
             $model->select($select);
         else
@@ -123,9 +125,16 @@ class AdminIndustry extends CActiveRecord
         return $menus;
     }
 
-       public static function getSelectTree($empty = NULL, $pid = 0) {
+       public static function getSelectTree($empty = NULL, $pid = 0,$type=null) {
+		$cacheId = 'industry'.($select !== null?'_'.$select:'').$type;
+		if($cache) {
 
-        $menus = self::getTreeDATA(null, FALSE);
+			$menus = Yii::app()->getCache()->get($cacheId);
+
+			if($menus)
+				return $menus;
+		}
+        $menus = self::getTreeDATA(null, FALSE,$type);
         $tree = new tree();
         $array = array();
         foreach ($menus as $r) {
@@ -182,4 +191,19 @@ class AdminIndustry extends CActiveRecord
 			}
     	return $result;
     }
+    /**
+	 * 所有类型列表;
+	 * type:1文章类型;2图片
+	 */
+	public static function getAllType($type=null,$typeId = null)
+	{
+
+		$type = self::getTreeDATA(null, FALSE,$type);
+		if(!empty($typeId))
+		{
+			return $type[$typeId];
+		}else{
+			return $type;
+		}
+	}
 }

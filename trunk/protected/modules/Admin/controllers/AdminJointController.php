@@ -31,6 +31,24 @@ class AdminJointController extends AdminController
 		if(isset($_POST['Joint']))
 		{
 			$model->attributes=$_POST['Joint'];
+			
+			$upload=CUploadedFile::getInstance($model,'imgurl');
+
+			if(!empty($upload))
+			{
+				$im = null;
+
+				$imagetype = strtolower($upload->extensionName);
+				if($imagetype == 'gif')
+				    $im = imagecreatefromgif($upload->tempName);
+				else if ($imagetype == 'jpg')
+				    $im = imagecreatefromjpeg($upload->tempName);
+				else if ($imagetype == 'png')
+				    $im = imagecreatefrompng($upload->tempName);
+				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
+
+				$model->imgurl=Upload::createFile($upload,'CP','create');
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -131,10 +149,10 @@ class AdminJointController extends AdminController
 	 */
 	public function getValueByKey($data, $row, $c)
 	{
-		$media = AllType::model()->findAllByAttributes('type=4');
-		print_r($media);exit;
-		$name = '';
-		$result = Post::model()->findByPk($data->cid);
+		$media = AllType::model()->findAllByAttributes(array('type'=>4));
+		exit(1);
+		return;
+		
 		if($result)
 			$name = $result->attributes['name'];
 		return $name;

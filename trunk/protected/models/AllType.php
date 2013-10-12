@@ -98,7 +98,7 @@ class AllType extends CActiveRecord
 
 	//后台菜单
 	public static function getTreeTypeDATA($select = null,$cache = TRUE,$type = null) {
-		$cacheId = 'all_type'.($select !== null?'_'.$select:'');
+		$cacheId = 'all_type'.($select !== null?'_'.$select:'').$type;
 		if($cache) {
 
 			$menus = Yii::app()->getCache()->get($cacheId);
@@ -109,7 +109,7 @@ class AllType extends CActiveRecord
 		$where = '1';
 		if(!empty($type))
 		{
-			$where = 'type='.$type;
+			$where .= ' and type='.$type;
 		}
 		$model = self::model()->getDbConnection()->createCommand()
 		->from('{{all_type}}')

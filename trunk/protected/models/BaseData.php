@@ -20,11 +20,11 @@ class BaseData
 	 * 携手发展
 	 */
 	public static function CPDevelopCategary($cid=null){
-		$carr = array(1=>'求购信息',
-				2=>'外包信息',
-				3=>'技术联盟',
-				4=>'合作加盟',
-				5=>'业务拓展'
+		$carr = array(1=>array('id'=>1,'name'=>'求购信息'),
+				2=>array('id'=>2,'name'=>'外包信息'),
+				3=>array('id'=>3,'name'=>'技术联盟'),
+				4=>array('id'=>4,'name'=>'合作加盟'),
+				5=>array('id'=>5,'name'=>'业务拓展')
 		);
 		return $cid?$carr[$cid]:$carr;
 	}
