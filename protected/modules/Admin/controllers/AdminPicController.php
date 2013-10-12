@@ -36,6 +36,7 @@ class AdminPicController extends AdminController
 
 			$model->attributes=$_POST['adminPic'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
+			
 			if(!empty($upload))
 			{
 				$im = null;
@@ -49,7 +50,7 @@ class AdminPicController extends AdminController
 				    $im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
 
-				$model->imgurl=Upload::createFile($upload,'advPic','create');
+				$model->imgurl=Upload::createFile($upload,'cp','create');
 			}
 
 			if($model->save())
