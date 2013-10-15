@@ -111,8 +111,8 @@ class EnterpriseController extends Controller
 		}
 	}
 	
-		/**
-	 * 携手发展
+	/**
+	 * 企业动态
 	 */
 	public function actionCompanyNews()
 	{
@@ -128,14 +128,14 @@ class EnterpriseController extends Controller
 			$Company_Industry_id = '';
 		$keyword = Tools::getParam('keyword');
 		$cid = Tools::getParam('cid');
-		$result = Joint::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$result = CompanyNews::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
 		$result['cat'] = BaseData::CPDevelopCategary();
 	
 		if(isset($_GET['_']) && $_GET['_']>0)
 		{
 	
 			$this->layout = false;
-			$this->render('CPJointAjax',$result);
+			$this->render('CompanyNewsAjax',$result);
 		}else{
 	
 			$result['get'] = array('Company_city_id'=>$Company_city_id,
@@ -145,8 +145,45 @@ class EnterpriseController extends Controller
 					'keyword'=>$keyword,
 					'cid'=>$cid
 			);
-			$this->render('CPJoint',$result);
+			$this->render('CompanyNews',$result);
 		}
 	}
+	/**
+	 * 舵主风采
+	 */
+	 public function actionMentor()
+	 {
+		$this->pageTitle = '舵主风采';
+		$Company_city_id = Tools::getParam('Company_city_id');
+		$Company_Industry_id = Tools::getParam('Company_Industry_id');
+		$Company_city = Tools::getParam('Company_city');
+		if(!$Company_city)
+			$Company_city_id = '';
+	
+		$Company_Industry = Tools::getParam('Company_Industry');
+		if(!$Company_Industry)
+			$Company_Industry_id = '';
+		$keyword = Tools::getParam('keyword');
+		$cid = Tools::getParam('cid');
+		$result = Mentor::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$result['cat'] = BaseData::MentorCategary();
+	
+		if(isset($_GET['_']) && $_GET['_']>0)
+		{
+	
+			$this->layout = false;
+			$this->render('CompanyNewsAjax',$result);
+		}else{
+	
+			$result['get'] = array('Company_city_id'=>$Company_city_id,
+					'Company_Industry_id'=>$Company_Industry_id,
+					'Company_city'=>$Company_city,
+					'Company_Industry'=>$Company_Industry,
+					'keyword'=>$keyword,
+					'cid'=>$cid
+			);
+			$this->render('CompanyNews',$result);
+		}
+	 } 
 
 }

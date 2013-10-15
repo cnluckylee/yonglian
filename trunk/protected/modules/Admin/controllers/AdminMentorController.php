@@ -1,6 +1,6 @@
 <?php
 
-class AdminCompanyNewsController extends AdminController
+class AdminMentorController extends AdminController
 {
 	
 	/**
@@ -8,10 +8,10 @@ class AdminCompanyNewsController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new CompanyNews('search');
+		$model=new Mentor('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['CompanyNews']))
-			$model->attributes=$_GET['CompanyNews'];
+		if(isset($_GET['Mentor']))
+			$model->attributes=$_GET['Mentor'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -23,14 +23,14 @@ class AdminCompanyNewsController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new CompanyNews;
+		$model=new Mentor;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['CompanyNews']))
+		if(isset($_POST['Mentor']))
 		{
-			$model->attributes=$_POST['CompanyNews'];
+			$model->attributes=$_POST['Mentor'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 
 			if(!empty($upload))
@@ -69,9 +69,9 @@ class AdminCompanyNewsController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['CompanyNews']))
+		if(isset($_POST['Mentor']))
 		{
-			$model->attributes=$_POST['CompanyNews'];
+			$model->attributes=$_POST['Mentor'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
@@ -120,7 +120,7 @@ class AdminCompanyNewsController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=CompanyNews::model()->findByPk($id);
+		$model=Mentor::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -132,7 +132,7 @@ class AdminCompanyNewsController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='company-news-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='mentor-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
