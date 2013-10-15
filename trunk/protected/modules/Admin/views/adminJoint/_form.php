@@ -2,6 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'joint-form',
 	'enableAjaxValidation'=>true,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -75,6 +76,17 @@
         </div>
         </td>
 	</tr>
+    	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'remark'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'remark'); ?>
+        </div>
+        </td>
+	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
@@ -87,17 +99,7 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'remark'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'remark'); ?>
-        </div>
-        </td>
-	</tr>
+
 
 
 </tbody>

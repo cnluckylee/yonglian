@@ -1,6 +1,6 @@
 <?php
 
-class AdminJointController extends AdminController
+class AdminCompanyNewsController extends AdminController
 {
 	
 	/**
@@ -8,10 +8,10 @@ class AdminJointController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new Joint('search');
+		$model=new CompanyNews('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['Joint']))
-			$model->attributes=$_GET['Joint'];
+		if(isset($_GET['CompanyNews']))
+			$model->attributes=$_GET['CompanyNews'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -23,32 +23,14 @@ class AdminJointController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new Joint;
+		$model=new CompanyNews;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Joint']))
+		if(isset($_POST['CompanyNews']))
 		{
-			$model->attributes=$_POST['Joint'];
-			
-			$upload=CUploadedFile::getInstance($model,'imgurl');
-
-			if(!empty($upload))
-			{
-				$im = null;
-
-				$imagetype = strtolower($upload->extensionName);
-				if($imagetype == 'gif')
-				    $im = imagecreatefromgif($upload->tempName);
-				else if ($imagetype == 'jpg')
-				    $im = imagecreatefromjpeg($upload->tempName);
-				else if ($imagetype == 'png')
-				    $im = imagecreatefrompng($upload->tempName);
-				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
-
-				$model->imgurl=Upload::createFile($upload,'cp','create');
-			}
+			$model->attributes=$_POST['CompanyNews'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -64,23 +46,14 @@ class AdminJointController extends AdminController
 	 */
 	public function actionUpdate($id)
 	{
-
 		$model=$this->loadModel($id);
-		$model->setScenario('update');
-		$old_imgurl = $model->imgurl;
+
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Joint']))
+		if(isset($_POST['CompanyNews']))
 		{
-			$model->attributes=$_POST['Joint'];
-			$upload=CUploadedFile::getInstance($model,'imgurl');
-			if(!empty($upload))
-			{
-				$model->imgurl=Upload::createFile($upload,'cp','update');
-			}else{
-				$model->imgurl = $old_imgurl;
-			}
+			$model->attributes=$_POST['CompanyNews'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -122,7 +95,7 @@ class AdminJointController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Joint::model()->findByPk($id);
+		$model=CompanyNews::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -134,34 +107,10 @@ class AdminJointController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='joint-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='company-news-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-	
-	/**
-	 * 取value
-	 */
-	public function getValueByCompanyID($data, $row, $c)
-	{
-	
-		$name = '';
-		$result = Company::model()->findByPk($data->CompanyID);
-		if($result)
-			$name = $result->attributes['name'];
-		return $name;
-	}
-	/**
-	 * 取value
-	 */
-	public function getValueByKey($data, $row, $c)
-	{
-		$name = '';
-		$result = AllType::model()->findByPk($data->cid);
-		if($result)
-			$name = $result->attributes['name'];
-		return $name;
 	}
 }

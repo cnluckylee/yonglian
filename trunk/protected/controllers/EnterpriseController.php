@@ -90,14 +90,14 @@ class EnterpriseController extends Controller
 			$Company_Industry_id = '';
 		$keyword = Tools::getParam('keyword');
 		$cid = Tools::getParam('cid');
-		$result = Member::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
-		$result['cat'] = BaseData::CPTeamCategary();
+		$result = Joint::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$result['cat'] = BaseData::CPDevelopCategary();
 	
 		if(isset($_GET['_']) && $_GET['_']>0)
 		{
 	
 			$this->layout = false;
-			$this->render('CPTeamAjax',$result);
+			$this->render('CPJointAjax',$result);
 		}else{
 	
 			$result['get'] = array('Company_city_id'=>$Company_city_id,
@@ -107,7 +107,45 @@ class EnterpriseController extends Controller
 					'keyword'=>$keyword,
 					'cid'=>$cid
 			);
-			$this->render('CPTeam',$result);
+			$this->render('CPJoint',$result);
+		}
+	}
+	
+		/**
+	 * 携手发展
+	 */
+	public function actionCompanyNews()
+	{
+		$this->pageTitle = '企业动态';
+		$Company_city_id = Tools::getParam('Company_city_id');
+		$Company_Industry_id = Tools::getParam('Company_Industry_id');
+		$Company_city = Tools::getParam('Company_city');
+		if(!$Company_city)
+			$Company_city_id = '';
+	
+		$Company_Industry = Tools::getParam('Company_Industry');
+		if(!$Company_Industry)
+			$Company_Industry_id = '';
+		$keyword = Tools::getParam('keyword');
+		$cid = Tools::getParam('cid');
+		$result = Joint::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$result['cat'] = BaseData::CPDevelopCategary();
+	
+		if(isset($_GET['_']) && $_GET['_']>0)
+		{
+	
+			$this->layout = false;
+			$this->render('CPJointAjax',$result);
+		}else{
+	
+			$result['get'] = array('Company_city_id'=>$Company_city_id,
+					'Company_Industry_id'=>$Company_Industry_id,
+					'Company_city'=>$Company_city,
+					'Company_Industry'=>$Company_Industry,
+					'keyword'=>$keyword,
+					'cid'=>$cid
+			);
+			$this->render('CPJoint',$result);
 		}
 	}
 
