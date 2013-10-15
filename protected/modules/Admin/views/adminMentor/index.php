@@ -11,7 +11,7 @@
 </div><!-- search-form -->
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
-	'id'=>'adminjoint-grid',
+	'id'=>'adminmentor-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(

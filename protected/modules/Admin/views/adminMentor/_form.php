@@ -1,6 +1,6 @@
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'companynews-form',
+	'id'=>'mentor-form',
 	'enableAjaxValidation'=>true,
 	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
 )); ?>
@@ -70,7 +70,7 @@
         <td >
         <div class="row">
 
-        <?php echo $form->dropDownList($model,'pid',CHtml::listData(BaseData::CPDevelopCategary(),'id','name')); ?>
+        <?php echo $form->dropDownList($model,'pid',CHtml::listData(BaseData::MentorCategary(),'id','name')); ?>
         
 		<?php echo $form->error($model,'pid'); ?>
         </div>
@@ -117,7 +117,7 @@
 <script language="javascript">
  	var editor;
 	KindEditor.ready(function(K) {
-		editor = K.create('#CompanyNews_content', {
+		editor = K.create('#Mentor_content', {
 					width:'800px',
 					height:'500px',
 					resizeType : 2,

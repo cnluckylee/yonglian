@@ -28,4 +28,18 @@ class BaseData
 		);
 		return $cid?$carr[$cid]:$carr;
 	}
+	
+	/**
+	 * 舵主风采文章分类
+	 */
+	public static function MentorCategary($cid=null)
+	{
+		$carr = array(1=>array('id'=>1,'name'=>'文章分类1'),
+				2=>array('id'=>2,'name'=>'文章分类2'),
+				3=>array('id'=>3,'name'=>'文章分类3'),
+				4=>array('id'=>4,'name'=>'文章分类4'),
+				5=>array('id'=>5,'name'=>'文章分类5')
+		);
+		return $cid?$carr[$cid]:$carr;
+	} 
 }
