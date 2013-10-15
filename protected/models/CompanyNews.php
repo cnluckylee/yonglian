@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{joint}}".
+ * This is the model class for table "{{company_news}}".
  *
- * The followings are the available columns in table '{{joint}}':
+ * The followings are the available columns in table '{{company_news}}':
  * @property integer $id
  * @property string $title
  * @property integer $cid
@@ -16,12 +16,12 @@
  * @property integer $CompanyID
  * @property integer $pid
  */
-class Joint extends CActiveRecord
+class CompanyNews extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Joint the static model class
+	 * @return CompanyNews the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -33,7 +33,7 @@ class Joint extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{joint}}';
+		return '{{company_news}}';
 	}
 
 	/**
@@ -113,7 +113,7 @@ class Joint extends CActiveRecord
 		));
 	}
 	
-		/**
+			/**
 	 * 获取文章列表
 	 */
 	public static function getMoreInfo($CompanyID=null,$pid=null,$limit = 5)
