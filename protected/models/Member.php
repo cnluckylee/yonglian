@@ -105,6 +105,36 @@ class Member extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+
+		public static function getTreeDATA($select = null,$cache = TRUE,$type=null) {
+        $cacheId = 'member'.($select !== null?'_'.$select:'').$type;
+        if($cache) {
+            $menus = Yii::app()->getCache()->get($cacheId);
+            if($menus)
+                return $menus;
+        }
+        $model = self::model()->getDbConnection()->createCommand()
+                ->from('{{member}}')
+                ->order('listorder DESC');
+        if($type)
+			$model->where('parentid='.$type);
+        if ($select !== null)
+            $model->select($select);
+        else
+            $model->select ('id,parentid,name');
+
+        $menus = $model->queryAll();
+        $array = array();
+        foreach($menus as $menu) {
+            $array[$menu['id']] = $menu;
+        }
+        $menus = $array;
+        if($cache)  Yii::app()->getCache()->set($cacheId,$menus);
+        return $menus;
+    }
+
+
 	/**
 	 * 获取文章列表
 	 */
@@ -141,7 +171,7 @@ class Member extends CActiveRecord
 			Yii::app()->getCache()->set($cacheId,$result,86400);
 		return $result;
 	}
-	
+
 	public static function enterprise($Company_city_id = null,$Company_Industry_id=null,$keyword=null,$cid=null)
 	{
 		//解析$Company_city_id,$Company_Industry_id
@@ -149,7 +179,7 @@ class Member extends CActiveRecord
 			$city_arr = explode('_', $Company_city_id);
 		if($Company_Industry_id)
 			$Industry_arr = explode('_', $Company_Industry_id);
-	
+
 		$criteria = new CDbCriteria();
 		if(isset($city_arr[0]))
 			$criteria->addCondition('city1='.$city_arr[0]);
@@ -169,7 +199,7 @@ class Member extends CActiveRecord
 			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
 		if($keyword)
 			$criteria->addSearchCondition('c.name', $keyword);
-			
+
 		$criteria->select = 't.*';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
 		$criteria->order = 'rank desc';
@@ -177,21 +207,21 @@ class Member extends CActiveRecord
 		if($cid)
 			$criteria->addCondition('t.cid='.$cid);
 		$count = Member::model()->count($criteria);
-	
-	
+
+
 		$pager = new CPagination($count);
 		$pager->pageSize = 2;
 		$pager->applyLimit($criteria);
 		$artList = Member::model()->findAll($criteria);
 		$list = array();
-	
+
 		foreach($artList as $i)
 		{
 			$arr = $i->attributes;
 			if(!isset($list[$arr['CompanyID']]['name'])){
-	
+
 				$cc = Company::model()->findByPk($arr['CompanyID']);
-	
+
 				$companyName = '';
 				if($cc){
 					$temp = $cc->attributes;
@@ -199,10 +229,10 @@ class Member extends CActiveRecord
 				}
 				$list[$arr['CompanyID']]['name'] = $companyName;
 			}
-			
+
 			$list[$arr['CompanyID']]['data'] = self::getMemberlByTypeAndCompanyID($arr['CompanyID'],$cid);
 		}
 		return array('pages'=>$pager,'posts'=>$list);
-	
+
 	}
 }
