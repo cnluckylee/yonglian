@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 擂台
+ */
 class ChallengeController extends Controller
 {
 	/**
