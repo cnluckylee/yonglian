@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{theory}}".
+ * This is the model class for table "{{technology}}".
  *
- * The followings are the available columns in table '{{theory}}':
+ * The followings are the available columns in table '{{technology}}':
  * @property integer $id
  * @property string $title
  * @property integer $fid
@@ -24,12 +24,12 @@
  * @property integer $sid
  * @property integer $mid
  */
-class Theory extends CActiveRecord
+class Technology extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Theory the static model class
+	 * @return Technology the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -41,7 +41,7 @@ class Theory extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{theory}}';
+		return '{{technology}}';
 	}
 
 	/**
@@ -53,7 +53,7 @@ class Theory extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('fid, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>200),
+			array('title', 'length', 'max'=>100),
 			array('imgurl', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().

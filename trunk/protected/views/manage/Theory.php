@@ -59,29 +59,29 @@
   <!--商标或标志结束（身体1）-->
   <table  class="searchForm">
     <tr>
-      <td class="title">地区</td>
-      <td><input type="text" width="150px"  id="Company_city" name="Company_city" value="<?php echo $get['Company_city'];?>"/>
-      <input type="hidden" width="150px"  id="Company_city_id" name="Company_city_id" value="<?php echo $get['Company_city_id'];?>"/>
-        <input type="button" value="选择"  id="area"/></td>
-      <td class="title">行业</td>
-      <td><input type="text" width="150px" id="Company_Industry" name="Company_Industry"  value="<?php echo $get['Company_Industry'];?>" />
-      <input type="hidden" width="150px" id="Company_Industry_id" name="Company_Industry_id"  value="<?php echo $get['Company_Industry_id'];?>"/>
-        <input type="button" value="选择"  id="industry"/></td>
+      <td class="title">主旨管理</td>
+       <td >经营战略<?php echo $form->dropDownList($model,'CompanyID',CHtml::listData(Company::getTreeDATA(),'id','name')); ?></td>
+       <td >开发战略<?php echo $form->dropDownList($model,'kid',CHtml::listData(BaseData::NewTheory_KFZL(),'id','name')); ?></td>
+       <td></td>
        </tr>
-       <tr>
-       
-      <td class="title">企业名称</td>
-      <td><input type="text" width="150px"  name="keyword" value="<?php echo $get['keyword'];?>"/></td>
-      <td class="title">栏目类别</td>
-      <td><select name="cid">
-      <option value="">所有栏目</option>
-      <?php foreach($cat as $cid =>$item):?>
+     <tr>
+      <td class="title">横向管理</td>
+      <td>采购供应<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
+      <td>内部运营<?php echo $form->dropDownList($model,'nid',CHtml::listData(BaseData::NewTheory_NBYY(),'id','name')); ?></td>
+      <td>分销配送<?php echo $form->dropDownList($model,'fxid',CHtml::listData(BaseData::NewTheory_FXPS(),'id','name')); ?></td>
+    </tr>
+    <tr>
+      <td class="title">纵向管理</td>
+      <td>企业组织<?php echo $form->dropDownList($model,'qid',CHtml::listData(BaseData::NewTheory_QYZZ(),'id','name')); ?></td>
+      <td>人力资源<?php echo $form->dropDownList($model,'rid',CHtml::listData(BaseData::NewTheory_RLZY(),'id','name')); ?></td>
+      <td>财务税收<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
+    </tr>
+     <tr>
+     <td class="title">作者</td>
+      <td><?php echo $form->textField($model,'mid'); ?></td>
+      <td>标题<?php echo $form->textField($model,'title'); ?></td>
+      <td>适用行业<?php echo $form->dropDownList($model,'sid',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?></td>
       
-      <option value="<?php echo $cid;?>" <?php if($get['cid'] == $cid): echo 'selected'; endif; ?>><?php echo $item['name']; ?></option>
-      <?php endforeach; ?>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      </select><input type="submit"  value="搜索" /></td>
-      <td></td>
     </tr>
   </table>
 <?php $this->endWidget(); ?>
