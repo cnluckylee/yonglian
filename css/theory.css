@@ -1,0 +1,145 @@
+.video{
+	width:330px;
+	height:211px;
+	float:left;
+	border:5px solid #d0d0d0
+}
+
+.lanmu_content{
+	float: left;
+    width: 750px;
+	line-height: 30px;
+	padding: 5px;
+}
+
+.top_nav{
+ 	background: none repeat scroll 0 0 #F0F0F0;
+    float: left;
+    height: 40px;
+    width: 1130px;
+}
+
+
+
+.top_nav  .l{
+    left: 5px;
+    top: 5px;
+	float:left;
+}
+
+
+.top_nav .l #left2 {
+    border-bottom: 15px solid transparent;
+    border-right: 25px solid #96C2F1;
+    border-top: 15px solid transparent;
+    height: 0;
+    width: 0;
+}
+
+.top_nav  .m{
+	float: left;
+    width: 600px;
+}
+
+.top_nav  .m ul{
+	
+}
+
+.top_nav  .m ul li{
+	display: inline;
+	margin-right:50px;
+    width: 100px;
+}
+
+.top_nav  .m ul li a{
+	font-size: 15px;
+	font-weight:bold;
+	color:#3c3c3c;
+}
+.top_nav .report{
+	float: left;
+    height: 40px;
+    line-height: 39px;
+    width: 150px;
+}
+
+.top_nav .r{
+	float:right;
+	height:40px;
+}
+
+.top_nav .r #right2 {
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #96C2F1;
+    border-top: 15px solid transparent;
+
+}
+.main_middle {
+	width:1130px;
+	height:auto;
+}
+.main_middle .leftadv{
+	float: left;
+    height:auto;
+    width: 310px;
+	border:3px solid #d0d0d0;
+}
+.main_middle .leftadv ul{
+	margin-left:1px;
+}
+.main_middle .leftadv ul li{
+	float: left;
+    height: 71px;
+    width: 124px;
+	margin-left:-41px;
+}
+.main_middle .searchForm{
+	float:left;
+	width:810px;
+}
+
+.main_middle .searchForm .title{
+	text-align: center;
+    width: 100px;
+}
+
+
+#myCarousel {
+    width: 306px;
+}
+.carousel {
+    line-height: 1; 
+}
+
+.carousel-indicators {
+    background: -moz-linear-gradient(right center , rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.3) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    height: 20px;
+    left: 0;
+    list-style: none outside none;
+    padding: 8px 0 0 30px;
+    position: absolute;
+    top: 276px;
+    width: 300px;
+    z-index: 11;
+}
+
+
+.carousel-inner {
+    float: left;
+    height: 304px;
+    overflow: hidden;
+    position: relative;
+    width: 615px;
+}
+
+#mydgCarousel .item {
+    height: 304px;
+}
+#mydgCarousel img {
+    height: 304px;
+    left: 0;
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+}

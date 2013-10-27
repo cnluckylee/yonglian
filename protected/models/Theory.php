@@ -136,4 +136,66 @@ class Theory extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	public static function getArticleList($search = null,$keyword=null)
+	{
+		//解析$Company_city_id,$Company_Industry_id
+		$criteria = new CDbCriteria();
+		if(isset($city_arr[0]))
+			$criteria->addCondition('city1='.$city_arr[0]);
+		if(isset($city_arr[1]))
+			$criteria->addCondition('city2='.$city_arr[1]);
+		if(isset($city_arr[2]))
+			$criteria->addCondition('city3='.$city_arr[2]);
+		if(isset($city_arr[3]))
+			$criteria->addCondition('city4='.$city_arr[3]);
+		if(isset($Industry_arr[0]))
+			$criteria->addCondition('IndustryID1='.$Industry_arr[0]);
+		if(isset($Industry_arr[1]))
+			$criteria->addCondition('IndustryID2='.$Industry_arr[1]);
+		if(isset($Industry_arr[2]))
+			$criteria->addCondition('IndustryID3='.$Industry_arr[2]);
+		if(isset($Industry_arr[3]))
+			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
+		if($keyword)
+			$criteria->addSearchCondition('c.name', $keyword);
+
+		$criteria->select = 't.*';
+		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
+		$criteria->order = 'updtime desc';
+
+
+		$count = Theory::model()->count($criteria);
+
+
+		$pager = new CPagination($count);
+		$pager->pageSize = 2;
+		$pager->applyLimit($criteria);
+		$artList = Theory::model()->findAll($criteria);
+		$list = array();
+
+		foreach($artList as $i)
+		{
+			$arr = $i->attributes;
+
+			$cc = Company::model()->findByPk($arr['CompanyID']);
+			$companyName = '';
+			if($cc){
+				$temp = $cc->attributes;
+				$companyName = $temp['name'];
+			}
+			$arr['CompanyName'] = $companyName;
+
+			$me = Member::model()->findByPk($arr['mid']);
+			$memName = '';
+			if($me){
+				$temp = $me->attributes;
+				$memName = $temp['name'];
+			}
+			$arr['MemName'] = $memName;
+			$list[] = $arr;
+		}
+		return array('pages'=>$pager,'posts'=>$list);
+
+	}
 }
