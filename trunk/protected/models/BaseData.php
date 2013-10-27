@@ -186,4 +186,15 @@ class BaseData
 		);
 		return $cid?$carr[$cid]:$carr;
 	}
+	/**
+	 * 推荐栏目
+	 */
+	 public static function ReColumn($cid = null)
+	 {
+		$data = array(1=>array('id'=>1,'name'=>'专家新论'),
+					  2=>array('id'=>2,'name'=>'管理技术')
+				);
+		return $cid?$data[$cid]:$data;
+	 }
+
 }

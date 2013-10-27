@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/cpteam.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/searchDataForm.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/slides.css" />
 <!--视频开始-->
 <div class="main">
 <div class="video" id="video"> </div>
@@ -29,10 +30,11 @@
   </div>
   <div class="m">
     <ul>
-      <li><a href="#">企业动态</a></li>
-      <li><a href="<?php echo Yii::app()->getBaseUrl(true)?>/?r=enterprise/CPJoint">携手发展</a></li>
-      <li><a href="#">舵主风采</a></li>
-      <li><a href="<?php echo Yii::app()->getBaseUrl(true)?>/?r=enterprise/CPTeam">团队闪耀</a></li>
+      <?php
+	   foreach($menu as $key => $menuitem):?>
+      <li><a href="<?php echo $menuitem['url'];?>"><?php echo $menuitem['name'];?></a></li>
+      <? endforeach;?>
+    
     </ul>
   </div>
   <!--餐单定位结束-->
@@ -49,6 +51,22 @@
       <li><a href="" target="_blank"><img src="images/ls.gif" width="122" height="60" /></a></li>
       <li><a href="" target="_blank"><img src="images/ls.gif" width="122" height="60" /></a></li>
     </ul>
+    <div id="slides">
+    <?php foreach($recColumn as $key=>$item):?>
+			<div class="scroimg" <?php if($key == 0):?>style="left:0;"<?php endif?>>
+
+				<a href='<?php echo $item['url'];?>'><img src='<?php echo $item['imgurl'];?>' width="310" height="310" alt="<?php echo $item['title'];?>">" /></a>
+
+			</div>
+
+			<div class="scrotext"  <?php if($key == 0):?>style="bottom:0;"<?php endif?>>
+
+				<h3><a href="<?php echo $item['url'];?>">"><?php echo $item['title'];?>"></a></h3>
+
+				<p><?php echo $item['memo'];?>"></p>
+			</div>
+			<?php endforeach?>
+			</div>
   </div>
   <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'cpjoint-form',
@@ -88,64 +106,32 @@
   <div class=" searchDataForm" style="width:810px;">
     <div class="top">
       <ul>
-        <li>企业名称</li>
-        <li>项目标题</li>
-        <li>文章格式</li>
+        <li>新论标题</li>
+        <li>专家姓名</li>
         <li>更新时间</li>
+        <li>隶属机构</li>
         
       </ul>
     </div>
     <div class="searchData" id="info">
-      <?php foreach($posts as $row):?>
+      <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
-        <li><?php echo $row['name'];?></li>
-        <li>
-          <ul class="droplist">
-            <?php 
-		 if(isset($row['data'])):
-		 foreach($row['data'] as $cont16):?>
-            <li><?php echo $cont16['title'];?></li>
-            <?php
-		   endforeach; 
-		   endif;
-		   ?>
-          </ul>
-        </li>
-        <li>
-          <ul class="droplist">
-            <?php 
-		 if(isset($row['data'])):
-		 foreach($row['data'] as $cont15):?>
-            <li><?php echo $cont15['cname'];?></li>
-            <?php
-		   endforeach; 
-		   endif;
-		   ?>
-          </ul>
-        </li>
-        <li>
-          <ul class="droplist">
-            <?php 
-		 if(isset($row['data'])):
-		 foreach($row['data'] as $cont15):?>
-            <li><?php echo $cont15['upddate'];?></li>
-            <?php
-		   endforeach; 
-		   endif;
-		   ?>
-          </ul>
-        </li>
+        <li><?php echo $row['title'];?></li>
+        <li><?php echo $row['MemName'];?></li>
+        <li><?php echo $row['updtime'];?></li>
+        <li><?php echo $row['CompanyName'];?></li>
       </ul>
       <?php endforeach; ?>
       <?php 
 	 //分页widget代码: 
-	$this->widget('NewPager',array('pages'=>$pages));
+	$this->widget('NewPager',array('pages'=>$data['pages']));
 	 ?>
     </div>
   </div>
 </div>
 <script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.swfobject.1-1-1.min.js"></script>
 <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
 <script language="javascript">
 $(function () {
 	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
@@ -161,3 +147,54 @@ $(function () {
 		});
 });
 </script>
+
+ <script>
+    $(function() {
+	     $('#myCarousel').carousel()
+	  
+	function topDiv(){ 
+	var elem=document.createElement("div"); 
+	elem.className="top-div"; 
+	//=========生成图片标签
+	var img=document.createElement("img"); 
+	img.src="http://www.wochacha.com/img/index_start.png"; 
+	
+	elem.appendChild(img); 
+
+	//=========将生成的遮罩层附到 body 标签内 
+	document.body.appendChild(elem); 
+	var alpha = alphaDiv(elem); 
+} 
+
+function alphaDiv(el){ 
+	var elem=document.createElement("div"); 
+	elem.className="alphaDiv"; 
+	elem.onclick=function(e){ 
+		$(".alphaDiv").remove();
+		$(".top-div").remove();
+	} 
+	document.body.appendChild(elem); 
+
+	//调整高度宽度
+	var h = $(document).height()+"px";
+	var w = $(document).width()+"px";
+	
+	var sw = $(window).width();
+	if(sw-1000>0)
+	{
+		sw = (sw-1000)/2+"px";
+	}else{
+		sw = "0px";
+	}
+	$(".alphaDiv").css({"height":h});
+	$(".top-div").css("left",sw);
+	setTimeout(function(){
+				$(".alphaDiv").remove();
+				$(".top-div").remove();
+	},8000);
+} 
+
+
+
+    });
+  </script>
