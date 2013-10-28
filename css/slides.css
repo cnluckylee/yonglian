@@ -1,14 +1,226 @@
-#slides{
-	clear: both;
-    content: "";
-    display: block;
-    height: 0;
-    visibility: hidden;
+#featProducts {
+   
+    width: 310px;
+    float: left;
+    height: auto;
+
 }
-.scroimg{
-	clear: both;
-    content: "";
+#featProducts .featTitle {
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-bottom: 1px solid #92B9EC;
+    font-size: 20px;
+    font-weight: bold;
+    height: 40px;
+
+
+    width: 310px;
+}
+#featProducts .featTitle p {
+    padding-left: 4px;
+    padding-top: 4px;
+	text-align:center;
+}
+#featProducts .scrolllist {
+    height: 425px;
+    margin: 0 auto;
+    width: 310px;
+}
+.scrolllist .imglist_w {
+    float: left;
+    height: 360px;
+    overflow: hidden;
+    position: relative;
+    width: 310px;
+}
+.scrolllist .imglist_w ul {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: auto;
+	margin: auto 0 auto -40px;
+}
+.scrolllist .imglist_w li {
+    float: left;
+    height: 380px;
+   
+    width: 310px;
+}
+a.aleft {
+    float: left;
+}
+a.aleft:hover {
+    background-position: -280px 60px;
+}
+a.abtn {
+    background: url("../img/recomBtn.png") no-repeat scroll -65px 60px rgba(0, 0, 0, 0);
+    display: none;
+    height: 130px;
+    outline: medium none;
+    overflow: hidden;
+    padding-top: 150px;
+    width: 45px;
+}
+a.aright {
+    background-position: -180px 60px;
+    float: right;
+}
+a.aright:hover {
+    background-position: -395px 60px;
+}
+.scrolllist .imglist_w li a img {
+    height: 310px;
+    width: 310px;
+}
+.scrolllist .imglist_w li p {
+    overflow: hidden;
+    padding-top: 20px;
+}
+.scrolllist .imglist_w li p a.title {
     display: block;
-    height: 0;
-    visibility: hidden;
+    font-size: 12px;
+    font-weight: normal;
+    height: 40px;
+    line-height: 20px;
+    margin-left: 0;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.scrolllist .imglist_w .store {
+    color: #666666;
+    font-size: 13px;
+    font-weight: bold;
+    height: 45px;
+    text-align: center;
+    width: 130px;
+}
+.scrolllist .imglist_w .price {
+    font-size: 16px;
+    font-weight: bold;
+    height: 25px;
+    text-align: center;
+    width: 130px;
+}
+.scrolllist .imglist_w .sold {
+    font-size: 12px;
+    text-align: left;
+}
+.scrolllist .imglist_w button {
+    background: url("../img/cart.png") no-repeat scroll -57px -525px rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 14px;
+    margin-right: 5px;
+    padding: 6px 0;
+    vertical-align: middle;
+    width: 130px;
+}
+
+
+
+
+
+
+
+.scrolllistV {
+    height: 310px;
+    margin: 0 auto;
+    width: 310px;
+}
+.scrolllistV .imglist_w {
+    float: left;
+    height: 310px;
+    overflow: hidden;
+    position: relative;
+    width: 310px;
+}
+.scrolllistV .imglist_w ul {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: auto;
+	margin: auto 0 auto -40px;
+}
+.scrolllistV .imglist_w li {
+    float: left;
+    height: 310px; 
+    width: 310px;
+}
+a.aleft {
+    float: left;
+}
+a.aleft:hover {
+    background-position: -280px 60px;
+}
+a.abtn {
+    background: url("../img/recomBtn.png") no-repeat scroll -65px 60px rgba(0, 0, 0, 0);
+    display: none;
+    height: 130px;
+    outline: medium none;
+    overflow: hidden;
+    padding-top: 150px;
+    width: 45px;
+}
+a.aright {
+    background-position: -180px 60px;
+    float: right;
+}
+a.aright:hover {
+    background-position: -395px 60px;
+}
+.scrolllistV .imglist_w li a img {
+    height: 310px;
+    width: 310px;
+}
+.scrolllistV .imglist_w li p {
+    overflow: hidden;
+    padding-top: 20px;
+}
+.scrolllistV .imglist_w li p a.title {
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+    height: 40px;
+    line-height: 20px;
+    margin-left: 0;
+    overflow: hidden;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.scrolllistV .imglist_w .store {
+    color: #666666;
+    font-size: 13px;
+    font-weight: bold;
+    height: 45px;
+    text-align: center;
+    width: 130px;
+}
+.scrolllistV .imglist_w .price {
+    font-size: 16px;
+    font-weight: bold;
+    height: 25px;
+    text-align: center;
+    width: 130px;
+}
+.scrolllistV .imglist_w .sold {
+    font-size: 12px;
+    text-align: left;
+}
+.scrolllistV .imglist_w button {
+    background: url("../img/cart.png") no-repeat scroll -57px -525px rgba(0, 0, 0, 0);
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 14px;
+    margin-right: 5px;
+    padding: 6px 0;
+    vertical-align: middle;
+    width: 130px;
 }

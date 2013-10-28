@@ -31,6 +31,7 @@ class ManageController extends Controller
 
 		$this->_result['data'] = Theory::getArticleList();
 		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
+		
 		if(isset($_GET['_']) && $_GET['_']>0)
 		{
 
