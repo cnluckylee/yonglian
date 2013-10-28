@@ -46,28 +46,42 @@
 <div class="main_middle">
   <!--间隔层-->
   <!--商标或标志开始（身体1）-->
-  <div class="leftadv">
-    <ul>
-      <li><a href="" target="_blank"><img src="images/ls.gif" width="122" height="60" /></a></li>
-      <li><a href="" target="_blank"><img src="images/ls.gif" width="122" height="60" /></a></li>
-    </ul>
-    <div id="slides">
+  
+<div id="featProducts" class="gray-box pro-li">
+<div  class="featTitle"><p>推荐栏目</p></div>
+<div id="s1" class="scrolllist"> <a title="左移" href="#" class="abtn aleft" hidefocus></a>
+  <div class="imglist_w">
+    <ul class="imglist">
     <?php foreach($recColumn as $key=>$item):?>
-			<div class="scroimg" <?php if($key == 0):?>style="left:0;"<?php endif?>>
-
-				<a href='<?php echo $item['url'];?>'><img src='<?php echo $item['imgurl'];?>' width="310" height="310" alt="<?php echo $item['title'];?>">" /></a>
-
-			</div>
-
-			<div class="scrotext"  <?php if($key == 0):?>style="bottom:0;"<?php endif?>>
-
-				<h3><a href="<?php echo $item['url'];?>">"><?php echo $item['title'];?>"></a></h3>
-
-				<p><?php echo $item['memo'];?>"></p>
-			</div>
-			<?php endforeach?>
-			</div>
+      <li> <a href='<?php echo $item['url'];?>'><img src=<?php echo $item['imgurl'];?> width="310" height="310" alt=<?php echo $item['title'];?> /></a>
+        <p><a href='<?php echo $item['url'];?>'><?php echo $item['title'];?></a></p>
+        <p class="store"><?php echo $item['title'];?></p>
+       
+      </li>
+      <?php endforeach?>
+    
+    </ul>
+    <!--imglist end-->
   </div>
+  <a title="右移" href="#" class="abtn aright" hidefocus></a> </div>
+
+<div  class="featTitle"><p>产品展示</p></div>
+<div id="s2" class="scrolllistV"> <a title="左移" href="#" class="abtn aleft" hidefocus></a>
+  <div class="imglist_w">
+    <ul class="imglist">
+    <?php foreach($recColumn as $key=>$item):?>
+      <li> 
+      	<a href='<?php echo $item['url'];?>'><img src=<?php echo $item['imgurl'];?> width="310" height="310" alt=<?php echo $item['title'];?> /></a>
+      </li>
+      <?php endforeach?>
+    
+    </ul>
+    <!--imglist end-->
+  </div>
+  <a title="右移" href="#" class="abtn aright" hidefocus></a> </div>
+</div>
+
+
   <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'cpjoint-form',
 	'enableAjaxValidation'=>false,
@@ -131,7 +145,7 @@
 </div>
 <script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.swfobject.1-1-1.min.js"></script>
 <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
-<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js"></script>
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/slider.js"></script>
 <script language="javascript">
 $(function () {
 	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
@@ -140,61 +154,26 @@ $(function () {
 		bindiframe("area");
 		bindiframe("industry");
 	},1000);	
-		$('#video').flash({
+		//默认状态下左右滚动
+		$("#s1").xslider({
+			unitdisplayed:1,
+			movelength:1,
+			unitlen:310,
+			autoscroll:3000
+		});
+		//默认状态下左右滚动
+		$("#s2").xslider({
+			unitdisplayed:1,
+			movelength:1,
+			unitlen:310,
+			autoscroll:3000,
+			dir:"V",
+		});
+/*		$('#video').flash({
 			swf: 'http://www.tudou.com/v/m24_Zb-m9Uo/&resourceId=0_04_05_99/v.swf',
 			height: 205,
 			width: 330
-		});
+		});*/
 });
 </script>
 
- <script>
-    $(function() {
-	     $('#myCarousel').carousel()
-	  
-	function topDiv(){ 
-	var elem=document.createElement("div"); 
-	elem.className="top-div"; 
-	//=========生成图片标签
-	var img=document.createElement("img"); 
-	img.src="http://www.wochacha.com/img/index_start.png"; 
-	
-	elem.appendChild(img); 
-
-	//=========将生成的遮罩层附到 body 标签内 
-	document.body.appendChild(elem); 
-	var alpha = alphaDiv(elem); 
-} 
-
-function alphaDiv(el){ 
-	var elem=document.createElement("div"); 
-	elem.className="alphaDiv"; 
-	elem.onclick=function(e){ 
-		$(".alphaDiv").remove();
-		$(".top-div").remove();
-	} 
-	document.body.appendChild(elem); 
-
-	//调整高度宽度
-	var h = $(document).height()+"px";
-	var w = $(document).width()+"px";
-	
-	var sw = $(window).width();
-	if(sw-1000>0)
-	{
-		sw = (sw-1000)/2+"px";
-	}else{
-		sw = "0px";
-	}
-	$(".alphaDiv").css({"height":h});
-	$(".top-div").css("left",sw);
-	setTimeout(function(){
-				$(".alphaDiv").remove();
-				$(".top-div").remove();
-	},8000);
-} 
-
-
-
-    });
-  </script>
