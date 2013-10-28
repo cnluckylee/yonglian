@@ -274,4 +274,7 @@ select, button{font:12px Helvetica, Arial, sans-serif;}
 #table1 .curr{color:#ffffff;background-color:#f00;}#table1 .call{color: #000000;background-color: #fdfdfd;}
 #quick a{text-decoration:none;color:#000;font-weight:normal}
 #quick a:hover{text-decoration:none;color:blue;}
+.tdcenter{
+	text-align:center;
+}
 -->

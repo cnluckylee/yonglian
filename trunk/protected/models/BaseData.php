@@ -34,7 +34,8 @@ class BaseData
 	 */
 	public static function MentorCategary($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'文章分类1'),
+		$carr = array(
+				1=>array('id'=>1,'name'=>'文章分类1'),
 				2=>array('id'=>2,'name'=>'文章分类2'),
 				3=>array('id'=>3,'name'=>'文章分类3'),
 				4=>array('id'=>4,'name'=>'文章分类4'),

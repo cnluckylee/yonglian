@@ -1,47 +1,13 @@
-
-      <?php foreach($posts as $row):?>
+ <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
-        <li><?php echo $row['name'];?></li>
-        <li>
-          <ul class="droplist">
-            <?php 
-		 if(isset($row['data'])):
-		 foreach($row['data'] as $cont16):?>
-            <li><?php echo $cont16['title'];?></li>
-            <?php
-		   endforeach; 
-		   endif;
-		   ?>
-          </ul>
-        </li>
-        <li>
-          <ul class="droplist">
-            <?php 
-		 if(isset($row['data'])):
-		 foreach($row['data'] as $cont15):?>
-            <li><?php echo $cont15['cname'];?></li>
-            <?php
-		   endforeach; 
-		   endif;
-		   ?>
-          </ul>
-        </li>
-        <li>
-          <ul class="droplist">
-            <?php 
-		 if(isset($row['data'])):
-		 foreach($row['data'] as $cont15):?>
-            <li><?php echo $cont15['upddate'];?></li>
-            <?php
-		   endforeach; 
-		   endif;
-		   ?>
-          </ul>
-        </li>
+        <li><?php echo $row['title'];?></li>
+        <li><?php echo $row['MemName'];?></li>
+        <li><?php echo $row['updtime'];?></li>
+        <li><?php echo $row['CompanyName'];?></li>
       </ul>
       <?php endforeach; ?>
-      <?php 
+     <?php 
 	 //分页widget代码: 
-	$this->widget('NewPager',array('pages'=>$pages));
+	$this->widget('NewPager',array('pages'=>$data['pages']));
 	 ?>
     

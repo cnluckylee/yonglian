@@ -85,7 +85,7 @@
   <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'cpjoint-form',
 	'enableAjaxValidation'=>false,
-	'action'=>array('enterprise/CompanyNews'),
+	'action'=>array('manage/Theory'),
 	'method'=>'get',
 )); ?>
   <!--商标或标志结束（身体1）-->
@@ -110,10 +110,15 @@
     </tr>
      <tr>
      <td class="title">作者</td>
-      <td><?php echo $form->textField($model,'mid'); ?></td>
+      <td><?php echo $form->textField($model,'mname'); ?></td>
       <td>标题<?php echo $form->textField($model,'title'); ?></td>
       <td>适用行业<?php echo $form->dropDownList($model,'sid',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?></td>
       
+    </tr>
+    <tr>
+     <td colspan="2" class="tdcenter"><input type="submit" value="搜索" /></td>
+      <td colspan="2"><input type="reset" value="重置" /></td>
+     
     </tr>
   </table>
 <?php $this->endWidget(); ?>

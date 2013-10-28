@@ -54,11 +54,12 @@ class Theory extends CActiveRecord
 		return array(
 			array('fid, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
+			array('mname', 'length', 'max'=>100),
 			array('imgurl', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, fid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid', 'safe', 'on'=>'search'),
+			array('id, title, fid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid,mname', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -98,6 +99,7 @@ class Theory extends CActiveRecord
 			'kid' => '开发战略',
 			'sid' => '适用行业',
 			'mid' => '专家名称',
+			'mname' => 'mname'
 		);
 	}
 
@@ -131,34 +133,37 @@ class Theory extends CActiveRecord
 		$criteria->compare('kid',$this->kid);
 		$criteria->compare('sid',$this->sid);
 		$criteria->compare('mid',$this->mid);
+		$criteria->compare('mname',$this->mname);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
-	public static function getArticleList($search = null,$keyword=null)
+	public static function getArticleList($Technology)
 	{
 		//解析$Company_city_id,$Company_Industry_id
 		$criteria = new CDbCriteria();
-		if(isset($city_arr[0]))
-			$criteria->addCondition('city1='.$city_arr[0]);
-		if(isset($city_arr[1]))
-			$criteria->addCondition('city2='.$city_arr[1]);
-		if(isset($city_arr[2]))
-			$criteria->addCondition('city3='.$city_arr[2]);
-		if(isset($city_arr[3]))
-			$criteria->addCondition('city4='.$city_arr[3]);
-		if(isset($Industry_arr[0]))
-			$criteria->addCondition('IndustryID1='.$Industry_arr[0]);
-		if(isset($Industry_arr[1]))
-			$criteria->addCondition('IndustryID2='.$Industry_arr[1]);
-		if(isset($Industry_arr[2]))
-			$criteria->addCondition('IndustryID3='.$Industry_arr[2]);
-		if(isset($Industry_arr[3]))
-			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
-		if($keyword)
-			$criteria->addSearchCondition('c.name', $keyword);
+		if(isset($Technology['CompanyID']))
+			$criteria->addCondition('CompanyID='.$Technology['CompanyID']);
+		if(isset($Technology['kid']))
+			$criteria->addCondition('kid='.$Technology['kid']);
+		if(isset($Technology['cwid']))
+			$criteria->addCondition('cwid='.$Technology['cwid']);
+		if(isset($Technology['nid']))
+			$criteria->addCondition('nid='.$Technology['nid']);
+		if(isset($Technology['fxid']))
+			$criteria->addCondition('fxid='.$Technology['fxid']);
+		if(isset($Technology['qid']))
+			$criteria->addCondition('qid='.$Technology['qid']);
+		if(isset($Technology['rid']))
+			$criteria->addCondition('rid='.$Technology['rid']);
+		if(isset($Technology['sid']))
+			$criteria->addCondition('sid='.$Technology['sid']);
+		if(isset($Technology['title']))
+			$criteria->addSearchCondition('title', $Technology['title']);
+		if(isset($Technology['mname']))
+			$criteria->addSearchCondition('mname', $Technology['mname']);
 
 		$criteria->select = 't.*';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
@@ -197,5 +202,36 @@ class Theory extends CActiveRecord
 		}
 		return array('pages'=>$pager,'posts'=>$list);
 
+	}
+
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+
+			if($this->isNewRecord)
+			{
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+				if(isset($this->mid) && $this->mid>0){
+					$member = Member::model()->findByPk($this->mid);
+					$member_arr = $member->attributes;
+					$this->mname=$member_arr['name'];
+				}
+			}
+			else
+			{
+				$this->updtime=date('Y-m-d H:i:s');
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+				if(isset($this->mid) && $this->mid>0){
+					$member = Member::model()->findByPk($this->mid);
+					$member_arr = $member->attributes;
+					$this->mname=$member_arr['name'];
+				}
+			}
+
+			return true;
+		}
+		else
+			return false;
 	}
 }
