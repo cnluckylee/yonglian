@@ -70,6 +70,14 @@
 								//'width' => '60',
 						//),
 				),
+			array(
+
+						'name' => 'mname',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
 
 			/*
 		array(

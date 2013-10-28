@@ -17,21 +17,47 @@ class ManageController extends Controller
 	{
 
 		$this->pageTitle = '专家新论';
-		$Company_city_id = Tools::getParam('Company_city_id');
-		$Company_Industry_id = Tools::getParam('Company_Industry_id');
-		$Company_city = Tools::getParam('Company_city');
-		if(!$Company_city)
-			$Company_city_id = '';
+		$Theory =isset($_GET['Theory'])?$_GET['Theory']:array();
 
-		$Company_Industry = Tools::getParam('Company_Industry');
-		if(!$Company_Industry)
-			$Company_Industry_id = '';
-		$keyword = Tools::getParam('keyword');
-		$cid = Tools::getParam('cid');
-
-		$this->_result['data'] = Theory::getArticleList();
+		$this->_result['data'] = Theory::getArticleList($Theory);
 		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
-		
+
+		if(isset($_GET['_']) && $_GET['_']>0)
+		{
+
+			$this->layout = false;
+			$this->render('TheoryAjax',$this->_result);
+		}else{
+			$model=new Theory;
+			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
+			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
+			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
+			$model->nid = isset($Theory['nid'])?trim($Theory['nid']):'';
+			$model->fxid = isset($Theory['fxid'])?trim($Theory['fxid']):'';
+			$model->qid = isset($Theory['qid'])?trim($Theory['qid']):'';
+			$model->rid = isset($Theory['rid'])?trim($Theory['rid']):'';
+			$model->cwid = isset($Theory['cwid'])?trim($Theory['cwid']):'';
+			$model->kid = isset($Theory['kid'])?trim($Theory['kid']):'';
+			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
+			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
+			$this->_result['model'] = $model;
+			$this->render('Theory',$this->_result);
+
+		}
+	 }
+	/**
+	 * 专家新论
+	 */
+	public function actionTechnology()
+	{
+
+		$this->pageTitle = '管理技术';
+		$Theory =isset($_GET['Technology'])?$_GET['Technology']:array();
+
+
+		$this->_result['data'] = Technology::getArticleList($Theory);
+		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
+
 		if(isset($_GET['_']) && $_GET['_']>0)
 		{
 
@@ -39,19 +65,20 @@ class ManageController extends Controller
 			$this->render('TheoryAjax',$this->_result);
 		}else{
 			$model=new Technology;
-			$this->_result['get'] = array('Company_city_id'=>$Company_city_id,
-					'Company_Industry_id'=>$Company_Industry_id,
-					'Company_city'=>$Company_city,
-					'Company_Industry'=>$Company_Industry,
-					'keyword'=>$keyword,
-					'cid'=>$cid
-
-			);
+			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
+			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
+			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
+			$model->nid = isset($Theory['nid'])?trim($Theory['nid']):'';
+			$model->fxid = isset($Theory['fxid'])?trim($Theory['fxid']):'';
+			$model->qid = isset($Theory['qid'])?trim($Theory['qid']):'';
+			$model->rid = isset($Theory['rid'])?trim($Theory['rid']):'';
+			$model->cwid = isset($Theory['cwid'])?trim($Theory['cwid']):'';
+			$model->kid = isset($Theory['kid'])?trim($Theory['kid']):'';
+			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
+			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
 			$this->_result['model'] = $model;
-
 			$this->render('Theory',$this->_result);
 
 		}
 	 }
-
 }

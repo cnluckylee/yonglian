@@ -54,6 +54,7 @@ class Technology extends CActiveRecord
 		return array(
 			array('fid, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
+			array('mname', 'length', 'max'=>100),
 			array('imgurl', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
@@ -98,6 +99,7 @@ class Technology extends CActiveRecord
 			'kid' => '开发战略',
 			'sid' => '适用行业',
 			'mid' => '专家名称',
+			'mname'=>'mname'
 		);
 	}
 
@@ -131,9 +133,98 @@ class Technology extends CActiveRecord
 		$criteria->compare('kid',$this->kid);
 		$criteria->compare('sid',$this->sid);
 		$criteria->compare('mid',$this->mid);
+		$criteria->compare('mname',$this->mname);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	public static function getArticleList($Technology)
+	{
+		//解析$Company_city_id,$Company_Industry_id
+		$criteria = new CDbCriteria();
+		if(isset($Technology['CompanyID']))
+			$criteria->addCondition('CompanyID='.$Technology['CompanyID']);
+		if(isset($Technology['kid']))
+			$criteria->addCondition('kid='.$Technology['kid']);
+		if(isset($Technology['cwid']))
+			$criteria->addCondition('cwid='.$Technology['cwid']);
+		if(isset($Technology['nid']))
+			$criteria->addCondition('nid='.$Technology['nid']);
+		if(isset($Technology['fxid']))
+			$criteria->addCondition('fxid='.$Technology['fxid']);
+		if(isset($Technology['qid']))
+			$criteria->addCondition('qid='.$Technology['qid']);
+		if(isset($Technology['rid']))
+			$criteria->addCondition('rid='.$Technology['rid']);
+		if(isset($Technology['sid']))
+			$criteria->addCondition('sid='.$Technology['sid']);
+		if(isset($Technology['title']))
+			$criteria->addSearchCondition('title', $Technology['title']);
+		if(isset($Technology['mname']))
+			$criteria->addSearchCondition('mname', $Technology['mname']);
+
+		$criteria->select = 't.*';
+		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
+		$criteria->order = 'updtime desc';
+
+
+		$count = Technology::model()->count($criteria);
+
+
+		$pager = new CPagination($count);
+		$pager->pageSize = 2;
+		$pager->applyLimit($criteria);
+		$artList = Technology::model()->findAll($criteria);
+		$list = array();
+
+		foreach($artList as $i)
+		{
+			$arr = $i->attributes;
+
+			$cc = Company::model()->findByPk($arr['CompanyID']);
+			$companyName = '';
+			if($cc){
+				$temp = $cc->attributes;
+				$companyName = $temp['name'];
+			}
+			$arr['CompanyName'] = $companyName;
+
+			$me = Member::model()->findByPk($arr['mid']);
+			$memName = '';
+			if($me){
+				$temp = $me->attributes;
+				$memName = $temp['name'];
+			}
+			$arr['MemName'] = $memName;
+			$list[] = $arr;
+		}
+		return array('pages'=>$pager,'posts'=>$list);
+
+	}
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+				$member = self::model()->findByPk($this->mid);
+				$member_arr = $member->attributes;
+				$this->mname=$member_arr['name'];
+			}
+			else
+			{
+				$this->updtime=date('Y-m-d H:i:s');
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+				$member = self::model()->findByPk($this->mid);
+				$member_arr = $member->attributes;
+				$this->mname=$member_arr['name'];
+			}
+			echo $this->mname;exit;
+			return true;
+		}
+		else
+			return false;
 	}
 }
