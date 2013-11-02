@@ -1,6 +1,6 @@
 <?php
 
-class AdminManageCaseController extends AdminController
+class AdminViewPointController extends AdminController
 {
 
 	/**
@@ -8,10 +8,10 @@ class AdminManageCaseController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new ManageCase('search');
+		$model=new ViewPoint('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['ManageCase']))
-			$model->attributes=$_GET['ManageCase'];
+		if(isset($_GET['ViewPoint']))
+			$model->attributes=$_GET['ViewPoint'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -23,14 +23,14 @@ class AdminManageCaseController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new ManageCase;
+		$model=new ViewPoint;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['ManageCase']))
+		if(isset($_POST['ViewPoint']) && !isset($_POST['ajax']))
 		{
-			$model->attributes=$_POST['ManageCase'];
+			$model->attributes=$_POST['ViewPoint'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 
 			if(!empty($upload))
@@ -66,13 +66,12 @@ class AdminManageCaseController extends AdminController
 		$model=$this->loadModel($id);
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
-
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['ManageCase']))
+		if(isset($_POST['ViewPoint']))
 		{
-			$model->attributes=$_POST['ManageCase'];
+			$model->attributes=$_POST['ViewPoint'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
@@ -85,6 +84,14 @@ class AdminManageCaseController extends AdminController
 		}
 
 		$this->render('update',array(
+			'model'=>$model,
+		));
+	}
+
+	public function actionView($id)
+	{
+		$model=$this->loadModel($id);
+		$this->render('view',array(
 			'model'=>$model,
 		));
 	}
@@ -121,7 +128,7 @@ class AdminManageCaseController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=ManageCase::model()->findByPk($id);
+		$model=ViewPoint::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -133,7 +140,7 @@ class AdminManageCaseController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='manage-case-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='view-point-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
