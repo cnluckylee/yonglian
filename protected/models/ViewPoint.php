@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{manage_case}}".
+ * This is the model class for table "{{view_point}}".
  *
- * The followings are the available columns in table '{{manage_case}}':
+ * The followings are the available columns in table '{{view_point}}':
  * @property integer $id
  * @property string $title
  * @property integer $fid
@@ -24,13 +24,14 @@
  * @property integer $sid
  * @property integer $mid
  * @property string $mname
+ * @property integer $pid
  */
-class ManageCase extends CActiveRecord
+class ViewPoint extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return ManageCase the static model class
+	 * @return ViewPoint the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -42,7 +43,7 @@ class ManageCase extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{manage_case}}';
+		return '{{view_point}}';
 	}
 
 	/**
@@ -53,13 +54,13 @@ class ManageCase extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fid, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid', 'numerical', 'integerOnly'=>true),
+			array('fid, IndustryID, CompanyID,jid, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, pid', 'numerical', 'integerOnly'=>true),
 			array('title, mname', 'length', 'max'=>100),
 			array('imgurl', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, fid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, mname', 'safe', 'on'=>'search'),
+			array('id, title, fid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID,jid, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, mname, pid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -87,9 +88,10 @@ class ManageCase extends CActiveRecord
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新时间',
 			'IndustryID' => 'Industry',
 			'CompanyID' => '企业',
+			'jid' => '经营战略',
 			'cid' => '采购供应',
 			'nid' => '内部运营',
 			'fxid' => '分销配送',
@@ -99,7 +101,8 @@ class ManageCase extends CActiveRecord
 			'kid' => '开发战略',
 			'sid' => '适用行业',
 			'mid' => '专家名称',
-			'mname' => 'mname'
+			'mname' => '作者',
+			'pid' => '职位'
 		);
 	}
 
@@ -124,6 +127,7 @@ class ManageCase extends CActiveRecord
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
+		$criteria->compare('jid',$this->jid);
 		$criteria->compare('cid',$this->cid);
 		$criteria->compare('nid',$this->nid);
 		$criteria->compare('fxid',$this->fxid);
@@ -134,6 +138,7 @@ class ManageCase extends CActiveRecord
 		$criteria->compare('sid',$this->sid);
 		$criteria->compare('mid',$this->mid);
 		$criteria->compare('mname',$this->mname,true);
+		$criteria->compare('pid',$this->pid);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -144,8 +149,8 @@ class ManageCase extends CActiveRecord
 	{
 		//解析$Company_city_id,$Company_Industry_id
 		$criteria = new CDbCriteria();
-		if(isset($Technology['CompanyID']))
-			$criteria->addCondition('CompanyID='.$Technology['CompanyID']);
+		if(isset($Technology['jid']))
+			$criteria->addCondition('jid='.$Technology['jid']);
 		if(isset($Technology['kid']))
 			$criteria->addCondition('kid='.$Technology['kid']);
 		if(isset($Technology['cwid']))
@@ -166,30 +171,29 @@ class ManageCase extends CActiveRecord
 			$criteria->addSearchCondition('mname', $Technology['mname']);
 
 		$criteria->select = 't.*';
-		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
 		$criteria->order = 'updtime desc';
 
 
-		$count = ManageCase::model()->count($criteria);
+		$count = ViewPoint::model()->count($criteria);
 
 
 		$pager = new CPagination($count);
 		$pager->pageSize = 2;
 		$pager->applyLimit($criteria);
-		$artList = ManageCase::model()->findAll($criteria);
+		$artList = ViewPoint::model()->findAll($criteria);
 		$list = array();
 
 		foreach($artList as $i)
 		{
 			$arr = $i->attributes;
 
-			$cc = Company::model()->findByPk($arr['CompanyID']);
+			$cc = Post::model()->findByPk($arr['pid']);
 			$companyName = '';
 			if($cc){
 				$temp = $cc->attributes;
 				$companyName = $temp['name'];
 			}
-			$arr['CompanyName'] = $companyName;
+			$arr['PName'] = $companyName;
 
 			$me = Member::model()->findByPk($arr['mid']);
 			$memName = '';

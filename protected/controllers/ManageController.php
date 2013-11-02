@@ -113,4 +113,36 @@ class ManageController extends Controller
 			$this->render('ManageCase',$this->_result);
 		}
 	 }
+
+	 /**
+	  * 永链观点
+	  */
+	public function actionViewpoint()
+	{
+
+		$this->pageTitle = '永链观点';
+		$Theory =isset($_GET['ViewPoint'])?$_GET['ViewPoint']:array();
+		$this->_result['data'] = ViewPoint::getArticleList($Theory);
+		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
+		if(isset($_GET['_']) && $_GET['_']>0)
+		{
+			$this->layout = false;
+			$this->render('ManageCaseAjax',$this->_result);
+		}else{
+			$model=new ViewPoint;
+			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
+			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
+			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
+			$model->nid = isset($Theory['nid'])?trim($Theory['nid']):'';
+			$model->fxid = isset($Theory['fxid'])?trim($Theory['fxid']):'';
+			$model->qid = isset($Theory['qid'])?trim($Theory['qid']):'';
+			$model->rid = isset($Theory['rid'])?trim($Theory['rid']):'';
+			$model->cwid = isset($Theory['cwid'])?trim($Theory['cwid']):'';
+			$model->kid = isset($Theory['kid'])?trim($Theory['kid']):'';
+			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
+			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
+			$this->_result['model'] = $model;
+			$this->render('ViewPoint',$this->_result);
+		}
+	 }
 }
