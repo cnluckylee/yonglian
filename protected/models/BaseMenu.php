@@ -12,5 +12,18 @@ class BaseMenu{
 	 	$menu[4]= array('name'=>'永链观点','url'=>'?r=manage/Viewpoint');
 	 	return $menu;
 	 }
+
+	 /**
+	 * 用户之窗
+	 */
+	 public static function WindowMenu()
+	 {
+	 	$menu = array();
+	 	$menu[1]= array('name'=>'政策精选','url'=>'?r=manage/Theory');
+	 	$menu[2]= array('name'=>'电子期刊','url'=>'?r=manage/Technology');
+	 	$menu[3]= array('name'=>'常用工具','url'=>'?r=manage/Case');
+	 	$menu[4]= array('name'=>'用户体验','url'=>'?r=manage/Viewpoint');
+	 	return $menu;
+	 }
 }
 ?>
