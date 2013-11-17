@@ -198,4 +198,15 @@ class BaseData
 		return $cid?$data[$cid]:$data;
 	 }
 
+	/**
+	 * 工具格式
+	 */
+	 public static function ToolsType($cid = null)
+	 {
+	 	$data = array(1=>array('id'=>1,'name'=>'表格(格式)'),
+					  2=>array('id'=>2,'name'=>'范文(格式)'),
+					  3=>array('id'=>3,'name'=>'软件(用途)')
+				);
+		return $cid?$data[$cid]:$data;
+	 }
 }
