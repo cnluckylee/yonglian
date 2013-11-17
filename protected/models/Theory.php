@@ -221,7 +221,6 @@ class Theory extends CActiveRecord
 			else
 			{
 				$this->updtime=date('Y-m-d H:i:s');
-				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
 				if(isset($this->mid) && $this->mid>0){
 					$member = Member::model()->findByPk($this->mid);
 					$member_arr = $member->attributes;

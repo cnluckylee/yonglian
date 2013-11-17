@@ -126,14 +126,14 @@ class AdminIndustry extends CActiveRecord
     }
 
        public static function getSelectTree($empty = NULL, $pid = 0,$type=null) {
-		$cacheId = 'industry'.($select !== null?'_'.$select:'').$type;
-		if($cache) {
-
-			$menus = Yii::app()->getCache()->get($cacheId);
-
-			if($menus)
-				return $menus;
-		}
+//		$cacheId = 'industry'.($select !== null?'_'.$select:'').$type;
+//		if($cache) {
+//
+//			$menus = Yii::app()->getCache()->get($cacheId);
+//
+//			if($menus)
+//				return $menus;
+//		}
         $menus = self::getTreeDATA(null, FALSE,$type);
         $tree = new tree();
         $array = array();
@@ -163,7 +163,7 @@ class AdminIndustry extends CActiveRecord
             throw new CDbException('有子菜单不能删除！');
         return true;
     }
-    
+
     /**
      * 行业json数据
      */
@@ -174,7 +174,7 @@ class AdminIndustry extends CActiveRecord
        			->select ('id,parentid,name');
 
         $data = $model->queryAll();
-        
+
     	 $result = array ();
     	 $I = array ();
     	 //定义索引数组，用于记录节点在目标数组的位置
