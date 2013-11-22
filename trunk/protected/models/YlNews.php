@@ -229,4 +229,13 @@ class YlNews extends CActiveRecord
 		else
 			return false;
 	}
+	public static function getNewsList()
+	{
+		$model = self::model()->getDbConnection()->createCommand()
+                ->from('{{yl_news}}')
+                ->order('updtime DESC')
+                ;
+		 $data = $model->queryAll();
+		return $data;
+	}
 }

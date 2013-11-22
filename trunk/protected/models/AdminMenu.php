@@ -172,5 +172,51 @@ class AdminMenu extends CActiveRecord {
         else
             return $tree->get_tree('0', $str);
     }
+    
+    public static function getAdminMenu()
+    {
+		$result = array ();
+		$I = array ();
+		$cacheId = 'getAdminMenu';
+
+        if($cacheId) {
+            $menus = Yii::app()->getCache()->get($cacheId);
+
+            if($menus)
+                return $menus;
+        }
+		$model = self::model()->getDbConnection()->createCommand()
+                ->from('{{admin_menu}}')
+                ->order('listorder DESC')
+                ->select ('id,parentid,name,modules,controller,action,data');
+		 $data = $model->queryAll();
+		//定义索引数组，用于记录节点在目标数组的位置
+		foreach ($data as $val) {
+			
+			$url = '';
+			if($val['modules'])
+				$url .= '/'.$val['modules'];
+			if($val['controller'])
+				$url .=  '/'.$val['controller'];
+			if($val['action'])
+				$url .=  '/'.$val['action'];
+			if($val['data'])
+				$url .= '/'.$val['data'];
+			$val['url'] = $url;	
+			if ($val['parentid'] == 0) {
+				$i = count($result);
+				$result[$i] = $val;
+				
+				$I[$val['id']] = & $result[$i];
+			} else {
+				$i = @ count($I[$val['parentid']]['child']);
+				$I[$val['parentid']]['child'][$i] = $val;
+				$I[$val['id']] = & $I[$val['parentid']]['child'][$i];
+			}
+		}
+		$menus = $result;
+		Yii::app()->getCache()->set($cacheId,$menus,86400);
+		return $menus;
+	}
 
 }

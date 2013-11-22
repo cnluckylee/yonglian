@@ -30,8 +30,13 @@ class BaseMenu{
 	  */
 	  public static function YLMenu()
 	  {
-		  $data = AdminMenu::getTreeDATA();
-		  print_r($data);exit;
+		  $menus = AdminMenu::getAdminMenu();
+		  $menu = array();
+		  foreach($menus[4]['child'] as $k=>$v)
+		  {
+			  $menu[$v['id']]= array('name'=>$v['name'],'url'=>$v['url']);
+		  }
+		  return $menu;
 	  } 
 }
 ?>
