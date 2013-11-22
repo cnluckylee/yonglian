@@ -1,0 +1,29 @@
+/* CSS Document */
+<!--
+#TeamForm{width:1130px; margin:0pt auto; position:relative; height:25px;float:left;}
+/*团队标题属性*/
+#tTitle {position:absolute;left:30px;top:8px;width:292px;height:12px;z-index:1;background:#4A4AFF;text-align:center; color:#fff;font-size:12px;padding:4px;}
+/*地区属性*/
+.team {font-family: 宋体; width:750px; position:relative; top:7px; font-size:12px; margin:0px 0;z-index:9;left:350px;cursor:default}
+.team ul li a, .team ul li a:visited {display:block; text-decoration:none; color:#000;width:104px; height:20px; text-align:center; color:#fff; border:1px solid #fff; background:#4A4AFF; line-height:20px; font-size:12px; overflow:hidden;z-index:9;}
+.team ul {padding:0; margin:0;list-style-type: none; }
+.team ul li {float:left; margin-right:1px; position:relative;}
+.team ul li ul {display: none;}
+.team ul li:hover a {color:#fff; background:#6a3;}
+/*省市属性*/
+.local{display:block; position:absolute; top:21px; left:0; width:105px;}
+.local ul li a, .local ul li a:visited {background:#F0F0F0;color:#000000;font-family: 宋体;font-size:14px;text-align:left;}
+.local ul li:hover ul li a.hide {background:#ccc; color:#000000;}
+.local ul li:hover a {color:#fff; background:#FF359A;}
+/*岗位属性*/
+.jobs{display:block; position:absolute; top:21px; left:107px; width:105px;}
+.jobs ul li a, .jobs ul li a:visited {background:#F0F0F0;color:#000000;font-family: 宋体;font-size:14px;text-align:left;}
+.jobs ul li:hover ul li a.hide {background:#6a3; color:#fff;}
+.jobs ul li:hover a {color:#fff; background:#FF00FF;}
+/*员工属性*/
+.employees{display:block; position:absolute; top:21px; left:214px; width:535px;border:0px solid silver;height:220px;}
+.employees ul li a, .employees ul li a:visited {background:#F0F0F0;color:#000000;font-family: 宋体;font-size:14px;}
+.employees ul li:hover ul li a.hide {background:#6a3; color:#fff;}
+.employees ul li:hover a {color:#fff; background:#02F78E;}
+-->
+

@@ -1,0 +1,26 @@
+/* CSS Document */
+<!--
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0; font-weight: normal;font-style: normal;font-size: 100%; font-family:;} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;background:#FFF; text-align: center; font:12px/1.5 Arial, Helvetica, sans-serif;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+.dis{display:block;} 
+.undis{display:none;}  
+
+/*此上面代码是初始CSS模板，下面是新写CSS布局框架代码*/ 
+#daJacket{width:1130px;height:2413px;background:#C6A300;margin:0pt auto;position:relative;border:1px solid red;margin-top:7px}
+#header ,#centers ,#footer{ width:100%; margin:0 auto; clear:both;font-size:;line-height:;font-weight:;} 
+#header{ width:1130px;height:95px; border:0px solid red; background:#EAC100} 
+#centers{ padding:8px 0;} 
+#centers .f_left{ float:left; width:330px;height:211px;border:5px solid #FFE66F; background:#F7F7F7; margin-right:7px;}
+#centers .f_middle{ float:left;width:747px;height:216px;border-right:5px solid #FFE66F;border-bottom:5px solid #FFE66F;background:#fdfdfd;margin-right:0px; }
+#centers .f_right{ float:left;width:30px;height:220px; border:0px solid #00CC66; background:#AE8F00;margin-right:0px; } 
+#centers .s_left{ float:left; width:292px;height:600px; border:0px solid #00CC66; background:#FFE66F; margin-right:8px;margin-top:7px } 
+#centers .s_right{ float:left; width:830px;height:600px;border:0px solid #00CC66; background:#FFE66F;margin-top:7px}
+#footer{float:left;width:%;height:120px;border:0px solid #CCCCCC; background:#fdfdfd;margin-top:7px} 
+
+
+-->
+
