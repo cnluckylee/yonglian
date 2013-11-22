@@ -30,7 +30,8 @@ class BaseMenu{
 	  */
 	  public static function YLMenu()
 	  {
-		  
+		  $data = AdminMenu::getTreeDATA();
+		  print_r($data);exit;
 	  } 
 }
 ?>
