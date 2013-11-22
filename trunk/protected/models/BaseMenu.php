@@ -25,5 +25,12 @@ class BaseMenu{
 	 	$menu[4]= array('name'=>'用户体验','url'=>'?r=manage/Viewpoint');
 	 	return $menu;
 	 }
+	 /**
+	  * 永链数据
+	  */
+	  public static function YLMenu()
+	  {
+		  
+	  } 
 }
 ?>
