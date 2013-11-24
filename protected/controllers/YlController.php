@@ -7,11 +7,10 @@ class YlController extends Controller
 	private $_result=array();
 	public function init()
 	{
-		$this->_result['menu'] = BaseMenu::WindowMenu();
 
 	}
 	/**
-	 * 政策精选
+	 * 公司新闻
 	 */
 	public function actionNews()
 	{
@@ -22,77 +21,51 @@ class YlController extends Controller
 		$this->render('News',$pageArray);
 	 }
 	/**
-	 * 常用工具
+	 * 活动分享
 	 */
 
-	 public function actionCWTool()
+	 public function actionActivity()
 	{
-
-		$this->pageTitle = '常用工具';
-		$Theory =isset($_GET['Theory'])?$_GET['Theory']:array();
-
-		$this->_result['data'] = Theory::getArticleList($Theory);
-		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
-
-		if(isset($_GET['_']) && $_GET['_']>0)
-		{
-
-			$this->layout = false;
-			$this->render('TheoryAjax',$this->_result);
-		}else{
-			$model=new Theory;
-			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
-			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
-			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
-			$model->nid = isset($Theory['nid'])?trim($Theory['nid']):'';
-			$model->fxid = isset($Theory['fxid'])?trim($Theory['fxid']):'';
-			$model->qid = isset($Theory['qid'])?trim($Theory['qid']):'';
-			$model->rid = isset($Theory['rid'])?trim($Theory['rid']):'';
-			$model->cwid = isset($Theory['cwid'])?trim($Theory['cwid']):'';
-			$model->kid = isset($Theory['kid'])?trim($Theory['kid']):'';
-			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
-			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
-			$this->_result['model'] = $model;
-			$this->render('Theory',$this->_result);
-
-		}
+		$this->pageTitle = '活动分享';
+		$pageArray = array();
+		$pageArray['datalist'] = YlActivity::getDataList();
+		$this->render('Activity',$pageArray);
 	 }
 
 	/**
-	 * 电子期刊
+	 * 项目合作
 	 */
 
-	 public function actionCWjournal()
+	 public function actionCase()
 	{
 
-		$this->pageTitle = '电子期刊';
-		$Theory =isset($_GET['Theory'])?$_GET['Theory']:array();
-
-		$this->_result['data'] = Theory::getArticleList($Theory);
-		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
-
-		if(isset($_GET['_']) && $_GET['_']>0)
-		{
-
-			$this->layout = false;
-			$this->render('TheoryAjax',$this->_result);
-		}else{
-			$model=new Theory;
-			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
-			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
-			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
-			$model->nid = isset($Theory['nid'])?trim($Theory['nid']):'';
-			$model->fxid = isset($Theory['fxid'])?trim($Theory['fxid']):'';
-			$model->qid = isset($Theory['qid'])?trim($Theory['qid']):'';
-			$model->rid = isset($Theory['rid'])?trim($Theory['rid']):'';
-			$model->cwid = isset($Theory['cwid'])?trim($Theory['cwid']):'';
-			$model->kid = isset($Theory['kid'])?trim($Theory['kid']):'';
-			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
-			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
-			$this->_result['model'] = $model;
-			$this->render('Theory',$this->_result);
-
-		}
+		$this->pageTitle = '项目合作';
+		$pageArray = array();
+		$pageArray['datalist'] = YlCase::getDataList();
+		$this->render('Case',$pageArray);
 	 }
+	/**
+	 * 永链团队
+	 */
 
+	 public function actionTeam()
+	{
+
+		$this->pageTitle = '永链团队';
+		$pageArray = array();
+		$pageArray['datalist'] = YlTeam::getDataList();
+		$this->render('Team',$pageArray);
+	 }
+	/**
+	 * 永链产品
+	 */
+
+	public function actionProduct()
+	{
+
+		$this->pageTitle = '永链团队';
+		$pageArray = array();
+		$pageArray['datalist'] = YlTeam::getDataList();
+		$this->render('Team',$pageArray);
+	 }
 }

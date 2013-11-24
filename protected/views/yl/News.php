@@ -18,7 +18,7 @@
 <div class="f_left">
 
 <div id="vSite"><!--视频开始-->
-<div class="video" id="video"><object data="%E4%BC%81%E4%B8%9A%E7%A7%80%E5%8F%B0_files/v.swf" type="application/x-shockwave-flash" id="flash_312990954" height="210" width="330"><param name="movie" value="http://www.tudou.com/v/m24_Zb-m9Uo/&amp;resourceId=0_04_05_99/v.swf"><param name="wmode" value="opaque"></object></div>
+<div class="video" id="video"></div>
 </div><!--视频结束-->
 </div>
 

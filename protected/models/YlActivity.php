@@ -112,7 +112,7 @@ class YlActivity extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 			/**
 	 * 获取文章列表
 	 */
@@ -128,13 +128,13 @@ class YlActivity extends CActiveRecord
 		if($pid)
 		$criteria->addCondition('pid='.$pid);
 		$data = self::model()->findAll($criteria);
-		$result = array();	
+		$result = array();
 		$media = AllType::getAllType(4);
-		
+
 		foreach($data as $i)
 		{
-			$arr = $i->attributes;			
-			
+			$arr = $i->attributes;
+
 			$arr['cname'] = isset($media[$arr['cid']])?$media[$arr['cid']]['name']:"";
 			$arr['upddate'] = date('Y-m-d',strtotime($arr['updtime']));
 			$result[] = $arr;
@@ -143,7 +143,7 @@ class YlActivity extends CActiveRecord
 			Yii::app()->getCache()->set($cacheId,$result,86400);
 		return $result;
 	}
-	
+
 	public static function enterprise($Company_city_id = null,$Company_Industry_id=null,$keyword=null,$pid=null)
 	{
 		//解析$Company_city_id,$Company_Industry_id
@@ -151,7 +151,7 @@ class YlActivity extends CActiveRecord
 			$city_arr = explode('_', $Company_city_id);
 		if($Company_Industry_id)
 			$Industry_arr = explode('_', $Company_Industry_id);
-	
+
 		$criteria = new CDbCriteria();
 		if(isset($city_arr[0]))
 			$criteria->addCondition('city1='.$city_arr[0]);
@@ -171,7 +171,7 @@ class YlActivity extends CActiveRecord
 			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
 		if($keyword)
 			$criteria->addSearchCondition('c.name', $keyword);
-			
+
 		$criteria->select = 't.*';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
 		$criteria->order = 'updtime desc';
@@ -179,7 +179,7 @@ class YlActivity extends CActiveRecord
 		if($pid)
 			$criteria->addCondition('t.pid='.$pid);
 		$count = Joint::model()->count($criteria);
-	
+
 
 		$pager = new CPagination($count);
 		$pager->pageSize = 2;
@@ -191,9 +191,9 @@ class YlActivity extends CActiveRecord
 		{
 			$arr = $i->attributes;
 			if(!isset($list[$arr['CompanyID']]['name'])){
-	
+
 				$cc = Company::model()->findByPk($arr['CompanyID']);
-	
+
 				$companyName = '';
 				if($cc){
 					$temp = $cc->attributes;
@@ -201,13 +201,13 @@ class YlActivity extends CActiveRecord
 				}
 				$list[$arr['CompanyID']]['name'] = $companyName;
 			}
-			
+
 			$list[$arr['CompanyID']]['data'] = self::getMoreInfo($arr['CompanyID'],$pid);
 		}
 		return array('pages'=>$pager,'posts'=>$list);
-	
+
 	}
-	
+
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
@@ -216,17 +216,26 @@ class YlActivity extends CActiveRecord
 			if($this->isNewRecord)
 			{
 				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
-				
+
 			}
 			else
 			{
 				$this->updtime=date('Y-m-d H:i:s');
-				
+
 			}
 
 			return true;
 		}
 		else
 			return false;
+	}
+	public static function getDataList()
+	{
+		$model = self::model()->getDbConnection()->createCommand()
+                ->from('{{yl_activity}}')
+                ->order('updtime DESC')
+                ;
+		 $data = $model->queryAll();
+		return $data;
 	}
 }
