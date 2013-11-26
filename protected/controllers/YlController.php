@@ -63,9 +63,19 @@ class YlController extends Controller
 	public function actionProduct()
 	{
 
-		$this->pageTitle = '永链团队';
+		$this->pageTitle = '永链产品';
 		$pageArray = array();
 		$pageArray['datalist'] = YlTeam::getDataList();
-		$this->render('Team',$pageArray);
+		$this->render('Product',$pageArray);
+	 }
+	 /**
+	  * 永链招聘
+	  */
+	 public function actionRecruit()
+	 {
+	 	$this->pageTitle = '永链招聘';
+	 	$pageArray = array();
+	 	$pageArray['datalist'] = YlRecruit::getDataList();
+	 	$this->render('Recruit',$pageArray);
 	 }
 }
