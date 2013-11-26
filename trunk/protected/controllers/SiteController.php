@@ -32,7 +32,7 @@ class SiteController extends Controller
 		/**
 		 * 底部信息
 		 */
-		$link_arr = link::model()->findAll(
+		$link_arr = Link::model()->findAll(
 							array(
 							'select'=>'webname,weburl,weblogo,link_type'
 							)
