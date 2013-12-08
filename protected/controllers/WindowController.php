@@ -13,7 +13,7 @@ class WindowController extends Controller
 	/**
 	 * 政策精选
 	 */
-	public function actionTheory()
+	public function actionCwpolicy()
 	{
 
 		$this->pageTitle = '政策精选';

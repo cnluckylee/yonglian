@@ -1,0 +1,33 @@
+1.Enterprise 企业全貌
+	Enterprise/CPBooth 企业秀台
+	Enterprise/CPTeam 团队闪耀
+	Enterprise/CPJoint 携手发展
+	Enterprise/Mentor 舵主风采
+	Enterprise/CompanyNews 企业动态
+
+2.Manage管理经典
+	Manage/Theory 专家新论
+	Manage/Technology 管理技术
+	Manage/Case 管理案例
+	Manage/Viewpoint 永链观点
+
+3.Window用户之窗
+	Window/Cwpolicy政策精选
+	Window/CWTool常用工具
+	Window/CWjournal电子期刊
+	Window/CWExperience用户体验
+4.永链擂台(缺)
+	Challenge/CRApply 赛事报名
+	Challenge/CRInquire 赛事查询
+
+5.永链数据
+	YL/News 公司新闻
+	YL/Activity 活动分享
+	YL/Case 项目合作
+	YL/Team  永链团队
+	YL/Product 永链产品
+	YL/Recruit 永链招聘
+6.会员社区
+	Community/User 会员试航
+	Community/
+
