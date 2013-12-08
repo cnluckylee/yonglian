@@ -1,6 +1,6 @@
 <?php
 /**
- * 擂台
+ * 管理经典
  */
 class ManageController extends Controller
 {
@@ -82,8 +82,8 @@ class ManageController extends Controller
 		}
 	 }
 
-	 	/**
-	 * 专家新论
+	 /**
+	 * 管理案例
 	 */
 	public function actionCase()
 	{

@@ -1,0 +1,31 @@
+/* CSS Document */
+<!--
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0; font-weight: normal;font-style: normal;font-size: 100%; font-family:;} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;background:#FFF; text-align: center; font:12px/1.5 Arial, Helvetica, sans-serif;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+.dis{display:block;} 
+.undis{display:none;}  
+
+/*此上面代码是初始CSS模板，下面是新写CSS布局框架代码*/ 
+#fpJacket{width:1130px;height:927px;background:#9D9D9D;margin:0pt auto;position:relative;border:0px solid red;margin-top:7px}
+#header ,#centers ,#footer{ width:100%; margin:0 auto; clear:both;font-size:;line-height:;font-weight:;} 
+#header{ width:1130px;height:95px; border:0px solid red; background:#eeeeee} 
+#centers{ padding:0px 0;} 
+#centers .f_left{float:left;width:90px;height:23px;border:0px solid #FFE66F;background:#d0d0d0;margin-top:7px;}
+#tfFont{font-family: "宋体";font-size:12px;font-weight: bold;font-style:normal;color: #FFFFFF;text-align:center;line-height:26px} 
+#centers .f_right{ float:left;width:1040px;height:23px; border:0px solid #00CC66; background:#96C2F1;margin-top:7px; } 
+#tsFont{font-family: "宋体";font-size:12px;font-weight: bold;font-style:normal;color: #000000;text-align:center;line-height:26px}
+
+#centers .s_left{ float:left;width:290px;height:595px;border:0px solid #00CC66;background: #f0f0f0; margin-right:7px;margin-top:7px;border-bottom:3px solid #d0d0d0;border-left:3px solid #d0d0d0;padding:; }
+ 
+#centers .s_right{ float:left; width:830px;height:595px;border:0px solid #00CC66; background:#f0f0f0;margin-top:7px;border-bottom:3px solid #d0d0d0}
+
+#centers .t{width:1130px;margin:0pt auto;position:relative;height:60px;border-bottom:3px solid #96C2F1;float:left;background:#FAF4FF;margin-top:7px}
+#footer{float:left;width:%;height:120px;border:0px solid #CCCCCC;background:#fdfdfd;margin-top:7px} 
+
+
+-->
+
