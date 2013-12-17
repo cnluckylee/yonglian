@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/index.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/nav.css" />
 <div class="info"><!--信息索取&按钮开始-->
 <div id="inquires0"><div id="bt1">信息索取：解除搜索之困 本社供您所需</div></div>
 <div id="inquires1"><!--信息索取开始-->
@@ -79,7 +80,7 @@
 </div><!--信息索取&按钮结束-->
 <div class="poster"><!--海报&公告开始-->
     <div class="item">
-    <a onclick="javasctipt:tj(15,'PCIndex')"  alt="首页" href="http://www.wochacha.com/m" target="_blank"> 
+    <a onclick="javasctipt:tj(15,'PCIndex')"  alt="首页" href="" target="_blank"> 
       <img alt="首页" src="images/p1.gif">
     </a> 
     </div>
@@ -144,88 +145,64 @@
 </div><!--广告3结束--> 
 </div><!--广告栏结束-->
 <div style="width:820px; margin:0pt auto; position:relative; height:735px;float:right;border:0px solid silver;"><!--信息栏开始-->
-<div style="width:820px; position:relative; height:36px;float:left;border:0px solid silver;"><!--菜单开始-->
-<div id="menu">
-   <div class="nav">
-   <div class="navinner">
-   <ul class="navlist">
-<li><a href="/" id="nav_0" onmouseover="showMenu('nav_0','subnav0')"><span style="cursor:default">首页</span></a>
-<div class="subnav disable" id="subnav0">
-<p class="pointer">.</p>
-<p><span style="cursor:text">欢迎来到永链工社，竭诚为您提供服务！</span></p>
-</div>  </li>
-<li><a href="/" id="nav_1" onmouseover="showMenu('nav_1','subnav1')"><span style="cursor:default">企业全貌</span></a>
-<div class="subnav disable" id="subnav1">
-<p class="pointer">.</p>
-<p><span>
-<a href="CPBooth.html"target="_blank">企业秀台</a> |
-<a href="CPDynamic.html"target="_blank">企业动态</a> |
-<a href="CPDevelop.html"target="_blank">携手发展</a> |
-<a href="CPMien.html"target="_blank">舵主风采</a> |
-<a href="CPTeam.html"target="_blank">团队闪耀</a> 
-</span></p>
-</div></li>
-<li><a href="/" id="nav_2" onmouseover="showMenu('nav_2','subnav2')"><span style="cursor:default">管理经典</span></a>
-<div class="subnav disable" id="subnav2">
-<p class="pointer">.</p>
-<p><span>
-<a href="CCDiscussion.html"target="_blank">专家新论</a> |
-<a href="CCTechnology.html"target="_blank">管理技术</a> |
-<a href="CCCase.html"target="_blank">管理案例</a> |
-<a href="CCViewpoint.html"target="_blank">永链观点</a>
-</span></p>
-</div></li>
-<li><a href="/" id="nav_3" onmouseover="showMenu('nav_3','subnav3')"><span style="cursor:default">用户之窗</span></a>
-<div class="subnav disable" id="subnav3">
-<p class="pointer">.</p>
-<p><span>
-<a href="CWPolicy.html"target="_blank">政策精选</a> |
-<a href="CWjournal.html"target="_blank">电子期刊</a> |
-<a href="CWTool.html"target="_blank">常用工具</a> |
-<a href="CWExperience.html"target="_blank">用户体验</a>
-</span></p>
-</div></li>
-<li><a href="/" id="nav_4" onmouseover="showMenu('nav_4','subnav4')"><span style="cursor:default">永链擂台</span></a>
-<div class="subnav disable" id="subnav4">
-<p class="pointer">.</p>
-<p><span>
-<a href="CRApply.html"target="_blank">赛项报名</a> |
-<a href="CRInquire.html"target="_blank">赛项查询</a> 
-</span></p>
-</div>  </li>
-<li><a href="/" id="nav_5" onmouseover="showMenu('nav_5','subnav5')"><span style="cursor:default">永链数据</span></a>
-<div class="subnav disable" id="subnav5">
-<p class="pointer">.</p>
-<p><span>
-<a href="DateNews.html"target="_blank">公司新闻</a> |
-<a href="DateActivity.html"target="_blank">活动分享</a> |
-<a href="DateProject.html"target="_blank">项目合作</a> |
-<a href="DateTeam.html"target="_blank">永链团队</a> |
-<a href="DateProduct.html"target="_blank">永链产品</a> |
-<a href="DateRecruitment.html"target="_blank">永链招聘</a> 
-</span></p>
-</div></li>
-<li><a href="/" id="nav_6" onmouseover="showMenu('nav_6','subnav6')"><span style="cursor:default">会员社区</span></a>
-<div class="subnav disable" id="subnav6">
-<p class="pointer">.</p>
-<p><span>
-<a href="CMFirstPersonal.html"target="_blank">会员试航</a> |
-<a href=""target="_blank">会员栏贰</a>
-</span></p>
-</div></li>
-<li><a href="/" id="nav_7" onmouseover="showMenu('nav_7','subnav7')"><span style="cursor:default">国外经典</span></a>
-<div class="subnav disable" id="subnav7">
-<p class="pointer">.</p>
-<p><span>
-<a href=""target="_blank">国外栏壹</a> |
-<a href=""target="_blank">国外栏贰</a>
-</span></p>
-</div></li>
-   </ul>
-   </div>
-   </div>
-</div>
-</div><!--菜单结束-->
+	<div id="nav">
+		<div class="l"></div>
+		<ul class="c">
+			<li class="nav_lishw">
+				<span class="v"><a class="sele" href="<?php echo Yii::app()->params['siteUrl']; ?>" target="_blank">首页</a></span> 
+			</li>
+			<li class="">
+				<span class="v"><a href="javascript:void(0);">企业全貌</a></span> 
+				<div class="kind_menu" style="left:40px">
+                <?php foreach($menus[1] as $k=>$v):?>
+					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<4):?><span>|</span><?php endif;?>
+                <?php endforeach;?>
+				</div>
+			</li>
+			<li class="">
+				<span class="v"><a href="javascript:void(0);">管理经典</a></span> 
+				<div class="kind_menu">
+					<?php foreach($menus[2] as $k=>$v):?>
+					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<3):?><span>|</span><?php endif;?>
+               		<?php endforeach;?>
+				</div>
+			</li>
+			<li class="">
+				<span class="v"><a href="javascript:void(0);">用户之窗</a></span> 
+				<div class="kind_menu" style="left:40px">
+					<?php foreach($menus[3] as $k=>$v):?>
+					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<3):?><span>|</span><?php endif;?>
+               		<?php endforeach;?>
+				</div>
+			</li>
+			<li class="">
+				<span class="v"><a href="javascript:void(0);">永链擂台</a></span> 
+				<div class="kind_menu" style="left:40px">
+					<?php foreach($menus[4] as $k=>$v):?>
+					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<4):?><span>|</span><?php endif;?>
+               		<?php endforeach;?>
+				</div>
+			</li>
+			<li class="">
+				<span class="v"><a href="http://www.17sucai.com/">永链数据</a></span> 
+				<div class="kind_menu" style="left:40px">
+					<?php foreach($menus[5] as $k=>$v):?>
+					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<5):?><span>|</span><?php endif;?>
+               		<?php endforeach;?>
+				</div>
+			</li>
+            <li class="">
+				<span class="v"><a href="http://www.17sucai.com/">永链社区</a></span> 
+				<div class="kind_menu" style="left:40px">
+					<a href="http://www.17sucai.com/">jquery表单验证</a><span>|</span> 
+					<a href="http://www.17sucai.com/">jquery表单美化</a><span>|</span> 
+					<a href="http://www.17sucai.com/">jquery搜索提示</a><span>|</span> 
+					<a href="http://www.17sucai.com/">jquery全选反选</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+
 <div style="width:820px; margin:0pt auto; position:relative; height:10px;float:right;border:0px solid silver;"></div><!--间隔层-->
 <!--每日更新开始-->
 <div style="width:819px;position:relative; height:275px;float:left;background:;border-left:1px solid #FAF4FF;border-right:0px solid #FAF4FF;border-top:1px solid #FAF4FF;border-bottom:0px solid #FAF4FF;">
@@ -2250,3 +2227,4 @@ autoplay(0);
 </table>
 </div>
 <div id="quick2"><div id="bt5">迅捷遴选：助您锁定合作伙伴群 打造业内最佳产业链</div></div>
+<script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->baseUrl; ?>/js/nav.js"></script>

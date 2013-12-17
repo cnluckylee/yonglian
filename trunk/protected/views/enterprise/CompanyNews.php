@@ -29,10 +29,13 @@
   </div>
   <div class="m">
     <ul>
-      <li><a href="#">企业动态</a></li>
-      <li><a href="<?php echo Yii::app()->getBaseUrl(true)?>/?r=enterprise/CPJoint">携手发展</a></li>
-      <li><a href="#">舵主风采</a></li>
-      <li><a href="<?php echo Yii::app()->getBaseUrl(true)?>/?r=enterprise/CPTeam">团队闪耀</a></li>
+      <?php foreach($menus as $v):
+	  			if($v['id'] !=3):
+	  ?>
+      <li><a href="<?php echo $v['url'];?>"><?php echo $v['name'];?></a></li>
+   <?php 
+   	endif;
+   endforeach;?>
     </ul>
   </div>
   <!--餐单定位结束-->
