@@ -4,12 +4,18 @@
  */
 class EnterpriseController extends Controller
 {
+	protected $menus;
+	public function init()
+	{
+		$menus = QtMenu::getQtMenuList(1);
+		$this->menus = $menus[1];
+	}
 	/**
 	 * 企业秀台
 	 */
 	public function actionCPBooth($page=1)
 	{
-
+		$this->pageTitle = '企业秀台';
 		//echo $_GET['Company_Industry_id'];exit;
 		$Company_city_id = Tools::getParam('Company_city_id');
 		$Company_Industry_id = Tools::getParam('Company_Industry_id');
@@ -28,7 +34,8 @@ class EnterpriseController extends Controller
 								   'Company_Industry'=>$Company_Industry,
 									'keyword'=>$keyword
 					);
-			$this->pageTitle = '企业秀台';
+			
+			$result['menus'] = $this->menus;
 			$this->render('CPBooth',$result);
 		}
 	}
@@ -38,7 +45,7 @@ class EnterpriseController extends Controller
 	public function actionCPTeam()
 	{
 		$this->pageTitle = '团队闪耀';
-
+		
 
 				//echo $_GET['Company_Industry_id'];exit;
 		$Company_city_id = Tools::getParam('Company_city_id');
@@ -69,6 +76,7 @@ class EnterpriseController extends Controller
 										'keyword'=>$keyword,
 										'cid'=>$cid
 						);
+			$result['menus'] = $this->menus;
 			$this->render('CPTeam',$result);
 		}
 	}
@@ -109,6 +117,7 @@ class EnterpriseController extends Controller
 					'keyword'=>$keyword,
 					'cid'=>$cid
 			);
+			$result['menus'] = $this->menus;
 			$this->render('CPJoint',$result);
 		}
 	}
@@ -147,6 +156,7 @@ class EnterpriseController extends Controller
 					'keyword'=>$keyword,
 					'cid'=>$cid
 			);
+			$result['menus'] = $this->menus;
 			$this->render('CompanyNews',$result);
 		}
 	}
@@ -184,6 +194,7 @@ class EnterpriseController extends Controller
 					'keyword'=>$keyword,
 					'cid'=>$cid
 			);
+			$result['menus'] = $this->menus;
 			$this->render('CompanyNews',$result);
 		}
 	 }

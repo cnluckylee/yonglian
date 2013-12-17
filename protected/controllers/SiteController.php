@@ -29,6 +29,8 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
+		
+
 		/**
 		 * 底部信息
 		 */
@@ -52,31 +54,11 @@ class SiteController extends Controller
 		$company = array_map(create_function('$record','return $record->attributes;'),$company);
 		$rec_company = $tmp_company = array();
 		$i = $count = 0;
-		foreach($company as $k=>$v)
-		{
-			if($v['rec'] == 1)
-			{
-				if($k%4>0)
-				{
-					$rec_company[$count][] = $v;
-				}else{
-					$count++;
-					$rec_company[$count][] = $v;
-				}
-			}
-			if($k%4>0)
-			{
-				$tmp_company[$i][] = $v;
-			}else{
-				$i++;
-				$tmp_company[$i][] = $v;
-			}
-		}
+		$data['menus'] = QtMenu::getQtMenuList();
+
 		$data['rec_company'] =$rec_company;
 		$data['company'] =$tmp_company;
-		$smarty = Yii::app()->smarty;
-		$smarty->_smarty->assign($data);
-		$smarty->_smarty->display('index.tpl');
+		$this->render('newindex',$data);
 
 
 //		foreach($footer_arr as  $k=>$v)

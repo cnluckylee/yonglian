@@ -118,5 +118,11 @@ class WindowController extends Controller
 
 		}
 	 }
-
+	 /*
+	  * 用户体验
+	  */
+	 public function actionCWExperience()
+	 {
+	 	$this->render('CWExperience',$this->_result);
+	 }
 }
