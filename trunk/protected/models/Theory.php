@@ -134,7 +134,7 @@ class Theory extends CActiveRecord
 		$criteria->compare('sid',$this->sid);
 		$criteria->compare('mid',$this->mid);
 		$criteria->compare('mname',$this->mname);
-
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
