@@ -128,7 +128,7 @@ public static function getTreeDATA($select = null,$cache = TRUE) {
        public static function getSelectTree($empty = NULL, $pid = 0) {
 
         $menus = self::getTreeDATA(null, FALSE);
-        $tree = new tree();
+        $tree = new Tree();
         $array = array();
         foreach ($menus as $r) {
             $r['selected'] = ($pid != 0 && $pid === $r['id']) ? 'selected' : '';

@@ -135,7 +135,7 @@ class AdminIndustry extends CActiveRecord
 //				return $menus;
 //		}
         $menus = self::getTreeDATA(null, FALSE,$type);
-        $tree = new tree();
+        $tree = new Tree();
         $array = array();
         foreach ($menus as $r) {
             $r['selected'] = ($pid != 0 && $pid === $r['id']) ? 'selected' : '';

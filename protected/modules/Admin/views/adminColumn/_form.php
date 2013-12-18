@@ -24,12 +24,12 @@
 	</tr>
 	<tr>
          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'href'); ?>
+		<?php echo $form->labelEx($model,'url'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'href',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'href'); ?>
+		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'url'); ?>
         </div>
         </td>
 	</tr>

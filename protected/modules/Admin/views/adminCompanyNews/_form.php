@@ -29,7 +29,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->dropDownList($model,'cid',CHtml::listData(AllType::getAllType(4),'id','name')); ?>
+		<?php echo $form->dropDownList($model,'cid',CHtml::listData(Alltype::getAllType(4),'id','name')); ?>
 		<?php echo $form->error($model,'cid'); ?>
         </div>
         </td>
