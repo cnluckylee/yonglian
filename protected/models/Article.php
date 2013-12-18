@@ -108,7 +108,7 @@ class Article extends CActiveRecord
 		$criteria->compare('miniContent',$this->miniContent,true);
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
-
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -120,12 +120,15 @@ class Article extends CActiveRecord
 		{
 			if($this->isNewRecord)
 			{
-				$this->addtime=date('Y-m-d H:i:s');
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+			}else{
+				$this->updtime=date('Y-m-d H:i:s');
 			}
-			return true;
+			
+		return true;
 		}
 		else
-			return false;
+			return false;	
 	}
 	
 	/**
@@ -141,6 +144,7 @@ class Article extends CActiveRecord
 		$criteria->select = 'id,title,cid,content,remark';
 		$criteria->addCondition('CompanyID='.$CompanyID);
 		$data = self::model()->findAll($criteria);
+		$criteria->order = 'updtime desc';
 		$result = array();
 		foreach($data as $i)
 		{
@@ -180,7 +184,7 @@ class Article extends CActiveRecord
 			
 		$criteria->select = 't.*';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
-		$criteria->order = 'rank desc';
+		$criteria->order = 'rank desc,updtime desc';
 		$criteria->group = 'CompanyId';
 		$count = Article::model()->count($criteria);
 		
