@@ -41,7 +41,7 @@ class SiteController extends Controller
 						);
 		$data['link'] = array_map(create_function('$record','return $record->attributes;'),$link_arr);
 
-		$ad_arr = adminPic::model()->findAll(
+		$ad_arr = AdminPic::model()->findAll(
 							array('select'=>'imgurl,remark')
 						);
 

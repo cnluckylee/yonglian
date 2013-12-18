@@ -100,7 +100,7 @@ class Member extends CActiveRecord
 		$criteria->compare('CompanyID',$this->CompanyID);
 		$criteria->compare('cid',$this->cid);
 		$criteria->compare('entrydate',$this->entrydate,true);
-
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -234,5 +234,22 @@ class Member extends CActiveRecord
 		}
 		return array('pages'=>$pager,'posts'=>$list);
 
+	}
+	
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+			}else{
+				$this->updtime=date('Y-m-d H:i:s');
+			}
+				
+			return true;
+		}
+		else
+			return false;
 	}
 }

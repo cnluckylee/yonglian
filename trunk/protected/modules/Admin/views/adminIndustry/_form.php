@@ -13,7 +13,7 @@
       <tr>
         <th width="100" align="right"><?php echo $form->labelEx($model,'parentid'); ?></th>
         <td><select name="AdminIndustry[parentid]" id="adminIndustry_parentid">
-            <?php echo adminIndustry::getSelectTree('顶级菜单',$model->parentid);?>
+            <?php echo AdminIndustry::getSelectTree('顶级菜单',$model->parentid);?>
           </select>
           <?php echo $form->error($model,'parentid'); ?> </td>
       </tr>

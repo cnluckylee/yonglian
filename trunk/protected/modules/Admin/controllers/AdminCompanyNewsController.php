@@ -132,7 +132,7 @@ class AdminCompanyNewsController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='company-news-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='companynews-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
@@ -157,7 +157,7 @@ class AdminCompanyNewsController extends AdminController
 	public function getValueByKey($data, $row, $c)
 	{
 		$name = '';
-		$result = AllType::model()->findByPk($data->cid);
+		$result = Alltype::model()->findByPk($data->cid);
 		if($result)
 			$name = $result->attributes['name'];
 		return $name;

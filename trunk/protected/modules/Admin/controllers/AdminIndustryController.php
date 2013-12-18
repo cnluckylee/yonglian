@@ -8,7 +8,7 @@ class AdminIndustryController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$menus = adminIndustry::getTreeDATA('*', false);
+		$menus = AdminIndustry::getTreeDATA('*', false);
 
 		$tree = new Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
@@ -42,7 +42,7 @@ class AdminIndustryController extends AdminController
 	 */
 	public function actionCreate($parentid = 0)
 	{
-		$model=new adminIndustry;
+		$model=new AdminIndustry;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
@@ -125,7 +125,7 @@ class AdminIndustryController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=adminIndustry::model()->findByPk($id);
+		$model=AdminIndustry::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
