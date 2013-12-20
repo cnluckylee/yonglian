@@ -1,0 +1,10 @@
+/* CSS Document */
+<!--
+#cFont{font-family:宋体;font-size:14px;color:#000000;font-weight:bold;text-align:center;line-height:36px}
+#cJacket{width:282px;margin:0px 5px;position:relative;height:538px;float:left;border-top:3px solid #977C00;border-bottom:3px solid #977C00;background:#fdfdfd;text-align:left;}
+/*下载定位*/
+#xz{position:absolute;left:50px;top:480px;width:%;height:%;z-index:1;background:#E0E0E0;cursor:pointer;font-family:"新宋体";font-size: 18px;font-weight: bold;color:#FF6600;}
+#xz a{text-decoration:none; cursor:pointer;color:#FF6600;font-weight:bold}
+#xz a:hover{text-decoration:none; cursor:pointer;color:blue;font-weight:bold}
+
+-->

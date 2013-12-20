@@ -28,7 +28,9 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'aid'); ?>
+		<input id="Experience_aid" id2="area" type="text" name="Experience[aid]" maxlength="50" size="30">
+        <input type="button" value="请选择" id="area" />
+
 		<?php echo $form->error($model,'aid'); ?>
         </div>
         </td>
@@ -154,8 +156,17 @@
 <?php $this->endWidget(); ?>
 
 </div>
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
 
 <script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("area");
+	},1000);	
+
+});
  	var editor;
 	KindEditor.ready(function(K) {
 		editor = K.create('#Theory_content', {

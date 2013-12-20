@@ -45,8 +45,22 @@ class ManageController extends Controller
 
 		}
 	 }
+	 /**
+	  * 专家新论 详情
+	  */
+	 public function actionTheoryView()
+	 {
+	 	
+	 	$this->pageTitle = '专家新论 详情';
+	 	$id = $this->getParams('id');
+	 	$sqlData = Theory::model()->findByPk($id);
+	 	if($sqlData)
+	 		$data = $sqlData->attributes;
+
+	 	$this->render('TheoryView',$data);
+	 }
 	/**
-	 * 专家新论
+	 * 管理技术
 	 */
 	public function actionTechnology()
 	{
@@ -77,11 +91,24 @@ class ManageController extends Controller
 			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
 			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
 			$this->_result['model'] = $model;
-			$this->render('Theory',$this->_result);
+			$this->render('Technology',$this->_result);
 
 		}
 	 }
-
+	 /**
+	  * 管理技术 详情
+	  */
+	 public function actionTechnologyView()
+	 {
+	 	 
+	 	$this->pageTitle = '管理技术详情';
+	 	$id = $this->getParams('id');
+	 	$sqlData = Technology::model()->findByPk($id);
+	 	if($sqlData)
+	 		$data = $sqlData->attributes;
+	 
+	 	$this->render('TechnologyView',$data);
+	 }
 	 /**
 	 * 管理案例
 	 */
@@ -113,7 +140,20 @@ class ManageController extends Controller
 			$this->render('ManageCase',$this->_result);
 		}
 	 }
-
+	 /**
+	  * 管理案例 详情
+	  */
+	 public function actionManageCaseView()
+	 {
+	 
+	 	$this->pageTitle = '管理案例详情';
+	 	$id = $this->getParams('id');
+	 	$sqlData = ManageCase::model()->findByPk($id);
+	 	if($sqlData)
+	 		$data = $sqlData->attributes;
+	 
+	 	$this->render('TechnologyView',$data);
+	 }
 	 /**
 	  * 永链观点
 	  */

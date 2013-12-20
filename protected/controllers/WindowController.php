@@ -64,7 +64,7 @@ class WindowController extends Controller
 			$this->layout = false;
 			$this->render('TheoryAjax',$this->_result);
 		}else{
-			$model=new Theory;
+			$model=new Wctools();
 			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
 			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
 			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
@@ -80,6 +80,20 @@ class WindowController extends Controller
 			$this->render('Theory',$this->_result);
 
 		}
+	 }
+	 
+	 /**
+	  * 软件详情
+	  */
+	 public function actionSoft()
+	 {
+	 	$this->pageTitle = '软件详情';
+	 	$Theory =isset($_GET['Theory'])?$_GET['Theory']:array();
+	 	$id = $this->getParams('id');
+	 	$sqlData = Wctools::model()->findByPk($id);
+	 	if($sqlData)
+	 		$data = $sqlData->attributes;
+	 	$this->render('sCWToolContent',$data);
 	 }
 
 	/**

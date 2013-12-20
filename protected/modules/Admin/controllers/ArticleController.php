@@ -128,7 +128,7 @@ class ArticleController extends AdminController
 	 */
 	public function getValueByKey($data, $row, $c)
 	{
-		$NewsType = AllType::getAllType(1);
+		$NewsType = Alltype::getAllType(1);
 		return $NewsType[$data->cid]['name'];
 	}
 	

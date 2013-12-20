@@ -45,13 +45,12 @@
 				),
 
 			array(
-
-						'name' => 'imgurl',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+			'name' => 'imgurl',
+			'type' => 'image',
+			'htmlOptions' => array(
+				'class' => 'thumbimage_100',
+			),
+		),
 
 			array(
 

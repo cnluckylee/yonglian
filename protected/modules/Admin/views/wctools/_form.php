@@ -2,7 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'wctools-form',
 	'enableAjaxValidation'=>true,
-	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','onsubmit'=>'setData()'),
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -34,7 +34,19 @@
         </div>
         </td>
 	</tr>
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'IndustryID'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<select name="Wctools[IndustryID]" id="adminIndustry_parentid">
+            <?php echo adminIndustry::getSelectTree('顶级菜单',$model->IndustryID);?>
+          </select>
+		<?php echo $form->error($model,'IndustryID'); ?>
+        </div>
+        </td>
+	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>
@@ -49,34 +61,26 @@
         </div>
         </td>
 	</tr>
-
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'remark'); ?>
+		<?php echo $form->labelEx($model,'pdf'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'remark'); ?>
+		
+         <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+		  if(!empty($model->pdf))
+			  	echo $model->pdf;
+		 ?>
+		<?php echo $form->error($model,'pdf'); ?>
         </div>
         </td>
 	</tr>
 
 
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'IndustryID'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<select name="Wctools[IndustryID]" id="adminIndustry_parentid">
-            <?php echo adminIndustry::getSelectTree('顶级菜单',$model->IndustryID);?>
-          </select>
-		<?php echo $form->error($model,'IndustryID'); ?>
-        </div>
-        </td>
-	</tr>
+
+
 
 	<tr>
           <th width="100" align="right">
@@ -105,7 +109,28 @@
         </div>
         </td>
 	</tr>
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'remark'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'remark'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'content'); ?>
+        </th>
+        <td >
+        <div class="row" style="width:800px; height:500px">
+		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'content'); ?>
+        </div>
+        </td>
+	</tr>
 </tbody>
       <tfoot>
         <tr class="title">
@@ -118,3 +143,18 @@
 <?php $this->endWidget(); ?>
 
 </div>
+<script language="javascript">
+ 	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('#Wctools_content', {
+					width:'800px',
+					height:'500px',
+					resizeType : 2,
+					uploadJson : '<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/php/upload_json.php' // 相对于当前页面的路径
+		});
+	});
+	function setData()
+	{
+		editor.sync(); 
+	}
+</script>

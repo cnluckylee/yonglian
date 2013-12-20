@@ -48,6 +48,14 @@ class AdminManageCaseController extends AdminController
 
 				$model->imgurl=Upload::createFile($upload,'cp','create');
 			}
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+				
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -66,7 +74,7 @@ class AdminManageCaseController extends AdminController
 		$model=$this->loadModel($id);
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
-
+		$old_pdf = $model->pdf;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -83,7 +91,15 @@ class AdminManageCaseController extends AdminController
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
-
+		$pdf=CUploadedFile::getInstance($model,'pdf');
+			
+		if(!empty($pdf))
+		{
+			$pdftype = strtolower($pdf->extensionName);
+			if($pdftype == 'swf')
+				$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+		}else
+			$model->pdf = $old_pdf;
 		$this->render('update',array(
 			'model'=>$model,
 		));

@@ -325,6 +325,13 @@ class CController extends CBaseController
 	{
 		return $_GET;
 	}
+	
+	public function getParams($params = null)
+	{
+		$data = $_REQUEST;
+		$value = $params?$data[$params]:'';
+		return trim($value);
+	}
 
 	/**
 	 * This method is invoked when the request parameters do not satisfy the requirement of the specified action.

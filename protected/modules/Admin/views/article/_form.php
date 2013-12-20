@@ -31,7 +31,7 @@
         <td >
         <div class="row">
 				<select name="Article[cid]" id="Article_cid">
-            <?php echo AllType::getSelectTree('请选择',$model->cid,1);?>
+            <?php echo Alltype::getSelectTree('请选择',$model->cid,1);?>
         </select>
 		<?php echo $form->error($model,'cid'); ?>
         </div>

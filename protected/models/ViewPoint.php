@@ -178,7 +178,7 @@ class ViewPoint extends CActiveRecord
 
 
 		$pager = new CPagination($count);
-		$pager->pageSize = 2;
+		$pager->pageSize = 10;
 		$pager->applyLimit($criteria);
 		$artList = ViewPoint::model()->findAll($criteria);
 		$list = array();

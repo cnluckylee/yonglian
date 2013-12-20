@@ -125,8 +125,8 @@
   <div class=" searchDataForm" style="width:810px;">
     <div class="top">
       <ul>
-        <li>新论标题</li>
-        <li>专家姓名</li>
+        <li>案例标题</li>
+        <li>案例作者</li>
         <li>更新时间</li>
         <li>隶属机构</li>
         

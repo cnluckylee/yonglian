@@ -114,6 +114,6 @@ return array(
 		'PicType' => array( 1=>'首页图片',2=>'内页图片'),
 		//信息分类
 		'InfoType' => array( 1=>'市场信息',2=>'管理信息',3=>'法规信息',4=>'技术信息',5=>'随机信息'),
-		'siteUrl'=>'http://www.yonglian.net.tf',
+		'siteUrl'=>'http://yonglian.com',
 	),
 );

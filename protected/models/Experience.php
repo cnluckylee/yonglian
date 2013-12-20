@@ -73,18 +73,18 @@ class Experience extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => 'Title',
-			'aid' => 'Aid',
-			'imgurl' => 'Imgurl',
-			'content' => 'Content',
-			'remark' => 'Remark',
+			'id' => '序号',
+			'title' => '标题',
+			'aid' => '地区',
+			'imgurl' => '图片',
+			'content' => '内容',
+			'remark' => '简介',
 			'addtime' => 'Addtime',
 			'updtime' => 'Updtime',
-			'IndustryID' => 'Industry',
-			'CompanyID' => 'Company',
-			'score' => 'Score',
-			'type' => 'Type',
+			'IndustryID' => '行业',
+			'CompanyID' => '公司',
+			'score' => '评分',
+			'type' => '类型',
 		);
 	}
 
