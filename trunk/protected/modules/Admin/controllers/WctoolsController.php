@@ -39,6 +39,16 @@ class WctoolsController extends AdminController
 				$model->downurl=FileUpload::createFile($upload,'file','create');
 			}
 			unset($upload);
+			
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+			
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}
+			unset($pdf);
 
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
@@ -74,6 +84,7 @@ class WctoolsController extends AdminController
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
 		$old_downurl = $model->downurl;
+		$old_pdf = $model->pdf;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -88,6 +99,20 @@ class WctoolsController extends AdminController
 				$model->imgurl = $old_imgurl;
 			}
 			unset($upload);
+			
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+				
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}else 
+				$model->pdf = $old_pdf;
+				
+			unset($pdf);
+			
+			
 			$upload=CUploadedFile::getInstance($model,'downurl');
 
 			if(!empty($upload))

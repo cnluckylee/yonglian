@@ -46,11 +46,11 @@ class Wctools extends CActiveRecord
 			array('IndustryID, type', 'numerical', 'integerOnly'=>true),
 			array('score', 'numerical'),
 			array('title, downurl', 'length', 'max'=>100),
-			array('imgurl', 'length', 'max'=>255),
-			array('remark, addtime, updtime', 'safe'),
+			array('imgurl,pdf', 'length', 'max'=>255),
+			array('content,remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, score, imgurl, remark, addtime, updtime, IndustryID, downurl, type', 'safe', 'on'=>'search'),
+			array('id, title, score, imgurl,pdf, remark, addtime, updtime, IndustryID, downurl, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,8 +79,10 @@ class Wctools extends CActiveRecord
 			'addtime' => 'Addtime',
 			'updtime' => 'Updtime',
 			'IndustryID' => '行业',
-			'downurl' => '下载地址',
+			'downurl' => '上传软件',
 			'type' => '类型',
+			'pdf' => 'pdf文件',
+			'content' => '详情'
 		);
 	}
 
@@ -105,7 +107,9 @@ class Wctools extends CActiveRecord
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('downurl',$this->downurl,true);
 		$criteria->compare('type',$this->type);
-
+		$criteria->compare('pdf',$this->pdf);
+		$criteria->compare('content',$this->content);
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

@@ -135,7 +135,7 @@
     <div class="searchData" id="info">
       <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
-        <li><?php echo $row['title'];?></li>
+        <li><a href="?r=Manage/TheoryView&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
         <li><?php echo $row['MemName'];?></li>
         <li><?php echo $row['updtime'];?></li>
         <li><?php echo $row['CompanyName'];?></li>

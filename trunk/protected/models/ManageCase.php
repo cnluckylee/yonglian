@@ -55,11 +55,11 @@ class ManageCase extends CActiveRecord
 		return array(
 			array('fid, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid', 'numerical', 'integerOnly'=>true),
 			array('title, mname', 'length', 'max'=>100),
-			array('imgurl', 'length', 'max'=>255),
+			array('imgurl,pdf', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, fid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, mname', 'safe', 'on'=>'search'),
+			array('id, title, fid, imgurl,pdf, content, remark, addtime, updtime, IndustryID, CompanyID, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, mname', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -99,6 +99,7 @@ class ManageCase extends CActiveRecord
 			'kid' => '开发战略',
 			'sid' => '适用行业',
 			'mid' => '专家名称',
+			'pdf' => '媒体文件',
 			'mname' => 'mname'
 		);
 	}
@@ -133,8 +134,9 @@ class ManageCase extends CActiveRecord
 		$criteria->compare('kid',$this->kid);
 		$criteria->compare('sid',$this->sid);
 		$criteria->compare('mid',$this->mid);
+		$criteria->compare('pdf',$this->pdf);
 		$criteria->compare('mname',$this->mname,true);
-
+		$criteria->order = 'updtime desc';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -174,7 +176,7 @@ class ManageCase extends CActiveRecord
 
 
 		$pager = new CPagination($count);
-		$pager->pageSize = 2;
+		$pager->pageSize = 10;
 		$pager->applyLimit($criteria);
 		$artList = ManageCase::model()->findAll($criteria);
 		$list = array();

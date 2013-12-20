@@ -35,23 +35,14 @@
 						//),
 				),
 
-			array(
 
-						'name' => 'fid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'imgurl',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+		array(
+			'name' => 'imgurl',
+			'type' => 'image',
+			'htmlOptions' => array(
+				'class' => 'thumbimage_100',
+			),
+		),
 
 			array(
 

@@ -129,7 +129,7 @@ class CompanyNews extends CActiveRecord
 		$criteria->addCondition('pid='.$pid);
 		$data = self::model()->findAll($criteria);
 		$result = array();	
-		$media = AllType::getAllType(4);
+		$media = Alltype::getAllType(4);
 		
 		foreach($data as $i)
 		{

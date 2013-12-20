@@ -50,7 +50,20 @@
         </td>
 	</tr>
 
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+			 if(!empty($model->pdf))
+			  	echo $model->pdf;
+		?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
 
 
 
