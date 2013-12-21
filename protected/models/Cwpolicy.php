@@ -44,14 +44,14 @@ class Cwpolicy extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('aid, IndustryID, CompanyID', 'numerical', 'integerOnly'=>true),
+			array('aid, IndustryID, CompanyID,Agency,level,policy', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('imgurl', 'length', 'max'=>255),
-			array('Agency', 'length', 'max'=>100),
+			
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, aid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, Agency', 'safe', 'on'=>'search'),
+			array('id, title, aid,pdf,policy,level, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, Agency', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,6 +83,9 @@ class Cwpolicy extends CActiveRecord
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
 			'Agency' => '发布机构',
+			'level' => '行政级别',
+			'pdf' => '媒体文件',
+			'policy' => '政策类型',
 		);
 	}
 
@@ -107,13 +110,57 @@ class Cwpolicy extends CActiveRecord
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
-		$criteria->compare('Agency',$this->Agency,true);
-
+		$criteria->compare('Agency',$this->Agency);
+		$criteria->compare('level',$this->level);
+		$criteria->compare('pdf',$this->pdf);
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-
+	public static function getArticleList($data)
+	{
+		//解析$Company_city_id,$Company_Industry_id
+		$criteria = new CDbCriteria();
+		if(isset($data['IndustryID']) && $data['IndustryID']>0)
+			$criteria->addCondition('IndustryID='.$data['IndustryID']);
+		if(isset($data['policy']) && $data['policy']>0)
+			$criteria->addCondition('policy='.$data['policy']);
+		if(isset($data['aid']) && $data['aid']>0)
+			$criteria->addCondition('aid='.$data['aid']);
+		if(isset($data['title']))
+			$criteria->addSearchCondition('title', $data['title']);
+		
+	
+	
+		$criteria->select = 't.*';
+	
+		$criteria->order = 'updtime desc';
+	
+	
+		$count = self::model()->count($criteria);
+		$level = Level::getDataList();
+		$Agencies = Agencies::getDataList();
+		$pager = new CPagination($count);
+		$pager->pageSize = 10;
+		$pager->applyLimit($criteria);
+		$artList = self::model()->findAll($criteria);
+		$list = array();
+		$ToolsType = BaseData::ToolsType();
+	
+		foreach($artList as $i)
+		{
+			$arr = $i->attributes;
+			if($arr['level'])
+				$arr['level'] = $level[$arr['level']]['mark'];
+			if($arr['Agency'])
+				$arr['Agency'] = $Agencies[$arr['Agency']];
+				
+			$list[] = $arr;
+		}
+		return array('pages'=>$pager,'posts'=>$list);
+	
+	}
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
