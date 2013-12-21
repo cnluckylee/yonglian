@@ -31,8 +31,7 @@
         <td >
         <div class="row">
 
-        <input id="Cwpolicy_aid" id2="area" type="text" name="Cwpolicy[aid]" maxlength="50" size="30">
-        <input type="button" value="请选择" id="area" />
+         <?php echo $form->dropDownList($model,'aid',CHtml::listData(City::getCityList(),'id','name')); ?>
 		<?php echo $form->error($model,'aid'); ?>
         </div>
         </td>
@@ -67,6 +66,22 @@
         </div>
         </td>
 	</tr>
+    
+    <tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+			 if(!empty($model->pdf))
+			  	echo $model->pdf;
+		?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
+
 
 	<tr>
           <th width="100" align="right">
@@ -74,13 +89,36 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'Agency',array('size'=>60,'maxlength'=>100)); ?>
+
+        <?php echo $form->dropDownList($model,'Agency',CHtml::listData(Agencies::model()->findAll(),'id','name')); ?>
 		<?php echo $form->error($model,'Agency'); ?>
         </div>
         </td>
 	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'level'); ?>
+        </th>
+        <td >
+        <div class="row">
 
+        <?php echo $form->dropDownList($model,'level',CHtml::listData(Level::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model,'level'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'policy'); ?>
+        </th>
+        <td >
+        <div class="row">
 
+        <?php echo $form->dropDownList($model,'policy',CHtml::listData(Policytype::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model,'policy'); ?>
+        </div>
+        </td>
+	</tr>
 
 	<tr>
           <th width="100" align="right">
@@ -112,7 +150,7 @@
         </tr>
       </tfoot>
     </table>
-	
+
 
 <?php $this->endWidget(); ?>
 

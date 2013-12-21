@@ -142,13 +142,13 @@ class Wctools extends CActiveRecord
 	{
 		//解析$Company_city_id,$Company_Industry_id
 		$criteria = new CDbCriteria();
-		if($data['IndustryID']>0)
+		if(isset($data['IndustryID']) && $data['IndustryID']>0)
 			$criteria->addCondition('IndustryID='.$data['IndustryID']);
 		
 		if(isset($data['title']))
 			$criteria->addSearchCondition('title', $data['title']);
 		
-		if($data['score']>0)
+		if(isset($data['score']) && $data['score']>0)
 			$criteria->addSearchCondition('score', $data['score']);
 	
 		$criteria->select = 't.*';
