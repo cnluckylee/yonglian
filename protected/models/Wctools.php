@@ -14,6 +14,8 @@
  * @property integer $IndustryID
  * @property string $downurl
  * @property integer $type
+ * @property string $pdf
+ * @property string $content
  */
 class Wctools extends CActiveRecord
 {
@@ -46,11 +48,11 @@ class Wctools extends CActiveRecord
 			array('IndustryID, type', 'numerical', 'integerOnly'=>true),
 			array('score', 'numerical'),
 			array('title, downurl', 'length', 'max'=>100),
-			array('imgurl,pdf', 'length', 'max'=>255),
-			array('content,remark, addtime, updtime', 'safe'),
+			array('imgurl, pdf', 'length', 'max'=>255),
+			array('remark, addtime, updtime, content', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, score, imgurl,pdf, remark, addtime, updtime, IndustryID, downurl, type', 'safe', 'on'=>'search'),
+			array('id, title, score, imgurl, remark, addtime, updtime, IndustryID, downurl, type, pdf, content', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -107,18 +109,19 @@ class Wctools extends CActiveRecord
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('downurl',$this->downurl,true);
 		$criteria->compare('type',$this->type);
-		$criteria->compare('pdf',$this->pdf);
-		$criteria->compare('content',$this->content);
+		$criteria->compare('pdf',$this->pdf,true);
+		$criteria->compare('content',$this->content,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
 		{
-
+	
 			if($this->isNewRecord)
 			{
 				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
@@ -128,10 +131,50 @@ class Wctools extends CActiveRecord
 			{
 				$this->updtime=date('Y-m-d H:i:s');
 			}
-
+	
 			return true;
 		}
 		else
 			return false;
+	}
+	
+	public static function getArticleList($data)
+	{
+		//解析$Company_city_id,$Company_Industry_id
+		$criteria = new CDbCriteria();
+		if($data['IndustryID']>0)
+			$criteria->addCondition('IndustryID='.$data['IndustryID']);
+		
+		if(isset($data['title']))
+			$criteria->addSearchCondition('title', $data['title']);
+		
+		if($data['score']>0)
+			$criteria->addSearchCondition('score', $data['score']);
+	
+		$criteria->select = 't.*';
+		
+		$criteria->order = 'updtime desc';
+	
+	
+		$count = self::model()->count($criteria);
+	
+	
+		$pager = new CPagination($count);
+		$pager->pageSize = 10;
+		$pager->applyLimit($criteria);
+		$artList = self::model()->findAll($criteria);
+		$list = array();
+		$ToolsType = BaseData::ToolsType();
+
+		foreach($artList as $i)
+		{
+			$arr = $i->attributes;
+			if($arr['type'])
+			$arr['type'] = $ToolsType[$arr['type']]['name'];
+			
+			$list[] = $arr;
+		}
+		return array('pages'=>$pager,'posts'=>$list);
+	
 	}
 }
