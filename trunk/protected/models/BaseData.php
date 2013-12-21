@@ -154,7 +154,9 @@ class BaseData
 	 */
 	public static function NewTheory_SYHY($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'农、林、牧、渔业'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'农、林、牧、渔业'),
 				2=>array('id'=>2,'name'=>'采矿业'),
 				3=>array('id'=>3,'name'=>'制造业'),
 				4=>array('id'=>4,'name'=>'电力、热力、燃气及水产和供应业'),
@@ -209,4 +211,21 @@ class BaseData
 				);
 		return $cid?$data[$cid]:$data;
 	 }
+	 
+	 /**
+	  * 评语级别
+	  */
+	 public static function Pingyujibie($cid=null)
+	 {
+	 	$data = array(
+	 			0=>array('id'=>'','name'=>'请选择'),
+	 			1=>array('id'=>1,'name'=>'一星级'),
+	 			2=>array('id'=>2,'name'=>'二星级'),
+	 			3=>array('id'=>3,'name'=>'三星级'),
+	 			4=>array('id'=>4,'name'=>'四星级'),
+	 			5=>array('id'=>5,'name'=>'五星级')
+	 	);
+	 	return $cid?$data[$cid]:$data;
+	 }
+	 
 }
