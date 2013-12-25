@@ -1,9 +1,9 @@
 <?php
 
 /**
- * This is the model class for table "{{experience}}".
+ * This is the model class for table "{{experience_project}}".
  *
- * The followings are the available columns in table '{{experience}}':
+ * The followings are the available columns in table '{{experience_project}}':
  * @property integer $id
  * @property string $title
  * @property integer $aid
@@ -16,13 +16,14 @@
  * @property integer $CompanyID
  * @property double $score
  * @property integer $type
+ * @property string $pdf
  */
-class Experience extends CActiveRecord
+class ExperienceProject extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return Experience the static model class
+	 * @return ExperienceProject the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -34,7 +35,7 @@ class Experience extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{experience}}';
+		return '{{experience_project}}';
 	}
 
 	/**
@@ -48,11 +49,11 @@ class Experience extends CActiveRecord
 			array('aid, IndustryID, CompanyID, type', 'numerical', 'integerOnly'=>true),
 			array('score', 'numerical'),
 			array('title', 'length', 'max'=>200),
-			array('imgurl,pdf', 'length', 'max'=>255),
+			array('imgurl, pdf', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, aid, imgurl, pdf,content, remark, addtime, updtime, IndustryID, CompanyID, score, type', 'safe', 'on'=>'search'),
+			array('id, title, aid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, score, type, pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,15 +75,15 @@ class Experience extends CActiveRecord
 	{
 		return array(
 			'id' => '序号',
-			'title' => '标题',
-			'aid' => '项目',
+			'title' => '项目名称',
+			'aid' => '地区',
 			'imgurl' => '图片',
 			'content' => '内容',
-			'remark' => '简介',
+			'remark' => '摘要',
 			'addtime' => 'Addtime',
 			'updtime' => 'Updtime',
 			'IndustryID' => '行业',
-			'CompanyID' => '公司',
+			'CompanyID' => 'Company',
 			'score' => '评分',
 			'type' => '类型',
 			'pdf' => '媒体文件',
@@ -112,54 +113,12 @@ class Experience extends CActiveRecord
 		$criteria->compare('CompanyID',$this->CompanyID);
 		$criteria->compare('score',$this->score);
 		$criteria->compare('type',$this->type);
-		$criteria->compare('pdf',$this->pdf);
+		$criteria->compare('pdf',$this->pdf,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
-	
-	public static function getArticleList($data)
-	{
-		//解析$Company_city_id,$Company_Industry_id
-		$criteria = new CDbCriteria();
-		if(isset($data['IndustryID']) && $data['IndustryID']>0)
-			$criteria->addCondition('IndustryID='.$data['IndustryID']);
-	
-		if(isset($data['title']))
-			$criteria->addSearchCondition('title', $data['title']);
-	
-		if(isset($data['score']) && $data['score']>0)
-			$criteria->addSearchCondition('score', $data['score']);
-	
-		$criteria->select = 't.*';
-	
-		$criteria->order = 'updtime desc';
-	
-	
-		$count = self::model()->count($criteria);
-	
-	
-		$pager = new CPagination($count);
-		$pager->pageSize = 10;
-		$pager->applyLimit($criteria);
-		$artList = self::model()->findAll($criteria);
-		$list = array();
-		$ToolsType = BaseData::ToolsType();
-	
-		foreach($artList as $i)
-		{
-			$arr = $i->attributes;
-			if($arr['type'])
-				$arr['type'] = $ToolsType[$arr['type']]['name'];
-				
-			$list[] = $arr;
-		}
-		return array('pages'=>$pager,'posts'=>$list);
-	
-	}
-	
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())

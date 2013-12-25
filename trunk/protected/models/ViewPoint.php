@@ -56,11 +56,11 @@ class ViewPoint extends CActiveRecord
 		return array(
 			array('fid, IndustryID, CompanyID,jid, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, pid', 'numerical', 'integerOnly'=>true),
 			array('title, mname', 'length', 'max'=>100),
-			array('imgurl', 'length', 'max'=>255),
-			array('content, remark, addtime, updtime', 'safe'),
+			array('imgurl,pdf', 'length', 'max'=>255),
+			array('content,contentt,contentf,contentn, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, fid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID,jid, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, mname, pid', 'safe', 'on'=>'search'),
+			array('id, title, fid, imgurl, content,contentt,contentf,contentn, remark, addtime, updtime, IndustryID, CompanyID,jid, cid, nid, fxid, qid, rid, cwid, kid, sid, mid, mname, pid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,7 +86,7 @@ class ViewPoint extends CActiveRecord
 			'fid' => '经营战略',
 			'imgurl' => '图片',
 			'content' => '内容',
-			'remark' => '摘要',
+			'remark' => '案例',
 			'addtime' => 'Addtime',
 			'updtime' => '更新时间',
 			'IndustryID' => 'Industry',
@@ -102,7 +102,11 @@ class ViewPoint extends CActiveRecord
 			'sid' => '适用行业',
 			'mid' => '专家名称',
 			'mname' => '作者',
-			'pid' => '职位'
+			'pid' => '职位',
+			'contentt' => '赞同',
+			'contentf' => '异议',
+			'contentn' => '新解',
+			'pdf' => '媒体文件',
 		);
 	}
 
@@ -139,7 +143,11 @@ class ViewPoint extends CActiveRecord
 		$criteria->compare('mid',$this->mid);
 		$criteria->compare('mname',$this->mname,true);
 		$criteria->compare('pid',$this->pid);
-
+		$criteria->compare('pdf',$this->pdf);
+		$criteria->compare('contentt',$this->contentt);
+		$criteria->compare('contentf',$this->contentf);
+		$criteria->compare('contentn',$this->contentn);
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -149,25 +157,25 @@ class ViewPoint extends CActiveRecord
 	{
 		//解析$Company_city_id,$Company_Industry_id
 		$criteria = new CDbCriteria();
-		if(isset($Technology['jid']))
+		if(isset($Technology['jid']) && $Technology['jid']>0)
 			$criteria->addCondition('jid='.$Technology['jid']);
-		if(isset($Technology['kid']))
+		if(isset($Technology['kid']) && $Technology['kid']>0)
 			$criteria->addCondition('kid='.$Technology['kid']);
-		if(isset($Technology['cwid']))
+		if(isset($Technology['cwid']) && $Technology['cwid']>0)
 			$criteria->addCondition('cwid='.$Technology['cwid']);
-		if(isset($Technology['nid']))
+		if(isset($Technology['nid']) && $Technology['nid']>0)
 			$criteria->addCondition('nid='.$Technology['nid']);
-		if(isset($Technology['fxid']))
+		if(isset($Technology['fxid']) && $Technology['fxid']>0)
 			$criteria->addCondition('fxid='.$Technology['fxid']);
-		if(isset($Technology['qid']))
+		if(isset($Technology['qid']) && $Technology['qid']>0)
 			$criteria->addCondition('qid='.$Technology['qid']);
-		if(isset($Technology['rid']))
+		if(isset($Technology['rid']) && $Technology['rid']>0)
 			$criteria->addCondition('rid='.$Technology['rid']);
-		if(isset($Technology['sid']))
+		if(isset($Technology['sid']) && $Technology['sid']>0)
 			$criteria->addCondition('sid='.$Technology['sid']);
-		if(isset($Technology['title']))
+		if(isset($Technology['title']) && $Technology['title'])
 			$criteria->addSearchCondition('title', $Technology['title']);
-		if(isset($Technology['mname']))
+		if(isset($Technology['mname']) )
 			$criteria->addSearchCondition('mname', $Technology['mname']);
 
 		$criteria->select = 't.*';
@@ -194,14 +202,7 @@ class ViewPoint extends CActiveRecord
 				$companyName = $temp['name'];
 			}
 			$arr['PName'] = $companyName;
-
-			$me = Member::model()->findByPk($arr['mid']);
-			$memName = '';
-			if($me){
-				$temp = $me->attributes;
-				$memName = $temp['name'];
-			}
-			$arr['MemName'] = $memName;
+			$arr['url'] = '?r=Manage/PointView&id='.$arr['id'];
 			$list[] = $arr;
 		}
 		return array('pages'=>$pager,'posts'=>$list);

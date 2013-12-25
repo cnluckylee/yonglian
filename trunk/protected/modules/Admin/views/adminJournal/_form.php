@@ -63,7 +63,20 @@
         </div>
         </td>
 	</tr>
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+		  if(!empty($model->downurl))
+			  	echo $model->downurl;
+		 ?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
 </tbody>
       <tfoot>
         <tr class="title">

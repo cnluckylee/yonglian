@@ -103,29 +103,16 @@ class WindowController extends Controller
 		$this->pageTitle = '电子期刊';
 		$Theory =isset($_GET['Theory'])?$_GET['Theory']:array();
 
-		$this->_result['data'] = Theory::getArticleList($Theory);
+		$this->_result['data'] = Journal::getArticleList($Theory);
 		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
 
 		if(isset($_GET['_']) && $_GET['_']>0)
 		{
 
 			$this->layout = false;
-			$this->render('TheoryAjax',$this->_result);
+			$this->render('CWjournalAjax',$this->_result);
 		}else{
-			$model=new Theory;
-			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
-			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
-			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
-			$model->nid = isset($Theory['nid'])?trim($Theory['nid']):'';
-			$model->fxid = isset($Theory['fxid'])?trim($Theory['fxid']):'';
-			$model->qid = isset($Theory['qid'])?trim($Theory['qid']):'';
-			$model->rid = isset($Theory['rid'])?trim($Theory['rid']):'';
-			$model->cwid = isset($Theory['cwid'])?trim($Theory['cwid']):'';
-			$model->kid = isset($Theory['kid'])?trim($Theory['kid']):'';
-			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
-			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
-			$this->_result['model'] = $model;
-			$this->render('Theory',$this->_result);
+			$this->render('CWjournal',$this->_result);
 
 		}
 	 }
@@ -134,6 +121,26 @@ class WindowController extends Controller
 	  */
 	 public function actionCWExperience()
 	 {
-	 	$this->render('CWExperience',$this->_result);
+	 	$this->pageTitle = '用户体验';
+	 	$CWExperience =isset($_GET['CWExperience'])?$_GET['CWExperience']:array();
+	 	
+	 	$this->_result['data'] = Experience::getArticleList($CWExperience);
+	 	$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
+	 	
+	 	if(isset($_GET['_']) && $_GET['_']>0)
+	 	{
+	 	
+	 		$this->layout = false;
+	 		$this->render('CWExperienceAjax',$this->_result);
+	 	}else{
+	 		$model=new Experience;
+			$model->title = isset($Wctools['title'])?trim($CWExperience['title']):'';
+			$model->IndustryID = isset($Wctools['IndustryID'])?trim($CWExperience['IndustryID']):'';
+	 		$this->_result['model'] = $model;
+	 		$this->render('CWExperience',$this->_result);
+	 	
+	 	}
+	 	
+	 	
 	 }
 }

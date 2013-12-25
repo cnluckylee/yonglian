@@ -36,3 +36,29 @@
 	 width:150px;
 	
 }
+
+.CWjournal_ul{
+
+}
+
+.CWjournal_ul li{
+	height: 220px;
+    width: 175px;
+	float:left;
+	border:1px solid #99CC33;
+	margin-right: 10px;
+    margin-top: 10px;
+}
+
+.CWjournal_ul li img{
+	height: 185px;
+    width: 155px;
+	margin: 10px auto 0 8px;
+	border:1px solid #99CC33;
+}
+
+.CWjournal_ul li p{
+	text-align:center;
+	 margin-top: 1px;
+
+}

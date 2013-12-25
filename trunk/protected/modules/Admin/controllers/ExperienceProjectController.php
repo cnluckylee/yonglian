@@ -1,6 +1,6 @@
 <?php
 
-class AdminExperienceController extends AdminController
+class ExperienceProjectController extends AdminController
 {
 	
 	/**
@@ -8,10 +8,10 @@ class AdminExperienceController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new Experience('search');
+		$model=new ExperienceProject('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['Experience']))
-			$model->attributes=$_GET['Experience'];
+		if(isset($_GET['ExperienceProject']))
+			$model->attributes=$_GET['ExperienceProject'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -23,20 +23,20 @@ class AdminExperienceController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new Experience;
+		$model=new ExperienceProject;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Experience']))
+		if(isset($_POST['ExperienceProject']))
 		{
-			$model->attributes=$_POST['Experience'];
+			$model->attributes=$_POST['ExperienceProject'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
-				
+			
 			if(!empty($upload))
 			{
 				$im = null;
-					
+			
 				$imagetype = strtolower($upload->extensionName);
 				if($imagetype == 'gif')
 					$im = imagecreatefromgif($upload->tempName);
@@ -45,12 +45,12 @@ class AdminExperienceController extends AdminController
 				else if ($imagetype == 'png')
 					$im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
-					
+			
 				$model->imgurl=Upload::createFile($upload,'cp','create');
 			}
-			
-			$pdf=CUploadedFile::getInstance($model,'pdf');
 				
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+			
 			if(!empty($pdf))
 			{
 				$pdftype = strtolower($pdf->extensionName);
@@ -80,9 +80,9 @@ class AdminExperienceController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Experience']))
+		if(isset($_POST['ExperienceProject']))
 		{
-			$model->attributes=$_POST['Experience'];
+			$model->attributes=$_POST['ExperienceProject'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
@@ -90,9 +90,9 @@ class AdminExperienceController extends AdminController
 			}else{
 				$model->imgurl = $old_imgurl;
 			}
-			
+				
 			$pdf=CUploadedFile::getInstance($model,'pdf');
-			
+				
 			if(!empty($pdf))
 			{
 				$pdftype = strtolower($pdf->extensionName);
@@ -100,6 +100,8 @@ class AdminExperienceController extends AdminController
 					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
 			}else
 				$model->pdf = $old_pdf;
+				
+			unset($pdf);
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -141,7 +143,7 @@ class AdminExperienceController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Experience::model()->findByPk($id);
+		$model=ExperienceProject::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -153,22 +155,10 @@ class AdminExperienceController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='experience-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='experience-project-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}
-	
-	/**
-	 * 取value
-	 */
-	public function getValueByKey($data, $row, $c)
-	{
-		$name = '';
-		$result = ExperienceProject::model()->findByPk($data->aid);
-		if($result)
-			$name = $result->attributes['title'];
-		return $name;
 	}
 }
