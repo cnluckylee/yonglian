@@ -16,24 +16,18 @@
 		array(
 
 						'name' => 'id',
-
+						'value' => '$row+1',
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
-			array(
-
-						'name' => 'title',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+		
 
 			array(
 
 						'name' => 'aid',
+						'value' =>array($this,"getValueByKey"),
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -43,24 +37,24 @@
 			array(
 
 						'name' => 'imgurl',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
+						'type' => 'image',
+						'htmlOptions' => array(
+								'class' => 'thumbimage_100',
+						),
 				),
 
-			array(
-
-						'name' => 'content',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
+			
 			array(
 
 						'name' => 'remark',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+			array(
+
+						'name' => 'content',
 
 						//'htmlOptions' => array(
 								//'width' => '60',

@@ -2,7 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'mentor-form',
 	'enableAjaxValidation'=>true,
-	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','onsubmit'=>'setData()'),
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -25,16 +25,29 @@
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cid'); ?>
+		<?php echo $form->labelEx($model,'aid'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->dropDownList($model,'cid',CHtml::listData(AllType::getAllType(4),'id','name')); ?>
-		<?php echo $form->error($model,'cid'); ?>
+		 <?php echo $form->dropDownList($model,'aid',CHtml::listData(City::getCityList(),'id','name')); ?>
+		<?php echo $form->error($model,'aid'); ?>
         </div>
         </td>
 	</tr>
 
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'IndustryID'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?>
+		<?php echo $form->error($model,'IndustryID'); ?>
+        </div>
+        </td>
+	</tr>
+    
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>
@@ -50,32 +63,6 @@
         </td>
 	</tr>
 
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'CompanyID'); ?>
-        </th>
-        <td >
-        <div class="row">
-        <?php echo $form->dropDownList($model,'CompanyID',CHtml::listData(Company::getTreeDATA(),'id','name')); ?>
-		<?php echo $form->error($model,'CompanyID'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pid'); ?>
-        </th>
-        <td >
-        <div class="row">
-
-        <?php echo $form->dropDownList($model,'pid',CHtml::listData(BaseData::MentorCategary(),'id','name')); ?>
-        
-		<?php echo $form->error($model,'pid'); ?>
-        </div>
-        </td>
-	</tr>
     	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'remark'); ?>

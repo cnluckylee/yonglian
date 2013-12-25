@@ -83,38 +83,30 @@
 
 
   <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'cpjoint-form',
+	'id'=>'wctools-form',
 	'enableAjaxValidation'=>false,
-	'action'=>array('manage/Viewpoint'),
+	'action'=>array('window/Cwpolicy'),
 	'method'=>'get',
 )); ?>
   <!--商标或标志结束（身体1）-->
   <table  class="searchForm">
     <tr>
-      <td class="title">主旨管理</td>
-       <td >经营战略<?php echo $form->dropDownList($model,'jid',CHtml::listData(BaseData::NewTheory_JYZL(),'id','name')); ?></td>
-       <td >开发战略<?php echo $form->dropDownList($model,'kid',CHtml::listData(BaseData::NewTheory_KFZL(),'id','name')); ?></td>
-       <td></td>
-       </tr>
-     <tr>
-      <td class="title">横向管理</td>
-      <td>采购供应<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
-      <td>内部运营<?php echo $form->dropDownList($model,'nid',CHtml::listData(BaseData::NewTheory_NBYY(),'id','name')); ?></td>
-      <td>分销配送<?php echo $form->dropDownList($model,'fxid',CHtml::listData(BaseData::NewTheory_FXPS(),'id','name')); ?></td>
+     
+      <td>政策名称</td>
+      <td><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>200)); ?></td>
+      <td>地区选择</td>
+      <td ><?php echo $form->dropDownList($model,'aid',CHtml::listData(City::getCityList(),'id','name')); ?></td>
     </tr>
     <tr>
-      <td class="title">纵向管理</td>
-      <td>企业组织<?php echo $form->dropDownList($model,'qid',CHtml::listData(BaseData::NewTheory_QYZZ(),'id','name')); ?></td>
-      <td>人力资源<?php echo $form->dropDownList($model,'rid',CHtml::listData(BaseData::NewTheory_RLZY(),'id','name')); ?></td>
-      <td>财务税收<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
-    </tr>
-     <tr>
-     <td class="title">作者</td>
-      <td><?php echo $form->textField($model,'mname'); ?></td>
-      <td>标题<?php echo $form->textField($model,'title'); ?></td>
-      <td>适用行业<?php echo $form->dropDownList($model,'sid',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?></td>
-      
-    </tr>
+    	<td >语音评级</td>
+       <td ><?php echo $form->dropDownList($model,'score',CHtml::listData(BaseData::Pingyujibie(),'id','name')); ?></td>
+       <td >行业选择</td>
+       <td ><?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?></td>
+         
+       </tr>
+    
+  
+   
     <tr>
      <td colspan="2" class="tdcenter"><input type="submit" value="搜索" /></td>
       <td colspan="2"><input type="reset" value="重置" /></td>
@@ -125,20 +117,21 @@
   <div class=" searchDataForm" style="width:810px;">
     <div class="top">
       <ul>
-        <li>观点标题</li>
-        <li>观点作者</li>
+        <li>体验标题</li>
+        <li>内容类型</li>
+        <li>用户名称</li>
+
         <li>更新时间</li>
-        <li>部门岗位</li>
         
       </ul>
     </div>
     <div class="searchData" id="info">
       <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
-        <li><a href="<?php echo $row['url'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
-        <li><?php echo $row['mname'];?></li>
+        <li><?php echo $row['title'];?></li>
+        <li><a href="?r=window/CwpolicyView&id=<?php echo $row['id'];?>" target="_blank"><?php echo $row['title'];?></a></li>
+        <li><?php echo $row['remark'];?></li>
         <li><?php echo $row['updtime'];?></li>
-        <li><?php echo $row['PName'];?></li>
       </ul>
       <?php endforeach; ?>
       <?php 

@@ -81,66 +81,16 @@
   <a title="右移" href="#" class="abtn aright" hidefocus></a> </div>
 </div>
 
-
-  <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'cpjoint-form',
-	'enableAjaxValidation'=>false,
-	'action'=>array('manage/Viewpoint'),
-	'method'=>'get',
-)); ?>
-  <!--商标或标志结束（身体1）-->
-  <table  class="searchForm">
-    <tr>
-      <td class="title">主旨管理</td>
-       <td >经营战略<?php echo $form->dropDownList($model,'jid',CHtml::listData(BaseData::NewTheory_JYZL(),'id','name')); ?></td>
-       <td >开发战略<?php echo $form->dropDownList($model,'kid',CHtml::listData(BaseData::NewTheory_KFZL(),'id','name')); ?></td>
-       <td></td>
-       </tr>
-     <tr>
-      <td class="title">横向管理</td>
-      <td>采购供应<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
-      <td>内部运营<?php echo $form->dropDownList($model,'nid',CHtml::listData(BaseData::NewTheory_NBYY(),'id','name')); ?></td>
-      <td>分销配送<?php echo $form->dropDownList($model,'fxid',CHtml::listData(BaseData::NewTheory_FXPS(),'id','name')); ?></td>
-    </tr>
-    <tr>
-      <td class="title">纵向管理</td>
-      <td>企业组织<?php echo $form->dropDownList($model,'qid',CHtml::listData(BaseData::NewTheory_QYZZ(),'id','name')); ?></td>
-      <td>人力资源<?php echo $form->dropDownList($model,'rid',CHtml::listData(BaseData::NewTheory_RLZY(),'id','name')); ?></td>
-      <td>财务税收<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
-    </tr>
-     <tr>
-     <td class="title">作者</td>
-      <td><?php echo $form->textField($model,'mname'); ?></td>
-      <td>标题<?php echo $form->textField($model,'title'); ?></td>
-      <td>适用行业<?php echo $form->dropDownList($model,'sid',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?></td>
-      
-    </tr>
-    <tr>
-     <td colspan="2" class="tdcenter"><input type="submit" value="搜索" /></td>
-      <td colspan="2"><input type="reset" value="重置" /></td>
-     
-    </tr>
-  </table>
-<?php $this->endWidget(); ?>
   <div class=" searchDataForm" style="width:810px;">
-    <div class="top">
-      <ul>
-        <li>观点标题</li>
-        <li>观点作者</li>
-        <li>更新时间</li>
-        <li>部门岗位</li>
-        
-      </ul>
-    </div>
+
     <div class="searchData" id="info">
+      
+      <ul class="CWjournal_ul">
       <?php foreach($data['posts'] as $row):?>
-      <ul class="searchData_ul">
-        <li><a href="<?php echo $row['url'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
-        <li><?php echo $row['mname'];?></li>
-        <li><?php echo $row['updtime'];?></li>
-        <li><?php echo $row['PName'];?></li>
+        <li><a href=""><img src="<?php echo $row['imgurl']?>" /></a><p><?php echo $row['title']?></p></li>
+         <?php endforeach; ?>
       </ul>
-      <?php endforeach; ?>
+     
       <?php 
 	 //分页widget代码: 
 	$this->widget('NewPager',array('pages'=>$data['pages']));
@@ -174,11 +124,14 @@ $(function () {
 			autoscroll:3000,
 			dir:"V",
 		});
-/*		$('#video').flash({
-			swf: 'http://www.tudou.com/v/m24_Zb-m9Uo/&resourceId=0_04_05_99/v.swf',
-			height: 205,
-			width: 330
-		});*/
+		$.each($(".CWjournal_ul li"),function (k,v){
+			$(this).bind({
+				 mouseover:function(){$( this ).css( "background-color","#99CC33" );},  
+   				 mouseout:function(){$( this ).css( "background-color","#fff" );} 
+			
+			});
+		});
+	
 });
 </script>
 

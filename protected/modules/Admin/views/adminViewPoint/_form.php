@@ -2,7 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'viewpoint-form',
 	'enableAjaxValidation'=>true,
-	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','onsubmit'=>'setData()'),
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -50,7 +50,20 @@
         </td>
 	</tr>
 
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+			 if(!empty($model->pdf))
+			  	echo $model->pdf;
+		?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
 
 
 
@@ -208,6 +221,40 @@
         <div class="row">
 		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'content'); ?>
+        </div>
+        </td>
+	</tr>
+    
+    	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'contentt'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textArea($model,'contentt',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'contentt'); ?>
+        </div>
+        </td>
+	</tr>
+    	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'contentf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textArea($model,'contentf',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'contentf'); ?>
+        </div>
+        </td>
+	</tr>
+    	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'contentn'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textArea($model,'contentn',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'contentn'); ?>
         </div>
         </td>
 	</tr>

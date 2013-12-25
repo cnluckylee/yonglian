@@ -167,7 +167,7 @@ class ManageController extends Controller
 		if(isset($_GET['_']) && $_GET['_']>0)
 		{
 			$this->layout = false;
-			$this->render('ManageCaseAjax',$this->_result);
+			$this->render('ViewPointAjax',$this->_result);
 		}else{
 			$model=new ViewPoint;
 			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
@@ -184,5 +184,20 @@ class ManageController extends Controller
 			$this->_result['model'] = $model;
 			$this->render('ViewPoint',$this->_result);
 		}
+	 }
+	 
+	 /**
+	  * 管理案例 详情
+	  */
+	 public function actionPointView()
+	 {
+	 
+	 	$this->pageTitle = '永链观点详情';
+	 	$id = $this->getParams('id');
+	 	$sqlData = ViewPoint::model()->findByPk($id);
+	 	if($sqlData)
+	 		$data = $sqlData->attributes;
+	 
+	 	$this->render('PointView',$data);
 	 }
 }

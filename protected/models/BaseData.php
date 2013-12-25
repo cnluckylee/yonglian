@@ -8,7 +8,9 @@ class BaseData
 	public static function CPTeamCategary($cid=null)
 	{
 
-		$carr = array(1=>'经营管理类',
+		$carr = array(
+				''=>'请选择',
+				1=>'经营管理类',
 				2=>'执行管理类',
 				3=>'行政财务类',
 				4=>'研究开发类',
@@ -20,7 +22,9 @@ class BaseData
 	 * 携手发展
 	 */
 	public static function CPDevelopCategary($cid=null){
-		$carr = array(1=>array('id'=>1,'name'=>'求购信息'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'求购信息'),
 				2=>array('id'=>2,'name'=>'外包信息'),
 				3=>array('id'=>3,'name'=>'技术联盟'),
 				4=>array('id'=>4,'name'=>'合作加盟'),
@@ -35,6 +39,7 @@ class BaseData
 	public static function MentorCategary($cid=null)
 	{
 		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
 				1=>array('id'=>1,'name'=>'文章分类1'),
 				2=>array('id'=>2,'name'=>'文章分类2'),
 				3=>array('id'=>3,'name'=>'文章分类3'),
@@ -49,7 +54,9 @@ class BaseData
 	 */
 	public static function NewTheory_JYZL($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'战略方针'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'战略方针'),
 				2=>array('id'=>2,'name'=>'采购战略'),
 				3=>array('id'=>3,'name'=>'营销战略'),
 				4=>array('id'=>4,'name'=>'财务战略')
@@ -62,7 +69,9 @@ class BaseData
 	 */
 	public static function NewTheory_CGGY($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'采购计划'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'采购计划'),
 				2=>array('id'=>2,'name'=>'采购战术'),
 				3=>array('id'=>3,'name'=>'采购谈判'),
 				4=>array('id'=>4,'name'=>'供应关系')
@@ -75,7 +84,9 @@ class BaseData
 	 */
 	public static function NewTheory_NBYY($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'生产计划'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'生产计划'),
 				2=>array('id'=>2,'name'=>'作业流程'),
 				3=>array('id'=>3,'name'=>'设施布置'),
 				4=>array('id'=>4,'name'=>'库存管理')
@@ -88,7 +99,9 @@ class BaseData
 	 */
 	public static function NewTheory_FXPS($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'分销策划'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'分销策划'),
 				2=>array('id'=>2,'name'=>'配送体系')
 		);
 		return $cid?$carr[$cid]:$carr;
@@ -99,7 +112,9 @@ class BaseData
 	 */
 	public static function NewTheory_QYZZ($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'组织架构'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'组织架构'),
 				2=>array('id'=>2,'name'=>'组织功能'),
 				3=>array('id'=>3,'name'=>'组织中人')
 		);
@@ -111,7 +126,9 @@ class BaseData
 	 */
 	public static function NewTheory_RLZY($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'人力的规划'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'人力的规划'),
 				2=>array('id'=>2,'name'=>'招聘与培训'),
 				3=>array('id'=>3,'name'=>'薪酬与福利'),
 				4=>array('id'=>4,'name'=>'考核与评价')
@@ -124,7 +141,9 @@ class BaseData
 	 */
 	public static function NewTheory_CWSS($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'筹资筹划'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'筹资筹划'),
 				2=>array('id'=>2,'name'=>'投资筹划'),
 				3=>array('id'=>3,'name'=>'运营资金'),
 				4=>array('id'=>4,'name'=>'利润分配'),
@@ -139,7 +158,9 @@ class BaseData
 	 */
 	public static function NewTheory_KFZL($cid=null)
 	{
-		$carr = array(1=>array('id'=>1,'name'=>'文章分类1'),
+		$carr = array(
+				0=>array('id'=>'','name'=>'请选择'),
+				1=>array('id'=>1,'name'=>'文章分类1'),
 				2=>array('id'=>2,'name'=>'文章分类2'),
 				3=>array('id'=>3,'name'=>'文章分类3'),
 				4=>array('id'=>4,'name'=>'文章分类4'),
@@ -205,7 +226,9 @@ class BaseData
 	 */
 	 public static function ToolsType($cid = null)
 	 {
-	 	$data = array(1=>array('id'=>1,'name'=>'表格(格式)'),
+	 	$data = array(
+	 			0=>array('id'=>'','name'=>'请选择'),
+	 					1=>array('id'=>1,'name'=>'表格(格式)'),
 					  2=>array('id'=>2,'name'=>'范文(格式)'),
 					  3=>array('id'=>3,'name'=>'软件(用途)')
 				);

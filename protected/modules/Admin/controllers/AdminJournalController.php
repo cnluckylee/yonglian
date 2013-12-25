@@ -52,6 +52,15 @@ class AdminJournalController extends AdminController
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
 				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
+			
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+			
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -71,7 +80,7 @@ class AdminJournalController extends AdminController
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
 		$old_downurl = $model->downurl;
-
+		$old_pdf = $model->pdf;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -94,6 +103,17 @@ class AdminJournalController extends AdminController
 			}else{
 				$model->downurl = $old_downurl;
 			}
+			
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+			
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}else
+				$model->pdf = $old_pdf;
+			
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}

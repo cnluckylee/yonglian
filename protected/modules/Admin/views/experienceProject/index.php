@@ -11,14 +11,14 @@
 </div><!-- search-form -->
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
-	'id'=>'journal-grid',
+	'id'=>'experience-project-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		array(
 
 						'name' => 'id',
-
+						'value' => '$row+1',
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -27,6 +27,16 @@
 			array(
 
 						'name' => 'title',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			
+			array(
+
+						'name' => 'content',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -42,17 +52,55 @@
 						//),
 				),
 
+			/*
 		array(
-			'name' => 'imgurl',
-			'type' => 'image',
-			'htmlOptions' => array(
-				'class' => 'thumbimage_100',
-			),
-		),
+
+						'name' => 'addtime',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
 
 			array(
 
 						'name' => 'updtime',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'IndustryID',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'CompanyID',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'score',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'type',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -68,7 +116,8 @@
 						//),
 				),
 
-			array(
+			*/
+		array(
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',
