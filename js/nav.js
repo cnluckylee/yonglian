@@ -18,6 +18,7 @@ $("#nav li").hover(
 			$("#nav li .v .shutAhover").attr("class","sele");
 			setTimeout(function(){
 				$(".nav_lishw .kind_menu").show();
+				
 				$(".nav_lishw .v a").attr("class","sele");
 			},50); 
 		}

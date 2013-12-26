@@ -80,7 +80,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=yonglian',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 			'tablePrefix'=>'yl_',
 		),

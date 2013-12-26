@@ -169,7 +169,7 @@
 			</li>
 			<li class="">
 				<span class="v"><a href="javascript:void(0);">用户之窗</a></span> 
-				<div class="kind_menu" style="left:40px">
+				<div class="kind_menu" style="left:80px">
 					<?php foreach($menus[3] as $k=>$v):?>
 					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<3):?><span>|</span><?php endif;?>
                		<?php endforeach;?>
@@ -177,27 +177,26 @@
 			</li>
 			<li class="">
 				<span class="v"><a href="javascript:void(0);">永链擂台</a></span> 
-				<div class="kind_menu" style="left:40px">
+				<div class="kind_menu" style="left:320px">
 					<?php foreach($menus[4] as $k=>$v):?>
-					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<4):?><span>|</span><?php endif;?>
+					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<1):?><span>|</span><?php endif;?>
                		<?php endforeach;?>
 				</div>
 			</li>
 			<li class="">
-				<span class="v"><a href="http://www.17sucai.com/">永链数据</a></span> 
-				<div class="kind_menu" style="left:40px">
+				<span class="v"><a href="javascript:void(0);">永链数据</a></span> 
+				<div class="kind_menu" style="left:120px">
 					<?php foreach($menus[5] as $k=>$v):?>
 					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<5):?><span>|</span><?php endif;?>
                		<?php endforeach;?>
 				</div>
 			</li>
             <li class="">
-				<span class="v"><a href="http://www.17sucai.com/">永链社区</a></span> 
-				<div class="kind_menu" style="left:40px">
-					<a href="http://www.17sucai.com/">jquery表单验证</a><span>|</span> 
-					<a href="http://www.17sucai.com/">jquery表单美化</a><span>|</span> 
-					<a href="http://www.17sucai.com/">jquery搜索提示</a><span>|</span> 
-					<a href="http://www.17sucai.com/">jquery全选反选</a>
+				<span class="v"><a href="javascript:void(0);">永链社区</a></span> 
+				<div class="kind_menu" style="left:480px">
+					<?php foreach($menus[6] as $k=>$v):?>
+					<a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name'];?></a><?php if($k<1):?><span>|</span><?php endif;?>
+               		<?php endforeach;?>
 				</div>
 			</li>
 		</ul>
