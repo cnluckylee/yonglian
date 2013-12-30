@@ -8,7 +8,7 @@ class AllTypeController extends AdminController
 	 */
 	public function actionIndex($type = null)
 	{
-		$menus = Alltype::getTreeTypeDATA('*', false,$type);
+		$menus = AllType::getTreeTypeDATA('*', false,$type);
 		$tree = new Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
@@ -39,7 +39,7 @@ class AllTypeController extends AdminController
 	 */
 	public function actionCreate($parentid = 0,$type = 0)
 	{
-		$model=new Alltype;
+		$model=new AllType;
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -115,7 +115,7 @@ class AllTypeController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Alltype::model()->findByPk($id);
+		$model=AllType::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
