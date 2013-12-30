@@ -60,7 +60,7 @@ class AdminPicController extends AdminController
 			}
 
 		}
-		$categorys = Alltype::getAllType(2);
+		$categorys = AllType::getAllType(2);
 		$this->render('create',array(
 			'model'=>$model,
 			'categorys' => $categorys,
@@ -158,7 +158,7 @@ class AdminPicController extends AdminController
 	 */
 	 public function getValueByKey($data, $row, $c)
 	 {
-		$picType = Alltype::getAllType(2);
+		$picType = AllType::getAllType(2);
 		return $picType[$data->type]['name'];
 	 }
 
