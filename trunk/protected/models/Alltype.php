@@ -11,7 +11,7 @@
  * @property integer $listorder
  * @property integer $display
  */
-class AllType extends CActiveRecord
+class Alltype extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
