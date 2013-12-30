@@ -1,3 +1,5 @@
+var httpUrl = "http://www.yonglian.net.tf";
+var favorite ="”¿¡¥";
 function FormatFloat(src, pos)
 {
     return Math.round(src*Math.pow(10, pos))/Math.pow(10, pos);
@@ -52,6 +54,7 @@ function setHomepage() {
 }
 //º”»Î ’≤ÿº–
 function bookmark() {
+	
   if (document.all) {
     window.external.AddFavorite(httpUrl, favorite);
   }else if(window.sidebar){
