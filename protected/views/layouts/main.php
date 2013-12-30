@@ -18,11 +18,11 @@
 	Yii::app()->clientScript->registerCoreScript('jquery');
 	Yii::app()->clientScript->registerCssFile($superfishpath.'/jqueryslidemenu.css');
 	Yii::app()->clientScript->registerScriptFile($superfishpath.'/jqueryslidemenu.js');
-
+	
 ?>
 
 <script language="javascript" type="text/javascript">
-	var httpUrl = 'http://yonglian.com';
+	var httpUrl = 'http://www.yonglian.net.tf';
 	var cssUrl = <?php echo Yii::app()->request->baseUrl.'/css/'; ?>;
 	var jsUrl = <?php echo Yii::app()->request->baseUrl.'/js/'; ?>;
 </script>
@@ -42,7 +42,7 @@
 <div  class="r"><!--网页公链开始-->
 <table border="3"  cellpadding="5" cellspacing="5" bgcolor="#CCCCCC">
 <tr>
-<td>桌面快捷</td>
+<td><a href="javascript:bookmark();">加入收藏夹</a></td>
 <td>用户注册</td>
 <td>企业公告</td>
 </tr>
@@ -98,6 +98,10 @@
   	Copyright &copy;<?php echo $settings['met_webname'] ?><br />
     Email:<?php echo $settings['met_fd_usename'] ;?>
     All Rights Reserved.<br/>
+    <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+    <script language="javascript">
+		loadCssAndJs(jsUrl+'/common.js','js');
+	</script>
   </div>
   <!-- footer -->
 </div>
