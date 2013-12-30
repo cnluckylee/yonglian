@@ -16,8 +16,8 @@
         </th>
         <td >
         <div class="row">
-		<select name="AllType[parentid]" id="AllType_parentid">
-            <?php echo AllType::getSelectTree('顶级菜单',$model->parentid);?>
+		<select name="Alltype[parentid]" id="AllType_parentid">
+            <?php echo AllType::getSelectTree('顶级菜单',$model->parentid,$model->type);?>
         </select>
 		<?php echo $form->error($model,'parentid'); ?>
         </div>
@@ -42,7 +42,7 @@
         </th>
         <td >
         <div class="row">
-        	<select name="AllType[type]" id="AllType_type">
+        	<select name="Alltype[type]" id="AllType_type">
             	<?php echo AllType::getAllTypeForSelect($model->type);?>
             </select>
 		<?php echo $form->error($model,'type'); ?>
