@@ -9,13 +9,14 @@ class AllTypeController extends AdminController
 	public function actionIndex($type = null)
 	{
 		$menus = Alltype::getTreeTypeDATA('*', false,$type);
+		$type = Tools::getParam('type');
 		$tree = new Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
 		foreach ($menus as $r) {
 
 			$r['str_manage'] = '<a href="' . $this->createUrl('create', array('parentid' => $r['id'],'type' => $r['type'])) . '">添加子栏目</a> |
-				<a  href="' . $this->createUrl('update', array('id' => $r['id'])) . '">修改</a> |
+				<a  href="' . $this->createUrl('update', array('id' => $r['id'],'type'=>$type)) . '">修改</a> |
                                     <a class="del" href="' . $this->createUrl('delete', array('id' => $r['id'])) . '" msg="确定删除.' . $r['name'] . '">删除</a> ';
 			$array[] = $r;
 		}
@@ -43,13 +44,13 @@ class AllTypeController extends AdminController
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['AllType']))
+		if(isset($_POST['Alltype']))
 		{
-			$model->attributes=$_POST['AllType'];
+			$model->attributes=$_POST['Alltype'];
 
 			$type = $model->attributes['type'];
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index&type'.$type));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index&type='.$type));
 		}
 		if ($parentid){
 			$model->parentid = $parentid;
@@ -67,15 +68,16 @@ class AllTypeController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$type = Tools::getParam('type');
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['AllType']))
+		if(isset($_POST['Alltype']))
 		{
-			$model->attributes=$_POST['AllType'];
+			$model->attributes=$_POST['Alltype'];
+
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index&type='.$type));
 		}
 
 		$this->render('update',array(
@@ -141,5 +143,14 @@ class AllTypeController extends AdminController
 	{
 		return AllType::getCity();
 	}
-
+	/**
+	 * 排序
+	 */
+	public function actionListorder() {
+		$orders = Yii::app()->getRequest()->getPost('listorders');
+		foreach ($orders as $k => $v) {
+			Alltype::model()->updateByPk($k, array('listorder' => $v));
+		}
+		$this->success('更新排序成功！');
+	}
 }
