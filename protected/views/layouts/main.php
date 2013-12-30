@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="language" content="en" />
 <title><?php echo CHtml::encode($this->pageTitle); ?></title>
 <!-- blueprint CSS framework -->
@@ -42,7 +42,7 @@
 <div  class="r"><!--网页公链开始-->
 <table border="3"  cellpadding="5" cellspacing="5" bgcolor="#CCCCCC">
 <tr>
-<td><a href="javascript:bookmark();">加入收藏夹</a></td>
+<td><a href="javascript:bookmark();" rel="sidebar">加入收藏</a></td>
 <td>用户注册</td>
 <td>企业公告</td>
 </tr>
@@ -99,9 +99,7 @@
     Email:<?php echo $settings['met_fd_usename'] ;?>
     All Rights Reserved.<br/>
     <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
-    <script language="javascript">
-		loadCssAndJs(jsUrl+'/common.js','js');
-	</script>
+   
   </div>
   <!-- footer -->
 </div>
