@@ -8,7 +8,7 @@ class YlController extends Controller
 	protected $menus;
 	public function init()
 	{
-		$menus = QtMenu::getQtMenuList(1);
+		$menus = QtMenu::getQtMenuList(5);
 		$this->menus = $menus[5];
 	}
 	/**
