@@ -131,7 +131,7 @@
 <p id="ctn9">星期九<br />999</p>
 <p id="ctn10">星期十<br />101010</p>
 </div>
-<script language="JavaScript" type="text/javascript">affScroll();</script>
+
 </div><!--广告2结束--> 
 <div style="width:300px; position:relative; height:172px;float:left;margin-top:20px;"><!--广告3开始--> 
 <div id="v2"><a class="product2" href="CPSingleEnterprise.html"target="_blank">
