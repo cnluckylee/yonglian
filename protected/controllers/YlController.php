@@ -73,9 +73,13 @@ class YlController extends Controller
 	  */
 	 public function actionRecruit()
 	 {
+	 	
 	 	$this->pageTitle = '永链招聘';
 	 	$pageArray = array();
+	
 	 	$pageArray['datalist'] = YlRecruit::getDataList();
 	 	$this->render('Recruit',$pageArray);
+	 
+	 	
 	 }
 }

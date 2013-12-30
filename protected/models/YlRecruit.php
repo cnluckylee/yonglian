@@ -113,99 +113,14 @@ class YlRecruit extends CActiveRecord
 		));
 	}
 	
-			/**
-	 * 获取文章列表
-	 */
-	public static function getMoreInfo($CompanyID=null,$pid=null,$limit = 5)
+	public static function getDataList()
 	{
-		$cacheId = 'joint'.$pid.'_'.$limit;
-// 		$menus = Yii::app()->getCache()->get($cacheId);
-// 		if($menus)
-// 			return $menus;
-		$criteria = new CDbCriteria();
-		$criteria->select = 'id,title,pid,CompanyID,updtime,cid';
-		$criteria->addCondition('CompanyID='.$CompanyID);
-		if($pid)
-		$criteria->addCondition('pid='.$pid);
-		$data = self::model()->findAll($criteria);
-		$result = array();	
-		$media = AllType::getAllType(4);
-		
-		foreach($data as $i)
-		{
-			$arr = $i->attributes;			
-			
-			$arr['cname'] = isset($media[$arr['cid']])?$media[$arr['cid']]['name']:"";
-			$arr['upddate'] = date('Y-m-d',strtotime($arr['updtime']));
-			$result[] = $arr;
-		}
-		if($result)
-			Yii::app()->getCache()->set($cacheId,$result,86400);
-		return $result;
-	}
-	
-	public static function enterprise($Company_city_id = null,$Company_Industry_id=null,$keyword=null,$pid=null)
-	{
-		//解析$Company_city_id,$Company_Industry_id
-		if($Company_city_id)
-			$city_arr = explode('_', $Company_city_id);
-		if($Company_Industry_id)
-			$Industry_arr = explode('_', $Company_Industry_id);
-	
-		$criteria = new CDbCriteria();
-		if(isset($city_arr[0]))
-			$criteria->addCondition('city1='.$city_arr[0]);
-		if(isset($city_arr[1]))
-			$criteria->addCondition('city2='.$city_arr[1]);
-		if(isset($city_arr[2]))
-			$criteria->addCondition('city3='.$city_arr[2]);
-		if(isset($city_arr[3]))
-			$criteria->addCondition('city4='.$city_arr[3]);
-		if(isset($Industry_arr[0]))
-			$criteria->addCondition('IndustryID1='.$Industry_arr[0]);
-		if(isset($Industry_arr[1]))
-			$criteria->addCondition('IndustryID2='.$Industry_arr[1]);
-		if(isset($Industry_arr[2]))
-			$criteria->addCondition('IndustryID3='.$Industry_arr[2]);
-		if(isset($Industry_arr[3]))
-			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
-		if($keyword)
-			$criteria->addSearchCondition('c.name', $keyword);
-			
-		$criteria->select = 't.*';
-		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
-		$criteria->order = 'updtime desc';
-		$criteria->group = 'CompanyId';
-		if($pid)
-			$criteria->addCondition('t.pid='.$pid);
-		$count = Joint::model()->count($criteria);
-	
-
-		$pager = new CPagination($count);
-		$pager->pageSize = 2;
-		$pager->applyLimit($criteria);
-		$artList = Joint::model()->findAll($criteria);
-		$list = array();
-
-		foreach($artList as $i)
-		{
-			$arr = $i->attributes;
-			if(!isset($list[$arr['CompanyID']]['name'])){
-	
-				$cc = Company::model()->findByPk($arr['CompanyID']);
-	
-				$companyName = '';
-				if($cc){
-					$temp = $cc->attributes;
-					$companyName = $temp['name'];
-				}
-				$list[$arr['CompanyID']]['name'] = $companyName;
-			}
-			
-			$list[$arr['CompanyID']]['data'] = self::getMoreInfo($arr['CompanyID'],$pid);
-		}
-		return array('pages'=>$pager,'posts'=>$list);
-	
+		$model = self::model()->getDbConnection()->createCommand()
+                ->from('{{yl_recruit}}')
+                ->order('updtime DESC')
+                ;
+		 $data = $model->queryAll();
+		return $data;
 	}
 	
 	protected function beforeSave()
