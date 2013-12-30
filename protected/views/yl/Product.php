@@ -51,8 +51,8 @@
   
 <div class="f_right">
 <!--标题开始-->
-<p id="ctFont">团</p>
-<p id="ctFont">队</p>
+<p id="ctFont">服</p>
+<p id="ctFont">务</p>
 <p id="ctFont">介</p>
 <p id="ctFont">绍</p>
 <div id="tSite"></div><!--标题结束-->
@@ -60,10 +60,10 @@
 
 <div class="s_left">
 <!--新闻目录开始-->
-<p id="cFont">队&nbsp;员&nbsp;才&nbsp;华</p>
+<p id="cFont">产&nbsp;品&nbsp;详&nbsp;解</p>
 <div id="cJacket">
 <div id="con_Allies_1" ><!--产品1目录开始-->
-<P><span class="STYLE1">&nbsp;&nbsp;员工编号&nbsp;员工姓名&nbsp;服务地区&nbsp;担任岗位1</span></p>
+
 <hr style="border:1px solid #F75000;width:70%" align=left ><!--style="cursor:default"-->
 <table width="%" cellspacing="2" cellpadding="4">
  <?php foreach($datalist as $k =>$v):?>

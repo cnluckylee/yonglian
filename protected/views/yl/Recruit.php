@@ -51,16 +51,16 @@
   
 <div class="f_right">
 <!--标题开始-->
-<p id="ctFont">团</p>
-<p id="ctFont">队</p>
-<p id="ctFont">介</p>
-<p id="ctFont">绍</p>
+<p id="ctFont">招</p>
+<p id="ctFont">聘</p>
+<p id="ctFont">流</p>
+<p id="ctFont">程</p>
 <div id="tSite"></div><!--标题结束-->
 </div> 
 
 <div class="s_left">
 <!--新闻目录开始-->
-<p id="cFont">队&nbsp;员&nbsp;才&nbsp;华</p>
+<p id="cFont">招&nbsp;聘&nbsp;公&nbsp;告</p>
 <div id="cJacket">
 <div id="con_Allies_1" ><!--产品1目录开始-->
 <P><span class="STYLE1">&nbsp;&nbsp;员工编号&nbsp;员工姓名&nbsp;服务地区&nbsp;担任岗位1</span></p>
