@@ -2,7 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'joint-form',
 	'enableAjaxValidation'=>true,
-	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
+		'htmlOptions'=>array('enctype'=>'multipart/form-data','onsubmit'=>'setData()'),
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
