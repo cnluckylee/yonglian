@@ -250,5 +250,30 @@ class BaseData
 	 	);
 	 	return $cid?$data[$cid]:$data;
 	 }
+	 /**
+	  * match 类型
+	  */
+	 public static function MatchType($cid=null)
+	 {
+	 	$data = array(
+	 			0=>array('id'=>'','name'=>'请选择'),
+	 			1=>array('id'=>1,'name'=>'线上比赛'),
+	 			2=>array('id'=>2,'name'=>'线下比赛'),
+	 	);
+	 	return $cid?$data[$cid]:$data;
+	 }
 	 
+	 /**
+	  * match 形式
+	  */
+	 public static function MatchStyle($cid=null)
+	 {
+	 	$data = array(
+	 			0=>array('id'=>'','name'=>'请选择'),
+	 			1=>array('id'=>1,'name'=>'赛前'),
+	 			2=>array('id'=>2,'name'=>'赛中'),
+	 			3=>array('id'=>2,'name'=>'赛后'),
+	 	);
+	 	return $cid?$data[$cid]:$data;
+	 }
 }
