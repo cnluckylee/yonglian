@@ -129,7 +129,10 @@ class ArticleController extends AdminController
 	public function getValueByKey($data, $row, $c)
 	{
 		$NewsType = Alltype::getAllType(1);
-		return $NewsType[$data->cid]['name'];
+		$name = '';
+		if(isset($NewsType[$data->cid]))
+			$name = $NewsType[$data->cid]['name'];
+		return $name;
 	}
 	
 	/**
@@ -137,7 +140,6 @@ class ArticleController extends AdminController
 	 */
 	public function getValueByCompanyID($data, $row, $c)
 	{
-		
 		$name = '';
 		$result = Company::model()->findByPk($data->CompanyID);
 		if($result)
