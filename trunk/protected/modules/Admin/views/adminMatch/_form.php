@@ -78,7 +78,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'zzid'); ?>
+		<?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(SubjectManagement::model()->findAll(),'id','name')); ?>
 		<?php echo $form->error($model,'zzid'); ?>
         </div>
         </td>
@@ -90,7 +90,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'hxid'); ?>
+		<?php echo $form->dropDownList($model,'hxid',CHtml::listData(HorizontalManagement::model()->findAll(),'id','name')); ?>
 		<?php echo $form->error($model,'hxid'); ?>
         </div>
         </td>
@@ -102,7 +102,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'zxid'); ?>
+		<?php echo $form->dropDownList($model,'zxid',CHtml::listData(VerticalManagement::model()->findAll(),'id','name')); ?>
 		<?php echo $form->error($model,'zxid'); ?>
         </div>
         </td>

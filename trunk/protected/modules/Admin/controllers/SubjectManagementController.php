@@ -1,6 +1,6 @@
 <?php
 
-class ArticleController extends AdminController
+class SubjectManagementController extends AdminController
 {
 	
 	/**
@@ -8,11 +8,11 @@ class ArticleController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		
-		$model=new Article('search');
+		$model=new SubjectManagement('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['Article']))
-			$model->attributes=$_GET['Article'];
+		if(isset($_GET['SubjectManagement']))
+			$model->attributes=$_GET['SubjectManagement'];
+
 		$this->render('index',array(
 			'model'=>$model,
 		));
@@ -23,19 +23,14 @@ class ArticleController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new Article;
+		$model=new SubjectManagement;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Article']))
+		if(isset($_POST['SubjectManagement']))
 		{
-			$model->attributes=$_POST['Article'];
-// 			$upload=CUploadedFile::getInstance($model,'imgurl');
-// 			if(!empty($upload))
-// 			{
-// 				$model->imgurl=Upload::createFile($upload,'article','create');
-// 			}
+			$model->attributes=$_POST['SubjectManagement'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -52,21 +47,13 @@ class ArticleController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-// 		$old_imgurl = $model->imgurl;
+
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Article']))
+		if(isset($_POST['SubjectManagement']))
 		{
-			$model->attributes=$_POST['Article'];
-
-// 			$upload=CUploadedFile::getInstance($model,'imgurl');
-// 			if(!empty($upload))
-// 			{
-// 				$model->imgurl=Upload::createFile($upload,'article','update');
-// 			}else{
-// 				$model->imgurl = $old_imgurl;
-// 			}
+			$model->attributes=$_POST['SubjectManagement'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -99,16 +86,7 @@ class ArticleController extends AdminController
 	}
 
 	
-	/**
-	 * 查看
-	 */
-	public function actionView($id)
-	{
-		$model = $this->loadModel($id);
-		$this->render('view',array(
-				'model'=>$model,
-		));
-	}
+
 	
 
 	/**
@@ -117,56 +95,19 @@ class ArticleController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Article::model()->findByPk($id);
+		$model=SubjectManagement::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
 	}
 
 	/**
-	 * 取value
-	 */
-	public function getValueByKey($data, $row, $c)
-	{
-		$NewsType = Alltype::getAllType(1);
-		$name = '';
-		if(isset($NewsType[$data->cid]))
-			$name = $NewsType[$data->cid]['name'];
-		return $name;
-	}
-	
-	/**
-	 * 取value
-	 */
-	public function getValueByCompanyID($data, $row, $c)
-	{
-		$name = '';
-		$result = Company::model()->findByPk($data->CompanyID);
-		if($result)
-			$name = $result->attributes['name'];
-		return $name;
-	}
-	
-	/**
-	 * 取value
-	 */
-	public function getValueByIndustryID($data, $row, $c)
-	{
-		$name = '';
-
-		$result = AdminIndustry::model()->findByPk($data->IndustryID);
-		if($result)
-			$name = $result->attributes['name'];
-		return $name;
-	}
-	
-	/**
 	 * Ajax验证
 	 * @param CModel the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='article-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='subject-management-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
