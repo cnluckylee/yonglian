@@ -190,7 +190,7 @@ class Article extends CActiveRecord
 		
     
         $pager = new CPagination($count);    
-        $pager->pageSize = 2;             
+        $pager->pageSize = 10;             
         $pager->applyLimit($criteria);
 		$artList = Article::model()->findAll($criteria);
 		$list = array();
