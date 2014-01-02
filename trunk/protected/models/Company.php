@@ -128,7 +128,7 @@ class Company extends CActiveRecord
 		$criteria->compare('rank',$this->rank);
 		$criteria->compare('updTime',$this->updTime,true);
 		$criteria->compare('addTime',$this->addTime,true);
-
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
