@@ -2,7 +2,7 @@
 
 class AdminMatchController extends AdminController
 {
-	
+
 	/**
 	 * 首页列表.
 	 */
@@ -32,11 +32,11 @@ class AdminMatchController extends AdminController
 		{
 			$model->attributes=$_POST['Match'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
-			
+
 			if(!empty($upload))
 			{
 				$im = null;
-			
+
 				$imagetype = strtolower($upload->extensionName);
 				if($imagetype == 'gif')
 					$im = imagecreatefromgif($upload->tempName);
@@ -45,12 +45,12 @@ class AdminMatchController extends AdminController
 				else if ($imagetype == 'png')
 					$im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
-			
+
 				$model->imgurl=Upload::createFile($upload,'cp','create');
 			}
-				
+
 			$pdf=CUploadedFile::getInstance($model,'pdf');
-			
+
 			if(!empty($pdf))
 			{
 				$pdftype = strtolower($pdf->extensionName);
@@ -62,9 +62,12 @@ class AdminMatchController extends AdminController
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
 
+
 		$this->render('create',array(
 			'model'=>$model,
+
 		));
+
 	}
 
 	/**
@@ -76,7 +79,7 @@ class AdminMatchController extends AdminController
 		$model=$this->loadModel($id);
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
-		$old_pdf = $model->pdf;
+
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -90,22 +93,12 @@ class AdminMatchController extends AdminController
 			}else{
 				$model->imgurl = $old_imgurl;
 			}
-				
-			$pdf=CUploadedFile::getInstance($model,'pdf');
-				
-			if(!empty($pdf))
-			{
-				$pdftype = strtolower($pdf->extensionName);
-				if($pdftype == 'swf')
-					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
-			}else
-				$model->pdf = $old_pdf;
-				
-			unset($pdf);
+
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
-
+		$model->sszb = explode(",",$model->sszb);
+		$model->ssxb = explode(",",$model->ssxb);
 		$this->render('update',array(
 			'model'=>$model,
 		));
@@ -119,7 +112,7 @@ class AdminMatchController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -133,9 +126,9 @@ class AdminMatchController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
 
-	
+
+
 
 	/**
 	 * 载入
