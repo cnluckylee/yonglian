@@ -35,14 +35,7 @@
 				),
 
 		
-			array(
-
-						'name' => 'state',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+		
 
 			array(
 			'class'=>'CButtonColumn',

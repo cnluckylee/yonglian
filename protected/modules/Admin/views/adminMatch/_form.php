@@ -40,20 +40,7 @@
         </td>
 	</tr>
 	
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pdf'); ?>
-        </th>
-        <td >
-        <div class="row">
-        <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
-			 if(!empty($model->pdf))
-			  	echo $model->pdf;
-		?>
-		<?php echo $form->error($model,'pdf'); ?>
-        </div>
-        </td>
-	</tr>
+
 
 
 
@@ -127,8 +114,22 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'sszb',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'sszb'); ?>
+        <table>
+         <tr>
+        <?php 
+		$company = company::model()->findAll();
+			foreach($company as $k=>$v): ?>
+        <?php if (($k+1)%5==0):?>
+        </tr><tr>
+         <?php endif;?>
+        <td><input type="checkbox" value="<?php echo $v->id; ?>"  name="sszb[]" <?php if(in_array($v->id,$model->sszb)):?> checked="checked" <?php endif; ?>/><?php echo $v->name ?></td>
+       
+        <?php endforeach; ?>
+        </tr>
+        </table>
+        
+		
+		
         </div>
         </td>
 	</tr>
@@ -139,8 +140,19 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'ssxb',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'ssxb'); ?>
+		 <table>
+         <tr>
+        <?php 
+		$company = company::model()->findAll();
+			foreach($company as $k=>$v): ?>
+        <?php if (($k+1)%5==0):?>
+        </tr><tr>
+         <?php endif;?>
+        <td><input type="checkbox" value="<?php echo $v->id; ?>"  name="ssxb[]" <?php if(in_array($v->id,$model->ssxb)):?> checked="checked" <?php endif; ?>/><?php echo $v->name ?></td>
+       
+        <?php endforeach; ?>
+        </tr>
+        </table>
         </div>
         </td>
 	</tr>

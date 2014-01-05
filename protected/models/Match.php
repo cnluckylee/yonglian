@@ -133,7 +133,7 @@ class Match extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
@@ -144,7 +144,11 @@ class Match extends CActiveRecord
 			}else{
 				$this->updtime=date('Y-m-d H:i:s');
 			}
-	
+				$sszb = $_POST['sszb'];
+				$this->sszb = implode(",",$sszb);
+
+				$ssxb = $_POST['ssxb'];
+				$this->ssxb = implode(",",$ssxb);
 			return true;
 		}
 		else
