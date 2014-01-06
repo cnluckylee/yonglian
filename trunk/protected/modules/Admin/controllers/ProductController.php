@@ -72,6 +72,9 @@ class ProductController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model->setScenario('update');
+		$old_imgurl = $model->imgurl;
+		$old_pdf = $model->pdf;
 
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
@@ -79,6 +82,36 @@ class ProductController extends AdminController
 		if(isset($_POST['Product']))
 		{
 			$model->attributes=$_POST['Product'];
+			$upload=CUploadedFile::getInstance($model,'imgurl');
+			if(!empty($upload))
+			{
+					$im = null;
+					$imagetype = strtolower($upload->extensionName);
+					if($imagetype == 'gif')
+						$im = imagecreatefromgif($upload->tempName);
+					else if ($imagetype == 'jpg')
+						$im = imagecreatefromjpeg($upload->tempName);
+					else if ($imagetype == 'png')
+						$im = imagecreatefrompng($upload->tempName);
+					//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
+					
+				$model->imgurl=Upload::createFile($upload,'mediapic','update');
+			}else{
+				$model->imgurl = $old_imgurl;
+			}
+			
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+			
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}else{
+				$model->pdf = $old_pdf;
+			}
+			unset($pdf);
+			
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
