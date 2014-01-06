@@ -105,7 +105,7 @@ class CompanyController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=company::model()->findByPk($id);
+		$model=Company::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;

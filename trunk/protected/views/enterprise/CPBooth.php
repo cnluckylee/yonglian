@@ -128,11 +128,13 @@
         </li>
         <li>
           <ul class="droplist">
-            <li>工荒倒逼中国制造升级</li>
-            <li>2.逃避高成本工厂面临搬离的困惑</li>
-            <li>3.双向调整解决用工荒问题</li>
-            <li>4.用工荒背后的八大罪状</li>
-            <li>5.用工压力难消化 </li>
+           <?php  if(isset($row['companyinfo'])):
+		 			foreach($row['companyinfo'] as $com):?>
+            <li><?php echo $com['name'];?></li>
+            <?php
+		  				 endforeach; 
+		  			 endif;
+		   ?>
           </ul>
         </li>
       </ul>
