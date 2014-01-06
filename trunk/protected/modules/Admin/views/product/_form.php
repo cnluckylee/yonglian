@@ -2,6 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'product-form',
 	'enableAjaxValidation'=>true,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data','onsubmit'=>'setData()'),
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -90,24 +91,7 @@
 
 
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'order'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'order'); ?>
-		<?php echo $form->error($model,'order'); ?>
-        </div>
-        </td>
-	</tr>
-
-
-
-
-
-
-
+	
 </tbody>
       <tfoot>
         <tr class="title">
@@ -120,3 +104,19 @@
 <?php $this->endWidget(); ?>
 
 </div>
+
+<script language="javascript">
+ 	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('#Product_content', {
+					width:'800px',
+					height:'500px',
+					resizeType : 2,
+					uploadJson : '<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/php/upload_json.php' // 相对于当前页面的路径
+		});
+	});
+	function setData()
+	{
+		editor.sync(); 
+	}
+</script>
