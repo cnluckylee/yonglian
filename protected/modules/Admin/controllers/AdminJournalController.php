@@ -99,7 +99,7 @@ class AdminJournalController extends AdminController
 
 			if(!empty($upload))
 			{
-				$model->downurl=FileUpload::createFile($upload,'mediafile','create');
+				$model->downurl=FileUpload::createFile($upload,'pdf','create');
 			}else{
 				$model->downurl = $old_downurl;
 			}
