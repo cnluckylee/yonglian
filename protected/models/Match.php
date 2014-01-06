@@ -80,7 +80,7 @@ class Match extends CActiveRecord
 		return array(
 			'id' => '序号',
 			'title' => '标题',
-			'fid' => '',
+			'fid' => '综合其他',
 			'imgurl' => '图片',
 			'content' => '内容',
 			'remark' => '摘要',
@@ -144,11 +144,16 @@ class Match extends CActiveRecord
 			}else{
 				$this->updtime=date('Y-m-d H:i:s');
 			}
+			if(isset($_POST['sszb']) && $_POST['sszb'])
+			{
 				$sszb = $_POST['sszb'];
 				$this->sszb = implode(",",$sszb);
-
+			}
+			if(isset($_POST['ssxb']) && $_POST['ssxb'])
+			{
 				$ssxb = $_POST['ssxb'];
 				$this->ssxb = implode(",",$ssxb);
+			}		
 			return true;
 		}
 		else
