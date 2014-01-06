@@ -94,6 +94,18 @@
         </div>
         </td>
 	</tr>
+	
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'fid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->dropDownList($model,'fid',CHtml::listData(ConsolidatedOther::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model,'fid'); ?>
+        </div>
+        </td>
+	</tr>
 
 	<tr>
           <th width="100" align="right">
