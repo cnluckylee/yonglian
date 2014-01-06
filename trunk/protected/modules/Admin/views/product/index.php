@@ -38,6 +38,9 @@
 
 						'name' => 'imgurl',
 						'type' => 'image',
+						'htmlOptions' => array(
+														'class' => 'thumbimage_100',
+												),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
