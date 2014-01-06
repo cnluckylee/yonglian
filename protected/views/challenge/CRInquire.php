@@ -92,27 +92,26 @@
   <table  class="searchForm">
     <tr>
       <td class="title">主旨管理</td>
-       <td >经营战略<?php echo $form->dropDownList($model,'CompanyID',CHtml::listData(Company::getTreeDATA(),'id','name')); ?></td>
-       <td >开发战略<?php echo $form->dropDownList($model,'kid',CHtml::listData(BaseData::NewTheory_KFZL(),'id','name')); ?></td>
-       <td></td>
+       <td ><?php echo $form->dropDownList($model,'zzid',CHtml::listData(SubjectManagement::model()->findAll(),'id','name')); ?></td>
+       <td >横向管理</td>
+       <td><?php echo $form->dropDownList($model,'hxid',CHtml::listData(HorizontalManagement::model()->findAll(),'id','name')); ?></td>
+        <td >所属行业</td>
+       <td><?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(BaseData::NewTheory_KFZL(),'IndustryID','name')); ?></td>
        </tr>
-     <tr>
-      <td class="title">横向管理</td>
-      <td>采购供应<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
-      <td>内部运营<?php echo $form->dropDownList($model,'nid',CHtml::listData(BaseData::NewTheory_NBYY(),'id','name')); ?></td>
-      <td>分销配送<?php echo $form->dropDownList($model,'fxid',CHtml::listData(BaseData::NewTheory_FXPS(),'id','name')); ?></td>
-    </tr>
+   
     <tr>
       <td class="title">纵向管理</td>
-      <td>企业组织<?php echo $form->dropDownList($model,'qid',CHtml::listData(BaseData::NewTheory_QYZZ(),'id','name')); ?></td>
-      <td>人力资源<?php echo $form->dropDownList($model,'rid',CHtml::listData(BaseData::NewTheory_RLZY(),'id','name')); ?></td>
-      <td>财务税收<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
+      <td><?php echo $form->dropDownList($model,'zxid',CHtml::listData(VerticalManagement::model()->findAll(),'id','name')); ?></td>
+      <td>综合其他</td>
+      <td><?php echo $form->dropDownList($model,'fid',CHtml::listData(ConsolidatedOther::model()->findAll(),'id','name')); ?></td>
+       <td>截止时间</td>
+      <td><input id="Match_stopdate" type="text" name="Match[stopdate]" onclick="WdatePicker()"></td>
     </tr>
      <tr>
-     <td class="title">作者</td>
-      <td><?php echo $form->textField($model,'mname'); ?></td>
-      <td>标题<?php echo $form->textField($model,'title'); ?></td>
-      <td>适用行业<?php echo $form->dropDownList($model,'sid',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?></td>
+     <td class="title">赛事标题</td>
+      <td colspan="3"><?php echo $form->textField($model,'title'); ?></td>
+      <td>赛事形式</td>
+      <td><?php echo $form->dropDownList($model,'ssxs',CHtml::listData(RaceForms::getList(),'id','name')); ?></td>
       
     </tr>
     <tr>
@@ -125,20 +124,21 @@
   <div class=" searchDataForm" style="width:810px;">
     <div class="top">
       <ul>
-        <li>文章标题</li>
-        <li>文章作者</li>
-        <li>更新时间</li>
-        <li>隶属机构</li>
-        
+        <li>赛事标题</li>
+        <li>截止时间</li>
+        <li>赛事主办</li>
+        <li>赛事协办</li>
+         <li>赛事形式</li>
       </ul>
     </div>
     <div class="searchData" id="info">
       <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
-         <li><a href="?r=Manage/TechnologyView&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
-        <li><?php echo $row['MemName'];?></li>
-        <li><?php echo $row['updtime'];?></li>
-        <li><?php echo $row['CompanyName'];?></li>
+        <li><a href="?r=Manage/TheoryView&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
+        <li><?php echo date("Y-m-d",strtotime($row['stopdate']));?></li>
+        <li><?php echo $row['sszb'];?></li>
+        <li><?php echo $row['ssxb'];?></li>
+        <li><?php echo $row['ssxs'];?></li>
       </ul>
       <?php endforeach; ?>
       <?php 
@@ -151,6 +151,7 @@
 <script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.swfobject.1-1-1.min.js"></script>
 <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
 <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/slider.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/My97DatePicker/WdatePicker.js"></script>
 <script language="javascript">
 $(function () {
 	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');

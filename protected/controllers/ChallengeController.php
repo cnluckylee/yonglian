@@ -4,6 +4,15 @@
  */
 class ChallengeController extends Controller
 {
+	protected $menus;
+	private $_result=array();
+	
+	public function init()
+	{
+		$menus = QtMenu::getQtMenuList(4);
+		$this->menus = $menus[4];
+		
+	}
 	/**
 	 * 报名
 	 */
@@ -12,6 +21,7 @@ class ChallengeController extends Controller
 		$this->pageTitle ="赛事报名";
 		$data = array();
 		$data['match'] = Match::getCRApply();
+		
 
 		$this->render('CRApply',$data);
 	}
@@ -20,8 +30,32 @@ class ChallengeController extends Controller
 	 */
 	public function actionCRInquire()
 	{
-		$this->pageTitle ="赛事查询";
-		$this->render('CRInquire');
+		
+		
+		$this->pageTitle = '赛事查询';
+		$Theory =isset($_GET['Match'])?$_GET['Match']:array();
+		
+		$this->_result['data'] = Match::getDataList($Theory);
+		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
+		$this->_result['menu'] = $this->menus;
+		if(isset($_GET['_']) && $_GET['_']>0)
+		{
+		
+			$this->layout = false;
+			$this->render('CRInquireAjax',$this->_result);
+		}else{
+			$model=new Match();
+			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
+			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
+			
+		
+			$this->_result['model'] = $model;
+			$this->_result['menu'] = $this->menus;
+			$this->render('CRInquire',$this->_result);
+		
+		}
+		
+		
 	}
 	/**
 	 * 赛事详情
