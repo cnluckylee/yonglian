@@ -208,6 +208,7 @@ class Article extends CActiveRecord
 					$companyName = $temp['name'];
 				}
 				$list[$arr['CompanyID']]['name'] = $companyName;
+				$list[$arr['CompanyID']]['companyinfo'] = Product::getProductByCompanyId($arr['CompanyID']);
 			}
 			$list[$arr['CompanyID']]['data'] = self::getActicelByTypeAndCompanyID(null,$arr['CompanyID']);
 		}

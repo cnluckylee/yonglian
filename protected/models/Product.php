@@ -154,4 +154,22 @@ class Product extends CActiveRecord
 		else
 			return false;
 	}
+	
+	/**
+	 * 根据id获取产品
+	 */
+	public static function getProductByCompanyId($cid)
+	{
+		$result = array();
+		$criteria = new CDbCriteria();
+		$criteria->select = 'name,id';
+		$criteria->addCondition('cid='.$cid);
+		$criteria->limit=5;
+		$data = self::model()->findAll($criteria);
+		foreach($data as $v)
+		{
+			$result[] = $v->attributes;
+		}
+		return $result;
+	}
 }
