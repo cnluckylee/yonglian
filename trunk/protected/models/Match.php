@@ -134,10 +134,6 @@ class Match extends CActiveRecord
 		));
 	}
 	
-	/**
-	 * (non-PHPdoc)
-	 * @see CActiveRecord::beforeSave()
-	 */
 	public static function getCRApply()
 	{
 		$criteria = new CDbCriteria();
@@ -151,6 +147,74 @@ class Match extends CActiveRecord
 		}
 		return $result;
 	}
+	/**
+	 * 
+	 * @param unknown $Technology
+	 * @return multitype:CPagination multitype:unknown
+	 */
+	public static function getDataList($Technology)
+	{
+		//解析$Company_city_id,$Company_Industry_id
+		$criteria = new CDbCriteria();
+		if(isset($Technology['zzid']))
+			$criteria->addCondition('zzid='.$Technology['zzid']);
+		if(isset($Technology['hxid']))
+			$criteria->addCondition('hxid='.$Technology['hxid']);
+		if(isset($Technology['IndustryID']))
+			$criteria->addCondition('IndustryID='.$Technology['IndustryID']);
+		if(isset($Technology['zxid']))
+			$criteria->addCondition('zxid='.$Technology['zxid']);
+		if(isset($Technology['fid']))
+			$criteria->addCondition('fid='.$Technology['fid']);
+		if(isset($Technology['stopdate']))
+			$criteria->addCondition('stopdate<='.$Technology['stopdate']);
+		if(isset($Technology['title']))
+			$criteria->addCondition('title='.$Technology['title']);
+		if(isset($Technology['ssxs']))
+			$criteria->addCondition('ssxs='.$Technology['ssxs']);
+		
+	
+		$criteria->select = 't.*';
+		
+		$criteria->order = 'updtime desc';
+		$count = self::model()->count($criteria);
+		$pager = new CPagination($count);
+		$pager->pageSize = 10;
+		$pager->applyLimit($criteria);
+		$artList = self::model()->findAll($criteria);
+		$list = array();
+		$ssxs_arr = RaceForms::getList();
+		foreach($artList as $i)
+		{
+			$arr = $i->attributes;
+	
+			$cc = HorizontalManagement::model()->findByPk($arr['hxid']);
+			$zxgg = $hxgg = '';
+			if($cc){
+				$temp = $cc->attributes;
+				$hxgg = $temp['name'];
+			}
+			$arr['hxgg'] = $hxgg;
+	
+			$me = VerticalManagement::model()->findByPk($arr['zxid']);
+			if($me){
+				$temp = $me->attributes;
+				$zxgg = $temp['name'];
+			}
+			$arr['zxgg'] = $zxgg;
+			$ssxs = isset($ssxs_arr[$arr['ssxs']])?$ssxs_arr[$arr['ssxs']]['name']:"";
+			$arr['ssxs'] = $ssxs;
+			$list[] = $arr;
+		}
+
+		return array('pages'=>$pager,'posts'=>$list);
+	
+	}
+
+	/**
+	 * (non-PHPdoc)
+	 * @see CActiveRecord::beforeSave()
+	 */
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())

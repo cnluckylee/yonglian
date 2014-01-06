@@ -93,6 +93,18 @@ class RaceForms extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	public static function getList()
+	{
+		$result = array();
+		$result[] = array('id'=>'','name'=>'请选择');
+		$data = RaceForms::model()->findAll();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[$arr['id']] = $arr;
+		}
+		return $result;
+	}
 	
 	protected function beforeSave()
 	{
