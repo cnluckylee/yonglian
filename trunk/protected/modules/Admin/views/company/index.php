@@ -18,7 +18,7 @@
 		array(
 
 						'name' => 'id',
-
+						'value' =>'$row+1',
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
