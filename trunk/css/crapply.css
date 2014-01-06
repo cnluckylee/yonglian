@@ -132,7 +132,7 @@ a.aleft {
     float: left;
 }
 a.aleft:hover {
-    background-position: -280px 60px;
+    background-position: -280px -80px;
 }
 
 .picscroll{

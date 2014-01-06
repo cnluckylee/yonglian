@@ -133,7 +133,24 @@ class Match extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see CActiveRecord::beforeSave()
+	 */
+	public static function getCRApply()
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('imgurl!=""');
+		$data = self::model()->findAll($criteria);
+		$result = array();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[] = $arr;
+		}
+		return $result;
+	}
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
