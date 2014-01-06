@@ -182,9 +182,9 @@ class Article extends CActiveRecord
 		if($keyword)
 			$criteria->addSearchCondition('c.name', $keyword);
 			
-		$criteria->select = 't.*';
+		$criteria->select = 't.CompanyID';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
-		$criteria->order = 't.updtime desc';
+		$criteria->order = 'max(t.updtime) desc';
 		$criteria->group = 'CompanyId';
 		$count = Article::model()->count($criteria);
 		
@@ -192,9 +192,10 @@ class Article extends CActiveRecord
         $pager = new CPagination($count);    
         $pager->pageSize = 10;             
         $pager->applyLimit($criteria);
+       
 		$artList = Article::model()->findAll($criteria);
 		$list = array();
-		
+
 		foreach($artList as $i)
 		{
 			$arr = $i->attributes;
