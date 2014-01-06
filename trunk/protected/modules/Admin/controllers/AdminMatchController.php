@@ -27,7 +27,6 @@ class AdminMatchController extends AdminController
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
-
 		if(isset($_POST['Match']))
 		{
 			$model->attributes=$_POST['Match'];
