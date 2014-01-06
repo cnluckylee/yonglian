@@ -99,15 +99,15 @@
         </tr>
       </tfoot>
     </table>
-	<input type="text" id="hid_city1"  name="Company[city1]" value="<?php echo $model->city1;?>"/>
-    <input type="text" id="hid_city2"  name="Company[city2]" value="<?php echo $model->city2;?>"/>
-    <input type="text" id="hid_city3"  name="Company[city3]" value="<?php echo $model->city3;?>"/>
-    <input type="text" id="hid_city4"  name="Company[city4]" value="<?php echo $model->city4;?>"/>
+	<input type="hidden" id="hid_city1"  name="Company[city1]" value="<?php echo $model->city1;?>"/>
+    <input type="hidden" id="hid_city2"  name="Company[city2]" value="<?php echo $model->city2;?>"/>
+    <input type="hidden" id="hid_city3"  name="Company[city3]" value="<?php echo $model->city3;?>"/>
+    <input type="hidden" id="hid_city4"  name="Company[city4]" value="<?php echo $model->city4;?>"/>
     
-    <input type="text" id="hid_IndustryID1"  name="Company[IndustryID1]" value="<?php echo $model->IndustryID1;?>"/>
-    <input type="text" id="hid_IndustryID2"  name="Company[IndustryID2]" value="<?php echo $model->IndustryID2;?>"/>
-    <input type="text" id="hid_IndustryID3"  name="Company[IndustryID3]" value="<?php echo $model->IndustryID3;?>"/>
-    <input type="text" id="hid_IndustryID4"  name="Company[IndustryID4]" value="<?php echo $model->IndustryID4;?>"/>
+    <input type="hidden" id="hid_IndustryID1"  name="Company[IndustryID1]" value="<?php echo $model->IndustryID1;?>"/>
+    <input type="hidden" id="hid_IndustryID2"  name="Company[IndustryID2]" value="<?php echo $model->IndustryID2;?>"/>
+    <input type="hidden" id="hid_IndustryID3"  name="Company[IndustryID3]" value="<?php echo $model->IndustryID3;?>"/>
+    <input type="hidden" id="hid_IndustryID4"  name="Company[IndustryID4]" value="<?php echo $model->IndustryID4;?>"/>
     
     
 <?php $this->endWidget(); ?>

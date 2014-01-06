@@ -117,12 +117,12 @@
         <table>
          <tr>
         <?php 
-		$company = company::model()->findAll();
+		$company = Company::model()->findAll();
 			foreach($company as $k=>$v): ?>
         <?php if (($k+1)%5==0):?>
         </tr><tr>
          <?php endif;?>
-        <td><input type="checkbox" value="<?php echo $v->id; ?>"  name="sszb[]" <?php if(in_array($v->id,$model->sszb)):?> checked="checked" <?php endif; ?>/><?php echo $v->name ?></td>
+        <td><input type="checkbox" value="<?php echo $v->id; ?>"  name="sszb[]" <?php if($model->sszb && in_array($v->id,$model->sszb)):?> checked="checked" <?php endif; ?>/><?php echo $v->name ?></td>
        
         <?php endforeach; ?>
         </tr>
@@ -143,12 +143,12 @@
 		 <table>
          <tr>
         <?php 
-		$company = company::model()->findAll();
+		
 			foreach($company as $k=>$v): ?>
         <?php if (($k+1)%5==0):?>
         </tr><tr>
          <?php endif;?>
-        <td><input type="checkbox" value="<?php echo $v->id; ?>"  name="ssxb[]" <?php if(in_array($v->id,$model->ssxb)):?> checked="checked" <?php endif; ?>/><?php echo $v->name ?></td>
+        <td><input type="checkbox" value="<?php echo $v->id; ?>"  name="ssxb[]" <?php if($model->ssxb && in_array($v->id,$model->ssxb)):?> checked="checked" <?php endif; ?>/><?php echo $v->name ?></td>
        
         <?php endforeach; ?>
         </tr>
