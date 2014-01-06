@@ -140,9 +140,9 @@ class Company extends CActiveRecord
 		{
 			if($this->isNewRecord)
 			{
-				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+				$this->addTime=$this->updTime=date('Y-m-d H:i:s');
 			}else{
-				$this->updtime=date('Y-m-d H:i:s');
+				$this->updTime=date('Y-m-d H:i:s');
 			}
 	
 			return true;
