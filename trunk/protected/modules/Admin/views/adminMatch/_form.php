@@ -175,7 +175,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->dropDownList($model,'ssxs',CHtml::listData(BaseData::MatchType(),'id','name')); ?>
+		<?php echo $form->dropDownList($model,'ssxs',CHtml::listData(RaceForms::model()->findAll(),'id','name')); ?>
 		<?php echo $form->error($model,'ssxs'); ?>
         </div>
         </td>
