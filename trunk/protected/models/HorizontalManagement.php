@@ -88,7 +88,7 @@ class HorizontalManagement extends CActiveRecord
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('state',$this->state);
-		$criteria->order = 'updtime DESC' ;
+		$criteria->order = 'updtime asc' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

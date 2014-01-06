@@ -192,18 +192,7 @@
         </td>
 
 	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'hits'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'hits'); ?>
-		</div>
-        </td>
 
-	</tr>
 	<tr>
           <th width="100" align="right"><span class="row"><?php echo $form->label($model,'updtime'); ?>
 </span></th>

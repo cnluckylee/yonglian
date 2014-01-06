@@ -21,7 +21,17 @@
         </div>
         </td>
 	</tr>
-	
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'cid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->dropDownList($model,'cid',CHtml::listData(Company::model()->findAll(),'id','name')); ?>
+		<?php echo $form->error($model,'cid'); ?>
+        </div>
+        </td>
+	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>
@@ -58,7 +68,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'keywords',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'keywords',array('size'=>60,'maxlength'=>200)); ?>(关键词间请用“，”隔开)
 		<?php echo $form->error($model,'keywords'); ?>
         </div>
         </td>
@@ -94,17 +104,7 @@
 
 
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'cid'); ?>
-		<?php echo $form->error($model,'cid'); ?>
-        </div>
-        </td>
-	</tr>
+
 
 
 
