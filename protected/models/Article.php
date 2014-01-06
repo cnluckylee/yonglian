@@ -184,7 +184,7 @@ class Article extends CActiveRecord
 			
 		$criteria->select = 't.*';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
-		$criteria->order = 'rank desc,updtime desc';
+		$criteria->order = 't.updtime desc';
 		$criteria->group = 'CompanyId';
 		$count = Article::model()->count($criteria);
 		
