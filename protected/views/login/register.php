@@ -104,7 +104,17 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <div style="width:600px; margin:0pt auto; position:relative; height:415px;float:left;background:#ECF5FF;border:0px solid blue;">
 <div class="register">
 <div id="hot" >
-<div id="pr1" onmouseover="setAab('pr',1,10)"><h2>用户登录</h2></div>
+<div id="pr1" onMouseOver="setAab('pr',1,10)"><h2>用户登录</h2></div>
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'login-form',
+	'enableClientValidation'=>true,
+	'action'=>array('login/login'),
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+		'focus'=>array($model,'username'),
+		
+	),
+)); ?>
 <ul><br />
 <div align="center"> 
 <li>
@@ -113,13 +123,28 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 </li><br />
 
 
-<li><label>用户名称：<input type="text" name="textfield3" /></label></li><br /> 
-<li><label>用户密码：<input type="text" name="textfield4" /></label></li><br /> 
+<li><?php echo $form->labelEx($model,'用户名称'); ?>：<?php echo $form->textField($model,'username'); ?><?php echo $form->error($model,'username'); ?></li><br /> 
+<li><?php echo $form->labelEx($model,'用户密码'); ?>：<?php echo $form->passwordField($model,'password'); ?><?php echo $form->error($model,'password'); ?></li><br /> 
+<li>
+		<?php echo $form->labelEx($model,'验证码'); ?>：
+       
+		<?php echo $form->textField($model,'verifyCode'); ?>
+         <br /> 
+		<?php $this->widget('CCaptcha', array('clickableImage'=>true,'showRefreshButton'=>true,'buttonLabel'=>'刷新验证码')); ?>
+		<?php echo $form->error($model,'verifyCode'); ?>
+</li>
 
-<li style="cursor:default"><input type="button" value="登录" /></li>
+<li>
+		<?php echo $form->checkBox($model,'rememberMe'); ?>
+		<?php echo $form->label($model,'记住我'); ?>
+		<?php echo $form->error($model,'rememberMe'); ?>
+</li>		
+        
+<li><?php echo CHtml::submitButton('登录'); ?></li>
+<?php $this->endWidget(); ?>
 </div>
 </ul>	
-<div id="pr2" onmouseover="setAab('pr',2,10)"><h2>企业注册</h2></div>
+<div id="pr2" onMouseOver="setAab('pr',2,10)"><h2>企业注册</h2></div>
 <ul><br />
 <div align="center">
 <li><label>企业名称：<input type="text" name="textfield" /></label></li><br />
@@ -132,7 +157,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <br />    				
 <li></li>   				
 </ul>
-<div id="pr3" onmouseover="setAab('pr',3,10)"><h2>个人注册</h2></div>
+<div id="pr3" onMouseOver="setAab('pr',3,10)"><h2>个人注册</h2></div>
 <ul><br /><br />
 <div align="center">
 <li><label>隶属企业：<input type="text" name="textfield" /></label></li><br />
@@ -145,7 +170,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <br />
 <li></li>
 </ul>
-<div id="pr4" onmouseover="setAab('pr',4,10)"><h2>注册合约</h2></div>
+<div id="pr4" onMouseOver="setAab('pr',4,10)"><h2>注册合约</h2></div>
 <ul>
 <li><div align="center">企业注册范本</div></li>
 <li><div align="center">摘要</div></li>
@@ -160,7 +185,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <li></li><br />
 <li><div align="center"><a href="" style="cursor:default">下载</a></div></li>
 </ul>
-<div id="pr5" onmouseover="setAab('pr',5,10)"><h2>服务目录</h2></div>
+<div id="pr5" onMouseOver="setAab('pr',5,10)"><h2>服务目录</h2></div>
 <ul>
 <li><div align="center">服务目录</div></li>
 <li><div align="center">摘要</div></li>
@@ -175,7 +200,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <li></li><br />
 <li><div align="center"><a href="" style="cursor:default">下载</a></div></li>
 </ul>
-<div id="pr6" onmouseover="setAab('pr',6,10)"><h2>会员证明</h2></div>
+<div id="pr6" onMouseOver="setAab('pr',6,10)"><h2>会员证明</h2></div>
 <ul>
 <li><div align="center">会员证明</div></li>
 <li><div align="center">摘要</div></li>
@@ -190,7 +215,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <li></li><br />
 <li><div align="center"><a href="" style="cursor:default">下载</a></div></li>
 </ul>
-<div id="pr7" onmouseover="setAab('pr',7,10)"><h2>　</h2></div>
+<div id="pr7" onMouseOver="setAab('pr',7,10)"><h2>　</h2></div>
 <ul>
 <li><div align="center">会员证明</div></li>
 <li><div align="center">摘要</div></li>
@@ -205,7 +230,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <li></li><br />
 <li><div align="center"><a href="" style="cursor:default">下载</a></div></li>
 </ul>
-<div id="pr8" onmouseover="setAab('pr',8,10)"><h2>　</h2></div>
+<div id="pr8" onMouseOver="setAab('pr',8,10)"><h2>　</h2></div>
 <ul>
 <li><div align="center">会员证明</div></li>
 <li><div align="center">摘要</div></li>

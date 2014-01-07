@@ -128,7 +128,7 @@
         <li>截止时间</li>
         <li>赛事主办</li>
         <li>赛事协办</li>
-         <li>赛事形式</li>
+        <li>赛事形式</li>
       </ul>
     </div>
     <div class="searchData" id="info">
