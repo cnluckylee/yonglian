@@ -124,7 +124,7 @@ class AdminAreaController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='admin-user-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='admin-area-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
