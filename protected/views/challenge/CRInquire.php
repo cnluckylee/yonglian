@@ -150,12 +150,12 @@
        </li>
         <li>
         
-        <ul>
+        <ul class="UV">
         		 <?php 
         		 
 				if(isset($row['ssxb']) && $row['ssxb']):        		 
         		 foreach($row['ssxb'] as $xb):?>
-        			 <li><?php echo $xb['name'];?></li>
+        			 <li style="display:table;width:200px;"><?php echo $xb['name'];?></li>
         		 <?php endforeach; 
 						endif;        		 
         		 ?>

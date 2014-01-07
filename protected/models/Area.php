@@ -164,7 +164,8 @@ public static function getTreeDATA($select = null,$cache = TRUE) {
     {
     	$model = self::model()->getDbConnection()->createCommand()
                 ->from('{{area}}')
-       			->select ('id,parentid,name');
+       			->select ('id,parentid,name')
+       			->order ('parentid asc');
         $data = $model->queryAll();
     	 $result = array ();
     	 $I = array ();
