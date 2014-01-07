@@ -92,18 +92,18 @@
   <table  class="searchForm">
     <tr>
       <td class="title">主旨管理</td>
-       <td ><?php echo $form->dropDownList($model,'zzid',CHtml::listData(SubjectManagement::model()->findAll(),'id','name')); ?></td>
+       <td ><?php echo $form->dropDownList($model,'zzid',CHtml::listData(SubjectManagement::getList(),'id','name')); ?></td>
        <td >横向管理</td>
-       <td><?php echo $form->dropDownList($model,'hxid',CHtml::listData(HorizontalManagement::model()->findAll(),'id','name')); ?></td>
+       <td><?php echo $form->dropDownList($model,'hxid',CHtml::listData(HorizontalManagement::getList(),'id','name')); ?></td>
         <td >所属行业</td>
-       <td><?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(BaseData::NewTheory_KFZL(),'IndustryID','name')); ?></td>
+       <td><?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(Industrymanagement::getList(),'id','name')); ?></td>
        </tr>
    
     <tr>
       <td class="title">纵向管理</td>
-      <td><?php echo $form->dropDownList($model,'zxid',CHtml::listData(VerticalManagement::model()->findAll(),'id','name')); ?></td>
+      <td><?php echo $form->dropDownList($model,'zxid',CHtml::listData(VerticalManagement::getList(),'id','name')); ?></td>
       <td>综合其他</td>
-      <td><?php echo $form->dropDownList($model,'fid',CHtml::listData(ConsolidatedOther::model()->findAll(),'id','name')); ?></td>
+      <td><?php echo $form->dropDownList($model,'fid',CHtml::listData(ConsolidatedOther::getList(),'id','name')); ?></td>
        <td>截止时间</td>
       <td><input id="Match_stopdate" type="text" name="Match[stopdate]" onclick="WdatePicker()"></td>
     </tr>
@@ -136,8 +136,31 @@
       <ul class="searchData_ul">
         <li><a href="?r=Manage/TheoryView&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
         <li><?php echo date("Y-m-d",strtotime($row['stopdate']));?></li>
-        <li><?php echo $row['sszb'];?></li>
-        <li><?php echo $row['ssxb'];?></li>
+        <li>
+        		<ul class="UV">
+        		 <?php 
+				if(isset($row['sszb']) && $row['sszb']):        		 
+        		 foreach($row['sszb'] as $zb):?>
+        			 <li style="display:table;width:200px;"><?php echo $zb['name'];?></li>
+        		 <?php endforeach; 
+						endif;        		 
+        		 ?>
+        		 </ul>
+        		 
+       </li>
+        <li>
+        
+        <ul>
+        		 <?php 
+        		 
+				if(isset($row['ssxb']) && $row['ssxb']):        		 
+        		 foreach($row['ssxb'] as $xb):?>
+        			 <li><?php echo $xb['name'];?></li>
+        		 <?php endforeach; 
+						endif;        		 
+        		 ?>
+        		 </ul>
+        </li>
         <li><?php echo $row['ssxs'];?></li>
       </ul>
       <?php endforeach; ?>

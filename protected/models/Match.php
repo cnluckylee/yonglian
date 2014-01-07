@@ -189,7 +189,7 @@ class Match extends CActiveRecord
 			$arr = $i->attributes;
 	
 			$cc = HorizontalManagement::model()->findByPk($arr['hxid']);
-			$zxgg = $hxgg = '';
+			$zxgg = $hxgg = $ssxb='';
 			if($cc){
 				$temp = $cc->attributes;
 				$hxgg = $temp['name'];
@@ -204,6 +204,12 @@ class Match extends CActiveRecord
 			$arr['zxgg'] = $zxgg;
 			$ssxs = isset($ssxs_arr[$arr['ssxs']])?$ssxs_arr[$arr['ssxs']]['name']:"";
 			$arr['ssxs'] = $ssxs;
+
+			$arr['sszb']  = $arr['sszb']?Company::getCompany($arr['sszb']):"";
+			
+			$arr['ssxb'] = $arr['ssxb']?Company::getCompany($arr['ssxb']):"";
+
+			
 			$list[] = $arr;
 		}
 
