@@ -51,7 +51,7 @@
         </th>
         <td >
         <div class="row">
-		 <?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?>
+		 <?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(Industrymanagement::getList(),'id','name')); ?>
 		<?php echo $form->error($model,'IndustryID'); ?>
         </div>
         </td>
@@ -65,7 +65,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(SubjectManagement::model()->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($model,'zzid',CHtml::listData(SubjectManagement::model()->findAll(),'id','name')); ?>
 		<?php echo $form->error($model,'zzid'); ?>
         </div>
         </td>
