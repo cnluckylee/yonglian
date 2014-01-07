@@ -156,27 +156,28 @@ class Match extends CActiveRecord
 	{
 		//解析$Company_city_id,$Company_Industry_id
 		$criteria = new CDbCriteria();
-		if(isset($Technology['zzid']))
+		if(isset($Technology['zzid']) && $Technology['zzid'])
 			$criteria->addCondition('zzid='.$Technology['zzid']);
-		if(isset($Technology['hxid']))
+		if(isset($Technology['hxid']) && $Technology['hxid'])
 			$criteria->addCondition('hxid='.$Technology['hxid']);
-		if(isset($Technology['IndustryID']))
+		if(isset($Technology['IndustryID']) && $Technology['IndustryID'])
 			$criteria->addCondition('IndustryID='.$Technology['IndustryID']);
-		if(isset($Technology['zxid']))
+		if(isset($Technology['zxid']) && $Technology['zxid'])
 			$criteria->addCondition('zxid='.$Technology['zxid']);
-		if(isset($Technology['fid']))
+		if(isset($Technology['fid']) && $Technology['fid'])
 			$criteria->addCondition('fid='.$Technology['fid']);
-		if(isset($Technology['stopdate']))
-			$criteria->addCondition('stopdate<='.$Technology['stopdate']);
-		if(isset($Technology['title']))
-			$criteria->addCondition('title='.$Technology['title']);
-		if(isset($Technology['ssxs']))
+		if(isset($Technology['stopdate']) && $Technology['stopdate'])
+			$criteria->addCondition('stopdate<="'.$Technology['stopdate'].'"');
+		if(isset($Technology['title']) && $Technology['title'])
+			$criteria->compare('title',$Technology['title'],true);
+		if(isset($Technology['ssxs']) && $Technology['ssxs'])
 			$criteria->addCondition('ssxs='.$Technology['ssxs']);
 		
 	
 		$criteria->select = 't.*';
 		
 		$criteria->order = 'updtime desc';
+
 		$count = self::model()->count($criteria);
 		$pager = new CPagination($count);
 		$pager->pageSize = 10;

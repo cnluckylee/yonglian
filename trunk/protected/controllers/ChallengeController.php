@@ -34,7 +34,7 @@ class ChallengeController extends Controller
 		
 		$this->pageTitle = '赛事查询';
 		$Theory =isset($_GET['Match'])?$_GET['Match']:array();
-		
+
 		$this->_result['data'] = Match::getDataList($Theory);
 		$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
 		$this->_result['menu'] = $this->menus;
@@ -46,9 +46,17 @@ class ChallengeController extends Controller
 		}else{
 			$model=new Match();
 			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
-			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
+			$model->zzid = isset($Theory['zzid'])?intval($Theory['zzid']):'';
+			$model->IndustryID = isset($Theory['IndustryID'])?intval($Theory['IndustryID']):'';
+			$model->hxid = isset($Theory['hxid'])?intval($Theory['hxid']):'';
 			
-		
+			$model->zxid = isset($Theory['zxid'])?intval($Theory['zxid']):'';
+			$model->fid = isset($Theory['fid'])?intval($Theory['fid']):'';
+			$model->stopdate = isset($Theory['stopdate'])?htmlentities($Theory['stopdate']):'';
+			$model->ssxs = isset($Theory['ssxs'])?intval($Theory['ssxs']):'';
+
+			
+			
 			$this->_result['model'] = $model;
 			$this->_result['menu'] = $this->menus;
 			$this->render('CRInquire',$this->_result);

@@ -93,13 +93,31 @@ class Area extends CActiveRecord
 		$criteria->compare('listorder',$this->listorder);
 		$criteria->compare('addTime',$this->addTime,true);
 		$criteria->compare('updTime',$this->updTime,true);
-
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-
-public static function getTreeDATA($select = null,$cache = TRUE) {
+	/**
+	 * (non-PHPdoc)
+	 * @see CActiveRecord::beforeSave()
+	 */
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->addTime=$this->updTime=date('Y-m-d H:i:s');
+			}else{
+				$this->updTime=date('Y-m-d H:i:s');
+			}
+			return true;
+		}
+		else
+			return false;
+	}
+	public static function getTreeDATA($select = null,$cache = TRUE) {
         $cacheId = 'area'.($select !== null?'_'.$select:'');
         if($cache) {
             $menus = Yii::app()->getCache()->get($cacheId);

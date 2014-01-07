@@ -83,9 +83,9 @@
 
 
   <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'cpjoint-form',
+	'id'=>'CRInquire-form',
 	'enableAjaxValidation'=>false,
-	'action'=>array('manage/Theory'),
+	'action'=>array('Challenge/CRInquire'),
 	'method'=>'get',
 )); ?>
   <!--商标或标志结束（身体1）-->
@@ -105,7 +105,7 @@
       <td>综合其他</td>
       <td><?php echo $form->dropDownList($model,'fid',CHtml::listData(ConsolidatedOther::getList(),'id','name')); ?></td>
        <td>截止时间</td>
-      <td><input id="Match_stopdate" type="text" name="Match[stopdate]" onclick="WdatePicker()"></td>
+      <td><input id="Match_stopdate" type="text" name="Match[stopdate]" onclick="WdatePicker()" value="<?php echo $model->stopdate ?>"></td>
     </tr>
      <tr>
      <td class="title">赛事标题</td>
