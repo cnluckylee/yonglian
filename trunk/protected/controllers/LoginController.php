@@ -44,8 +44,9 @@ class LoginController extends Controller
 
 	public function actionRegister()
 	{
-
-		$this->render('register', array());
+		$model=new LoginForm;
+		$this->render('register',array('model'=>$model));
+		
 	}
 
 	/**
@@ -93,7 +94,9 @@ class LoginController extends Controller
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
+
 		$this->render('login',array('model'=>$model));
+		
 	}
 
 	/**

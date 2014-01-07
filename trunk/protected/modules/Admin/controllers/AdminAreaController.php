@@ -70,7 +70,7 @@ class AdminAreaController extends AdminController
 
 		if(isset($_POST['Area']))
 		{
-			$model->attributes=$_POST['adminArea'];
+			$model->attributes=$_POST['Area'];
 
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -105,7 +105,16 @@ class AdminAreaController extends AdminController
 
 
 
-
+	/**
+	 * 排序
+	 */
+	public function actionListorder() {
+		$orders = Yii::app()->getRequest()->getPost('listorders');
+		foreach ($orders as $k => $v) {
+			Area::model()->updateByPk($k, array('listorder' => $v));
+		}
+		$this->success('更新排序成功！');
+	}
 
 	/**
 	 * 载入
