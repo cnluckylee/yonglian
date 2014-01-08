@@ -45,14 +45,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'id',
 		'username',
 		'password',
-		'comp_name',
-		'comp_id',
-		'create_time',
+		'linkuser',
+		'tel',
+		'mail',
 		/*
-		'edit_time',
-		'last_login_time',
-		'action',
-		'downurl',
+		'website',
+		'addtime',
+		'updtime',
+		'state',
+		'type',
 		*/
 		array(
 			'class'=>'CButtonColumn',

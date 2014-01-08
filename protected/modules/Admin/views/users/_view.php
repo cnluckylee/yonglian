@@ -12,33 +12,37 @@
 	<?php echo CHtml::encode($data->password); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('comp_name')); ?>:</b>
-	<?php echo CHtml::encode($data->comp_name); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('linkuser')); ?>:</b>
+	<?php echo CHtml::encode($data->linkuser); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('comp_id')); ?>:</b>
-	<?php echo CHtml::encode($data->comp_id); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('tel')); ?>:</b>
+	<?php echo CHtml::encode($data->tel); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
-	<?php echo CHtml::encode($data->create_time); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('mail')); ?>:</b>
+	<?php echo CHtml::encode($data->mail); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('edit_time')); ?>:</b>
-	<?php echo CHtml::encode($data->edit_time); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('website')); ?>:</b>
+	<?php echo CHtml::encode($data->website); ?>
 	<br />
 
 	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('last_login_time')); ?>:</b>
-	<?php echo CHtml::encode($data->last_login_time); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('addtime')); ?>:</b>
+	<?php echo CHtml::encode($data->addtime); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('action')); ?>:</b>
-	<?php echo CHtml::encode($data->action); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('updtime')); ?>:</b>
+	<?php echo CHtml::encode($data->updtime); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('downurl')); ?>:</b>
-	<?php echo CHtml::encode($data->downurl); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('state')); ?>:</b>
+	<?php echo CHtml::encode($data->state); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
+	<?php echo CHtml::encode($data->type); ?>
 	<br />
 
 	*/ ?>
