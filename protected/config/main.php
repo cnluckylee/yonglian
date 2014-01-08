@@ -77,7 +77,7 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=yonglian',
+			'connectionString' => 'mysql:host=192.168.3.110;dbname=yonglian',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => 'root',

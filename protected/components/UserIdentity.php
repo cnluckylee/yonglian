@@ -22,6 +22,7 @@ class UserIdentity extends CUserIdentity
 		$type = intval($this->type);
 		$where = "username='".$username."' and type =".$type;
 		$user=Users::model()->find($where);
+		$this->errorCode = "";
 		if(empty($user))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		else if(!$user->validatePassword($this->password)){
@@ -35,8 +36,7 @@ class UserIdentity extends CUserIdentity
 			$this->username=$user->username;
 			$this->errorCode=self::ERROR_NONE;
 		}
-			
-		return !$this->errorCode;
+		return $this->errorCode;
 	}
 	public function getId()
 	{
