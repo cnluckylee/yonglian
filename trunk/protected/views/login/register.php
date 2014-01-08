@@ -132,6 +132,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
          <br /> 
 		<?php $this->widget('CCaptcha', array('clickableImage'=>true,'showRefreshButton'=>true,'buttonLabel'=>'刷新验证码')); ?>
 		<?php echo $form->error($model,'verifyCode'); ?>
+		<?php echo $form->error($model,'state'); ?>
 </li>
 
 <li>
