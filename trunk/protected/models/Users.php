@@ -111,6 +111,23 @@ class Users extends CActiveRecord
 		));
 	}
 
+	public static $isDisplay= array(
+			'企业', '个人'
+	);
+	/*
+	 * 修改登录验证
+	*/
+	public function validatePassword($password)
+	{
+		return $this->encrypt($password)===trim($this->password);
+	}
+	/*
+	 * 返回md5值
+	*/
+	public function encrypt($pass)
+	{
+		return md5($pass);
+	}
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())

@@ -27,7 +27,8 @@ class LoginController extends Controller
 	 */
 	public function actionIndex()
 	{
-		
+		$model=new LoginForm;
+		$this->render('register',array('model'=>$model));
 	}
 
 
@@ -44,8 +45,7 @@ class LoginController extends Controller
 
 	public function actionRegister()
 	{
-		$model=new LoginForm;
-		$this->render('register',array('model'=>$model));
+		
 		
 	}
 
@@ -89,8 +89,9 @@ class LoginController extends Controller
 		if(isset($_POST['LoginForm']))
 		{
 			$model->attributes=$_POST['LoginForm'];
+
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
+			if($model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form

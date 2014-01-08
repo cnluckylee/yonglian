@@ -12,6 +12,7 @@ class LoginForm extends CFormModel
 	public $rememberMe;
 	public $verifyCode;
 	private $_identity;
+	public $type;
 
 	/**
 	 * Declares the validation rules.
@@ -22,7 +23,7 @@ class LoginForm extends CFormModel
 	{
 		return array(
 			// username and password are required
-			array('username, password , usertype', 'required'),
+			array('username, password , type', 'required'),
 			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
 			// password needs to be authenticated
@@ -49,7 +50,7 @@ class LoginForm extends CFormModel
 	{
 		if(!$this->hasErrors())
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+			$this->_identity=new UserIdentity($this->username,$this->password,$this->type);
 			if(!$this->_identity->authenticate())
 				$this->addError('password','用户名或密码错误');
 		}
@@ -61,13 +62,16 @@ class LoginForm extends CFormModel
 	 */
 	public function login()
 	{
+
 		if($this->_identity===null)
 		{
-			$this->_identity=new UserIdentity($this->username,$this->password);
+
+			$this->_identity=new UserIdentity($this->username,$this->password,$this->type);
 			$this->_identity->authenticate();
 		}
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
+			
 			$duration=$this->rememberMe ? 3600*24*30 : 0; // 30 days
 			Yii::app()->user->login($this->_identity,$duration);
 			return true;
@@ -75,4 +79,5 @@ class LoginForm extends CFormModel
 		else
 			return false;
 	}
+
 }
