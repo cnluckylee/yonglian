@@ -118,8 +118,8 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <ul><br />
 <div align="center"> 
 <li>
-<input type="radio" name="radiobutton" value="radiobutton" id="radiobutton" /><label for="radiobutton">企业</label>
-　　　　　<input type="radio" name="radiobutton" value="radiobutton" id="radiobutton" /><label for="radiobutton">个人</label>
+
+<?php echo $form->radioButtonList($model,'type', Users::$isDisplay,array('separator'=>'')); ?>
 </li><br />
 
 
