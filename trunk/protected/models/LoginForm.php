@@ -51,8 +51,30 @@ class LoginForm extends CFormModel
 		if(!$this->hasErrors())
 		{
 			$this->_identity=new UserIdentity($this->username,$this->password,$this->type);
-			if(!$this->_identity->authenticate())
-				$this->addError('password','用户名或密码错误');
+			$errorno = $this->_identity->authenticate();
+			$modelerr = "";
+			$msg = "用户名或密码错误";
+			switch ($errorno)
+			{
+				case 1:
+					$modelerr = "password";
+					break;
+				case 2:
+					$modelerr = "password";
+					break;
+				case 3:
+					$modelerr = "state";
+					$msg = "等待审核,请耐心等待!";
+					break;
+				case 4:
+					$modelerr = "state";
+					$msg = "审核不通过!";
+					break;
+				default:
+					break;
+			}
+			if($modelerr)
+				$this->addError($modelerr,$msg);
 		}
 	}
 
