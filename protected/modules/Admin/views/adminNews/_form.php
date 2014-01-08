@@ -40,7 +40,7 @@
         </th>
         <td >
         <div class="row">
-		 <?php echo $form->dropDownList($model,'aid',CHtml::listData(Industrymanagement::getList(),'id','name')); ?>
+		 <?php echo $form->dropDownList($model,'aid',CHtml::listData(Alltype::getAllType(5),'id','name')); ?>
 		<?php echo $form->error($model,'aid'); ?>
         </div>
         </td>

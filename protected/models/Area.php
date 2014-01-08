@@ -93,7 +93,7 @@ class Area extends CActiveRecord
 		$criteria->compare('listorder',$this->listorder);
 		$criteria->compare('addTime',$this->addTime,true);
 		$criteria->compare('updTime',$this->updTime,true);
-		$criteria->order = 'updtime DESC' ;
+		$criteria->order = 'listorder desc ,updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
