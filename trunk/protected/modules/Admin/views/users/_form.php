@@ -2,7 +2,6 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'users-form',
 	'enableAjaxValidation'=>true,
-	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -37,16 +36,96 @@
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'downurl'); ?>
+		<?php echo $form->labelEx($model,'linkuser'); ?>
         </th>
         <td >
         <div class="row">
-		
-         <?php echo $form->fileField($model,'downurl',array('size'=>50)); 
-			 if(!empty($model->downurl))
-			  	echo $model->downurl;
-		?>
-		<?php echo $form->error($model,'downurl'); ?>
+		<?php echo $form->textField($model,'linkuser',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'linkuser'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'tel'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'tel',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'tel'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'mail'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'mail',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'mail'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'website'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'website',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'website'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'addtime'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'addtime'); ?>
+		<?php echo $form->error($model,'addtime'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'updtime'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'updtime'); ?>
+		<?php echo $form->error($model,'updtime'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'state'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'state'); ?>
+		<?php echo $form->error($model,'state'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'type'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'type'); ?>
+		<?php echo $form->error($model,'type'); ?>
         </div>
         </td>
 	</tr>

@@ -37,85 +37,97 @@
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'comp_name'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'linkuser'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'comp_name',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->textField($model,'linkuser',array('size'=>60,'maxlength'=>100)); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'comp_id'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'tel'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'comp_id'); ?>
+		<?php echo $form->textField($model,'tel',array('size'=>60,'maxlength'=>100)); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'create_time'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'mail'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'create_time'); ?>
+		<?php echo $form->textField($model,'mail',array('size'=>60,'maxlength'=>255)); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'edit_time'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'website'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'edit_time'); ?>
+		<?php echo $form->textField($model,'website',array('size'=>60,'maxlength'=>255)); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'last_login_time'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'addtime'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'last_login_time'); ?>
+		<?php echo $form->textField($model,'addtime'); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'action'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'updtime'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'action',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->textField($model,'updtime'); ?>
 		</div>
         </td>
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'downurl'); ?>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'state'); ?>
 </span></th>
         <td >
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'downurl',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'state'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'type'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'type'); ?>
 		</div>
         </td>
 
