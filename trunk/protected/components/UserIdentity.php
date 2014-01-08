@@ -20,8 +20,8 @@ class UserIdentity extends CUserIdentity
 	{
 		$username = trim($this->username);
 		$type = intval($this->type);
-		$where = array('username'=>$username,'type'=>$type);
-		$user=Users::model()->findAllByAttributes($where);
+		$where = "username='".$username."' and type =".$type;
+		$user=Users::model()->find($where);
 		if(empty($user))
 			$this->errorCode=self::ERROR_USERNAME_INVALID;
 		else if(!$user->validatePassword($this->password)){
