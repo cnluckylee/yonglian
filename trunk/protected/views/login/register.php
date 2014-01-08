@@ -147,13 +147,25 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 </ul>	
 <div id="pr2" onMouseOver="setAab('pr',2,10)"><h2>企业注册</h2></div>
 <ul><br />
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'login-form',
+	'enableClientValidation'=>true,
+	'action'=>array('login/login'),
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+		'focus'=>array($model,'username'),
+		
+	),
+)); ?>
 <div align="center">
-<li><label>企业名称：<input type="text" name="textfield" /></label></li><br />
-<li><label>联系人员：<input type="text" name="textfield" /></label></li><br />
-<li><label>联系电话：<input type="text" name="textfield" /></label></li><br />
-<li><label>联系邮箱：<input type="text" name="textfield" /></label></li><br />
-<li><label>企业网址：<input type="text" name="textfield" /></label></li><br />
-<li style="cursor:default">重置　　　　　提交</li>
+<li><?php echo $form->labelEx($users,'企业名称'); ?>：<?php echo $form->textField($users,'username'); ?><?php echo $form->error($users,'username'); ?></li><br />
+<li><?php echo $form->labelEx($users,'linkuser'); ?>：<?php echo $form->textField($users,'linkuser'); ?><?php echo $form->error($users,'linkuser'); ?></li><br />
+<li><?php echo $form->labelEx($users,'password'); ?>：<?php echo $form->passwordField($users,'password'); ?><?php echo $form->error($users,'password'); ?></li><br />
+<li><?php echo $form->labelEx($users,'tel'); ?>：<?php echo $form->passwordField($users,'tel'); ?><?php echo $form->error($users,'tel'); ?></li><br />
+<li><?php echo $form->labelEx($users,'mail'); ?>：<?php echo $form->passwordField($users,'mail'); ?><?php echo $form->error($users,'mail'); ?></li><br />
+<li><?php echo $form->labelEx($users,'website'); ?>：<?php echo $form->passwordField($users,'website'); ?><?php echo $form->error($users,'website'); ?></li><br />
+<li style="cursor:default"><?php echo CHtml::resetButton('重置'); ?>　　　　　<?php echo CHtml::submitButton('提交'); ?></li>
+<?php $this->endWidget(); ?>
 </div>
 <br />    				
 <li></li>   				
