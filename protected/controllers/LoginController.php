@@ -91,12 +91,12 @@ class LoginController extends Controller
 			$model->attributes=$_POST['LoginForm'];
 
 			// validate user input and redirect to the previous page if valid
-			if($model->login())
+			if($model->validate() && $model->login())
 				$this->redirect(Yii::app()->user->returnUrl);
 		}
 		// display the login form
 
-		$this->render('login',array('model'=>$model));
+		$this->render('register',array('model'=>$model));
 		
 	}
 
@@ -107,21 +107,6 @@ class LoginController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
-	}
-
-	/**
-	 * 新的首页
-	 */
-	public function actionNewIndex()
-	{
-		$this->render('newindex');
-	}
-	/**
-	 * 企业秀台
-	 */
-	public function actionCPBooth()
-	{
-		$this->render('CPBooth');
 	}
 
 }

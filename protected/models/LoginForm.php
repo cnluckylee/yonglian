@@ -69,6 +69,7 @@ class LoginForm extends CFormModel
 			$this->_identity=new UserIdentity($this->username,$this->password,$this->type);
 			$this->_identity->authenticate();
 		}
+		
 		if($this->_identity->errorCode===UserIdentity::ERROR_NONE)
 		{
 			
@@ -78,6 +79,7 @@ class LoginForm extends CFormModel
 		}
 		else
 			return false;
+		
 	}
 
 }

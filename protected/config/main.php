@@ -9,7 +9,7 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 
 	'name'=>'我的测试',
-	
+	'language'=>'zh_cn',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
