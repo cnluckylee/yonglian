@@ -7,13 +7,14 @@
  * @property integer $id
  * @property string $username
  * @property string $password
- * @property string $comp_name
- * @property integer $comp_id
- * @property integer $create_time
- * @property integer $edit_time
- * @property integer $last_login_time
- * @property string $action
- * @property string $downurl
+ * @property string $linkuser
+ * @property string $tel
+ * @property string $mail
+ * @property string $website
+ * @property string $addtime
+ * @property string $updtime
+ * @property integer $state
+ * @property integer $type
  */
 class Users extends CActiveRecord
 {
@@ -43,14 +44,14 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('comp_id, last_login_time', 'numerical', 'integerOnly'=>true),
-			array('username, comp_name', 'length', 'max'=>100),
+			array('state, type', 'numerical', 'integerOnly'=>true),
+			array('username, linkuser, tel', 'length', 'max'=>100),
 			array('password', 'length', 'max'=>50),
-			array('action', 'length', 'max'=>200),
-			array('downurl', 'length', 'max'=>255),
+			array('mail, website', 'length', 'max'=>255),
+			array('addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password, comp_name, comp_id, create_time, edit_time, last_login_time, action, downurl', 'safe', 'on'=>'search'),
+			array('id, username, password, linkuser, tel, mail, website, addtime, updtime, state, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,15 +73,16 @@ class Users extends CActiveRecord
 	{
 		return array(
 			'id' => '序号',
-			'username' => '用户名',
-			'password' => '密码',
-			'comp_name' => 'Comp Name',
-			'comp_id' => 'Comp',
-			'create_time' => '创建时间',
-			'edit_time' => 'Edit Time',
-			'last_login_time' => 'Last Login Time',
-			'action' => 'Action',
-			'downurl' => '媒体文件',
+			'username' => '用户名（企业名）',
+			'password' => '密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码',
+			'linkuser' => '联系人员',
+			'tel' => '联系方式',
+			'mail' => '电子有限',
+			'website' => '公司网址',
+			'addtime' => 'Addtime',
+			'updtime' => 'Updtime',
+			'state' => '审核状态',
+			'type' => '类型',
 		);
 	}
 
@@ -98,52 +100,50 @@ class Users extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
-		$criteria->compare('comp_name',$this->comp_name,true);
-		$criteria->compare('comp_id',$this->comp_id);
-		$criteria->compare('create_time',$this->create_time);
-		$criteria->compare('edit_time',$this->edit_time);
-		$criteria->compare('last_login_time',$this->last_login_time);
-		$criteria->compare('action',$this->action,true);
-		$criteria->compare('downurl',$this->downurl,true);
+		$criteria->compare('linkuser',$this->linkuser,true);
+		$criteria->compare('tel',$this->tel,true);
+		$criteria->compare('mail',$this->mail,true);
+		$criteria->compare('website',$this->website,true);
+		$criteria->compare('addtime',$this->addtime,true);
+		$criteria->compare('updtime',$this->updtime,true);
+		$criteria->compare('state',$this->state);
+		$criteria->compare('type',$this->type);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-
 	public static $isDisplay= array(
-			'企业', '个人'
-	);
-	/*
+	'企业', '个人'
+    );
+    
+    /*
 	 * 修改登录验证
-	*/
+	 */
 	public function validatePassword($password)
 	{
-		return $this->encrypt($password)===trim($this->password);
+	    return $this->encrypt($password)===trim($this->password);
 	}
 	/*
 	 * 返回md5值
-	*/
+	 */ 
 	public function encrypt($pass)
 	{
-		return md5($pass);
+	    return md5($pass);
 	}
+	
+	
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
 		{
-
 			if($this->isNewRecord)
 			{
-				$this->create_time=$this->edit_time=date('Y-m-d H:i:s');
-				$this->password=md5($this->password);
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+			}else{
+				$this->updtime=date('Y-m-d H:i:s');
 			}
-			else
-			{
-				$this->edit_time=date('Y-m-d H:i:s');
-				$this->password=md5($this->password);
-			}
-
+	
 			return true;
 		}
 		else

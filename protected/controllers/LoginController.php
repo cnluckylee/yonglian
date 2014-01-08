@@ -77,7 +77,7 @@ class LoginController extends Controller
 	public function actionLogin()
 	{
 		$model=new LoginForm;
-
+		$users = new Users;
 		// if it is ajax validation request
 		if(isset($_POST['ajax']) && $_POST['ajax']==='login-form')
 		{
@@ -96,7 +96,7 @@ class LoginController extends Controller
 		}
 		// display the login form
 
-		$this->render('register',array('model'=>$model));
+		$this->render('register',array('model'=>$model,'users'=>$users));
 		
 	}
 
