@@ -108,7 +108,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
-	'action'=>array('login/login'),
+
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 		'focus'=>array($model,'username'),
@@ -119,7 +119,7 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 <div align="center"> 
 <li>
 
-<?php echo $form->radioButtonList($model,'type', Users::$isDisplay,array('separator'=>'')); ?>
+<?php echo $form->radioButtonList($model,'type', Users::$isType,array('separator'=>'')); ?>
 </li><br />
 
 
@@ -147,24 +147,27 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 </ul>	
 <div id="pr2" onMouseOver="setAab('pr',2,10)"><h2>企业注册</h2></div>
 <ul><br />
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'login-form',
+<?php $userform=$this->beginWidget('CActiveForm', array(
+	'id'=>'rSave-form',
 	'enableClientValidation'=>true,
-	'action'=>array('login/login'),
+	
+
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
-		'focus'=>array($model,'username'),
+		'focus'=>array($users,'companyname'),
 		
 	),
 )); ?>
 <div align="center">
-<li><?php echo $form->labelEx($users,'企业名称'); ?>：<?php echo $form->textField($users,'username'); ?><?php echo $form->error($users,'username'); ?></li><br />
-<li><?php echo $form->labelEx($users,'linkuser'); ?>：<?php echo $form->textField($users,'linkuser'); ?><?php echo $form->error($users,'linkuser'); ?></li><br />
-<li><?php echo $form->labelEx($users,'password'); ?>：<?php echo $form->passwordField($users,'password'); ?><?php echo $form->error($users,'password'); ?></li><br />
-<li><?php echo $form->labelEx($users,'tel'); ?>：<?php echo $form->passwordField($users,'tel'); ?><?php echo $form->error($users,'tel'); ?></li><br />
-<li><?php echo $form->labelEx($users,'mail'); ?>：<?php echo $form->passwordField($users,'mail'); ?><?php echo $form->error($users,'mail'); ?></li><br />
-<li><?php echo $form->labelEx($users,'website'); ?>：<?php echo $form->passwordField($users,'website'); ?><?php echo $form->error($users,'website'); ?></li><br />
+<li><?php echo $userform->labelEx($users,'companyname'); ?>：<?php echo $userform->textField($users,'companyname'); ?><?php echo $userform->error($users,'companyname'); ?></li><br />
+<li><?php echo $userform->labelEx($users,'linkuser'); ?>：<?php echo $userform->textField($users,'linkuser'); ?><?php echo $userform->error($users,'linkuser'); ?></li><br />
+<li><?php echo $userform->labelEx($users,'tel'); ?>：<?php echo $userform->passwordField($users,'tel'); ?><?php echo $userform->error($users,'tel'); ?></li><br />
+<li><?php echo $userform->labelEx($users,'mail'); ?>：<?php echo $userform->passwordField($users,'mail'); ?><?php echo $userform->error($users,'mail'); ?></li><br />
+<li><?php echo $userform->labelEx($users,'website'); ?>：<?php echo $userform->passwordField($users,'website'); ?><?php echo $userform->error($users,'website'); ?></li><br />
 <li style="cursor:default"><?php echo CHtml::resetButton('重置'); ?>　　　　　<?php echo CHtml::submitButton('提交'); ?></li>
+<?php echo $userform->hiddenField($users,'type',array('type'=>"hidden",'size'=>2,'maxlength'=>2,'value'=>0)); ?>
+<input type="hidden" name="ajax" value="rSave">
+
 <?php $this->endWidget(); ?>
 </div>
 <br />    				
@@ -172,13 +175,36 @@ obj.onmouseout=function(){t=setInterval(rolltxt,50)}
 </ul>
 <div id="pr3" onMouseOver="setAab('pr',3,10)"><h2>个人注册</h2></div>
 <ul><br /><br />
+<?php $userform=$this->beginWidget('CActiveForm', array(
+	'id'=>'rSave-form',
+	'enableClientValidation'=>true,
+	
+
+	'clientOptions'=>array(
+		'validateOnSubmit'=>true,
+		'focus'=>array($users,'companyname'),
+		
+	),
+)); ?>
 <div align="center">
-<li><label>隶属企业：<input type="text" name="textfield" /></label></li><br />
-<li><label>会员姓名：<input type="text" name="textfield" /></label></li><br />
-<li><label>联系电话：<input type="text" name="textfield" /></label></li><br />
-<li><label>联系邮箱：<input type="text" name="textfield" /></label></li><br />
+
+<li>
+<?php echo $userform->labelEx($users2,'隶属企业'); ?>：
+<?php echo $userform->textField($users2,'companyname'); ?>
+<?php echo $userform->error($users2,'companyname'); ?>
+</li><br />
+
+<li><?php echo $userform->labelEx($users2,'会员名称'); ?>：<?php echo $userform->textField($users2,'linkuser'); ?><?php echo $userform->error($users2,'linkuser'); ?></li><br />
+
+<li><?php echo $userform->labelEx($users2,'tel'); ?>：<?php echo $userform->passwordField($users2,'tel'); ?><?php echo $userform->error($users2,'tel'); ?></li><br />
+<li><?php echo $userform->labelEx($users2,'mail'); ?>：<?php echo $userform->passwordField($users2,'mail'); ?><?php echo $userform->error($users2,'mail'); ?></li><br />
+
 <br />
-<li style="cursor:default">重置　　　　　提交</li>
+<li style="cursor:default"><?php echo CHtml::resetButton('重置'); ?>　　　　　<?php echo CHtml::submitButton('提交'); ?></li>
+<?php echo $userform->hiddenField($users2,'type',array('type'=>"hidden",'size'=>2,'maxlength'=>2,'value'=>1)); ?>
+<input type="hidden" name="ajax" value="rSave">
+
+<?php $this->endWidget(); ?>
 </div>
 <br />
 <li></li>

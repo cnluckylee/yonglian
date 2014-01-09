@@ -269,3 +269,8 @@ div.wide.form .buttons, div.wide.form .hint, div.wide.form .errorMessage
 	width: expression(this.width > 100 && this.width > this.height ? 100 : true);
     height: expresion(this.height > 100 ? 50 : true);
 }
+
+#Users_type label,#Users_state label{
+	float: none;
+	display: inline;
+}

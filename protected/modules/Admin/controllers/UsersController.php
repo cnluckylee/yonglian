@@ -31,11 +31,6 @@ class UsersController extends AdminController
 		if(isset($_POST['Users']))
 		{
 			$model->attributes=$_POST['Users'];
-			$upload=CUploadedFile::getInstance($model,'downurl');
-			if(!empty($upload))
-			{
-				$model->downurl=FileUpload::createFile($upload,'mediafile','create');
-			}
 
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -53,21 +48,14 @@ class UsersController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$model->setScenario('update');
-		$old_downurl = $model->downurl;
-		//AJAX 表单验证
-		$this->performAjaxValidation($model);
+
+// 		//AJAX 表单验证
+ 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Users']))
 		{
 			$model->attributes=$_POST['Users'];
-			$upload=CUploadedFile::getInstance($model,'downurl');
-			if(!empty($upload))
-			{
-				$model->downurl=FileUpload::createFile($upload,'mediafile','update');
-			}else{
-				$model->downurl = $old_downurl;
-			}
+
 
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));

@@ -10,6 +10,17 @@
         </tr>
       </thead>
       <tbody>
+  	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'companyname'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'companyname',array('size'=>60,'maxlength'=>100)); ?>
+		<?php echo $form->error($model,'companyname'); ?>
+        </div>
+        </td>
+	</tr>    
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'username'); ?>
@@ -82,29 +93,7 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'addtime'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'addtime'); ?>
-		<?php echo $form->error($model,'addtime'); ?>
-        </div>
-        </td>
-	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'updtime'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'updtime'); ?>
-		<?php echo $form->error($model,'updtime'); ?>
-        </div>
-        </td>
-	</tr>
 
 	<tr>
           <th width="100" align="right">
@@ -112,7 +101,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'state'); ?>
+		<?php echo $form->radioButtonList($model,'state', Users::$isState,array('separator'=>'')); ?>
 		<?php echo $form->error($model,'state'); ?>
         </div>
         </td>
@@ -124,7 +113,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'type'); ?>
+		<?php echo $form->radioButtonList($model,'type', Users::$isType,array('separator'=>'')); ?>
 		<?php echo $form->error($model,'type'); ?>
         </div>
         </td>
