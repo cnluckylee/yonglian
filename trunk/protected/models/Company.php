@@ -80,7 +80,7 @@ class Company extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'name' => '名称',
-			'pinyin' => '拼音',
+			'pinyin' => '简称',
 			'city' => '地区',
 			'city1' => 'City1',
 			'city2' => 'City2',
