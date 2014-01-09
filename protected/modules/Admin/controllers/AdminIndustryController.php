@@ -26,7 +26,7 @@ class AdminIndustryController extends AdminController
 
 		$url = $modules.'/'.$controller.'/'.$action;
 		$str = "<tr>
-					<td><input name='listorders[\$id]' type='text' size='3' value='\$listorder' class='input-text-c'></td>
+					<td><input name='listorders[\$id]' type='text' size='6' value='\$listorder' class='input-text-c'></td>
 					<td >\$spacer\$name</td>
 					<td ><a href='\".Yii::app()->createUrl('$url').\"'>\".Yii::app()->createUrl('$url').\"</td>
 					<td>\$str_manage</td>
@@ -113,7 +113,7 @@ class AdminIndustryController extends AdminController
 	public function actionListorder() {
 		$orders = Yii::app()->getRequest()->getPost('listorders');
 		foreach ($orders as $k => $v) {
-			adminIndustry::model()->updateByPk($k, array('listorder' => $v));
+			AdminIndustry::model()->updateByPk($k, array('listorder' => $v));
 		}
 		$this->success('更新排序成功！');
 	}
