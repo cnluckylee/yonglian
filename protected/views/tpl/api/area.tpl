@@ -78,6 +78,7 @@ function selectCity(k,k2,k3,k4)
 	
 	if(k4>=0)
 	{
+		$(".ind4_background").removeClass("ind4_background");
 		$("#d_"+k4).addClass("ind4_background");
 		c4=arr_data[k]['child'][k2]['child'][k3]['child'][k4].id;
 		cityname +=' '+arr_data[k]['child'][k2]['child'][k3]['child'][k4].name;
@@ -86,7 +87,7 @@ function selectCity(k,k2,k3,k4)
 	{
 		data = arr_data[k]['child'][k2]['child'][k3]['child'];
 		html_id = 'industry4';
-		$('.city_background').removeClass("ind3_background");
+		$(".ind3_background").removeClass("ind3_background");
 		$("#c_"+k3).addClass("ind3_background");
 		c3=arr_data[k]['child'][k2]['child'][k3].id;
 		cityname +=' '+arr_data[k]['child'][k2]['child'][k3].name;
@@ -94,13 +95,13 @@ function selectCity(k,k2,k3,k4)
 	{
 		data = arr_data[k]['child'][k2]['child'];
 		html_id = 'industry3';
-		$('.city_background').removeClass("ind2_background");
+		$(".ind2_background").removeClass("ind2_background");
 		$("#b_"+k2).addClass("ind2_background");
 		c2=arr_data[k]['child'][k2].id;
 		cityname +=' '+arr_data[k]['child'][k2].name;
 	}else if(k>=0){
 		html_id = 'industry2';
-		$(".dist_background").removeClass("ind1_background");
+		$(".ind1_background").removeClass("ind1_background");
 		$("#a_"+k).addClass("ind1_background");
 		c1=arr_data[k].id;
 		cityname +=' '+arr_data[k].name;
