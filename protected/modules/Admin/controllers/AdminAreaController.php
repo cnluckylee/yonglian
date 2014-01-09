@@ -25,7 +25,7 @@ class AdminAreaController extends AdminController
 
 		$url = $modules.'/'.$controller.'/'.$action;
 		$str = "<tr>
-					<td><input name='listorders[\$id]' type='text' size='3' value='\$listorder' class='input-text-c'></td>
+					<td><input name='listorders[\$id]' type='text' size='6' value='\$listorder' class='input-text-c'></td>
 					<td >\$spacer\$name</td>
 					<td>\$str_manage</td>
 				</tr>";

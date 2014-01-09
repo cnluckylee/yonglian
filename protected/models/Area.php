@@ -126,7 +126,7 @@ class Area extends CActiveRecord
         }
         $model = self::model()->getDbConnection()->createCommand()
                 ->from('{{area}}')
-                ->order('listorder DESC');
+                ->order('listorder asc');
         if ($select !== null)
             $model->select($select);
         else
