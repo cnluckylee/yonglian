@@ -107,7 +107,7 @@ class AdminIndustry extends CActiveRecord
         }
         $model = self::model()->getDbConnection()->createCommand()
                 ->from('{{admin_industry}}')
-                ->order('listorder DESC');
+                ->order('listorder asc');
         if($type)
 			$model->where('parentid='.$type);
         if ($select !== null)
@@ -171,8 +171,8 @@ class AdminIndustry extends CActiveRecord
     {
     	$model = self::model()->getDbConnection()->createCommand()
                 ->from('{{admin_industry}}')
-       			->select ('id,parentid,name');
-
+       			->select ('id,parentid,name')
+    			->order('listorder asc');
         $data = $model->queryAll();
 
     	 $result = array ();
