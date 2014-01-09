@@ -183,7 +183,7 @@ class Area extends CActiveRecord
     	$model = self::model()->getDbConnection()->createCommand()
                 ->from('{{area}}')
        			->select ('id,parentid,name')
-       			->order ('parentid asc');
+       			->order ('listorder asc');
         $data = $model->queryAll();
     	 $result = array ();
     	 $I = array ();
