@@ -44,8 +44,8 @@ class Article extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cid, IndustryID, CompanyID', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>200),
+			array('cid, IndustryID, CompanyID,aid', 'numerical', 'integerOnly'=>true),
+			array('title,aname', 'length', 'max'=>200),
 			array('imgurl','file','allowEmpty'=>true,'types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 10,'tooLarge'=>'上传图片已超过10M'),
 			array('miniContent', 'length', 'max'=>255),
 			array('content, remark', 'safe'),
@@ -83,6 +83,8 @@ class Article extends CActiveRecord
 			'miniContent' => 'Mini Content',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
+			'aid' => '地区',
+			'aname' => '地区',
 		);
 	}
 
@@ -106,6 +108,8 @@ class Article extends CActiveRecord
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('miniContent',$this->miniContent,true);
+		$criteria->compare('aid',$this->aid,true);
+		$criteria->compare('aname',$this->aname,true);
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
 		$criteria->order = 'updtime DESC' ;
@@ -120,9 +124,15 @@ class Article extends CActiveRecord
 		{
 			if($this->isNewRecord)
 			{
-				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');	
 			}else{
 				$this->updtime=date('Y-m-d H:i:s');
+			}
+			
+			if($this->aid>0)
+			{
+				$area = new Area();
+				$this->aname = $area->findByAid($this->aid);
 			}
 			
 		return true;

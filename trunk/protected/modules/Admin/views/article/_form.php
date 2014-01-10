@@ -43,10 +43,24 @@
         </th>
         <td >
         <div class="row">
-		<select name="Article[IndustryID]" id="Article_IndustryID">
+		<select name="Article[IndustryID]" id="Article_IndustryID" onchange="resetCompany()">
             <?php echo AdminIndustry::getSelectTree('请选择',$model->IndustryID);?>
         </select>
 		<?php echo $form->error($model,'IndustryID'); ?>
+        </div>
+        </td>
+	</tr>
+	
+		<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'aid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<select name="Article[aid]" id="Article_aid"  onchange="resetCompany()">
+            <?php echo Area::getSelectTree('请选择',$model->aid);?>
+        </select>
+		<?php echo $form->error($model,'aid'); ?>
         </div>
         </td>
 	</tr>
@@ -116,6 +130,24 @@
 	function setData()
 	{
 		editor.sync(); 
+	}
+	function resetCompany()
+	{
+		var aid = $("#Article_aid").val();
+		var indu = $("#Article_IndustryID").val();
+		if(aid>0 && indu>0)
+		{
+			$.ajax({
+				url:'?r=admin/article/getCompany',
+				data:{aid:aid,indu:indu},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+						alert(obj);
+					}
+				});
+		}
+		
 	}
 </script>
 </div>

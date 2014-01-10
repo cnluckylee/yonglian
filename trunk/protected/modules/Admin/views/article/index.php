@@ -51,6 +51,14 @@
 				),	
 			array(
 
+						'name' => 'aname',
+						
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),	
+			array(
+
 						'name' => 'CompanyID',
 						'value' =>array($this,"getValueByCompanyID"),
 						'header' => '公司'

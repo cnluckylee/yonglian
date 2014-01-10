@@ -19,6 +19,7 @@ class Area extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return Area the static model class
 	 */
+	public $aname;
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -43,6 +44,7 @@ class Area extends CActiveRecord
 			array('parentid, listorder', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>20),
 			array('pinyin', 'length', 'max'=>50),
+				
 			array('addTime, updTime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -200,5 +202,38 @@ class Area extends CActiveRecord
 				}
 			}
     	return $result;
+    }
+    public function findddd($id)
+    {
+    	$name = "";
+    	$data = $this->findByAid($id);
+    	
+    	
+    		krsort($data);
+    		$name = implode("-",$data);
+    	return $name;
+    }
+    /**
+     * findbyid
+     */
+    public  function findByAid($id)
+    {
+    	
+    	$data = self::model()->findByPk($id);
+    	if($data){
+    		$data = $data->attributes;
+    		if($data['name'])
+    			$this->aname[] = $data['name'];
+    	}
+    	$name = '';
+    	if($data['parentid']>0){
+    		self::findByAid($data['parentid']);
+    		if($this->aname)
+    		{
+	    		krsort($this->aname);
+	    		$name = implode("-",$this->aname);
+    		}
+    	}
+    	return $name;
     }
 }
