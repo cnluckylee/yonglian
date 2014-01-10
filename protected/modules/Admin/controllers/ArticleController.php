@@ -110,7 +110,13 @@ class ArticleController extends AdminController
 		));
 	}
 	
-
+	public function actionGetCompany()
+	{
+		$aid = Tools::getParam("aid","","post");
+		$indu = Tools::getParam("indu","","post");
+		
+		echo $aid.$indu;exit;
+	}
 	/**
 	 * 载入
 	 * @param integer $id 主键
