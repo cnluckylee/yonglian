@@ -208,8 +208,6 @@ class Company extends CActiveRecord
 	 */
 	public static function getCompany($cid)
 	{
-		if(!$cid)
-			return ;
 		$criteria = new CDbCriteria();
 		$criteria->addCondition('id in('.$cid.')');
 		$artList = self::model()->findAll($criteria);

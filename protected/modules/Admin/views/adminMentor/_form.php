@@ -23,17 +23,7 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'aid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'aid',CHtml::listData(City::getCityList(),'id','name')); ?>
-		<?php echo $form->error($model,'aid'); ?>
-        </div>
-        </td>
-	</tr>
+	
 
 
 	<tr>
