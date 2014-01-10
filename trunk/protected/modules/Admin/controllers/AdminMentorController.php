@@ -157,7 +157,7 @@ class AdminMentorController extends AdminController
 	public function getValueByKey($data, $row, $c)
 	{
 		$name = '';
-		$result = AllType::model()->findByPk($data->cid);
+		$result = Alltype::model()->findByPk($data->cid);
 		if($result)
 			$name = $result->attributes['name'];
 		return $name;

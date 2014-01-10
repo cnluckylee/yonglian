@@ -54,12 +54,10 @@
 
 			array(
 						'name' => 'desc',
-						'summaryText'=>'ul',
-						'htmlOptions' => array(
+					
+						//'htmlOptions' => array(
 								
-								'style' => 'overflow:hidden;witdh:200px',
-								'maxRating'=>20, 
-						),
+						//),
 						
 						
 						
