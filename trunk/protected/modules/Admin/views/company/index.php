@@ -14,6 +14,7 @@
 	'id'=>'company-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	
 	'columns'=>array(
 		array(
 
@@ -44,7 +45,7 @@
 
 			array(
 
-						'name' => 'city',
+						'name' => 'accountdate',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -52,12 +53,16 @@
 				),
 
 			array(
-
-						'name' => 'Industry',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
+						'name' => 'desc',
+						'summaryText'=>'ul',
+						'htmlOptions' => array(
+								
+								'style' => 'overflow:hidden;witdh:200px',
+								'maxRating'=>20, 
+						),
+						
+						
+						
 				),
 
 			array(

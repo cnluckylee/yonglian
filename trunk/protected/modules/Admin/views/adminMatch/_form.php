@@ -115,6 +115,7 @@
         <div class="row">
 
 		<input id="Match_stopdate" type="text" name="Match[stopdate]" onclick="WdatePicker()">
+		
 		<?php echo $form->error($model,'stopdate'); ?>
         </div>
         </td>
