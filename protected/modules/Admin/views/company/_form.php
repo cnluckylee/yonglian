@@ -28,7 +28,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>50)); ?>
+		<?php echo $form->textField($model,'pinyin',array('size'=>20,'maxlength'=>20)); ?>
 		<?php echo $form->error($model,'pinyin'); ?>
         </div>
         </td>
@@ -62,6 +62,18 @@
         </td>
 	</tr>
 
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'accountdate'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'accountdate',array('size'=>10,'maxlength'=>10,'onClick'=>'WdatePicker()')); ?>
+		<?php echo $form->error($model,'accountdate'); ?>
+        </div>
+        </td>
+	</tr>
+	
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'desc'); ?>
@@ -114,6 +126,8 @@
 
 </div>
 <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+<script language="javascript" type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/My97DatePicker/WdatePicker.js"></script>
+
 <script language="javascript">
 $(document).ready(function() {
 	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');

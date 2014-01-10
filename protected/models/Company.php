@@ -54,10 +54,11 @@ class Company extends CActiveRecord
 			array('city1, city2, city3, city4, IndustryID1, IndustryID2, IndustryID3, IndustryID4, recommend, rank', 'numerical', 'integerOnly'=>true),
 			array('name, city', 'length', 'max'=>20),
 			array('pinyin, Industry', 'length', 'max'=>100),
-			array('desc, updTime, addTime', 'safe'),
+			array('desc, updTime, addTime,accountdate', 'safe'),
+				
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pinyin, city, city1, city2, city3, city4, Industry, IndustryID1, IndustryID2, IndustryID3, IndustryID4, desc, recommend, rank, updTime, addTime', 'safe', 'on'=>'search'),
+			array('id, name, pinyin, city, city1, city2, city3, city4, Industry, IndustryID1, IndustryID2, IndustryID3, IndustryID4, desc, recommend, rank, updTime, addTime,accountdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,7 +79,7 @@ class Company extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '序号',
 			'name' => '名称',
 			'pinyin' => '简称',
 			'city' => '地区',
@@ -96,6 +97,7 @@ class Company extends CActiveRecord
 			'rank' => '权重',
 			'updTime' => 'Upd Time',
 			'addTime' => 'Add Time',
+			'accountdate' => '账期'
 		);
 	}
 
@@ -128,6 +130,7 @@ class Company extends CActiveRecord
 		$criteria->compare('rank',$this->rank);
 		$criteria->compare('updTime',$this->updTime,true);
 		$criteria->compare('addTime',$this->addTime,true);
+		$criteria->compare('accountdate',$this->accountdate,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -205,6 +208,8 @@ class Company extends CActiveRecord
 	 */
 	public static function getCompany($cid)
 	{
+		if(!$cid)
+			return ;
 		$criteria = new CDbCriteria();
 		$criteria->addCondition('id in('.$cid.')');
 		$artList = self::model()->findAll($criteria);
