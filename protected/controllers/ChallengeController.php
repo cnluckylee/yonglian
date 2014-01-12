@@ -23,7 +23,7 @@ class ChallengeController extends Controller
 		$data['match'] = Match::getCRApply();
 		
 
-		$this->render('CRApply',$data);
+		$this->render('sCRApply',$data);
 	}
 	/**
 	 * 赛事查询
@@ -71,6 +71,10 @@ class ChallengeController extends Controller
 	public function actionView()
 	{
 		$this->pageTitle ="赛事详情";
-		$this->render('CRInquire');
+		$id = Tools::getParam("id");
+		$data = array();
+		$data['data']=Match::MatchDetail($id);
+
+		$this->render('CRCompetition',$data);
 	}
 }

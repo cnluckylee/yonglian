@@ -177,7 +177,7 @@
 		array(
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
-			'template' => '{update} {delete}',
+			'template' => '{update} {view} {delete}',
 		),
 	),
 )); ?>
