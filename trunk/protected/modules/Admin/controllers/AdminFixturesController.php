@@ -1,21 +1,19 @@
 <?php
 
-class CompanyController extends AdminController
+class AdminFixturesController extends AdminController
 {
-
 	/**
 	 * 首页列表.
 	 */
 	public function actionIndex()
 	{
-		$model=new Company('search');
+		$model=new Fixtures('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['Company']))
-			$model->attributes=$_GET['Company'];
+		if(isset($_GET['Fixtures']))
+			$model->attributes=$_GET['Fixtures'];
 
 		$this->render('index',array(
 			'model'=>$model,
-			'mid'=>$this->mid
 		));
 	}
 
@@ -24,21 +22,16 @@ class CompanyController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new Company;
+		$model=new Fixtures;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Company']))
+		if(isset($_POST['Fixtures']))
 		{
-			$model->attributes=$_POST['Company'];
-			if(!isset($_POST['Company']['recommend']))
-			{
-				$model->recommend = 0;
-			}
-			if($model->save()){
+			$model->attributes=$_POST['Fixtures'];
+			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-				}
 		}
 
 		$this->render('create',array(
@@ -57,15 +50,9 @@ class CompanyController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-
-		if(isset($_POST['Company']))
+		if(isset($_POST['Fixtures']))
 		{
-
-			$model->attributes=$_POST['Company'];
-			if(!isset($_POST['Company']['recommend']))
-			{
-				$model->rec = 0;
-			}
+			$model->attributes=$_POST['Fixtures'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -83,7 +70,7 @@ class CompanyController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-
+			
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -97,15 +84,9 @@ class CompanyController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
+	
 
-	/**
-	 * 创建
-	 */
-	public function actionView($id)
-	{
-		$this->redirect(array('/admin/CompanyCategory','cid'=>$id));
-	}
-
+	
 
 	/**
 	 * 载入
@@ -113,7 +94,7 @@ class CompanyController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Company::model()->findByPk($id);
+		$model=Fixtures::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -125,17 +106,10 @@ class CompanyController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='company-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='fixtures-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-
-	public function isrecommend($data, $row, $c)
-	{
-		$recType = array(0=>'否',1=>'推荐');
-		return $recType[$data->recommend];
-	}
-
 }

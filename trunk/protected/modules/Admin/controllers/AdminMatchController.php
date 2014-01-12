@@ -45,7 +45,7 @@ class AdminMatchController extends AdminController
 					$im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
 
-				$model->imgurl=Upload::createFile($upload,'cp','create');
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
 
 			$pdf=CUploadedFile::getInstance($model,'pdf');
@@ -78,6 +78,7 @@ class AdminMatchController extends AdminController
 		$model=$this->loadModel($id);
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
+		$old_pdf = $model->pdf;
 
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
@@ -92,7 +93,17 @@ class AdminMatchController extends AdminController
 			}else{
 				$model->imgurl = $old_imgurl;
 			}
-
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+				
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}else
+				$model->pdf = $old_pdf;
+				
+			unset($pdf);
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -124,7 +135,15 @@ class AdminMatchController extends AdminController
 		else
 			throw new CHttpException(400,'非法访问！');
 	}
-
+	
+	/**
+	 * 删除
+	 * @param integer $id 主键
+	 */
+	public function actionView($id)
+	{
+		$this->redirect(array('/admin/MatchComment','mid'=>$id));
+	}
 
 
 

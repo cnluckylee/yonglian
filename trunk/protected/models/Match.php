@@ -53,11 +53,11 @@ class Match extends CActiveRecord
 		return array(
 			array('fid, IndustryID, CompanyID, zzid, hxid, zxid, ssxs, ctid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
-			array('imgurl, sszb, ssxb', 'length', 'max'=>255),
+			array('imgurl, sszb, ssxb,Prize,Prize2,Prize3,PostName,Post,Post2Name,Post2,Post3Name,Post3,pdf', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime, stopdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, fid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, zzid, hxid, zxid, stopdate, sszb, ssxb, ssxs, ctid', 'safe', 'on'=>'search'),
+			array('id, title, fid, imgurl,Prize,Prize2,Prize3,PostName,Post,Post2Name,Post2,Post3Name,Post3,pdf, content, remark, addtime, updtime, IndustryID, CompanyID, zzid, hxid, zxid, stopdate, sszb, ssxb, ssxs, ctid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -96,6 +96,18 @@ class Match extends CActiveRecord
 			'ssxb' => '赛事协办',
 			'ssxs' => '赛事形式',
 			'ctid' => '城市',
+			'Prize'=>'一等奖',
+			'Prize2'=>'二等奖',
+			'Prize3'=>'三等奖',
+			'PostName'=>'岗位一名称',
+			'Post'=>'岗位一获奖人员',
+			'Post2Name'=>'岗位二名称',
+			'Post2'=>'岗位二获奖人员',
+			'Post3Name'=>'岗位三名称',
+			'Post3'=>'岗位三获奖人员',
+			'pdf'=>'媒体文件'
+			
+				
 		);
 	}
 
@@ -116,16 +128,26 @@ class Match extends CActiveRecord
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('remark',$this->remark,true);
-		$criteria->compare('addtime',$this->addtime,true);
-		$criteria->compare('updtime',$this->updtime,true);
+		$criteria->compare('addtime',$this->addtime);
+		$criteria->compare('updtime',$this->updtime);
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
 		$criteria->compare('zzid',$this->zzid);
 		$criteria->compare('hxid',$this->hxid);
 		$criteria->compare('zxid',$this->zxid);
+		$criteria->compare('pdf',$this->pdf,true);
 		$criteria->compare('stopdate',$this->stopdate,true);
 		$criteria->compare('sszb',$this->sszb,true);
 		$criteria->compare('ssxb',$this->ssxb,true);
+		$criteria->compare('Prize',$this->Prize,true);
+		$criteria->compare('Prize2',$this->Prize2,true);
+		$criteria->compare('Prize3',$this->Prize3,true);
+		$criteria->compare('PostName',$this->PostName,true);
+		$criteria->compare('Post',$this->Post,true);
+		$criteria->compare('Post2Name',$this->Post2Name,true);
+		$criteria->compare('Post2',$this->Post2,true);
+		$criteria->compare('Post3Name',$this->Post3Name,true);
+		$criteria->compare('Post3',$this->Post3,true);
 		$criteria->compare('ssxs',$this->ssxs);
 		$criteria->compare('ctid',$this->ctid);
 		$criteria->order = 'updtime DESC' ;
@@ -216,6 +238,25 @@ class Match extends CActiveRecord
 
 		return array('pages'=>$pager,'posts'=>$list);
 	
+	}
+	
+	/**
+	 * 获取比赛详情
+	 */
+	public  static function MatchDetail($id)
+	{
+		$data = self::model()->findByPk($id);
+		$data = $data?$data->attributes:array();
+		if($data)
+		{
+			$data['PrizeArr'] = explode(",",$data['Prize']); 
+			$data['Prize2Arr'] = explode(",",$data['Prize2']);
+			$data['Prize3Arr'] = explode(",",$data['Prize3']);
+			$data['PostArr'] = explode(",",$data['Post']);
+			$data['Post2Arr'] = explode(",",$data['Post2']);
+			$data['Post3Arr'] = explode(",",$data['Post3']);
+		}
+		return $data;
 	}
 
 	/**

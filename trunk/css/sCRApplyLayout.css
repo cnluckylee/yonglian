@@ -1,0 +1,56 @@
+/* CSS Document */
+<!--
+body, div, address, blockquote, iframe, ul, ol, dl, dt, dd, li, dl, h1, h2, h3, h4, h5, h6, p, pre, table, caption, th, td, form, legend, fieldset, input, button, select, textarea {margin:0; padding:0; font-weight:;font-style: normal;font-size: 100%; font-family:;color:} 
+ol, ul ,li{list-style: none;} 
+img {border: 0;} 
+body {color:#000;background:#FFF; text-align: center; font:12px/1.5 Arial, Helvetica, sans-serif;} 
+.clearfix:after {clear:both; content:"."; display:block; height:0pt; visibility:hidden; overflow:hidden;} 
+.clear{clear:both;height:1px; margin-top:-1px; width:100%;} 
+.dis{display:block;} 
+.undis{display:none;}  
+
+/*此上面代码是初始CSS模板，下面是新写CSS布局框架代码*/ 
+#gjJacket{width:1030px;height:1063px;background:;margin:0pt auto;position:relative;border:0px solid red;margin-top:7px}
+
+#header ,#centers ,#footer{ width:100%; margin:0 auto;clear:both;line-height:25px;font-weight:bold;color:#ffffff;font-size:14px} 
+#header{ width:1030px;height:25px; border:0px solid red; background:#96C2F1} 
+
+
+#centers{ padding:0px 0;} 
+
+#centers .f_left{float:left;width:250px;height:498px;border:1px solid #FFE66F;background:#d0d0d0;margin-top:7px;margin-right:10px;}
+#centers .li{float:left;width:240px;height:488px;border:1px solid red;background:;margin-top:5px;margin-left:5px;
+font-family: "宋体";font-size:12px;font-weight:normal;font-style:normal;color: #000000;text-align:left;line-height:25px}
+ 
+
+#centers .f_right{ float:left;width:758px;height:490px;border:0px solid #00CC66; background:#96C2F1;margin-top:7px;padding:5px 5px 5px 5px;} 
+
+
+#centers .s_left{ float:left;width:30px;height:107px;border:0px solid #00CC66;background:#96C2F1; margin-right:7px;margin-top:7px;border-bottom:3px solid #d0d0d0;border-left:0px solid #d0d0d0;padding:; text-align:left;line-height:35px}
+ 
+#centers .s_right{ float:left; width:990px;height:107px;border:0px solid #00CC66; background:#FAF4FF;margin-top:7px;border-bottom:3px solid #d0d0d0}
+
+#centers .t_left{ float:left;width:30px;height:353px;border:0px solid #00CC66;background:#96C2F1; margin-right:7px;margin-top:7px;border-bottom:0px solid #d0d0d0;border-left:0px solid #d0d0d0;padding:;line-height:55px }
+
+#centers .download{ float:left;width:30px;height:50px;border:0px solid #00CC66;background:red; margin-right:7px;margin-top:30px;border-bottom:3px solid #d0d0d0;border-left:0px solid #d0d0d0;padding:; }
+
+
+
+#centers .t_middle{ float:left;width:502px;height:353px;border:0px solid #00CC66;background:#FAF4FF; margin-right:7px;margin-top:7px;border-bottom:3px solid #d0d0d0;border-left:0px solid #d0d0d0;padding:; 
+font-family: "宋体";font-size:12px;font-weight:normal;font-style:normal;color: #000000;text-align:left;line-height:25px}
+#zxjl {position:absolute;left:38px;top:658px;width:502px;height:353px;z-index:3;font-size:;background:blue}
+#zxjm {position:absolute;left:38px;top:658px;width:502px;height:353px;z-index:3;font-size:;background:yellow}
+#zxjn {position:absolute;left:38px;top:658px;width:502px;height:353px;z-index:3;font-size:;background:green}
+/*说明按钮定位*/
+#nb{width:200px;border:0px solid orange;height:25px;top:295px;left:290px;overflow:visible;position:relative;z-index:9}
+
+#centers .t_right{ float:left; width:482px;height:353px;border:0px solid #00CC66; background:#96C2F1;margin-top:7px;border-bottom:3px solid #d0d0d0}
+
+#centers .t{width:1030px;margin:0pt auto;position:relative;height:25px;border-bottom:3px solid #96C2F1;float:left;background:#FAF4FF;margin-top:7px}
+
+#footer{float:left;width:%;height:120px;border:0px solid #CCCCCC;background:#fdfdfd;margin-top:7px} 
+
+
+-->
+
+

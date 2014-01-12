@@ -1,21 +1,26 @@
 <?php
 
-class CompanyController extends AdminController
+class CompanyCategoryController extends AdminController
 {
-
+	protected $cid;
+	public function init()
+	{
+		$cid = Tools::getParam("cid");
+		$this->cid = $cid;
+	}
 	/**
 	 * 首页列表.
 	 */
 	public function actionIndex()
 	{
-		$model=new Company('search');
+		$model=new CompanyCategory('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['Company']))
-			$model->attributes=$_GET['Company'];
-
+		if(isset($_GET['CompanyCategory']))
+			$model->attributes=$_GET['CompanyCategory'];
+		
 		$this->render('index',array(
 			'model'=>$model,
-			'mid'=>$this->mid
+			'cid'=>$this->cid
 		));
 	}
 
@@ -24,23 +29,26 @@ class CompanyController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new Company;
+		$model=new CompanyCategory;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Company']))
+		if(isset($_POST['CompanyCategory']))
 		{
-			$model->attributes=$_POST['Company'];
-			if(!isset($_POST['Company']['recommend']))
-			{
-				$model->recommend = 0;
-			}
-			if($model->save()){
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
-				}
+			$model->attributes=$_POST['CompanyCategory'];
+			if($model->save())
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','cid'=>$this->cid));
 		}
-
+		if($this->cid){
+			$model->cid = $this->cid;
+			$company = Company::model()->findByPk($this->cid);
+			if($company)
+			{
+				$model->companyName= $company->name;
+			}
+			
+		}
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -53,21 +61,15 @@ class CompanyController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$this->cid = $model->cid;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-
-		if(isset($_POST['Company']))
+		if(isset($_POST['CompanyCategory']))
 		{
-
-			$model->attributes=$_POST['Company'];
-			if(!isset($_POST['Company']['recommend']))
-			{
-				$model->rec = 0;
-			}
+			$model->attributes=$_POST['CompanyCategory'];
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','cid'=>$this->cid));
 		}
 
 		$this->render('update',array(
@@ -83,29 +85,24 @@ class CompanyController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-
-			$this->loadModel($id)->delete();
+			$model=$this->loadModel($id);
+			$this->cid = $model->cid;
+			$model->delete();
 
 			// 如果是 AJAX 操作返回
 			if (Yii::app()->request->isAjaxRequest) {
 				$this->success('删除成功！');
 			} else {
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','cid'=>$this->cid));
 			}
 		}
 		else
 			throw new CHttpException(400,'非法访问！');
 	}
 
+	
 
-	/**
-	 * 创建
-	 */
-	public function actionView($id)
-	{
-		$this->redirect(array('/admin/CompanyCategory','cid'=>$id));
-	}
-
+	
 
 	/**
 	 * 载入
@@ -113,7 +110,7 @@ class CompanyController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Company::model()->findByPk($id);
+		$model=CompanyCategory::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -125,17 +122,10 @@ class CompanyController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='company-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='company-category-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-
-	public function isrecommend($data, $row, $c)
-	{
-		$recType = array(0=>'否',1=>'推荐');
-		return $recType[$data->recommend];
-	}
-
 }
