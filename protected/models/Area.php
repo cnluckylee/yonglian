@@ -236,4 +236,27 @@ class Area extends CActiveRecord
     	}
     	return $name;
     }
+    
+    /**
+     * findnextIdByAid
+     */
+    public  function findnextIdByAid($id,$next=null)
+    {
+    	if(!$next){
+    		$tmp = self::model()->findByPk($id);
+    		$datas[] = $tmp;
+    	}else {
+    		$datas = self::model()->findAll('parentid='.$id);
+    		
+    	}
+    	
+    	foreach($datas as $i)
+    	{
+    		$data = $i->attributes;
+    		$this->aname[] = $data['id'];
+    		self::findnextIdByAid($data['id'],1);
+    	}
+    	
+    	return $this->aname?array_unique($this->aname):array();
+    }
 }

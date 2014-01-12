@@ -51,14 +51,14 @@ class Company extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('city1, city2, city3, city4, IndustryID1, IndustryID2, IndustryID3, IndustryID4, recommend, rank', 'numerical', 'integerOnly'=>true),
+			array('city1, city2, city3, city4, IndustryID1, IndustryID2, IndustryID3, IndustryID4, recommend, rank,IndustryID,Ctid', 'numerical', 'integerOnly'=>true),
 			array('name, city', 'length', 'max'=>20),
 			array('pinyin, Industry', 'length', 'max'=>100),
 			array('desc, updTime, addTime,accountdate', 'safe'),
 				
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pinyin, city, city1, city2, city3, city4, Industry, IndustryID1, IndustryID2, IndustryID3, IndustryID4, desc, recommend, rank, updTime, addTime,accountdate', 'safe', 'on'=>'search'),
+			array('id, name, pinyin, city, city1, city2, city3, city4, Industry, IndustryID1, IndustryID2, IndustryID3, IndustryID4,IndustryID,Ctid, desc, recommend, rank, updTime, addTime,accountdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -97,7 +97,9 @@ class Company extends CActiveRecord
 			'rank' => '权重',
 			'updTime' => 'Upd Time',
 			'addTime' => 'Add Time',
-			'accountdate' => '账期'
+			'accountdate' => '账期',
+			'IndustryID' => 'IndustryID',
+			'Ctid' => 'Ctid',
 		);
 	}
 
@@ -125,6 +127,8 @@ class Company extends CActiveRecord
 		$criteria->compare('IndustryID2',$this->IndustryID2);
 		$criteria->compare('IndustryID3',$this->IndustryID3);
 		$criteria->compare('IndustryID4',$this->IndustryID4);
+		$criteria->compare('IndustryID',$this->IndustryID);
+		$criteria->compare('Ctid',$this->Ctid);
 		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('recommend',$this->recommend);
 		$criteria->compare('rank',$this->rank);
@@ -209,13 +213,13 @@ class Company extends CActiveRecord
 	public static function getCompany($cid)
 	{
 		$criteria = new CDbCriteria();
-		$criteria->addCondition('id in('.$cid.')');
+		$criteria->addCondition('Ctid in('.$cid.')');
 		$artList = self::model()->findAll($criteria);
 		$result = array();
 		foreach($artList as $i)
 		{
 			$arr = $i->attributes;
-			$result[] = $arr;
+			$result[] = array('id'=>$arr['id'],'name'=>$arr['name']);
 		}
 		return $result;
 	}
