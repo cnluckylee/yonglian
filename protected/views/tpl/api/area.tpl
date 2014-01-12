@@ -91,6 +91,8 @@ function selectCity(k,k2,k3,k4)
 		$("#c_"+k3).addClass("ind3_background");
 		c3=arr_data[k]['child'][k2]['child'][k3].id;
 		cityname +=' '+arr_data[k]['child'][k2]['child'][k3].name;
+		c4=-1;
+		$('#industry4').html('<li><a href="javascript:void(0);">请选择</a></li>');
 	}else if(k2>=0)
 	{
 		data = arr_data[k]['child'][k2]['child'];
@@ -98,12 +100,19 @@ function selectCity(k,k2,k3,k4)
 		$(".ind2_background").removeClass("ind2_background");
 		$("#b_"+k2).addClass("ind2_background");
 		c2=arr_data[k]['child'][k2].id;
+		c3=c4=-1;
+		$('#industry3').html('<li><a href="javascript:void(0);">请选择</a></li>');
+		$('#industry4').html('<li><a href="javascript:void(0);">请选择</a></li>');
 		cityname +=' '+arr_data[k]['child'][k2].name;
 	}else if(k>=0){
 		html_id = 'industry2';
 		$(".ind1_background").removeClass("ind1_background");
 		$("#a_"+k).addClass("ind1_background");
 		c1=arr_data[k].id;
+		c2=c3=c4=-1;
+		$('#industry2').html('<li><a href="javascript:void(0);">请选择</a></li>');
+		$('#industry3').html('<li><a href="javascript:void(0);">请选择</a></li>');
+		$('#industry4').html('<li><a href="javascript:void(0);">请选择</a></li>');
 		cityname +=' '+arr_data[k].name;
 		$("#sel_city").html('<li><a href="javascript:void(0);">请选择</a></li>');
 	}
@@ -136,10 +145,14 @@ function reloadParent()
 	if(c1<0)
 		alert("请选择地区");
 	else{
-		$("#hid_city1",parent.document).val(c1);
-		$("#hid_city2",parent.document).val(c2);
-		$("#hid_city3",parent.document).val(c3);
-		$("#hid_city4",parent.document).val(c4);
+		if($("#hid_city1",parent.document).length>0)
+			$("#hid_city1",parent.document).val(c1);
+		if($("#hid_city2",parent.document).length>0)
+			$("#hid_city2",parent.document).val(c2);
+		if($("#hid_city3",parent.document).length>0)
+			$("#hid_city3",parent.document).val(c3);
+		if($("#hid_city4",parent.document).length>0)
+			$("#hid_city4",parent.document).val(c4);
 		var Company_city_id = c1;
 		if(c2!=-1)
 			Company_city_id+='_'+c2;
@@ -147,10 +160,40 @@ function reloadParent()
 			Company_city_id+='_'+c3;
 		if(c4!=-1)
 			Company_city_id+='_'+c4;
-		
+			
+		var ctid = '';
+		if(c1!=-1){
+			cityname = $(".ind1_background a").text();			
+			ctid = c1;		
+		}
+			
+		if(c2!=-1){
+			cityname += '-'+$(".ind2_background a").text();
+			ctid = c2;
+		}
+			
+		if(c3!=-1){
+			cityname += '-'+$(".ind3_background a").text();
+			ctid = c3;
+		}
+			
+		if(c4!=-1){
+			cityname += '-'+$(".ind4_background a").text();
+			ctid = c4;
+		}
+		if($("#hid_Ctid",parent.document).length>0){
+			$("#hid_Ctid",parent.document).val(ctid);
+		}
+
 		$("#Company_city",parent.document).val(cityname);
 		if($("#Company_city_id",parent.document).length>0)
-		$("#Company_city_id",parent.document).val(Company_city_id);
+			$("#Company_city_id",parent.document).val(Company_city_id);
+			try{
+				window.parent.fun(ctid); 
+			}catch(e)
+			{
+			}
+			
 		parent.$.fancybox.close(); 
 	}
 }

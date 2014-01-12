@@ -77,32 +77,42 @@ function selectCity(k,k2,k3,k4)
 	var html_id ='';
 	if(k4>=0)
 	{
+		$(".ind4_background").removeClass("ind4_background");
 		$("#d_"+k4).addClass("ind4_background");
 		c4=arr_data[k]['child'][k2]['child'][k3]['child'][k4].id;
 		cityname +=' '+arr_data[k]['child'][k2]['child'][k3]['child'][k4].name;
-		reloadParent();
 	}else if(k3>=0)
 	{
 		data = arr_data[k]['child'][k2]['child'][k3]['child'];
 		html_id = 'industry4';
-		$('.city_background').removeClass("ind3_background");
+		$(".ind3_background").removeClass("ind3_background");
 		$("#c_"+k3).addClass("ind3_background");
 		c3=arr_data[k]['child'][k2]['child'][k3].id;
+		c4=-1;
 		cityname +=' '+arr_data[k]['child'][k2]['child'][k3].name;
+		
+		$('#industry4').html('<li><a href="javascript:void(0);">请选择</a></li>');
 	}else if(k2>=0)
 	{
 		data = arr_data[k]['child'][k2]['child'];
 		html_id = 'industry3';
-		$('.city_background').removeClass("ind2_background");
+		$(".ind2_background").removeClass("ind2_background");
 		$("#b_"+k2).addClass("ind2_background");
 		c2=arr_data[k]['child'][k2].id;
+		c3=c4=-1;
 		cityname +=' '+arr_data[k]['child'][k2].name;
+		$('#industry3').html('<li><a href="javascript:void(0);">请选择</a></li>');
+		$('#industry4').html('<li><a href="javascript:void(0);">请选择</a></li>');
 	}else if(k>=0){
 		html_id = 'industry2';
-		$(".dist_background").removeClass("ind1_background");
+		$(".ind1_background").removeClass("ind1_background");
 		$("#a_"+k).addClass("ind1_background");
 		$("#sel_city").html('<li><a href="javascript:void(0);">请选择</a></li>');
 		c1=arr_data[k].id;
+		c2=c3=c4=-1;
+		$('#industry2').html('<li><a href="javascript:void(0);">请选择</a></li>');
+		$('#industry3').html('<li><a href="javascript:void(0);">请选择</a></li>');
+		$('#industry4').html('<li><a href="javascript:void(0);">请选择</a></li>');
 		cityname +=' '+arr_data[k].name;
 	}
 	$.each(data,function(kk,v){
@@ -112,6 +122,7 @@ function selectCity(k,k2,k3,k4)
 			str +='<li id="c_'+kk+'"><a href="javascript:void(0);" onClick="selectCity('+k+','+k2+','+kk+',-1)">'+v.name+'</a></li>';
 		else if(k>=0)	
 			str +='<li id="b_'+kk+'"><a href="javascript:void(0);" onClick="selectCity('+k+','+kk+',-1,-1)">'+v.name+'</a></li>';
+
 	});
 	if(html_id)
 	$('#'+html_id).html(str);
@@ -142,10 +153,40 @@ function reloadParent()
 			Company_Industry_id+='_'+c3;
 		if(c4!=-1)
 			Company_Industry_id+='_'+c4;
-		$("#hid_IndustryID1",parent.document).val(c1);
-		$("#hid_IndustryID2",parent.document).val(c2);
-		$("#hid_IndustryID3",parent.document).val(c3);
-		$("#hid_IndustryID4",parent.document).val(c4);
+			
+			
+			
+		var ctid = '';
+		if(c1!=-1){
+			cityname = $(".ind1_background a").text();			
+			ctid = c1;		
+		}
+			
+		if(c2!=-1){
+			cityname += '-'+$(".ind2_background a").text();
+			ctid = c2;
+		}
+			
+		if(c3!=-1){
+			cityname += '-'+$(".ind3_background a").text();
+			ctid = c3;
+		}
+			
+		if(c4!=-1){
+			cityname += '-'+$(".ind4_background a").text();
+			ctid = c4;
+		}
+		if($("#hid_IndustryID",parent.document).length>0){
+			$("#hid_IndustryID",parent.document).val(ctid);
+		}
+		if($("#hid_IndustryID1",parent.document).length>0)
+			$("#hid_IndustryID1",parent.document).val(c1);
+		if($("#hid_IndustryID2",parent.document).length>0)
+			$("#hid_IndustryID2",parent.document).val(c2);
+		if($("#hid_IndustryID3",parent.document).length>0)
+			$("#hid_IndustryID3",parent.document).val(c3);
+		if($("#hid_IndustryID4",parent.document).length>0)
+			$("#hid_IndustryID4",parent.document).val(c4);
 		$("#Company_Industry",parent.document).val(cityname);
 		if($("#Company_Industry_id",parent.document).length>0)
 		$("#Company_Industry_id",parent.document).val(Company_Industry_id);
