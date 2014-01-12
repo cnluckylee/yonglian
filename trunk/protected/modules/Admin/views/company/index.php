@@ -10,7 +10,9 @@
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('admin.widgets.grid.AdminGridView', array(
+<?php 
+	
+	$this->widget('admin.widgets.grid.AdminGridView', array(
 	'id'=>'company-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
@@ -76,7 +78,7 @@
 		'header'=>'操作',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
-			'template' => '{update} {delete}',
+			'template' => '{update} {view} {delete}',
 		),
 	),
 )); ?>

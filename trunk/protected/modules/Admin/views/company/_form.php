@@ -120,7 +120,8 @@
     <input type="hidden" id="hid_IndustryID2"  name="Company[IndustryID2]" value="<?php echo $model->IndustryID2;?>"/>
     <input type="hidden" id="hid_IndustryID3"  name="Company[IndustryID3]" value="<?php echo $model->IndustryID3;?>"/>
     <input type="hidden" id="hid_IndustryID4"  name="Company[IndustryID4]" value="<?php echo $model->IndustryID4;?>"/>
-    
+    <input type="hidden" id="hid_IndustryID"  name="Company[IndustryID]" value="<?php echo $model->IndustryID;?>"/>
+    <input type="hidden" id="hid_Ctid"  name="Company[Ctid]" value="<?php echo $model->Ctid;?>"/>
     
 <?php $this->endWidget(); ?>
 
