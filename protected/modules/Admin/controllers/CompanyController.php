@@ -35,8 +35,9 @@ class CompanyController extends AdminController
 			{
 				$model->recommend = 0;
 			}
-			if($model->save())
+			if($model->save()){
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				}
 		}
 
 		$this->render('create',array(
@@ -96,7 +97,14 @@ class CompanyController extends AdminController
 	}
 
 
-
+	/**
+	 * 创建
+	 */
+	public function actionView($id)
+	{
+		$this->redirect(array('/admin/CompanyCategory','id'=>$id));
+		
+	}
 
 
 	/**

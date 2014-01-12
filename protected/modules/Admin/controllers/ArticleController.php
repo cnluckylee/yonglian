@@ -112,10 +112,23 @@ class ArticleController extends AdminController
 	
 	public function actionGetCompany()
 	{
-		$aid = Tools::getParam("aid","","post");
-		$indu = Tools::getParam("indu","","post");
+		$aid = Tools::getParam("aid","",'post');
 		
-		echo $aid.$indu;exit;
+		$result = array();
+		if($aid)
+		{
+			$area = new Area();
+			$ids = $area->findnextIdByAid($aid,'id');
+			$ids[] = $aid;
+			$cids = implode(",", $ids);
+			if($cids)
+				$result = Company::getCompany($cids);
+				
+		}
+
+		if($result)
+			echo json_encode($result);
+		echo "";
 	}
 	/**
 	 * 载入
