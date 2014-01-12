@@ -129,11 +129,11 @@ class Article extends CActiveRecord
 				$this->updtime=date('Y-m-d H:i:s');
 			}
 			
-			if($this->aid>0)
-			{
-				$area = new Area();
-				$this->aname = $area->findByAid($this->aid);
-			}
+// 			if($this->aid>0)
+// 			{
+// 				$area = new Area();
+// 				$this->aname = $area->findByAid($this->aid);
+// 			}
 			
 		return true;
 		}
@@ -167,31 +167,27 @@ class Article extends CActiveRecord
 	public static function enterprise($Company_city_id = null,$Company_Industry_id=null,$keyword=null)
 	{
 		//解析$Company_city_id,$Company_Industry_id
-		if($Company_city_id)
-			$city_arr = explode('_', $Company_city_id);
-		if($Company_Industry_id)
-			$Industry_arr = explode('_', $Company_Industry_id);
-	
+		if($Company_city_id){
+			$area = new Area();
+			$ids = $area->findnextIdByAid($Company_city_id,'id');
+			$ids[] = $Company_city_id;
+			$aid_str = implode(",", $ids);
+		}
+		if($Company_Industry_id){
+			$industry = new AdminIndustry();
+			$inds = $industry->findnextIdByAid($Company_Industry_id,'id');
+			$inds[] = $Company_Industry_id;
+			$IndustryID_str = implode(",", $inds);
+		}
 		$criteria = new CDbCriteria();
-		if(isset($city_arr[0]))
-			$criteria->addCondition('city1='.$city_arr[0]);
-		if(isset($city_arr[1]))
-			$criteria->addCondition('city2='.$city_arr[1]);
-		if(isset($city_arr[2]))
-			$criteria->addCondition('city3='.$city_arr[2]);
-		if(isset($city_arr[3]))
-			$criteria->addCondition('city4='.$city_arr[3]);
-		if(isset($Industry_arr[0]))
-			$criteria->addCondition('IndustryID1='.$Industry_arr[0]);
-		if(isset($Industry_arr[1]))
-			$criteria->addCondition('IndustryID2='.$Industry_arr[1]);
-		if(isset($Industry_arr[2]))
-			$criteria->addCondition('IndustryID3='.$Industry_arr[2]);
-		if(isset($Industry_arr[3]))
-			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
+		if($aid_str)
+			$criteria->addCondition('aid in ('.$aid_str.')');
+		if($IndustryID_str)
+			$criteria->addCondition('t.IndustryID in('.$IndustryID_str.')');
+		
 		if($keyword)
-			$criteria->addSearchCondition('c.name', $keyword);
-			
+			$criteria->addCondition('c.name like "%'.$keyword.'%"');
+
 		$criteria->select = 't.CompanyID';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
 		$criteria->order = 'max(t.updtime) desc';

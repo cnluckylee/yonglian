@@ -19,6 +19,7 @@ class AdminIndustry extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return AdminIndustry the static model class
 	 */
+	public $aname;
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -172,9 +173,8 @@ class AdminIndustry extends CActiveRecord
     	$model = self::model()->getDbConnection()->createCommand()
                 ->from('{{admin_industry}}')
        			->select ('id,parentid,name')
-    			->order('listorder asc');
+    			->order('listorder asc,id asc');
         $data = $model->queryAll();
-
     	 $result = array ();
     	 $I = array ();
     	 //定义索引数组，用于记录节点在目标数组的位置
@@ -205,5 +205,27 @@ class AdminIndustry extends CActiveRecord
 		}else{
 			return $type;
 		}
+	}
+	
+	/**
+	 * findnextIdByAid
+	 */
+	public  function findnextIdByAid($id,$next=null)
+	{
+		if(!$next){
+			$tmp = self::model()->findByPk($id);
+			$datas[] = $tmp;
+		}else {
+			$datas = self::model()->findAll('parentid='.$id);
+	
+		}
+		 
+		foreach($datas as $i)
+		{
+			$data = $i->attributes;
+			$this->aname[] = $data['id'];
+			self::findnextIdByAid($data['id'],1);
+		}
+		return $this->aname?array_unique($this->aname):array();
 	}
 }
