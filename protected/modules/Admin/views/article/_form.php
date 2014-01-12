@@ -39,29 +39,23 @@
 	</tr>
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'IndustryID'); ?>
-        </th>
-        <td >
+		<label for="Article_IndustryID">行业</label>        </th>
+        <td>
         <div class="row">
-		<select name="Article[IndustryID]" id="Article_IndustryID" onchange="resetCompany()">
-            <?php echo AdminIndustry::getSelectTree('请选择',$model->IndustryID);?>
-        </select>
-		<?php echo $form->error($model,'IndustryID'); ?>
-        </div>
+			<input type="text" size="30" maxlength="50" name="Article[IndustryID]" id="Company_Industry" value="<?php echo $model->IndustryID;?>">
+        <input type="button" id="industry" value="请选择">
+		<div style="display:none" id="Article_IndustryID_em_" class="errorMessage"></div>        </div>
         </td>
 	</tr>
 	
-		<tr>
+	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'aid'); ?>
-        </th>
-        <td >
+		<label for="Article_aid">地区</label>        </th>
+        <td>
         <div class="row">
-		<select name="Article[aid]" id="Article_aid"  onchange="resetCompany()">
-            <?php echo Area::getSelectTree('请选择',$model->aid);?>
-        </select>
-		<?php echo $form->error($model,'aid'); ?>
-        </div>
+        <input type="text" size="30" maxlength="50" name="Article[aname]" id="Company_city" value="<?php echo $model->aname;?>">
+        <input type="button" id="area" value="请选择">
+		<div style="display:none" id="Article_aid_em_" class="errorMessage"></div>        </div>
         </td>
 	</tr>
 
@@ -72,7 +66,10 @@
         <td >
         <div class="row">
 		<select name="Article[CompanyID]" id="Article_CompanyID">
-            <?php echo Company::getSelectTree('请选择',$model->CompanyID);?>
+	
+			
+            <option value=''>请选择</option>
+           
         </select>
 		<?php echo $form->error($model,'CompanyID'); ?>
         </div>
@@ -114,9 +111,30 @@
         </tr>
       </tfoot>
     </table>
-	
 
+    <input type="text" id="hid_IndustryID"  name="Article[IndustryID]" value="<?php echo $model->IndustryID;?>"/>
+    <input type="text" id="hid_Ctid"  name="Article[aid]" value="<?php echo $model->aid;?>"/>
+    
 <?php $this->endWidget(); ?>
+</div>
+
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("area");
+		bindiframe("industry");
+		<?php if ($model->aid>0):?>
+			fun(<?php echo $model->aid?>,<?php echo $model->CompanyID?>);
+		<?php endif;?>
+	},1000);	
+
+});
+
+</script>
 <script language="javascript">
  	var editor;
 	KindEditor.ready(function(K) {
@@ -131,23 +149,32 @@
 	{
 		editor.sync(); 
 	}
-	function resetCompany()
+	function fun()
 	{
-		var aid = $("#Article_aid").val();
-		var indu = $("#Article_IndustryID").val();
-		if(aid>0 && indu>0)
+		var aid = arguments[0]>0?arguments[0]:0;
+		var CompanyID = arguments[1]>0?arguments[1]:0;
+		if(aid<0)
+			var aid = $("#hid_Ctid").val();
+		if(aid>0 )
 		{
 			$.ajax({
 				url:'?r=admin/article/getCompany',
-				data:{aid:aid,indu:indu},
+				data:{aid:aid},
 				type:'POST',
 				dataType:'json',
 				success:function(obj){
-						alert(obj);
+					$("#Article_CompanyID option").remove();
+					$("#Article_CompanyID").append("<option value=''>请选择</option>"); 
+						$.each(obj,function(k,v){		
+							if(v.id == CompanyID)		
+									var str = "<option value='"+v.id+"' selected='selected'>"+v.name+"</option>";
+							else
+								var str = "<option value='"+v.id+"'>"+v.name+"</option>";
+								$("#Article_CompanyID").append(str); 						
+							});
 					}
 				});
 		}
 		
 	}
 </script>
-</div>
