@@ -64,11 +64,11 @@
     <tr>
       <td class="title">地区</td>
       <td><input type="text" width="150px"  id="Company_city" name="Company_city" value="<?php echo $get['Company_city'];?>"/>
-      <input type="hidden" width="150px"  id="Company_city_id" name="Company_city_id" value="<?php echo $get['Company_city_id'];?>"/>
+      <input type="hidden" width="150px"  id="hid_Ctid" name="Company_city_id" value="<?php echo $get['Company_city_id'];?>"/>
         <input type="button" value="选择"  id="area"/></td>
       <td class="title">行业</td>
       <td><input type="text" width="150px" id="Company_Industry" name="Company_Industry"  value="<?php echo $get['Company_Industry'];?>" />
-      <input type="hidden" width="150px" id="Company_Industry_id" name="Company_Industry_id"  value="<?php echo $get['Company_Industry_id'];?>"/>
+      <input type="hidden" width="150px" id="hid_IndustryID" name="Company_Industry_id"  value="<?php echo $get['Company_Industry_id'];?>"/>
         <input type="button" value="选择"  id="industry"/></td>
       <td class="title">企业名称</td>
       <td><input type="text" width="150px"  name="keyword" value="<?php echo $get['keyword'];?>"/></td>
@@ -87,7 +87,8 @@
       </ul>
     </div>
     <div class="searchData" id="info">
-      <?php foreach($posts as $row):?>
+    <?php if($posts):
+       foreach($posts as $row):?>
       <ul class="searchData_ul">
         <li><?php echo $row['name'];?></li>
         <li>
@@ -138,10 +139,15 @@
           </ul>
         </li>
       </ul>
-      <?php endforeach; ?>
-      <?php 
+     
+      <?php       
+      endforeach; 
+      else:
+      ?>      
+      	暂无数据，<a onclick="javascript:history.go(-1);" href="javascript:void(0);" >返回上一页</a>
+      <?php endif;
 	 //分页widget代码: 
-	 $this->widget('NewPager',array('pages'=>$pages));
+	  $this->widget('NewPager',array('pages'=>$pages));
 	 ?>
     </div>
   </div>
