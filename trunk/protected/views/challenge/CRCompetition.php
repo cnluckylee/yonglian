@@ -159,21 +159,44 @@ clickNRXS=this;
 <!--赛况目录开始-->
 <div style="width:285px; margin:5px; position:relative; height:485px;border:0px solid silver;float:left;background:#E6E6F2;">
 <div id="con_st_1" style="display:block">
-<p align="center" style="font-family:宋体;font-size:14px;color:#000000;font-weight:bold">参赛标题A</p>
-<p align="right" style="font-family:宋体;font-size:12px;color:#000000;font-weight:normal">[2013/02/20]</p>
+<p align="center" style="font-family:宋体;font-size:14px;color:#000000;font-weight:bold"><?php echo $data['title'];?></p>
+<p align="right" style="font-family:宋体;font-size:12px;color:#000000;font-weight:normal">[<?php echo date('Y/m/d', strtotime($data['addtime']));?>]</p>
 <hr width=99% size=5 color=#FF8F59 align=left noshade>
+<?php if(isset($data['comment'][1])):?>
 <p align="left" style="font-family:宋体;font-size:14px;color:#000000;font-weight:normal">赛前:</p>
-<p><div id="type1" onclick="setAab('type',1,10)"style="cursor:default"><div id="graphic2" onclick="setAab('graphic',2,10)"><span id="lb">1.用工荒倒逼中国制造升级</span></div></div></p>
-<p><div id="type2" onclick="setAab('type',2,10)"style="cursor:default"><div id="picture2" onclick="setAab('picture',2,10)"><span id="lb">2.逃避高成本工厂面临搬离的困惑</span></div></div></p>
+<?php 
+$i=1;
+foreach($data['comment'][1] as $comment1):?>
+<p><span id="lb"><?php echo $i.'.'.$comment1['name']?></span></p>
+<?php 
+$i++;
+endforeach;
+endif;
+?>
 <hr style="color: blue;border-style:1px dashed;width:290"> 
+<?php if(isset($data['comment'][2])):?>
 <p align="left" style="font-family:宋体;font-size:14px;color:#000000;font-weight:normal">赛中:</p>
-<p><div id="type3" onclick="setAab('type',3,10)"style="cursor:default"><div id="slide2" onclick="setAab('slide',2,10)"><span id="lb">1.用工荒倒逼中国制造升级</span></div></div></p>
-<p><div id="type4" onclick="setAab('type',4,10)"style="cursor:default"><div id="video2" onclick="setAab('video',2,10)"><span id="lb">2.逃避高成本工厂面临搬离的困惑</span></div></div></p>
+<?php 
+$i=1;
+foreach($data['comment'][2] as $comment2):?>
+<p><span id="lb"><?php echo $i.'.'.$comment2['name']?></span></p>
+<?php 
+$i++;
+endforeach;
+endif;
+?>
 <hr style="color: blue;border-style:1px dashed;width:290">
+<?php if(isset($data['comment'][2])):?>
 <p align="left" style="font-family:宋体;font-size:14px;color:#000000;font-weight:normal">赛后:</p>
-<p><div id="type5" onclick="setAab('type',5,10)"style="cursor:default"><div id="animation1" onclick="setAab('animation',1,10)"><span id="lb">1.用工荒倒逼中国制造升级</span></div></div></p>
-<p><span id="lb">2.逃避高成本工厂面临搬离的困惑</span></p>
-<p><span id="lb">3.双向调整解决用工荒问题</span></p>
+<?php 
+$i=1;
+foreach($data['comment'][3] as $comment3):?>
+<p><span id="lb"><?php echo $i.'.'.$comment3['name']?></span></p>
+<?php 
+$i++;
+endforeach;
+endif;
+?>
 
 <div id="cszp1"><div id="zpml1" onclick="setAab('zpml',1,10)"style="cursor:default"><div id="hbml1" onclick="setAab('hbml',1,10)"><div id="hsml1" onclick="setAab('hsml',1,10)"><p align="right">某某参赛作品目录1</p></div></div></div></div>
 </div>
