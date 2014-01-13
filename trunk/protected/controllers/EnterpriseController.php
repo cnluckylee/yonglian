@@ -198,5 +198,12 @@ class EnterpriseController extends Controller
 			$this->render('CompanyNews',$result);
 		}
 	 }
-
+	/**
+	 * 单企业面
+	 */
+	 public function actionCPSingleEnterprise()
+	 {
+	 	$result = array();
+	 	$this->render('CPSingleEnterprise',$result);
+	 }
 }

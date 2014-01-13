@@ -166,6 +166,7 @@ class Article extends CActiveRecord
 	
 	public static function enterprise($Company_city_id = null,$Company_Industry_id=null,$keyword=null)
 	{
+		$aid_str = '';
 		//解析$Company_city_id,$Company_Industry_id
 		if($Company_city_id){
 			$area = new Area();
@@ -173,6 +174,7 @@ class Article extends CActiveRecord
 			$ids[] = $Company_city_id;
 			$aid_str = implode(",", $ids);
 		}
+		$IndustryID_str = '';
 		if($Company_Industry_id){
 			$industry = new AdminIndustry();
 			$inds = $industry->findnextIdByAid($Company_Industry_id,'id');

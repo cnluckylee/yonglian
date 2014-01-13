@@ -15,7 +15,6 @@ class CompanyController extends AdminController
 
 		$this->render('index',array(
 			'model'=>$model,
-			'mid'=>$this->mid
 		));
 	}
 
