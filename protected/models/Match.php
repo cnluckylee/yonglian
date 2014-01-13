@@ -256,6 +256,14 @@ class Match extends CActiveRecord
 			$data['Post2Arr'] = explode(",",$data['Post2']);
 			$data['Post3Arr'] = explode(",",$data['Post3']);
 		}
+		$commentArr = array();
+		$comment = MatchComment::model()->findAllByAttributes(array('mid'=>$id));
+		foreach($comment as $i)
+		{
+			$dd = $i->attributes;
+			$commentArr[$dd['type']][] = array('id'=>$dd['id'],'name'=>$dd['title'],'pdf'=>$dd['pdf']);
+		}
+		$data['comment'] = $commentArr;
 		return $data;
 	}
 
