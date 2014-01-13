@@ -134,7 +134,7 @@
     <div class="searchData" id="info">
       <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
-        <li><a href="?r=Manage/TheoryView&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
+        <li><a href="?r=Challenge/View&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
         <li><?php echo date("Y-m-d",strtotime($row['stopdate']));?></li>
         <li>
         		<ul class="UV">
