@@ -1,6 +1,6 @@
 
 <div class="topBut">
-<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a>
+<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create',array('mid'=>$mid));?>"><span>添加</span></a>
 
 </div>
 
@@ -12,7 +12,7 @@
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
 	'id'=>'match-entries-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search($mid),
 	'filter'=>$model,
 	'columns'=>array(
 		array(
@@ -36,7 +36,7 @@
 
 			array(
 
-						'name' => 'mid',
+						'name' => 'mname',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -46,7 +46,7 @@
 			array(
 
 						'name' => 'type',
-
+						'value' =>array($this,"getValueByType"),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -54,7 +54,7 @@
 
 			array(
 
-						'name' => 'imgurl',
+						'name' => 'author',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -116,14 +116,7 @@
 						//),
 				),
 
-			array(
-
-						'name' => 'author',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+		
 
 			*/
 		array(

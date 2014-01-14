@@ -74,6 +74,7 @@ class ChallengeController extends Controller
 		$id = Tools::getParam("id");
 		$data = array();
 		$data['data']=Match::MatchDetail($id);
+		$data['MatchEntries'] = MatchEntries::getListByMid($id);
 
 		$this->render('CRCompetition',$data);
 	}
