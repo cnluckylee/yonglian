@@ -46,7 +46,7 @@ class CwpolicyController extends AdminController
 				    $im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
 
-				$model->imgurl=Upload::createFile($upload,'cp','create');
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
 			
 			$pdf=CUploadedFile::getInstance($model,'pdf');
