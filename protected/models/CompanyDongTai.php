@@ -74,20 +74,22 @@ class CompanyDongTai extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'keywords' => 'Keywords',
-			'desc' => 'Desc',
-			'content' => 'Content',
-			'class1' => 'Class1',
-			'order' => 'Order',
-			'imgurl' => 'Imgurl',
+			'id' => '序号',
+			'name' => '名称',
+			'keywords' => '关键词',
+			'desc' => '摘要',
+			'content' => '内容',
+			'class1' => '分类',
+			'class2' => 'Class2',
+			'class3' => 'Class3',
+			'order' => '排序',
+			'imgurl' => '图片',
 			'imgurls' => 'Imgurls',
-			'cid' => 'Cid',
+			'cid' => '公司',
+			'cname' => '公司名称',
 			'updtime' => 'Updtime',
 			'addtime' => 'Addtime',
-			'pdf' => 'Pdf',
-			'cname' => 'Cname',
+			'pdf' => '媒体文件',
 		);
 	}
 
@@ -116,9 +118,36 @@ class CompanyDongTai extends CActiveRecord
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('pdf',$this->pdf,true);
 		$criteria->compare('cname',$this->cname,true);
-
+		$criteria->order = 'updtime desc' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+			}else{
+				$this->updtime=date('Y-m-d H:i:s');
+			}
+			if($this->cid)
+			{
+				$d = Company::model()->findByPk($this->cid);
+				if($d)
+					$this->cname = $d->name;
+			}
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	public static function getCidById($id)
+	{
+		$d = self::model()->findByPk($id);
+		return $d?$d->cid:0;
 	}
 }

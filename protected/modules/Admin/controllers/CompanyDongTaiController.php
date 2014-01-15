@@ -2,7 +2,15 @@
 
 class CompanyDongTaiController extends AdminController
 {
-	
+	protected $cid;
+	public function init()
+	{
+		$cid = Tools::getParam("mid");
+		
+		if($cid)
+			$cid = CompanyDongTai::getCidById($cid);
+		$this->cid = $cid;
+	}
 	/**
 	 * 首页列表.
 	 */
@@ -15,6 +23,7 @@ class CompanyDongTaiController extends AdminController
 
 		$this->render('index',array(
 			'model'=>$model,
+			'cid' =>$this->cid,
 		));
 	}
 
@@ -31,10 +40,37 @@ class CompanyDongTaiController extends AdminController
 		if(isset($_POST['CompanyDongTai']))
 		{
 			$model->attributes=$_POST['CompanyDongTai'];
+			$upload=CUploadedFile::getInstance($model,'imgurl');
+			
+			if(!empty($upload))
+			{
+				$im = null;
+			
+				$imagetype = strtolower($upload->extensionName);
+				if($imagetype == 'gif')
+					$im = imagecreatefromgif($upload->tempName);
+				else if ($imagetype == 'jpg')
+					$im = imagecreatefromjpeg($upload->tempName);
+				else if ($imagetype == 'png')
+					$im = imagecreatefrompng($upload->tempName);
+				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
+			
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
+			}
+				
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+			
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
-
+		
+		$model->cid = $this->cid;
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -47,6 +83,9 @@ class CompanyDongTaiController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$model->setScenario('update');
+		$old_imgurl = $model->imgurl;
+		$old_pdf = $model->pdf;
 
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
@@ -54,6 +93,23 @@ class CompanyDongTaiController extends AdminController
 		if(isset($_POST['CompanyDongTai']))
 		{
 			$model->attributes=$_POST['CompanyDongTai'];
+			$upload=CUploadedFile::getInstance($model,'imgurl');
+			if(!empty($upload))
+			{
+				$model->imgurl=Upload::createFile($upload,'mediapic','update');
+			}else{
+				$model->imgurl = $old_imgurl;
+			}
+				
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+				
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}else
+				$model->pdf = $old_pdf;
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -85,9 +141,29 @@ class CompanyDongTaiController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
+	/**
+	 * 删除
+	 * @param integer $id 主键
+	 */
+	public function actionView($id)
+	{
+		$this->redirect(array('/admin/companyDongTai/create','mid'=>$id));
+	}
 
-	
+	/**
+	 * 取value
+	 */
+	public function getValueByKey($data, $row, $c)
+	{
+		$name ='';
+		if($data->class1)
+		{
+			$dd = CompanyNewsSite::model()->findByPk($data->class1);
+			if($dd)
+				$name = $dd->name;
+		}
+		return $name;
+	}
 
 	/**
 	 * 载入

@@ -1,15 +1,17 @@
 <?php
 
 /**
- * This is the model class for table "{{CompanyDuoZhu}}".
+ * This is the model class for table "{{CompanyProduct}}".
  *
- * The followings are the available columns in table '{{CompanyDuoZhu}}':
+ * The followings are the available columns in table '{{CompanyProduct}}':
  * @property integer $id
  * @property string $name
  * @property string $keywords
  * @property string $desc
  * @property string $content
  * @property integer $class1
+ * @property integer $class2
+ * @property integer $class3
  * @property integer $order
  * @property string $imgurl
  * @property string $imgurls
@@ -17,14 +19,13 @@
  * @property string $updtime
  * @property string $addtime
  * @property string $pdf
- * @property string $cname
  */
 class CompanyDuoZhu extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return CompanyDuoZhu the static model class
+	 * @return CompanyProduct the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -36,7 +37,7 @@ class CompanyDuoZhu extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{CompanyDuoZhu}}';
+		return '{{CompanyProduct}}';
 	}
 
 	/**
@@ -47,13 +48,13 @@ class CompanyDuoZhu extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('class1, order, cid', 'numerical', 'integerOnly'=>true),
-			array('name, keywords, cname', 'length', 'max'=>200),
+			array('class1, class2, class3, order, cid', 'numerical', 'integerOnly'=>true),
+			array('name, keywords,cname', 'length', 'max'=>200),
 			array('imgurl, imgurls, pdf', 'length', 'max'=>255),
 			array('desc, content, updtime, addtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, keywords, desc, content, class1, order, imgurl, imgurls, cid, updtime, addtime, pdf, cname', 'safe', 'on'=>'search'),
+			array('id, name, keywords, desc, content, class1, class2, class3, order, imgurl, imgurls, cid, updtime, addtime, pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,20 +75,22 @@ class CompanyDuoZhu extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'keywords' => 'Keywords',
-			'desc' => 'Desc',
-			'content' => 'Content',
-			'class1' => 'Class1',
-			'order' => 'Order',
-			'imgurl' => 'Imgurl',
+			'id' => '序号',
+			'name' => '名称',
+			'keywords' => '关键词',
+			'desc' => '摘要',
+			'content' => '内容',
+			'class1' => '分类',
+			'class2' => 'Class2',
+			'class3' => 'Class3',
+			'order' => '排序',
+			'imgurl' => '图片',
 			'imgurls' => 'Imgurls',
-			'cid' => 'Cid',
+			'cid' => '公司',
+			'cname' => '公司名称',
 			'updtime' => 'Updtime',
 			'addtime' => 'Addtime',
-			'pdf' => 'Pdf',
-			'cname' => 'Cname',
+			'pdf' => '媒体文件',
 		);
 	}
 
@@ -108,17 +111,47 @@ class CompanyDuoZhu extends CActiveRecord
 		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('class1',$this->class1);
+		$criteria->compare('class2',$this->class2);
+		$criteria->compare('class3',$this->class3);
 		$criteria->compare('order',$this->order);
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('imgurls',$this->imgurls,true);
 		$criteria->compare('cid',$this->cid);
+		$criteria->compare('cname',$this->cname,true);
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('pdf',$this->pdf,true);
-		$criteria->compare('cname',$this->cname,true);
-
+		$criteria->order = 'updtime desc' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+			}else{
+				$this->updtime=date('Y-m-d H:i:s');
+			}
+			if($this->cid)
+			{
+				$d = Company::model()->findByPk($this->cid);
+				if($d)
+					$this->cname = $d->name;
+			}
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	public static function getCidById($id)
+	{
+		$d = self::model()->findByPk($id);
+		return $d?$d->cid:0;
 	}
 }
