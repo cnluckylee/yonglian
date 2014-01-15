@@ -2,7 +2,7 @@
 
 <body onload="show()">
 <!--总框架开始-->
-<div style="width:1130px; margin:0pt auto; position:relative; height:1568px;border:0px solid silver;background:#9D9D9D">
+<div style="width:1130px; margin:0pt auto; position:relative; height:1368px;border:0px solid silver;background:#9D9D9D">
 <div style="width:1130px; margin:0pt auto; position:relative; height:95px;border:0px solid silver;float:left;"><!--头部开始-->
 
 <div style="width:1130px; margin:0pt auto; position:relative; height:7px;border:0px solid silver;float:left;"></div><!--间隔层开始-->
@@ -209,9 +209,14 @@ endif;
 <!--作品目录开始-->
 <div style="width:730px; margin:0pt auto; position:relative; height:340px;border:1px solid #96C2F1;float:left;background:#fdfdfd;">
 <!--赛事1开始-->
-<div id="con_zpml_1">
 
-<ul>
+<ul class="toptitle">
+
+<li>正方作品</li>
+<li>反方作品</li>
+<li>新义作品</li>
+</ul>
+<ul class="zhengfang">
 
 <?php
 $ii = 0; 
@@ -219,7 +224,24 @@ foreach($MatchEntries[1]['data'] as $item):?>
 <li><?php echo $item['title'];?></li>
 <?php endforeach;?>
 </ul>
-</div>
+<ul class="fanfang">
+
+<?php
+$ii = 0; 
+foreach($MatchEntries[2]['data'] as $item):?>
+<li><?php echo $item['title'];?></li>
+<?php endforeach;?>
+</ul>
+<ul class="xinyi">
+
+<?php
+
+$ii = 0; 
+foreach($MatchEntries[2]['data'] as $item):?>
+<li><?php echo $item['title'];?></li>
+<?php endforeach;?>
+</ul>
+
 </div>
 </div>
 </div>

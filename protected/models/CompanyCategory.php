@@ -89,6 +89,7 @@ class CompanyCategory extends CActiveRecord
 		$criteria->compare('order',$this->order);
 		if($cid)
 			$criteria->compare('cid',$cid);
+		$criteria->order = 'updtime desc' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -103,5 +104,18 @@ class CompanyCategory extends CActiveRecord
 			$data = array('cid'=>$cid,'name'=>$name);
 			self::model()->insert($data);
 		}
+	}
+	
+	public static function getList()
+	{
+		$result = array();
+		$result[] = array('id'=>'','name'=>'请选择');
+		$data = self::model()->findAll();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[$arr['id']] = $arr;
+		}
+		return $result;
 	}
 }

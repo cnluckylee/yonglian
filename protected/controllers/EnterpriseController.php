@@ -204,6 +204,11 @@ class EnterpriseController extends Controller
 	 public function actionCPSingleEnterprise()
 	 {
 	 	$result = array();
+	 	$mid = Tools::getParam("mid");
+	 	if($mid>0)
+	 	{
+	 		
+	 	}
 	 	$this->render('CPSingleEnterprise',$result);
 	 }
 }

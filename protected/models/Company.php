@@ -206,7 +206,18 @@ class Company extends CActiveRecord
 		else
 			return $tree->get_tree('0', $str);
 	}
-	
+	public static function getList()
+	{
+		$result = array();
+		$result[] = array('id'=>'','name'=>'请选择');
+		$data = self::model()->findAll();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[$arr['id']] = $arr;
+		}
+		return $result;
+	}
 	/**
 	 * 获取公司并分页
 	 */

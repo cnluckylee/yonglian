@@ -2,6 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'company-product-form',
 	'enableAjaxValidation'=>true,
+	'htmlOptions' => array('enctype' => 'multipart/form-data','onsubmit'=>'setData()'), 
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -33,7 +34,61 @@
         </div>
         </td>
 	</tr>
+	<tr>
+        <th width="100" align="right">
+		<?php echo $form->labelEx($model,'class1'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php 
+			
+		 echo $form->dropDownList($model,'class1',CHtml::listData(CompanyCategory::getList(),'id','name')); ?>
+		<?php echo $form->error($model,'class1'); ?>
+        </div>
+        </td>
+	</tr>
 
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'cid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php 
+			echo $form->dropDownList($model,'cid',CHtml::listData(Company::getList(),'id','name')); ?>
+		<?php echo $form->error($model,'cid'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'imgurl'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'imgurl',array('size'=>50)); 
+			 if(!empty($model->imgurl))
+			  	echo "<img src='".$model->imgurl."' title='缩略图' class='thumbimage'/>";
+		?>
+		<?php echo $form->error($model,'imgurl'); ?>
+        </div>
+        </td>
+	</tr>
+    
+    <tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+			 if(!empty($model->pdf))
+			  	echo $model->pdf;
+		?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'desc'); ?>
@@ -58,125 +113,14 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'class1'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'class1'); ?>
-		<?php echo $form->error($model,'class1'); ?>
-        </div>
-        </td>
-	</tr>
+	
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'class2'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'class2'); ?>
-		<?php echo $form->error($model,'class2'); ?>
-        </div>
-        </td>
-	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'class3'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'class3'); ?>
-		<?php echo $form->error($model,'class3'); ?>
-        </div>
-        </td>
-	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'order'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'order'); ?>
-		<?php echo $form->error($model,'order'); ?>
-        </div>
-        </td>
-	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'imgurl'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'imgurl',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'imgurl'); ?>
-        </div>
-        </td>
-	</tr>
+	
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'imgurls'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'imgurls',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'imgurls'); ?>
-        </div>
-        </td>
-	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'cid'); ?>
-		<?php echo $form->error($model,'cid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'updtime'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'updtime'); ?>
-		<?php echo $form->error($model,'updtime'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'addtime'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'addtime'); ?>
-		<?php echo $form->error($model,'addtime'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pdf'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'pdf',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'pdf'); ?>
-        </div>
-        </td>
-	</tr>
 
 </tbody>
       <tfoot>
@@ -190,3 +134,19 @@
 <?php $this->endWidget(); ?>
 
 </div>
+
+<script language="javascript">
+ 	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('#CompanyProduct_content', {
+					width:'800px',
+					height:'500px',
+					resizeType : 2,
+					uploadJson : '<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/php/upload_json.php' // 相对于当前页面的路径
+		});
+	});
+	function setData()
+	{
+		editor.sync(); 
+	}
+</script>
