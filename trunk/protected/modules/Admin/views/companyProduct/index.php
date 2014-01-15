@@ -45,7 +45,7 @@
 			array(
 
 						'name' => 'class1',
-
+						'value'=>array($this,'getValueBykey'),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
