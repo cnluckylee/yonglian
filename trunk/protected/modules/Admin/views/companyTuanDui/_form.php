@@ -67,7 +67,7 @@
         </th>
         <td >
         <div class="row">
-		<select name="CompanyTuanDui[cid]" id="CompanyProduct_cid">
+		<select name="CompanyTuanDui[cid]" id="CompanyTuanDui_cid">
             <option value=''>请选择</option>
         </select>
 
@@ -196,14 +196,14 @@ $(document).ready(function() {
 				type:'POST',
 				dataType:'json',
 				success:function(obj){
-					$("#CompanyProduct_cid option").remove();
-					$("#CompanyProduct_cid").append("<option value=''>请选择</option>"); 
+					$("#CompanyTuanDui_cid option").remove();
+					$("#CompanyTuanDui_cid").append("<option value=''>请选择</option>"); 
 						$.each(obj,function(k,v){		
 							if(v.id == CompanyID)		
 									var str = "<option value='"+v.id+"' selected='selected'>"+v.name+"</option>";
 							else
 								var str = "<option value='"+v.id+"'>"+v.name+"</option>";
-								$("#CompanyProduct_cid").append(str); 						
+								$("#CompanyTuanDui_cid").append(str); 						
 							});
 					}
 				});

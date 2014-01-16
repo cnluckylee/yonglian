@@ -42,7 +42,7 @@
         <div class="row">
 		 <?php 
 			
-		 echo $form->dropDownList($model,'class1',CHtml::listData(CompanyNewsSite::getList(),'id','name')); ?>
+		 echo $form->dropDownList($model,'class1',CHtml::listData(MentorSite::getList(),'id','name')); ?>
 		<?php echo $form->error($model,'class1'); ?>
         </div>
         </td>
