@@ -50,13 +50,27 @@
 
 	<tr>
           <th width="100" align="right">
+		<?php echo $form->labelEx($model,'aname'); ?>
+        </th>
+        <td >
+      <div class="row">
+		<?php echo $form->textField($model,'aname',array('size'=>30,'maxlength'=>50,'id'=>'Company_city')); ?>
+        <input type="button" value="请选择" id="area" />
+		
+        </div>
+        </td>
+	</tr>
+	
+	<tr>
+          <th width="100" align="right">
 		<?php echo $form->labelEx($model,'cid'); ?>
         </th>
         <td >
         <div class="row">
-		 <?php 
-			echo $form->dropDownList($model,'cid',CHtml::listData(TeamShineSite::getList(),'id','name')); ?>
-		<?php echo $form->error($model,'cid'); ?>
+		<select name="CompanyProduct[cid]" id="CompanyProduct_cid" onchange="getCompanyCategory(this.value)">
+            <option value=''>请选择</option>
+        </select>
+
         </div>
         </td>
 	</tr>
@@ -130,7 +144,7 @@
       </tfoot>
     </table>
 	
-
+<?php echo $form->hiddenField($model,'aid',array('id'=>'hid_Ctid')); ?>
 <?php $this->endWidget(); ?>
 
 </div>
@@ -149,4 +163,24 @@
 	{
 		editor.sync(); 
 	}
+</script>
+
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("area");
+	},1000);	
+	
+	
+	
+	<?php if ($model->cid>0):?>
+			fun(<?php echo $model->aid?>,<?php echo $model->cid?>);
+	<?php endif;?>
+
+});
+
 </script>

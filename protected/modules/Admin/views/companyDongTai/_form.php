@@ -129,7 +129,7 @@
         </tr>
       </tfoot>
     </table>
-	
+	<?php echo $form->hiddenField($model,'aid',array('id'=>'hid_Ctid')); ?>
 
 <?php $this->endWidget(); ?>
 
@@ -149,4 +149,24 @@
 	{
 		editor.sync(); 
 	}
+</script>
+
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("area");
+	},1000);	
+	
+	
+	
+	<?php if ($model->cid>0):?>
+			fun(<?php echo $model->aid?>,<?php echo $model->cid?>);
+	<?php endif;?>
+
+});
+
 </script>
