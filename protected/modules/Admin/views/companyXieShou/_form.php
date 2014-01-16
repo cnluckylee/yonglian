@@ -35,6 +35,19 @@
         </td>
 	</tr>
 	<tr>
+        <th width="100" align="right">
+		<?php echo $form->labelEx($model,'class1'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php 
+			
+		 echo $form->dropDownList($model,'class1',CHtml::listData(JointSite::getList(),'id','name')); ?>
+		<?php echo $form->error($model,'class1'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'aname'); ?>
         </th>
@@ -61,18 +74,7 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php 
-			echo $form->dropDownList($model,'cid',CHtml::listData(Company::getList(),'id','name')); ?>
-		<?php echo $form->error($model,'cid'); ?>
-        </div>
-        </td>
-	</tr>
+
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>

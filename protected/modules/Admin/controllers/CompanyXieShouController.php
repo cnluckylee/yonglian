@@ -158,7 +158,7 @@ class CompanyXieShouController extends AdminController
 		$name ='';
 		if($data->class1)
 		{
-			$dd = TeamShineSite::model()->findByPk($data->class1);
+			$dd = JointSite::model()->findByPk($data->class1);
 			if($dd)
 				$name = $dd->name;
 		}
