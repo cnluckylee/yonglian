@@ -1,15 +1,17 @@
 <?php
 
 /**
- * This is the model class for table "{{CompanyDongTai}}".
+ * This is the model class for table "{{CompanyProduct}}".
  *
- * The followings are the available columns in table '{{CompanyDongTai}}':
+ * The followings are the available columns in table '{{CompanyProduct}}':
  * @property integer $id
  * @property string $name
  * @property string $keywords
  * @property string $desc
  * @property string $content
  * @property integer $class1
+ * @property integer $class2
+ * @property integer $class3
  * @property integer $order
  * @property string $imgurl
  * @property string $imgurls
@@ -17,14 +19,13 @@
  * @property string $updtime
  * @property string $addtime
  * @property string $pdf
- * @property string $cname
  */
 class CompanyDongTai extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return CompanyDongTai the static model class
+	 * @return CompanyProduct the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -47,13 +48,13 @@ class CompanyDongTai extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('class1, order, cid', 'numerical', 'integerOnly'=>true),
-			array('name, keywords, cname', 'length', 'max'=>200),
-			array('imgurl, imgurls, pdf', 'length', 'max'=>255),
-			array('desc, content, updtime, addtime', 'safe'),
+			array('class1, class2, class3, order, cid,aid', 'numerical', 'integerOnly'=>true),
+			array('name, keywords,cname', 'length', 'max'=>200),
+			array('imgurl, imgurls, pdf,aname', 'length', 'max'=>255),
+			array('desc, content,aname, updtime, addtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, keywords, desc, content, class1, order, imgurl, imgurls, cid, updtime, addtime, pdf, cname', 'safe', 'on'=>'search'),
+			array('id, name, keywords, desc, content,aname, aid,class1, class2, class3, order, imgurl, imgurls, cid, updtime, addtime, pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -90,6 +91,8 @@ class CompanyDongTai extends CActiveRecord
 			'updtime' => 'Updtime',
 			'addtime' => 'Addtime',
 			'pdf' => '媒体文件',
+			'aid' => '地区',
+			'aname'=>'地区'
 		);
 	}
 
@@ -110,19 +113,24 @@ class CompanyDongTai extends CActiveRecord
 		$criteria->compare('desc',$this->desc,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('class1',$this->class1);
+		$criteria->compare('class2',$this->class2);
+		$criteria->compare('class3',$this->class3);
 		$criteria->compare('order',$this->order);
+		$criteria->compare('aid',$this->aid);
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('imgurls',$this->imgurls,true);
+		$criteria->compare('aname',$this->aname,true);
 		$criteria->compare('cid',$this->cid);
+		$criteria->compare('cname',$this->cname,true);
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('pdf',$this->pdf,true);
-		$criteria->compare('cname',$this->cname,true);
 		$criteria->order = 'updtime desc' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
