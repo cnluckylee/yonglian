@@ -163,6 +163,21 @@ class CompanyProductController extends AdminController
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
 	}
+	
+	/**
+	 * 取value
+	 */
+	public function getValueByKey($data, $row, $c)
+	{
+		$name ='';
+		if($data->class1)
+		{
+			$dd = CompanyCategory::model()->findByPk($data->class1);
+			if($dd)
+				$name = $dd->name;
+		}
+		return $name;
+	}
 
 	/**
 	 * Ajax验证

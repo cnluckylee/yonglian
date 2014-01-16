@@ -223,9 +223,25 @@ class Company extends CActiveRecord
 	 */
 	public static function getCompany($cid)
 	{
-
 		$criteria = new CDbCriteria();
 		$criteria->addCondition('id in('.$cid.')');
+		$artList = self::model()->findAll($criteria);
+		$result = array();
+		foreach($artList as $i)
+		{
+			$arr = $i->attributes;
+			$result[] = array('id'=>$arr['id'],'name'=>$arr['name']);
+		}
+		return $result;
+	}
+	
+	/**
+	 * 根据地区获取公司并分页
+	 */
+	public static function getCompanyByAid($cid)
+	{
+		$criteria = new CDbCriteria();
+		$criteria->addCondition('Ctid in('.$cid.')');
 		$artList = self::model()->findAll($criteria);
 		$result = array();
 		foreach($artList as $i)

@@ -113,7 +113,6 @@ class ArticleController extends AdminController
 	public function actionGetCompany()
 	{
 		$aid = Tools::getParam("aid","",'post');
-		
 		$result = array();
 		if($aid)
 		{
@@ -122,7 +121,7 @@ class ArticleController extends AdminController
 			$ids[] = $aid;
 			$cids = implode(",", $ids);
 			if($cids)
-				$result = Company::getCompany($cids);
+				$result = Company::getCompanyByAid($cids);
 				
 		}
 
