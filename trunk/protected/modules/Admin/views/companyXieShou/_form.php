@@ -53,7 +53,7 @@
         </th>
         <td >
         <div class="row">
-		<select name="CompanyProduct[cid]" id="CompanyProduct_cid" onchange="getCompanyCategory(this.value)">
+		<select name="CompanyXieShou[cid]" id="CompanyProduct_cid">
             <option value=''>请选择</option>
         </select>
 
@@ -151,7 +151,7 @@
 <script language="javascript">
  	var editor;
 	KindEditor.ready(function(K) {
-		editor = K.create('#CompanyDuoZhu_content', {
+		editor = K.create('#CompanyXieShou_content', {
 					width:'800px',
 					height:'500px',
 					resizeType : 2,

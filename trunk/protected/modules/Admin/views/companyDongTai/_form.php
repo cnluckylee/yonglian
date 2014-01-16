@@ -67,7 +67,7 @@
         </th>
         <td >
         <div class="row">
-		<select name="CompanyProduct[cid]" id="CompanyProduct_cid" onchange="getCompanyCategory(this.value)">
+		<select name="CompanyDongTai[cid]" id="CompanyProduct_cid" >
             <option value=''>请选择</option>
         </select>
 
