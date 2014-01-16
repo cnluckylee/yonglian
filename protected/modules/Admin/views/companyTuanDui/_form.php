@@ -182,5 +182,32 @@ $(document).ready(function() {
 	<?php endif;?>
 
 });
-
+	function fun()
+	{
+		var aid = arguments[0]>0?arguments[0]:0;
+		var CompanyID = arguments[1]>0?arguments[1]:0;
+		if(aid<0)
+			var aid = $("#hid_Ctid").val();
+		if(aid>0 )
+		{
+			$.ajax({
+				url:'?r=admin/article/getCompany',
+				data:{aid:aid},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+					$("#CompanyProduct_cid option").remove();
+					$("#CompanyProduct_cid").append("<option value=''>请选择</option>"); 
+						$.each(obj,function(k,v){		
+							if(v.id == CompanyID)		
+									var str = "<option value='"+v.id+"' selected='selected'>"+v.name+"</option>";
+							else
+								var str = "<option value='"+v.id+"'>"+v.name+"</option>";
+								$("#CompanyProduct_cid").append(str); 						
+							});
+					}
+				});
+		}
+		
+	}
 </script>
