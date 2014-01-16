@@ -100,7 +100,25 @@ class CompanyCategoryController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
+	/**
+	 * 获取企业商品分类
+	 */
+	public function actionGetCompanyCategory()
+	{
+		$cid = Tools::getParam("cid","",'post');
+		$result = array();
+		if($cid>0)
+		{
+			
+			$data = CompanyCategory::model()->findAllByAttributes(array('cid'=>$cid));
+			foreach($data as $i)
+			{
+				$arr = $i->attributes;
+				$result[] = array('id'=>$arr['id'],'name'=>$arr['name']);
+			}
+		}
+		echo json_encode($result);
+	}
 
 	
 

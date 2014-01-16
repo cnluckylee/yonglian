@@ -48,13 +48,13 @@ class CompanyProduct extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('class1, class2, class3, order, cid', 'numerical', 'integerOnly'=>true),
+			array('class1, class2, class3, order, cid,aid', 'numerical', 'integerOnly'=>true),
 			array('name, keywords,cname', 'length', 'max'=>200),
-			array('imgurl, imgurls, pdf', 'length', 'max'=>255),
-			array('desc, content, updtime, addtime', 'safe'),
+			array('imgurl, imgurls, pdf,aname', 'length', 'max'=>255),
+			array('desc, content,aname, updtime, addtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, keywords, desc, content, class1, class2, class3, order, imgurl, imgurls, cid, updtime, addtime, pdf', 'safe', 'on'=>'search'),
+			array('id, name, keywords, desc, content,aname, aid,class1, class2, class3, order, imgurl, imgurls, cid, updtime, addtime, pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -91,6 +91,8 @@ class CompanyProduct extends CActiveRecord
 			'updtime' => 'Updtime',
 			'addtime' => 'Addtime',
 			'pdf' => '媒体文件',
+			'aid' => '地区',
+			'aname'=>'地区'
 		);
 	}
 
@@ -114,8 +116,10 @@ class CompanyProduct extends CActiveRecord
 		$criteria->compare('class2',$this->class2);
 		$criteria->compare('class3',$this->class3);
 		$criteria->compare('order',$this->order);
+		$criteria->compare('aid',$this->aid);
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('imgurls',$this->imgurls,true);
+		$criteria->compare('aname',$this->aname,true);
 		$criteria->compare('cid',$this->cid);
 		$criteria->compare('cname',$this->cname,true);
 		$criteria->compare('updtime',$this->updtime,true);

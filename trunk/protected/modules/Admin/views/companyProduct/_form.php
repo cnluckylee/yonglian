@@ -35,6 +35,32 @@
         </td>
 	</tr>
 	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'aname'); ?>
+        </th>
+        <td >
+      <div class="row">
+		<?php echo $form->textField($model,'aname',array('size'=>30,'maxlength'=>50,'id'=>'Company_city')); ?>
+        <input type="button" value="请选择" id="area" />
+		
+        </div>
+        </td>
+	</tr>
+	
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'cid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<select name="CompanyProduct[cid]" id="CompanyProduct_cid" onchange="getCompanyCategory(this.value)">
+            <option value=''>请选择</option>
+        </select>
+
+        </div>
+        </td>
+	</tr>
+	<tr>
         <th width="100" align="right">
 		<?php echo $form->labelEx($model,'class1'); ?>
         </th>
@@ -48,18 +74,7 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php 
-			echo $form->dropDownList($model,'cid',CHtml::listData(Company::getList(),'id','name')); ?>
-		<?php echo $form->error($model,'cid'); ?>
-        </div>
-        </td>
-	</tr>
+
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>
@@ -129,12 +144,31 @@
         </tr>
       </tfoot>
     </table>
-	
+	<?php echo $form->hiddenField($model,'aid',array('id'=>'hid_Ctid')); ?>
 
 <?php $this->endWidget(); ?>
 
 </div>
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
 
+<script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("area");
+	},1000);	
+	
+	
+	
+	<?php if ($model->class1>0):?>
+			fun(<?php echo $model->aid?>,<?php echo $model->cid?>);
+			getCompanyCategory(<?php echo $model->cid?>,<?php echo $model->class1?>);
+	<?php endif;?>
+
+});
+
+</script>
 <script language="javascript">
  	var editor;
 	KindEditor.ready(function(K) {
@@ -149,4 +183,67 @@
 	{
 		editor.sync(); 
 	}
+	
+	function fun()
+	{
+		var aid = arguments[0]>0?arguments[0]:0;
+		var CompanyID = arguments[1]>0?arguments[1]:0;
+		if(aid<0)
+			var aid = $("#hid_Ctid").val();
+		if(aid>0 )
+		{
+			$.ajax({
+				url:'?r=admin/article/getCompany',
+				data:{aid:aid},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+					$("#CompanyProduct_cid option").remove();
+					$("#CompanyProduct_cid").append("<option value=''>请选择</option>"); 
+						$.each(obj,function(k,v){		
+							if(v.id == CompanyID)		
+									var str = "<option value='"+v.id+"' selected='selected'>"+v.name+"</option>";
+							else
+								var str = "<option value='"+v.id+"'>"+v.name+"</option>";
+								$("#CompanyProduct_cid").append(str); 						
+							});
+					}
+				});
+		}
+		
+	}
+	
+	
+/**
+*	获取公司商品分类
+*/
+function getCompanyCategory()
+{
+		var cid = arguments[0]>0?arguments[0]:0;
+		var class1 = arguments[1]>0?arguments[1]:0;
+		if(cid<0)
+			var cid = $("#CompanyProduct_cid").val();
+		if(cid>0 )
+		{
+			$.ajax({
+				url:'?r=admin/CompanyCategory/GetCompanyCategory',
+				data:{cid:cid},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+					$("#CompanyProduct_class1 option").remove();
+					$("#CompanyProduct_class1").append("<option value=''>请选择</option>"); 
+						$.each(obj,function(k,v){		
+							if(v.id == class1)		
+									var str = "<option value='"+v.id+"' selected='selected'>"+v.name+"</option>";
+							else
+								var str = "<option value='"+v.id+"'>"+v.name+"</option>";
+								$("#CompanyProduct_class1").append(str); 						
+							});
+					}
+				});
+		}
+		
+}
+	
 </script>
