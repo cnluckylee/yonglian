@@ -37,7 +37,7 @@ class CompanyDuoZhu extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{CompanyProduct}}';
+		return '{{CompanyDuoZhu}}';
 	}
 
 	/**
