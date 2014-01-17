@@ -130,7 +130,28 @@ class CompanyTuanDui extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+	public static function getListByCid($cid,$limit=5)
+	{
+		$sqlData = TeamShineSite::model()->findAll();
+		foreach($sqlData as $i)
+		{
+			$criteria = new CDbCriteria();
+			$criteria->select = 'id,name,pdf';
+			$criteria->compare('cid',$cid);
+			$criteria->compare('class1',$i->id);
+			$criteria->limit = $limit;
+			$criteria->order = 'updtime desc';
+			$data = self::model()->findAll($criteria);
+			$result = array();
+			foreach($data as $ii)
+			{
+				$result[$i->id]['data'][] = array('id'=>$ii->id,'name'=>$ii->name,'pdf'=>$ii->pdf);
+				$result[$i->id]['name'] = $i->name;
+			}
+		}
+		return array('name'=>'团队闪耀','data'=>$result);
+		
+	} 
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
