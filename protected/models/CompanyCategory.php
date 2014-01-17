@@ -43,7 +43,7 @@ class CompanyCategory extends CActiveRecord
 			array('name,companyName', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, cid, name,companyName, order', 'safe', 'on'=>'search'),
+			array('id, cid, name, updtime, addtime,companyName, order', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -105,7 +105,22 @@ class CompanyCategory extends CActiveRecord
 			self::model()->insert($data);
 		}
 	}
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->addtime=$this->updTime=date('Y-m-d H:i:s');
+			}else{
+				$this->updtime=date('Y-m-d H:i:s');
+			}
 	
+			return true;
+		}
+		else
+			return false;
+	}
 	public static function getList()
 	{
 		$result = array();

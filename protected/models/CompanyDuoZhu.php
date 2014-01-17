@@ -131,6 +131,27 @@ class CompanyDuoZhu extends CActiveRecord
 		));
 	}
 	
+	public static function getListByCid($cid,$limit=5)
+	{
+		$sqlData = MentorSite::model()->findAll();
+		foreach($sqlData as $i)
+		{
+			$criteria = new CDbCriteria();
+			$criteria->select = 'id,name,pdf';
+			$criteria->compare('cid',$cid);
+			$criteria->compare('class1',$i->id);
+			$criteria->limit = $limit;
+			$criteria->order = 'updtime desc';
+			$data = self::model()->findAll($criteria);
+			$result = array();
+			foreach($data as $ii)
+			{
+				$result[$i->id]['data'][] = array('id'=>$ii->id,'name'=>$ii->name,'pdf'=>$ii->pdf);
+				$result[$i->id]['name'] = $i->name;
+			}
+		}
+		return array('name'=>'舵主风采','data'=>$result);
+	} 
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())

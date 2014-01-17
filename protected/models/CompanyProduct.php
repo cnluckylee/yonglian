@@ -130,7 +130,29 @@ class CompanyProduct extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	public static function getListByCid($cid,$limit=5)
+	{
+		$data = CompanyCategory::model()->findAllByAttributes(array('cid'=>$cid));
+
+		foreach($data as $i)
+		{
+			$criteria = new CDbCriteria();
+			$criteria->select = 'id,name,pdf';
+			$criteria->compare('cid',$cid);
+			$criteria->compare('class1',$i->id);
+			$criteria->limit = $limit;
+			$criteria->order = 'updtime desc';
+			$data2 = self::model()->findAll($criteria);
+			$result = array();
+			foreach($data2 as $ii)
+			{
+				$result[$i->id]['data'][] = array('id'=>$ii->id,'name'=>$ii->name,'pdf'=>$ii->pdf);
+				$result[$i->id]['name'] = $i->name;
+			}
+		}
+		return array('name'=>'产品列表','data'=>$result);
 	
+	}
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
