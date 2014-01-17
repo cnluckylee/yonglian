@@ -1,6 +1,6 @@
 <?php
 
-class CompanyDuoZhuController extends AdminController
+class CompanyServicesController extends AdminController
 {
 	protected $cid;
 	public function init()
@@ -8,7 +8,7 @@ class CompanyDuoZhuController extends AdminController
 		$cid = Tools::getParam("mid");
 		
 		if($cid)
-			$cid = CompanyDuoZhu::getCidById($cid);
+			$cid = CompanyServices::getCidById($cid);
 		$this->cid = $cid;
 	}
 	/**
@@ -16,10 +16,10 @@ class CompanyDuoZhuController extends AdminController
 	 */
 	public function actionIndex()
 	{
-		$model=new CompanyDuoZhu('search');
+		$model=new CompanyServices('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['CompanyDuoZhu']))
-			$model->attributes=$_GET['CompanyDuoZhu'];
+		if(isset($_GET['CompanyServices']))
+			$model->attributes=$_GET['CompanyServices'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -32,14 +32,14 @@ class CompanyDuoZhuController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new CompanyDuoZhu;
+		$model=new CompanyServices;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['CompanyDuoZhu']))
+		if(isset($_POST['CompanyServices']))
 		{
-			$model->attributes=$_POST['CompanyDuoZhu'];
+			$model->attributes=$_POST['CompanyServices'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			
 			if(!empty($upload))
@@ -72,7 +72,7 @@ class CompanyDuoZhuController extends AdminController
 		
 		if($this->cid>0)
 		{
-			$companyComment = CompanyDuoZhu::model()->findByAttributes(array('cid'=>$this->cid));
+			$companyComment = CompanyService::model()->findByAttributes(array('cid'=>$this->cid));
 			if($companyComment){
 				$model->aid = $companyComment?$companyComment->aid:"";
 				$model->aname = $companyComment?$companyComment->aname:"";
@@ -99,9 +99,9 @@ class CompanyDuoZhuController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['CompanyDuoZhu']))
+		if(isset($_POST['CompanyServices']))
 		{
-			$model->attributes=$_POST['CompanyDuoZhu'];
+			$model->attributes=$_POST['CompanyServices'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
@@ -156,7 +156,7 @@ class CompanyDuoZhuController extends AdminController
 	 */
 	public function actionView($id)
 	{
-		$this->redirect(array('/admin/companyDuoZhu/create','mid'=>$id));
+		$this->redirect(array('/admin/CompanyServices/create','mid'=>$id));
 	}
 
 	/**
@@ -167,7 +167,7 @@ class CompanyDuoZhuController extends AdminController
 		$name ='';
 		if($data->class1)
 		{
-			$dd = MentorSite::model()->findByPk($data->class1);
+			$dd = JointSite::model()->findByPk($data->class1);
 			if($dd)
 				$name = $dd->name;
 		}
@@ -180,7 +180,7 @@ class CompanyDuoZhuController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=CompanyDuoZhu::model()->findByPk($id);
+		$model=CompanyServices::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -192,7 +192,7 @@ class CompanyDuoZhuController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='company-duo-zhu-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='company-services-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

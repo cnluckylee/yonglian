@@ -70,7 +70,16 @@ class CompanyProductController extends AdminController
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
 		
-		$model->cid = $this->cid;
+		if($this->cid>0)
+		{
+			$companyComment = CompanyProduct::model()->findByAttributes(array('cid'=>$this->cid));
+			if($companyComment){
+				$model->aid = $companyComment?$companyComment->aid:"";
+				$model->aname = $companyComment?$companyComment->aname:"";
+				
+			}
+			$model->cid = $this->cid;
+		}
 		$this->render('create',array(
 			'model'=>$model,
 		));
