@@ -133,7 +133,7 @@ class CompanyProduct extends CActiveRecord
 	public static function getListByCid($cid,$limit=5)
 	{
 		$data = CompanyCategory::model()->findAllByAttributes(array('cid'=>$cid));
-
+		$result = array();
 		foreach($data as $i)
 		{
 			$criteria = new CDbCriteria();
@@ -143,7 +143,6 @@ class CompanyProduct extends CActiveRecord
 			$criteria->limit = $limit;
 			$criteria->order = 'updtime desc';
 			$data2 = self::model()->findAll($criteria);
-			$result = array();
 			foreach($data2 as $ii)
 			{
 				$result[$i->id]['data'][] = array('id'=>$ii->id,'name'=>$ii->name,'pdf'=>$ii->pdf);

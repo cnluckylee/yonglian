@@ -46,7 +46,7 @@ class AdminMentorController extends AdminController
 				    $im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
 
-				$model->imgurl=Upload::createFile($upload,'cp','create');
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -75,7 +75,7 @@ class AdminMentorController extends AdminController
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
-				$model->imgurl=Upload::createFile($upload,'cp','update');
+				$model->imgurl=Upload::createFile($upload,'mediapic','update');
 			}else{
 				$model->imgurl = $old_imgurl;
 			}

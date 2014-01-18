@@ -53,12 +53,13 @@ class Company extends CActiveRecord
 		return array(
 			array('city1, city2, city3, city4, IndustryID1, IndustryID2, IndustryID3, IndustryID4, recommend, rank,IndustryID,Ctid', 'numerical', 'integerOnly'=>true),
 			array('name, city', 'length', 'max'=>20),
+			array('pdf,imgurl', 'length', 'max'=>255),
 			array('pinyin, Industry', 'length', 'max'=>100),
 			array('desc, updTime, addTime,accountdate', 'safe'),
 				
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pinyin, city, city1, city2, city3, city4, Industry, IndustryID1, IndustryID2, IndustryID3, IndustryID4,IndustryID,Ctid, desc, recommend, rank, updTime, addTime,accountdate', 'safe', 'on'=>'search'),
+			array('id, name, pinyin, pdf,imgurl,city, city1, city2, city3, city4, Industry, IndustryID1, IndustryID2, IndustryID3, IndustryID4,IndustryID,Ctid, desc, recommend, rank, updTime, addTime,accountdate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -100,6 +101,8 @@ class Company extends CActiveRecord
 			'accountdate' => '账期',
 			'IndustryID' => 'IndustryID',
 			'Ctid' => 'Ctid',
+			'pdf' => '媒体文件',
+			'imgurl' => '图片'
 		);
 	}
 
@@ -134,6 +137,8 @@ class Company extends CActiveRecord
 		$criteria->compare('rank',$this->rank);
 		$criteria->compare('updTime',$this->updTime,true);
 		$criteria->compare('addTime',$this->addTime,true);
+		$criteria->compare('pdf',$this->pdf,true);
+		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('accountdate',$this->accountdate,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
