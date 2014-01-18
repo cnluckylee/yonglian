@@ -1,7 +1,7 @@
 
     <?php foreach($posts as $row):?>
       <ul class="searchData_ul">
-        <li><?php echo $row['name'];?></li>
+        <li><a href="?r=Enterprise/CPSingleEnterprise&mid=<?php echo $row['id'];?>" ><?php echo $row['name'];?></a></li>
         <li>
         <ul class="droplist">
          <?php 

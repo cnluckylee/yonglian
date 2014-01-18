@@ -207,12 +207,14 @@ class EnterpriseController extends Controller
 	 	$mid = Tools::getParam("mid");
 	 	if($mid>0)
 	 	{
-
+	 		$result['info'][] = CompanyProduct::getListByCid($mid,5);
 	 		$result['info'][] = CompanyDongTai::getListByCid($mid,5);
  	 		$result['info'][] = CompanyDuoZhu::getListByCid($mid,5);
-  	 		$result['info'][] = CompanyProduct::getListByCid($mid,5);
   	 		$result['info'][] = CompanyTuanDui::getListByCid($mid,5);
  	 		$result['info'][] = CompanyXieShou::getListByCid($mid,5);
+ 	 		$cc = Company::model()->findByPk($mid);
+ 	 		if($cc)
+ 	 			$result['company'] = $cc->attributes;
 	 	}
 
 	 	$this->render('CPSingleEnterprise',$result);

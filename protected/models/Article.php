@@ -213,9 +213,11 @@ class Article extends CActiveRecord
 				
 				$companyName = '';
 				if($cc){
-					$temp = $cc->attributes;
-					$companyName = $temp['name'];
+					
+					$companyName =$cc->name;
+					$list[$arr['CompanyID']]['id'] = $cc->id;
 				}
+				
 				$list[$arr['CompanyID']]['name'] = $companyName;
 				$list[$arr['CompanyID']]['companyinfo'] = Product::getProductByCompanyId($arr['CompanyID']);
 			}
