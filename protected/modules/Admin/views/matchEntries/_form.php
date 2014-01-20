@@ -88,7 +88,32 @@
         </div>
         </td>
 	</tr>
-
+	
+	
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'isRecommend'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->radioButtonList($model,'isRecommend', MatchEntries::$isRecommend); ?>
+		<?php echo $form->error($model,'isRecommend'); ?>
+        </div>
+        </td>
+	</tr>
+	
+ 	
+   	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'times'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'times',array('size'=>20,'maxlength'=>155)); ?>
+		<?php echo $form->error($model,'times'); ?>
+        </div>
+        </td>
+	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'remark'); ?>

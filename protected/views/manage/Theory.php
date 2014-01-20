@@ -92,13 +92,13 @@
   <table  class="searchForm">
     <tr>
       <td class="title">主旨管理</td>
-       <td >经营战略<?php echo $form->dropDownList($model,'CompanyID',CHtml::listData(Company::getTreeDATA(),'id','name')); ?></td>
+       <td >经营战略<?php echo $form->dropDownList($model,'fid',CHtml::listData(SubjectManagement::getList(),'id','name')); ?></td>
        <td >开发战略<?php echo $form->dropDownList($model,'kid',CHtml::listData(BaseData::NewTheory_KFZL(),'id','name')); ?></td>
        <td></td>
        </tr>
      <tr>
       <td class="title">横向管理</td>
-      <td>采购供应<?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?></td>
+      <td>采购供应<?php echo $form->dropDownList($model,'cwid',CHtml::listData(VerticalManagement::getList(),'id','name')); ?></td>
       <td>内部运营<?php echo $form->dropDownList($model,'nid',CHtml::listData(BaseData::NewTheory_NBYY(),'id','name')); ?></td>
       <td>分销配送<?php echo $form->dropDownList($model,'fxid',CHtml::listData(BaseData::NewTheory_FXPS(),'id','name')); ?></td>
     </tr>
