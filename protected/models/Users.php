@@ -47,11 +47,11 @@ class Users extends CActiveRecord
 			array('state, type', 'numerical', 'integerOnly'=>true),
 			array('username, linkuser, tel', 'length', 'max'=>100),
 			array('password', 'length', 'max'=>50),
-			array('mail, website,companyname', 'length', 'max'=>255),
+			array('mail, website,companyname,pdf,imgurl', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password, linkuser, tel, mail, website, companyname,addtime, updtime, state, type', 'safe', 'on'=>'search'),
+			array('id, username, password,pdf,imgurl, linkuser, tel, mail, website, companyname,addtime, updtime, state, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -83,7 +83,9 @@ class Users extends CActiveRecord
 			'updtime' => 'Updtime',
 			'state' => '审核状态',
 			'type' => '类型',
-			'companyname' =>'企业名称'
+			'companyname' =>'企业名称',
+			'pdf' =>'媒体文件',
+			'imgurl' =>'头像'	
 		);
 	}
 
@@ -109,6 +111,8 @@ class Users extends CActiveRecord
 		$criteria->compare('updtime',$this->updtime,true);		
 		$criteria->compare('state',$this->state);
 		$criteria->compare('type',$this->type);
+		$criteria->compare('pdf',$this->pdf);
+		$criteria->compare('imgurl',$this->imgurl);
 		$criteria->compare('companyname',$this->companyname,true);
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

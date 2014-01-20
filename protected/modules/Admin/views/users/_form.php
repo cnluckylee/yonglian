@@ -2,6 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'users-form',
 	'enableAjaxValidation'=>true,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -93,7 +94,35 @@
         </td>
 	</tr>
 
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'imgurl'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'imgurl',array('size'=>50)); 
+			 if(!empty($model->imgurl))
+			  	echo "<img src='".$model->imgurl."' title='缩略图' class='thumbimage'/>";
+		?>
+		<?php echo $form->error($model,'imgurl'); ?>
+        </div>
+        </td>
+	</tr>
+    
+    <tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+			 if(!empty($model->pdf))
+			  	echo $model->pdf;
+		?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
 
 	<tr>
           <th width="100" align="right">

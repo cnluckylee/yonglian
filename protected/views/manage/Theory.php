@@ -92,7 +92,9 @@
   <table  class="searchForm">
     <tr>
       <td class="title">主旨管理</td>
+
        <td >经营战略<?php echo $form->dropDownList($model,'fid',CHtml::listData(SubjectManagement::getList(),'id','name')); ?></td>
+
        <td >开发战略<?php echo $form->dropDownList($model,'kid',CHtml::listData(BaseData::NewTheory_KFZL(),'id','name')); ?></td>
        <td></td>
        </tr>
