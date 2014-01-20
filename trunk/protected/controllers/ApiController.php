@@ -52,4 +52,18 @@ class ApiController extends Controller
 		$smarty->_smarty->assign($data);
 		$smarty->_smarty->display('api/area.tpl');
 	}
+	
+	public function actionArea2()
+	{
+		$data['company'] =array();
+		$smarty = Yii::app()->smarty;
+		$data['cssurl'] = Yii::app()->request->baseUrl.'/css/';
+		$data['jsurl'] = Yii::app()->request->baseUrl.'/js/';
+		$data['cssjsv'] = date('Ymd');
+		$IndustryJson = Area::AreaJson();
+		
+		$data['IndustryJson'] = json_encode($IndustryJson);
+		$smarty->_smarty->assign($data);
+		$smarty->_smarty->display('api/area2.tpl');
+	}
 }

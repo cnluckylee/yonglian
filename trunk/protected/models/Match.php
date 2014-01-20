@@ -51,9 +51,9 @@ class Match extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fid, IndustryID, CompanyID, zzid, hxid, zxid, ssxs, ctid', 'numerical', 'integerOnly'=>true),
+			array('fid, IndustryID, CompanyID, zzid, hxid, zxid, ssxs, ctid,aid,aid2', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
-			array('imgurl, sszb, ssxb,Prize,Prize2,Prize3,PostName,Post,Post2Name,Post2,Post3Name,Post3,pdf', 'length', 'max'=>255),
+			array('imgurl, sszb, ssxb,Prize,Prize2,Prize3,PostName,Post,Post2Name,Post2,Post3Name,Post3,pdf,aname,aname2', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime, stopdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -105,9 +105,11 @@ class Match extends CActiveRecord
 			'Post2'=>'岗位二获奖人员',
 			'Post3Name'=>'岗位三名称',
 			'Post3'=>'岗位三获奖人员',
-			'pdf'=>'媒体文件'
-			
-				
+			'pdf'=>'媒体文件',
+			'aid'=>'地区选择1',
+			'aname'=>'地区选择1',
+			'aid2'=>'地区选择2',
+			'aname2'=>'地区选择2',	
 		);
 	}
 

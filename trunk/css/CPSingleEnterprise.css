@@ -1,0 +1,61 @@
+/*页面属性*/
+body,td,th {font-family: 宋体;font-size: 12px;color: #000000;}
+/*li属性*/
+li{list-style-type:none;}
+/*版块属性*/
+.section_column dl,.section_column dt,.section_column dd{padding:0;margin:0;position: static;left: 0}
+.section_column{width:286px;border-right:4px solid #d0d0d0;background:#d0d0d0;border-left:0px dashed #cccccc;}
+.section_column dl{width:286px;height:225px;background:#FAF4FF;overflow:hidden;}
+.section_column dt{padding:5px 10px;height:13px;font-size:13px;color:#000000;background:#96C2F1;border-top:2px solid #fff;border-bottom:1px solid d0d0d0;}
+.section_column dl.on dt{background:#C7C7E2;color:#FFF;font-weight:bold;}
+.section_column dd{padding:0px;color:#000000;font-size:12px;line-height:;}
+.section_column dd a:link,
+.section_column dd a:visited,
+.section_column dd a{text-decoration:none;color:#000000}
+.section_column dd a:hover{text-decoration:none;color:#000000}
+.section_column dd a:active,
+/*版块标题属性*/
+.STYLE1 {font-family:"宋体";font-size:12px;font-weight:bold;color:#000000;}
+/*图文内容定位*/
+#ag0,#ag1,#ag2,#ag3,#ag4,#ag5{width:830px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*图片内容定位*/
+#ap1,#ap2,#ap3,#ap4,#ap5{width:820px;border:0px solid orange;height:530px;margin-top:5px;margin-left:5px;overflow:hidden;}
+/*幻片内容定位*/
+#as1,#as2,#as3,#as4,#as5{width:830px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*视频内容定位*/
+#av1,#av2,#av3,#av4,#av5{width:672px;border:4px solid #d0d0d0;height:534px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*视频文字定位*/
+#aw1,#aw2,#aw3,#aw4,#aw5{position:absolute;left:680px;top:10px;width:146px;height:510px;z-index:1;margin-top:0px;margin-left:3px;background-color:#ffffff;border-top:3px solid #96C2F1;border-bottom:3px solid #96C2F1}
+/*动画内容定位*/
+#aa1,#aa2,#aa3,#aa4,#aa5{width:820px;border:0px solid orange;height:530px;margin-top:5px;margin-left:5px;overflow:hidden;}
+/*各类号码定位*/
+#nb{width:822px;border:0px solid orange;height:15px;margin:0px;overflow:visible;position:relative;background-color:#B9B973;padding:5px}
+/*类型按钮定位*/
+#bt{width:400px;border:0px solid red;height:30px;top:2px;left:320px;overflow:visible;position:relative;margin-top:0px}
+/*在线交流定位*/
+#zxjl{position:absolute;left:50px;top:572px;width:%;height:%;z-index:1;background:#E0E0E0;cursor:pointer;font-family:"新宋体";font-size: 18px;font-weight: bold;color:#FF6600;}
+#zxjl a{text-decoration:none; cursor:pointer;color:#FF6600;font-weight:bold}
+#zxjl a:hover{text-decoration:none; cursor:pointer;color:blue;font-weight:bold}
+/*显示顶部左侧挡板定位*/
+#d1 {position:absolute;left:0px;top:1px;width:%;height:%;z-index:1;}
+/*显示顶部右侧挡板定位*/
+#d2 {position:absolute;left:625px;top:0px;width:%;height:%;z-index:1;}
+/*显示左侧挡板定位*/
+#d3 {position:absolute;left:0px;top:37px;width:5;height:%;z-index:1;}
+/*服务内容定位*/
+#se1,#se2,#se3,#se4,#se5{width:410px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*外界内容定位*/
+#ou1,#ou2,#ou3,#ou4,#ou5{width:405px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*用户名称属性*/
+#bt1 {position:absolute;left:500px;top:3px;width:%;height:%;z-index:1;font-family:"宋体";font-size:14px;font-weight:bold;color:#000000;}
+/*联系方式属性*/
+#bt2{position:absolute;left:10px;top:7px;width:%;height:%;z-index:1;font-family:"宋体";font-size:14px;font-weight:bold;color:#ffffff;}
+/*服务保障属性*/
+#bt3{position:absolute;left:180px;top:7px;width:%;height:%;z-index:1;font-family: "宋体";font-size: 18px;font-weight: bold;color:#999999;}
+/*外界评论属性*/
+#bt4{position:absolute;left:180px;top:7px;width:%;height:%;z-index:1;font-family: "宋体";font-size: 18px;font-weight: bold;color:#ffffff;}
+/*服务保障目录属性*/
+#bt5{position:absolute;left:10px;top:7px;width:%;height:%;z-index:1;font-family: "宋体";font-size: 14px;font-weight: bold;color:#999999;}
+/*外界评论目录属性*/
+#bt6{position:absolute;left:10px;top:7px;width:%;height:%;z-index:1;font-family: "宋体";font-size: 14px;font-weight: bold;color:#ffffff;}
+-->
