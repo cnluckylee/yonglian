@@ -30,7 +30,7 @@ class CommunityController extends Controller
 	public function actionUser()
 	{
 		$pageArray =array();
-
+		$this->pageTitle = '会员试航';
 		$pageArray['users'] = Users::model()->findAll();
 		$this->render('user',$pageArray);
 	}

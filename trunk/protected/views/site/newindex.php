@@ -73,9 +73,9 @@
 </div></div>
 </div> </div><!--信息索取结束-->
 <div id="inquires2"><div id="bt2"><!--按钮开始-->
-<a href="DataPage.html"target="_blank"style="color:#0000FF">永链数据</a>　　　
+<a href="?r=yl/News"target="_blank"style="color:#0000FF">永链数据</a>　　　
 <a href="OnlineCommunication.html"target="_blank"style="color:#FF9900">在线交流</a>　　　
-<a href="MemberRegistered.html"target="_blank"style="color:#009900">注册登录</a>
+<a href="?r=login"target="_blank"style="color:#009900">注册登录</a>
 </div></div><!--按钮结束-->
 </div><!--信息索取&按钮结束-->
 <div class="poster"><!--海报&公告开始-->

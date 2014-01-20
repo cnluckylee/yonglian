@@ -1,17 +1,17 @@
 <?php
 
-class UsersController extends AdminController
+class IndexLawInfoController extends AdminController
 {
-
+	
 	/**
 	 * 首页列表.
 	 */
 	public function actionIndex()
 	{
-		$model=new Users('search');
+		$model=new IndexLawInfo('search');
 		$model->unsetAttributes();  // 清理默认值
-		if(isset($_GET['Users']))
-			$model->attributes=$_GET['Users'];
+		if(isset($_GET['IndexLawInfo']))
+			$model->attributes=$_GET['IndexLawInfo'];
 
 		$this->render('index',array(
 			'model'=>$model,
@@ -23,14 +23,14 @@ class UsersController extends AdminController
 	 */
 	public function actionCreate()
 	{
-		$model=new Users;
+		$model=new IndexLawInfo;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Users']))
+		if(isset($_POST['IndexLawInfo']))
 		{
-			$model->attributes=$_POST['Users'];
+			$model->attributes=$_POST['IndexLawInfo'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			
 			if(!empty($upload))
@@ -77,13 +77,12 @@ class UsersController extends AdminController
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
 		$old_pdf = $model->pdf;
-// 		//AJAX 表单验证
- 		$this->performAjaxValidation($model);
+		//AJAX 表单验证
+		$this->performAjaxValidation($model);
 
-		if(isset($_POST['Users']))
+		if(isset($_POST['IndexLawInfo']))
 		{
-			$model->attributes=$_POST['Users'];
-
+			$model->attributes=$_POST['IndexLawInfo'];
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
@@ -120,7 +119,7 @@ class UsersController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-
+			
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -134,9 +133,9 @@ class UsersController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
+	
 
-
-
+	
 
 	/**
 	 * 载入
@@ -144,7 +143,7 @@ class UsersController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=Users::model()->findByPk($id);
+		$model=IndexLawInfo::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -156,7 +155,7 @@ class UsersController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='users-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='index-law-info-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
