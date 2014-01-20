@@ -60,8 +60,33 @@ p{margin:7px;}
 	text-align:center;
 	width:730px;
 	height:340px;
+	float: left;
 }
 
 .MatchEntriesTable  td{
 	border:solid #96C2F1 1px;
+}
+
+.MatchEntriesTableMenu{
+	border-collapse:collapse;
+	border:none;
+	text-align:center;
+	width:340px;
+	height:340px;
+	float: left;
+	margin-left: 20px;
+}
+
+.MatchEntriesTableMenu .title,.MatchEntriesTable .title{
+	font-size: 18px;
+	font-weight: bolder;
+	color: white;	
+}
+
+.MatchEntriesTableMenu  td{
+	border:solid #96C2F1 1px;
+}
+
+.MatchEntriesTableMenu table td{
+	border:none;
 }

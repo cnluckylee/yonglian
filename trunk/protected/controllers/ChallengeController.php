@@ -75,7 +75,7 @@ class ChallengeController extends Controller
 		$data = array();
 		$data['data']=Match::MatchDetail($id);
 		$data['MatchEntries'] = MatchEntries::getListByMid($id);
-
+		$data['MatchEntriesMenu'] = MatchEntries::getRecommendList($id);
 		$this->render('CRCompetition',$data);
 	}
 }

@@ -2,7 +2,7 @@
 
 <body onLoad="show()">
 <!--总框架开始-->
-<div style="width:1130px; margin:0pt auto; position:relative; height:1365px;border:0px solid silver;background:#9D9D9D">
+<div style="width:1130px; margin:0pt auto; position:relative; height:1385px;border:0px solid silver;background:#9D9D9D">
 <div style="width:1130px; margin:0pt auto; position:relative; height:95px;border:0px solid silver;float:left;"><!--头部开始-->
 
 <div style="width:1130px; margin:0pt auto; position:relative; height:7px;border:0px solid silver;float:left;"></div><!--间隔层开始-->
@@ -205,14 +205,14 @@ endif;
 <div style="width:1130px; margin:0pt auto; position:relative; height:7px;border:0px solid silver;float:left;"><!--间隔层开始-->
 </div><!--间隔层结束-->
 <!--参赛者目录开始-->
-<div style="width:1090px; margin:0pt auto; position:relative; height:350px;border:0px solid silver;float:left;padding:20px;background: #FAF4FF;">
+<div style="width:1090px; margin:0pt auto; position:relative; height:380px;border:0px solid silver;float:left;padding:20px;background: #FAF4FF;">
 <!--作品目录开始-->
 
 <table class="MatchEntriesTable">
   <tr>
-    <td colspan="2">正方作品</td>
-    <td colspan="2">反方作品</td>
-    <td colspan="2">新义作品</td>
+    <td colspan="2" style="background:#96C2F1;"><p class="title">正方作品</p></td>
+    <td colspan="2" style="background:#96C2F1;"><p class="title">反方作品</p></td>
+    <td colspan="2" style="background:#96C2F1;"><p class="title">新义作品</p></td>
   </tr>
   <tr>
     <td>参赛标题</td>
@@ -232,7 +232,7 @@ endif;
 	  foreach($MatchEntries[1]['data'] as $item) :?>
        <tr>
        
-        <td width="50%"><?php echo $item['title'].$i;?></td>
+        <td width="50%"><?php echo $item['title'];?></td>
         <td width="50%"><?php echo $item['author'];?></td>
        </tr>
 	<?php 
@@ -249,14 +249,14 @@ $i++;
     </table>
     </td>
     <td colspan="2">
-     <table width="100%" height="106">
+     <table width="100%" height="106" >
       <?php 
 	$i=0;
 	if(isset($MatchEntries[2]) && $MatchEntries[2]):
 	  foreach($MatchEntries[2]['data'] as $item) :?>
        <tr>
        
-        <td width="50%"><?php echo $item['title'].$i;?></td>
+        <td width="50%"><?php echo $item['title'];?></td>
         <td width="50%"><?php echo $item['author'];?></td>
        </tr>
 	<?php 
@@ -279,7 +279,7 @@ $i++;
 	  foreach($MatchEntries[3]['data'] as $item) :?>
        <tr>
        
-        <td width="50%"><?php echo $item['title'].$i;?></td>
+        <td width="50%"><?php echo $item['title'];?></td>
         <td width="50%"><?php echo $item['author'];?></td>
        </tr>
 	<?php 
@@ -297,7 +297,41 @@ $i++;
     </td>
   </tr>
 </table>
+<table class="MatchEntriesTableMenu">
+ <tr>
+    <td colspan="3" style="background:#96C2F1;"><p class="title">获胜目录</p> </td>
+     	
+  </tr>
+  <tr>
+    <td>获奖作品</td>
+    <td>获奖姓名</td>
+    <td>参赛次数</td> 	 	
+  </tr>
+   <?php 
+	$i=0;
+	if(isset($MatchEntriesMenu)):
+	  foreach($MatchEntriesMenu as $item) :
+		$i++;	  
+	  ?>
+       <tr>
+        <td width="33%" style="text-align: left;"><?php echo $i.'.'.$item['title'];?></td>
+        <td width="33%"><?php echo $item['author'];?></td>
+        <td width="33%"><?php echo $item['times'];?></td>
+       </tr>
+	<?php 
 
+	endforeach;
+	endif;
+	?>
+     <?php for($ii=15-$i;$ii>=0;$ii--):?>
+     <tr> 
+        <td width="33%" style="text-align: left;">&nbsp;&nbsp;</td>
+        <td width="33%">&nbsp;&nbsp;</td>
+        <td width="33%">&nbsp;&nbsp;</td>
+      </tr>
+     <?php endfor;?>
+   
+</table>
 </div>
 </div>
 

@@ -45,13 +45,13 @@ class MatchEntries extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('mid, type', 'numerical', 'integerOnly'=>true),
+			array('mid, type,isRecommend,times', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('imgurl, pdf, mname, author', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, mid, type, imgurl, content, remark, addtime, updtime, pdf, mname, author', 'safe', 'on'=>'search'),
+			array('id, title,times, isRecommend,mid, type, imgurl, content, remark, addtime, updtime, pdf, mname, author', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -84,6 +84,8 @@ class MatchEntries extends CActiveRecord
 				'pdf' => '媒体文件',
 				'mname' => '比赛名称',
 				'author' => '作者',
+				'isRecommend'=>'推荐',
+				'times' => '参赛次数'
 		);
 	}
 
@@ -103,6 +105,8 @@ class MatchEntries extends CActiveRecord
 		if($mid>0)
 			$criteria->compare('mid',$mid);
 		$criteria->compare('type',$this->type);
+		$criteria->compare('isRecommend',$this->isRecommend);
+		$criteria->compare('times',$this->times);
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('remark',$this->remark,true);
@@ -129,6 +133,23 @@ class MatchEntries extends CActiveRecord
 		}
 		return $result;
 	}
+	
+	public static function getRecommendList($mid)
+	{
+		$data = self::model()->findAllByAttributes(array('mid'=>$mid,'isRecommend'=>1));
+		$result = array();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[] = $arr;
+		}
+		return $result;
+	}
+	
+	public static $isRecommend= array(
+			'否', '是'
+	);
+	
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
