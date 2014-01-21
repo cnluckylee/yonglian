@@ -22,6 +22,7 @@ class EnterpriseController extends Controller
 		$Company_city = Tools::getParam('Company_city');
 		$Company_Industry = Tools::getParam('Company_Industry');
 		$keyword = Tools::getParam('keyword');
+		$cid = Tools::getParam('cid');
 		$result = Article::enterprise($Company_city_id,$Company_Industry_id,$keyword);
 		if(isset($_GET['_']))
 		{
@@ -32,7 +33,8 @@ class EnterpriseController extends Controller
 								   'Company_Industry_id'=>$Company_Industry_id,
 								   'Company_city'=>$Company_city,
 								   'Company_Industry'=>$Company_Industry,
-									'keyword'=>$keyword
+									'keyword'=>$keyword,
+									'cid'=>$cid
 					);
 			
 			$result['menus'] = $this->menus;
