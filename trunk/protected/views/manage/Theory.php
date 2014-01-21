@@ -101,13 +101,13 @@
     	 <td >所属行业</td>
        <td><?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(Industrymanagement::getList(),'id','name')); ?></td>
       
-      <td class="title">纵向管理</td>
+      <td>纵向管理</td>
       <td><?php echo $form->dropDownList($model,'zxid',CHtml::listData(VerticalManagement::getList(),'id','name')); ?></td>
      
      
     </tr>
      <tr>
-     <td class="title">作者</td>
+     <td>作者</td>
       <td><?php echo $form->textField($model,'mname'); ?></td>
       <td>标题</td>
       <td><?php echo $form->textField($model,'title'); ?></td>
