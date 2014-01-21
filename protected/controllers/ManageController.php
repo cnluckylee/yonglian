@@ -31,15 +31,14 @@ class ManageController extends Controller
 			$model=new Theory;
 			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
 			$model->CompanyID = isset($Theory['CompanyID'])?trim($Theory['CompanyID']):'';
-			$model->cid = isset($Theory['cid'])?trim($Theory['cid']):'';
-			$model->nid = isset($Theory['nid'])?trim($Theory['nid']):'';
-			$model->fxid = isset($Theory['fxid'])?trim($Theory['fxid']):'';
-			$model->qid = isset($Theory['qid'])?trim($Theory['qid']):'';
-			$model->rid = isset($Theory['rid'])?trim($Theory['rid']):'';
-			$model->cwid = isset($Theory['cwid'])?trim($Theory['cwid']):'';
-			$model->kid = isset($Theory['kid'])?trim($Theory['kid']):'';
-			$model->sid = isset($Theory['sid'])?trim($Theory['sid']):'';
+			$model->zzid = isset($Theory['zzid'])?trim($Theory['zzid']):'';
+			$model->hxid = isset($Theory['hxid'])?trim($Theory['hxid']):'';
+			$model->zxid = isset($Theory['zxid'])?trim($Theory['zxid']):'';
+			$model->title = isset($Theory['title'])?trim($Theory['title']):'';
 			$model->mname = isset($Theory['mname'])?trim($Theory['mname']):'';
+			
+			$model->IndustryID = isset($Theory['IndustryID'])?trim($Theory['IndustryID']):'';
+		
 			$this->_result['model'] = $model;
 			$this->render('Theory',$this->_result);
 

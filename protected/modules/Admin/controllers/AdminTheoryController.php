@@ -132,10 +132,70 @@ class AdminTheoryController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
+	/**
+	 * 取value
+	 */
+	public function getValueByzzid($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = SubjectManagement::model()->findByPk($data->zzid);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
+  
+	/**
+	 * 取value
+	 */
+	public function getValueByhxid($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = HorizontalManagement::model()->findByPk($data->hxid);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
 
+	/**
+	 * 取value
+	 */
+	public function getValueByzxid($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = VerticalManagement::model()->findByPk($data->zxid);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
 
-
-
+	/**
+	 * 取value
+	 */
+	public function getValueByCompanyID($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = Company::model()->findByPk($data->CompanyID);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
+	
+	/**
+	 * 取value
+	 */
+	public function getValueByIndustryID($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = Industrymanagement::model()->findByPk($data->IndustryID);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
 	/**
 	 * 载入
 	 * @param integer $id 主键
@@ -148,6 +208,7 @@ class AdminTheoryController extends AdminController
 		return $model;
 	}
 
+	
 	/**
 	 * Ajax验证
 	 * @param CModel the model to be validated
