@@ -77,7 +77,6 @@
       <td><input type="text" width="150px"  name="keyword" value="<?php echo $get['keyword'];?>"/></td>
       <td class="title">栏目类别</td>
       <td><select name="cid">
-      <option value="">所有栏目</option>
       <?php foreach($cat as $cid =>$item):?>
       
       <option value="<?php echo $cid;?>" <?php if($get['cid'] == $cid): echo 'selected'; endif; ?>><?php echo $item['name']; ?></option>
@@ -99,6 +98,7 @@
       </ul>
     </div>
     <div class="searchData" id="info">
+    <?php if($posts):?>
       <?php foreach($posts as $row):?>
       <ul class="searchData_ul">
         <li><?php echo $row['name'];?></li>
@@ -144,6 +144,9 @@
 	 //分页widget代码: 
 	$this->widget('NewPager',array('pages'=>$pages));
 	 ?>
+	 <?php else:?>
+	 <a href="javascript:void(0);" onclick="javascript:history.go(-1);" >返回上一页</a>
+	 <?php endif;?>
     </div>
   </div>
 </div>
