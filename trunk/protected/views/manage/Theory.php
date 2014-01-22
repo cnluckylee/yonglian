@@ -91,7 +91,7 @@
  <!--商标或标志结束（身体1）-->
   <table  class="searchForm">
     <tr>
-      <td class="title">主旨管理</td>
+      <td>主旨管理</td>
        <td ><?php echo $form->dropDownList($model,'zzid',CHtml::listData(SubjectManagement::getList(),'id','name')); ?></td>
        <td >横向管理</td>
        <td><?php echo $form->dropDownList($model,'hxid',CHtml::listData(HorizontalManagement::getList(),'id','name')); ?></td>

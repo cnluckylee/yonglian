@@ -31,19 +31,7 @@
         <div class="row">
 		
 		
-		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>200)); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'fid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'fid'); ?>
+		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>100)); ?>
 		</div>
         </td>
 
@@ -133,102 +121,6 @@
 
 	</tr>
 	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'cid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'cid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'nid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'nid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'fxid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'fxid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'qid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'qid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'rid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'rid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'cwid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'cwid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'kid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'kid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
-          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'sid'); ?>
-</span></th>
-        <td >
-        <div class="row">
-		
-		
-		<?php echo $form->textField($model,'sid'); ?>
-		</div>
-        </td>
-
-	</tr>
-	<tr>
           <th width="100" align="right"><span class="row"><?php echo $form->label($model,'mid'); ?>
 </span></th>
         <td >
@@ -236,6 +128,66 @@
 		
 		
 		<?php echo $form->textField($model,'mid'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'mname'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'mname',array('size'=>60,'maxlength'=>100)); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'pdf'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'pdf',array('size'=>60,'maxlength'=>255)); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'zzid'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'zzid'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'hxid'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'hxid'); ?>
+		</div>
+        </td>
+
+	</tr>
+	<tr>
+          <th width="100" align="right"><span class="row"><?php echo $form->label($model,'zxid'); ?>
+</span></th>
+        <td >
+        <div class="row">
+		
+		
+		<?php echo $form->textField($model,'zxid'); ?>
 		</div>
         </td>
 

@@ -11,7 +11,7 @@
 </div><!-- search-form -->
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
-	'id'=>'theory-grid',
+	'id'=>'technology-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
@@ -19,7 +19,7 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -35,152 +35,58 @@
 						//),
 				),
 
-
-		array(
-			'name' => 'imgurl',
-			'type' => 'image',
-			'htmlOptions' => array(
-				'class' => 'thumbimage_100',
-			),
-		),
-
 			array(
 
-						'name' => 'content',
-
+						'name' => 'zzid',
+						'value' =>array($this,"getValueByzzid"),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
-
 			array(
 
-						'name' => 'remark',
-
+						'name' => 'hxid',
+						'value' =>array($this,"getValueByhxid"),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
-
-			/*
-		array(
-
-						'name' => 'addtime',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
 			array(
 
-						'name' => 'updtime',
-
+						'name' => 'zxid',
+						'value' =>array($this,"getValueByzxid"),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
-
-			array(
-
-						'name' => 'IndustryID',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
 			array(
 
 						'name' => 'CompanyID',
-
+						'value' =>array($this,"getValueByCompanyID"),
+					
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),
-
+				),		
 			array(
 
-						'name' => 'cid',
-
+						'name' => 'IndustryID',
+						'value' =>array($this,"getValueByIndustryID"),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),
-
+				),	
+			
 			array(
 
-						'name' => 'nid',
+						'name' => 'mname',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
-			array(
-
-						'name' => 'fxid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'qid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'rid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'cwid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'kid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'sid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'mid',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			*/
+		
 		array(
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
