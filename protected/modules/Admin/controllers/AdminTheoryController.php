@@ -46,7 +46,7 @@ class AdminTheoryController extends AdminController
 				    $im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
 
-				$model->imgurl=Upload::createFile($upload,'cp','create');
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
 			
 			$pdf=CUploadedFile::getInstance($model,'pdf');
@@ -86,7 +86,7 @@ class AdminTheoryController extends AdminController
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
-				$model->imgurl=Upload::createFile($upload,'cp','update');
+				$model->imgurl=Upload::createFile($upload,'mediapic','update');
 			}else{
 				$model->imgurl = $old_imgurl;
 			}

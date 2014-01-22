@@ -46,7 +46,7 @@ class AdminManageCaseController extends AdminController
 				    $im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
 
-				$model->imgurl=Upload::createFile($upload,'cp','create');
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
 			$pdf=CUploadedFile::getInstance($model,'pdf');
 				
@@ -84,7 +84,7 @@ class AdminManageCaseController extends AdminController
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
-				$model->imgurl=Upload::createFile($upload,'cp','update');
+				$model->imgurl=Upload::createFile($upload,'mediapic','update');
 			}else{
 				$model->imgurl = $old_imgurl;
 			}
@@ -130,6 +130,70 @@ class AdminManageCaseController extends AdminController
 
 
 
+	/**
+	 * 取value
+	 */
+	public function getValueByzzid($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = SubjectManagement::model()->findByPk($data->zzid);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
+	
+	/**
+	 * 取value
+	 */
+	public function getValueByhxid($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = HorizontalManagement::model()->findByPk($data->hxid);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
+	
+	/**
+	 * 取value
+	 */
+	public function getValueByzxid($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = VerticalManagement::model()->findByPk($data->zxid);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
+	
+	/**
+	 * 取value
+	 */
+	public function getValueByCompanyID($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = Company::model()->findByPk($data->CompanyID);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
+	
+	/**
+	 * 取value
+	 */
+	public function getValueByIndustryID($data, $row, $c)
+	{
+	
+		$name = '';
+		$model = Industrymanagement::model()->findByPk($data->IndustryID);
+		if($model)
+			$name = $model->name;
+		return $name;
+	}
 
 	/**
 	 * 载入

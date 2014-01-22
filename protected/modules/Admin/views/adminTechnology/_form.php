@@ -1,6 +1,6 @@
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'theory-form',
+	'id'=>'technology-form',
 	'enableAjaxValidation'=>true,
 	'htmlOptions' => array('enctype' => 'multipart/form-data','onsubmit'=>'setData()'), 
 )); ?>
@@ -22,19 +22,6 @@
         </div>
         </td>
 	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'fid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'fid',CHtml::listData(BaseData::NewTheory_JYZL(),'id','name')); ?>
-		<?php echo $form->error($model,'fid'); ?>
-        </div>
-        </td>
-	</tr>
-
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>
@@ -51,7 +38,7 @@
 	</tr>
 
 	<tr>
-        <th width="100" align="right">
+          <th width="100" align="right">
 		<?php echo $form->labelEx($model,'pdf'); ?>
         </th>
         <td >
@@ -64,7 +51,74 @@
         </div>
         </td>
 	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'zzid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->dropDownList($model,'zzid',CHtml::listData(SubjectManagement::getList(),'id','name')); ?>
+		<?php echo $form->error($model,'zzid'); ?>
+        </div>
+        </td>
+	</tr>
 
+<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'hxid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->dropDownList($model,'hxid',CHtml::listData(HorizontalManagement::getList(),'id','name')); ?>
+		<?php echo $form->error($model,'hxid'); ?>
+        </div>
+        </td>
+	</tr>
+
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'zxid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->dropDownList($model,'zxid',CHtml::listData(VerticalManagement::getList(),'id','name')); ?>
+		<?php echo $form->error($model,'zxid'); ?>
+        </div>
+        </td>
+	</tr>
+		<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'IndustryID'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->dropDownList($model,'IndustryID',CHtml::listData(Industrymanagement::getList(),'id','name')); ?>
+		<?php echo $form->error($model,'IndustryID'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'mname'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'mname',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->error($model,'mname'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
+       <th width="100" align="right">
+		<?php echo $form->labelEx($model,'aid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		  <input type="text" size="30" maxlength="50" name="Technology[aname]" id="Company_city" value="<?php echo $model->aname;?>">
+        <input type="button" id="area" value="请选择">
+        </div>
+        </td>
+	</tr>
 
 
 
@@ -75,119 +129,17 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->dropDownList($model,'CompanyID',CHtml::listData(Company::getTreeDATA(),'id','name')); ?>
-		<?php echo $form->error($model,'CompanyID'); ?>
+			<select name="Technology[CompanyID]" id="Article_CompanyID">
+	
+			
+            <option value=''>请选择</option>
+           
+        </select>
+		
         </div>
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'cid',CHtml::listData(BaseData::NewTheory_CGGY(),'id','name')); ?>
-		<?php echo $form->error($model,'cid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'nid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'nid',CHtml::listData(BaseData::NewTheory_NBYY(),'id','name')); ?>
-		<?php echo $form->error($model,'nid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'fxid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'fxid',CHtml::listData(BaseData::NewTheory_FXPS(),'id','name')); ?>
-		<?php echo $form->error($model,'fxid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'qid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'qid',CHtml::listData(BaseData::NewTheory_QYZZ(),'id','name')); ?>
-		<?php echo $form->error($model,'qid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'rid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'rid',CHtml::listData(BaseData::NewTheory_RLZY(),'id','name')); ?>
-		<?php echo $form->error($model,'rid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'cwid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'cwid',CHtml::listData(BaseData::NewTheory_CWSS(),'id','name')); ?>
-		<?php echo $form->error($model,'cwid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'kid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->dropDownList($model,'kid',CHtml::listData(BaseData::NewTheory_KFZL(),'id','name')); ?>
-		<?php echo $form->error($model,'kid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'sid'); ?>
-        </th>
-        <td >
-        <div class="row">
-        <?php echo $form->dropDownList($model,'sid',CHtml::listData(BaseData::NewTheory_SYHY(),'id','name')); ?>
-		<?php echo $form->error($model,'sid'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'mid'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->dropDownList($model,'mid',CHtml::listData(Member::model()->findAll(),'id','name')); ?>
-		<?php echo $form->error($model,'mid'); ?>
-        </div>
-        </td>
-	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'remark'); ?>
@@ -218,12 +170,27 @@
         </tr>
       </tfoot>
     </table>
-	
-
+<?php echo $form->hiddenField($model,'aid',array('id'=>'hid_Ctid')); ?>
 <?php $this->endWidget(); ?>
 
 </div>
 </div>
+
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("area");
+	},1000);	
+	<?php if ($model->aid>0 && $model->CompanyID>0):?>
+			fun(<?php echo $model->aid?>,<?php echo $model->CompanyID?>);
+	<?php endif;?>
+});
+
+</script>
 <script language="javascript">
  	var editor;
 	KindEditor.ready(function(K) {
@@ -237,5 +204,34 @@
 	function setData()
 	{
 		editor.sync(); 
+	}
+	
+		function fun()
+	{
+		var aid = arguments[0]>0?arguments[0]:0;
+		var CompanyID = arguments[1]>0?arguments[1]:0;
+		if(aid<0)
+			var aid = $("#hid_Ctid").val();
+		if(aid>0 )
+		{
+			$.ajax({
+				url:'?r=admin/article/getCompany',
+				data:{aid:aid},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+					$("#Article_CompanyID option").remove();
+					$("#Article_CompanyID").append("<option value=''>请选择</option>"); 
+						$.each(obj,function(k,v){		
+							if(v.id == CompanyID)		
+									var str = "<option value='"+v.id+"' selected='selected'>"+v.name+"</option>";
+							else
+								var str = "<option value='"+v.id+"'>"+v.name+"</option>";
+								$("#Article_CompanyID").append(str); 						
+							});
+					}
+				});
+		}
+		
 	}
 </script>

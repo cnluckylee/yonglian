@@ -152,13 +152,13 @@ class Theory extends CActiveRecord
 		$criteria->order = 'updtime desc';
 	
 	
-		$count = Theory::model()->count($criteria);
+		$count = self::model()->count($criteria);
 	
 	
 		$pager = new CPagination($count);
 		$pager->pageSize = 10;
 		$pager->applyLimit($criteria);
-		$artList = Theory::model()->findAll($criteria);
+		$artList = self::model()->findAll($criteria);
 		$list = array();
 	
 		foreach($artList as $i)
@@ -166,20 +166,10 @@ class Theory extends CActiveRecord
 			$arr = $i->attributes;
 	
 			$cc = Company::model()->findByPk($arr['CompanyID']);
-			$companyName = '';
-			if($cc){
-				$temp = $cc->attributes;
-				$companyName = $temp['name'];
-			}
-			$arr['CompanyName'] = $companyName;
-	
+			$arr['CompanyName'] = trim($cc?$cc->name:'');
+			
 			$me = Member::model()->findByPk($arr['mid']);
-			$memName = '';
-			if($me){
-				$temp = $me->attributes;
-				$memName = $temp['name'];
-			}
-			$arr['MemName'] = $memName;
+			$arr['MemName'] = $me?$me->name:$arr['mname'];
 			$list[] = $arr;
 		}
 		return array('pages'=>$pager,'posts'=>$list);
