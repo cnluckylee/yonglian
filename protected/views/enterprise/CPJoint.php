@@ -60,30 +60,26 @@
   <table  class="searchForm">
     <tr>
       <td class="title">地区</td>
-      <td><input type="text" width="150px"  id="Company_city" name="Company_city" value="<?php echo $get['Company_city'];?>"/>
-      <input type="hidden" width="150px"  id="Company_city_id" name="Company_city_id" value="<?php echo $get['Company_city_id'];?>"/>
-        <input type="button" value="选择"  id="area"/></td>
+      <td><?php echo $form->textField($model,'aname',array('id'=>'Company_city','maxlength'=>'100','size'=>15)); ?>
+        <input type="button" id="area" value="请选择"></td>
       <td class="title">行业</td>
-      <td><input type="text" width="150px" id="Company_Industry" name="Company_Industry"  value="<?php echo $get['Company_Industry'];?>" />
-      <input type="hidden" width="150px" id="Company_Industry_id" name="Company_Industry_id"  value="<?php echo $get['Company_Industry_id'];?>"/>
-        <input type="button" value="选择"  id="industry"/></td>
+      <td> 
+      <?php echo $form->textField($model,'IndustryName',array('id'=>'Company_Industry','maxlength'=>'100','size'=>15)); ?>
+        <input type="button" id="industry" value="请选择"></td>
        </tr>
        <tr>
        
       <td class="title">企业名称</td>
-      <td><input type="text" width="150px"  name="keyword" value="<?php echo $get['keyword'];?>"/></td>
+      <td> <?php echo $form->textField($model,'cname'); ?></td>
       <td class="title">栏目类别</td>
-      <td><select name="cid">
-      <option value="">所有栏目</option>
-      <?php foreach($cat as $cid =>$item):?>
+      <td><?php echo $form->dropDownList($model,'cid',CHtml::listData(Alltype::getAllType(4),'id','name')); ?>
       
-      <option value="<?php echo $cid;?>" <?php if($get['cid'] == $cid): echo 'selected'; endif; ?>><?php echo $item['name']; ?></option>
-      <?php endforeach; ?>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      </select><input type="submit"  value="搜索" /></td>
+      <input type="submit"  value="搜索" /></td>
       <td></td>
     </tr>
   </table>
+   <?php echo $form->hiddenField($model,'IndustryID',array('id'=>'Company_Industry_id'));?>
+    <?php echo $form->hiddenField($model,'aid',array('id'=>'hid_Ctid'));?>
 <?php $this->endWidget(); ?>
   <div class=" searchDataForm" style="width:810px;">
     <div class="top">

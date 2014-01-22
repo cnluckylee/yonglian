@@ -89,19 +89,12 @@
 
 			
 			
-		array(
-
-						'name' => 'addtime',
-						'header' => '添加时间',
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+		
 
 			array(
 
 						'name' => 'updtime',
-						'header' => '修改时间'
+						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),

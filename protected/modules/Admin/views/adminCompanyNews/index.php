@@ -51,15 +51,6 @@
 						//),
 				),	
 
-			array(
-
-						'name' => 'imgurl',
-						'type' => 'image',
-						'header' => '图片',
-						'htmlOptions' => array(
-								'class' => 'thumbimage_100',
-						),
-				),
 
 			array(
 
@@ -70,9 +61,14 @@
 								'width' => '60',
 						),
 				),
+			array(
 
-			
-			
+						'name' => 'updtime',
+						
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
 
 		array(
 			'header'=>'操作',

@@ -19,13 +19,13 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						
 				),
 
 			array(
 
 						'name' => 'title',
-						'header' => '项目标题'
+						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -35,7 +35,7 @@
 
 						'name' => 'cid',
 						'value' =>array($this,"getValueByKey"),
-						'header' => '分类'
+						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -45,21 +45,13 @@
 
 						'name' => 'CompanyID',
 						'value' =>array($this,"getValueByCompanyID"),
-						'header' => '公司'
+						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),	
-
-			array(
-
-						'name' => 'imgurl',
-						'type' => 'image',
-						'header' => '图片',
-						'htmlOptions' => array(
-								'class' => 'thumbimage_100',
-						),
-				),
+			
+		
 
 			array(
 
@@ -70,10 +62,14 @@
 								'width' => '60',
 						),
 				),
+		array(
 
-			
-			
-
+						'name' => 'updtime',
+						
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
 		array(
 			'header'=>'操作',
 			'class'=>'CButtonColumn',
