@@ -89,20 +89,9 @@ class EnterpriseController extends Controller
 	{
 		$this->pageTitle = '携手发展';
 
-
-		//echo $_GET['Company_Industry_id'];exit;
-		$Company_city_id = Tools::getParam('Company_city_id');
-		$Company_Industry_id = Tools::getParam('Company_Industry_id');
-		$Company_city = Tools::getParam('Company_city');
-		if(!$Company_city)
-			$Company_city_id = '';
-
-		$Company_Industry = Tools::getParam('Company_Industry');
-		if(!$Company_Industry)
-			$Company_Industry_id = '';
-		$keyword = Tools::getParam('keyword');
-		$cid = Tools::getParam('cid');
-		$result = Joint::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$reData =isset($_GET['Joint'])?$_GET['Joint']:array();
+		
+		$result = Joint::enterprise($reData);
 		$result['cat'] = BaseData::CPDevelopCategary();
 
 		if(isset($_GET['_']) && $_GET['_']>0)
@@ -111,15 +100,14 @@ class EnterpriseController extends Controller
 			$this->layout = false;
 			$this->render('CPJointAjax',$result);
 		}else{
-
-			$result['get'] = array('Company_city_id'=>$Company_city_id,
-					'Company_Industry_id'=>$Company_Industry_id,
-					'Company_city'=>$Company_city,
-					'Company_Industry'=>$Company_Industry,
-					'keyword'=>$keyword,
-					'cid'=>$cid
-			);
-			$result['menus'] = $this->menus;
+			$model=new Joint();
+			$model->aid = isset($reData['aid'])?trim($reData['aid']):'';
+			$model->IndustryID = isset($reData['IndustryID'])?trim($reData['IndustryID']):'';
+			$model->aname = isset($reData['aname'])?trim($reData['aname']):'';
+			$model->IndustryName = isset($reData['IndustryName'])?trim($reData['IndustryName']):'';
+			$model->cid = isset($reData['cid'])?trim($reData['cid']):'';
+			$model->cname = isset($reData['cname'])?trim($reData['cname']):'';
+			$result['model'] = $model;
 			$this->render('CPJoint',$result);
 		}
 	}
@@ -168,18 +156,8 @@ class EnterpriseController extends Controller
 	 public function actionMentor()
 	 {
 		$this->pageTitle = '舵主风采';
-		$Company_city_id = Tools::getParam('Company_city_id');
-		$Company_Industry_id = Tools::getParam('Company_Industry_id');
-		$Company_city = Tools::getParam('Company_city');
-		if(!$Company_city)
-			$Company_city_id = '';
-
-		$Company_Industry = Tools::getParam('Company_Industry');
-		if(!$Company_Industry)
-			$Company_Industry_id = '';
-		$keyword = Tools::getParam('keyword');
-		$cid = Tools::getParam('cid');
-		$result = Mentor::enterprise($Company_city_id,$Company_Industry_id,$keyword,$cid);
+		$reData =isset($_GET['Mentor'])?$_GET['Mentor']:array();
+		$result = Mentor::enterprise($reData);
 		$result['cat'] = BaseData::MentorCategary();
 
 		if(isset($_GET['_']) && $_GET['_']>0)
@@ -189,13 +167,14 @@ class EnterpriseController extends Controller
 			$this->render('CompanyNewsAjax',$result);
 		}else{
 
-			$result['get'] = array('Company_city_id'=>$Company_city_id,
-					'Company_Industry_id'=>$Company_Industry_id,
-					'Company_city'=>$Company_city,
-					'Company_Industry'=>$Company_Industry,
-					'keyword'=>$keyword,
-					'cid'=>$cid
-			);
+			$model=new Mentor();
+			$model->aid = isset($reData['aid'])?trim($reData['aid']):'';
+			$model->IndustryID = isset($reData['IndustryID'])?trim($reData['IndustryID']):'';
+			$model->aname = isset($reData['aname'])?trim($reData['aname']):'';
+			$model->IndustryName = isset($reData['IndustryName'])?trim($reData['IndustryName']):'';
+			$model->cid = isset($reData['cid'])?trim($reData['cid']):'';
+			$model->cname = isset($reData['cname'])?trim($reData['cname']):'';
+			$result['model'] = $model;
 			$result['menus'] = $this->menus;
 			$this->render('CompanyNews',$result);
 		}

@@ -46,11 +46,11 @@ class CompanyNews extends CActiveRecord
 		return array(
 			array('cid, IndustryID, CompanyID, pid,aid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
-			array('imgurl,aname', 'length', 'max'=>255),
+			array('imgurl,aname,IndustryName', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, cid, aid,aname,imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, pid', 'safe', 'on'=>'search'),
+			array('id, title, cid, aid,aname,imgurl, IndustryName,content, remark, addtime, updtime, IndustryID, CompanyID, pid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,12 +78,13 @@ class CompanyNews extends CActiveRecord
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新时间',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
 			'pid' => '类别',
 			'aid' =>'地区',
-			'aname' =>'地区'
+			'aname' =>'地区',
+			'IndustryName'=>'所属行业'
 		);
 	}
 
@@ -104,6 +105,7 @@ class CompanyNews extends CActiveRecord
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('aid',$this->aid);
+		$criteria->compare('IndustryName',$this->IndustryName,true);
 		$criteria->compare('aname',$this->aname,true);
 		$criteria->compare('remark',$this->remark,true);
 		$criteria->compare('addtime',$this->addtime,true);

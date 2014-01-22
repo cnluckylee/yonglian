@@ -44,13 +44,13 @@ class Joint extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cid, IndustryID, CompanyID, pid', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>200),
-			array('imgurl', 'length', 'max'=>255),
+			array('cid, IndustryID, CompanyID, pid,aid', 'numerical', 'integerOnly'=>true),
+			array('title,cname', 'length', 'max'=>200),
+			array('imgurl,aname,IndustryName', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, cid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, pid', 'safe', 'on'=>'search'),
+			array('id, title, cid, imgurl,cname,aid,aname,IndustryName, content, remark, addtime, updtime, IndustryID, CompanyID, pid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,10 +78,14 @@ class Joint extends CActiveRecord
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新时间',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
 			'pid' => '类别',
+			'aid' =>'地区',
+			'aname' =>'地区',
+			'IndustryName' =>'行业',
+			'cname' => '公司名称'
 		);
 	}
 
@@ -104,9 +108,13 @@ class Joint extends CActiveRecord
 		$criteria->compare('remark',$this->remark,true);
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);
+		$criteria->compare('cname',$this->cname,true);
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
 		$criteria->compare('pid',$this->pid);
+		$criteria->compare('aid',$this->aid);
+		$criteria->compare('aname',$this->aname,true);
+		$criteria->compare('IndustryName',$this->IndustryName,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -144,34 +152,36 @@ class Joint extends CActiveRecord
 		return $result;
 	}
 	
-	public static function enterprise($Company_city_id = null,$Company_Industry_id=null,$keyword=null,$pid=null)
+	public static function enterprise($reData)
 	{
+		$Company_city_id = isset($reData['aid'])?$reData['aid']:'';
+		$Company_Industry_id= isset($reData['IndustryID'])?$reData['IndustryID']:'';
+		$keyword = isset($reData['cname'])?$reData['cname']:'';
+		$pid=isset($reData['pid'])?$reData['pid']:'';
+		
+		$aid_str = '';
 		//解析$Company_city_id,$Company_Industry_id
-		if($Company_city_id)
-			$city_arr = explode('_', $Company_city_id);
-		if($Company_Industry_id)
-			$Industry_arr = explode('_', $Company_Industry_id);
-	
+		if($Company_city_id){
+			$area = new Area();
+			$ids = $area->findnextIdByAid($Company_city_id,'id');
+			$ids[] = $Company_city_id;
+			$aid_str = implode(",", $ids);
+		}
+		$IndustryID_str = '';
+		if($Company_Industry_id){
+			$industry = new AdminIndustry();
+			$inds = $industry->findnextIdByAid($Company_Industry_id,'id');
+			$inds[] = $Company_Industry_id;
+			$IndustryID_str = implode(",", $inds);
+		}
 		$criteria = new CDbCriteria();
-		if(isset($city_arr[0]))
-			$criteria->addCondition('city1='.$city_arr[0]);
-		if(isset($city_arr[1]))
-			$criteria->addCondition('city2='.$city_arr[1]);
-		if(isset($city_arr[2]))
-			$criteria->addCondition('city3='.$city_arr[2]);
-		if(isset($city_arr[3]))
-			$criteria->addCondition('city4='.$city_arr[3]);
-		if(isset($Industry_arr[0]))
-			$criteria->addCondition('IndustryID1='.$Industry_arr[0]);
-		if(isset($Industry_arr[1]))
-			$criteria->addCondition('IndustryID2='.$Industry_arr[1]);
-		if(isset($Industry_arr[2]))
-			$criteria->addCondition('IndustryID3='.$Industry_arr[2]);
-		if(isset($Industry_arr[3]))
-			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
+		if($aid_str)
+			$criteria->addCondition('aid in ('.$aid_str.')');
+		if($IndustryID_str)
+			$criteria->addCondition('t.IndustryID in('.$IndustryID_str.')');
 		if($keyword)
-			$criteria->addSearchCondition('c.name', $keyword);
-			
+			$criteria->addSearchCondition('c.name', $keyword,true);
+		
 		$criteria->select = 't.*';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
 		$criteria->order = 'updtime desc';
@@ -217,7 +227,11 @@ class Joint extends CActiveRecord
 			}else{
 				$this->updtime=date('Y-m-d H:i:s');
 			}
-				
+			if($this->cid>0)
+			{
+				$cc = Company::model()->findByPk($this->cid);
+				$this->cname = $cc?$cc->name:"";
+			}
 			return true;
 		}
 		else

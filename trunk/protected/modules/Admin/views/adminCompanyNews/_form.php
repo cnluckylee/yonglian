@@ -51,13 +51,13 @@
 	</tr>
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'IndustryID'); ?>       </th>
+		<?php echo $form->labelEx($model,'IndustryName'); ?>       </th>
         <td>
         <div class="row">
-        <?php echo $form->textField($model,'aname',array('name'=>'CompanyNews[IndustryID]','id'=>'Company_Industry')); ?>
+        <?php echo $form->textField($model,'IndustryName',array('id'=>'Company_Industry')); ?>
        
         <input type="button" id="industry" value="请选择">
-       
+      
 	</div>
         </td>
 	</tr>
@@ -66,7 +66,7 @@
 		<?php echo $form->labelEx($model,'aid'); ?>   </th>
         <td>
         <div class="row">
-       <?php echo $form->textField($model,'aname',array('name'=>'CompanyNews[aname]','id'=>'Company_city')); ?>
+       <?php echo $form->textField($model,'aname',array('id'=>'Company_city')); ?>
         <input type="button" id="area" value="请选择">
 		</div>
         </td>

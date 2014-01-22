@@ -42,12 +42,12 @@ class Member extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('pid, IndustryID, CompanyID, cid', 'numerical', 'integerOnly'=>true),
-			array('name', 'length', 'max'=>200),
+			array('pid, IndustryID, CompanyID, cid,aid', 'numerical', 'integerOnly'=>true),
+			array('name,aname,IndustryName,pdf', 'length', 'max'=>255),
 			array('addtime, updtime, entrydate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pid, addtime, updtime, IndustryID, CompanyID, cid, entrydate', 'safe', 'on'=>'search'),
+			array('id, name, pid, addtime, updtime,aid,aname,IndustryName,pdf, IndustryID, CompanyID, cid, entrydate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -68,15 +68,21 @@ class Member extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '序号',
 			'name' => '姓名',
 			'pid' => '职位',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新时间',
+			'imgurl' => '图片',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司名称',
 			'cid' => '管理类型',
 			'entrydate' => '入职日期',
+			'aid'=>'地区',
+			'aname'=>'地区',
+			'IndustryName'=>'行业',
+			'pdf'=>'媒体文件',
+				
 		);
 	}
 
@@ -100,6 +106,10 @@ class Member extends CActiveRecord
 		$criteria->compare('CompanyID',$this->CompanyID);
 		$criteria->compare('cid',$this->cid);
 		$criteria->compare('entrydate',$this->entrydate,true);
+		$criteria->compare('aid',$this->aid);
+		$criteria->compare('aname',$this->aname,true);
+		$criteria->compare('IndustryName',$this->IndustryName,true);
+		$criteria->compare('pdf',$this->pdf,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
