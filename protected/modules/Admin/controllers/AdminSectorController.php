@@ -31,6 +31,14 @@ class AdminSectorController extends AdminController
 		if(isset($_POST['Sector']))
 		{
 			$model->attributes=$_POST['Sector'];
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+			
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -47,13 +55,23 @@ class AdminSectorController extends AdminController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$model->setScenario('update');
+		$old_pdf = $model->pdf;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Sector']))
 		{
 			$model->attributes=$_POST['Sector'];
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+				
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}else
+				$model->pdf = $old_pdf;
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -88,7 +106,7 @@ class AdminSectorController extends AdminController
 	//条转
 	public function actionView($id)
 	{
-		$this->redirect(array('/admin/SectorDetail','mid'=>$id));
+		$this->redirect(array('/admin/SectorDetail','sid'=>$id));
 	}
 	
 

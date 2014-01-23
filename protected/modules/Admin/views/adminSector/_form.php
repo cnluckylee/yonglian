@@ -2,6 +2,7 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'sector-form',
 	'enableAjaxValidation'=>true,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'), 
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -34,7 +35,20 @@
         </td>
 	</tr>
 
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+			 if(!empty($model->pdf))
+			  	echo $model->pdf;
+		?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
 </tbody>
       <tfoot>
         <tr class="title">
