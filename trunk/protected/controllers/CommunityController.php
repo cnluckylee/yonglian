@@ -29,10 +29,20 @@ class CommunityController extends Controller
 	 */
 	public function actionUser()
 	{
-		$pageArray =array();
 		$this->pageTitle = '会员试航';
+		$pageArray =array();
 		$pageArray['users'] = Users::model()->findAll();
+		$pageArray['sector'] = Sector::model()->findAll(array('limit' => 20));
 		$this->render('user',$pageArray);
 	}
-
+	public function actionSector()
+	{
+		$id = Tools::getParam('id');
+		$pageArray = array();
+		$sData = Sector::model()->findByPk($id);
+		$pageArray['model'] = $sData?$sData:array();
+		$pageArray['data'] = Sector::getListBySid($id);
+		$pageArray['sector'] = Sector::model()->findAll(array('limit' => 20));
+		$this->render('Sector',$pageArray);
+	}
 }

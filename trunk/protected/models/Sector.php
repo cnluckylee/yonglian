@@ -40,11 +40,11 @@ class Sector extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('name, url', 'length', 'max'=>255),
+			array('name, url,pdf', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, url, addtime, updtime, status', 'safe', 'on'=>'search'),
+			array('id, name, url,pdf, addtime, updtime, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +71,7 @@ class Sector extends CActiveRecord
 			'addtime' => 'Addtime',
 			'updtime' => 'Updtime',
 			'status' => '状态',
+			'pdf' =>'媒体文件'
 		);
 	}
 
@@ -91,7 +92,8 @@ class Sector extends CActiveRecord
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('status',$this->status);
-		$criteria->order = 'updtime asc' ;
+		$criteria->compare('pdf',$this->pdf);
+		$criteria->order = 'updtime desc' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -106,6 +108,18 @@ class Sector extends CActiveRecord
 		{
 			$arr = $i->attributes;
 			$result[$arr['id']] = $arr;
+		}
+		return $result;
+	}
+	
+	public static function getListBySid($id)
+	{
+		$data = SectorDetail::model()->findAllByAttributes(array('sid'=>$id));
+		$result = array();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[] = array('id'=>$arr['id'],'title'=>$arr['title'],'pdf'=>$arr['pdf']);
 		}
 		return $result;
 	}
