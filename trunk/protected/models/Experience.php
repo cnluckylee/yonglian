@@ -132,11 +132,12 @@ class Experience extends CActiveRecord
 			$criteria->addCondition('IndustryID='.$data['IndustryID']);
 	
 		if(isset($data['title']))
-			$criteria->addSearchCondition('title', $data['title']);
+			$criteria->compare('title', $data['title'],true);
 	
 		if(isset($data['score']) && $data['score']>0)
-			$criteria->addSearchCondition('score', $data['score']);
-	
+			$criteria->compare('score', $data['score']);
+		if(isset($data['cid']) && $data['cid']>0)
+			$criteria->compare('cid', $data['cid']);
 		$criteria->select = 't.*';
 	
 		$criteria->order = 'updtime desc';

@@ -93,7 +93,7 @@
     <tr>
      
       <td>政策名称</td>
-      <td><?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>200)); ?></td>
+      <td><?php echo $form->textField($model,'title',array('size'=>20,'maxlength'=>100)); ?></td>
       <td>地区选择</td>
       <td ><?php echo $form->dropDownList($model,'aid',CHtml::listData(City::getCityList(),'id','name')); ?></td>
     </tr>
