@@ -97,17 +97,7 @@
         </div>
         </td>
 	</tr>
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'mname'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'mname',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'mname'); ?>
-        </div>
-        </td>
-	</tr>
+
 	<tr>
        <th width="100" align="right">
 		<?php echo $form->labelEx($model,'aid'); ?>
@@ -129,7 +119,7 @@
         </th>
         <td >
         <div class="row">
-			<select name="Theory[CompanyID]" id="Article_CompanyID">
+			<select name="Theory[CompanyID]" id="Article_CompanyID" onchange="loadUser()">
 	
 			
             <option value=''>请选择</option>
@@ -139,7 +129,17 @@
         </div>
         </td>
 	</tr>
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'mname'); ?>
+        </th>
+        <td >
+        <div class="row">
+	 			<table id="tab_User">
+       	   </table>
+        </div>
+        </td>
+	</tr>
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'remark'); ?>
@@ -185,8 +185,11 @@ $(document).ready(function() {
 	setTimeout(function (){
 		bindiframe("area");
 	},1000);	
-	<?php if ($model->aid>0):?>
+	<?php if ($model->aid>0 && $model->CompanyID>0):?>
 			fun(<?php echo $model->aid?>,<?php echo $model->CompanyID?>);
+			<?php if($model->mid>0):?>
+			loadUser(<?php echo $model->mid?>,<?php echo $model->CompanyID?>);
+			<?php endif;?>
 	<?php endif;?>
 });
 
@@ -231,6 +234,41 @@ $(document).ready(function() {
 							});
 					}
 				});
+		}
+		
+	}
+	
+	function loadUser()
+	{
+		
+		var type = 2;
+		var uid = arguments[0]>0?arguments[0]:0;
+		var aid = arguments[1]>0?arguments[1]:0;
+		if(aid == 0)
+			 aid = $("#Article_CompanyID").val();
+		if(aid>0 )
+		{
+			$.ajax({
+				url:'?r=admin/Users/GetUsers',
+				data:{type:type,CompanyID:aid},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+					var str = "<tr>";
+						$.each(obj,function(k,v){	
+							if(k>0 && k%5==0)	
+								str=str+'</tr><tr>';
+								if(v.id == uid)
+									str=str+'<td><input type="radio" value="'+v.id+'" checked="checked"  name="Theory[mid]" />'+v.linkuser+'</td>';
+								else
+									str=str+'<td><input type="radio" value="'+v.id+'"  name="Theory[mid]" />'+v.linkuser+'</td>';
+       				});
+      					str=str+'</tr>';
+      					$("#tab_User").html(str);
+					}
+					
+				});
+				
 		}
 		
 	}

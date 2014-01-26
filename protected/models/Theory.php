@@ -184,22 +184,15 @@ class Theory extends CActiveRecord
 			if($this->isNewRecord)
 			{
 				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
-				if(isset($this->mid) && $this->mid>0){
-					$member = Member::model()->findByPk($this->mid);
-					$member_arr = $member->attributes;
-					$this->mname=$member_arr['name'];
-				}
 			}
 			else
 			{
 				$this->updtime=date('Y-m-d H:i:s');
-				if(isset($this->mid) && $this->mid>0){
-					$member = Member::model()->findByPk($this->mid);
-					$member_arr = $member->attributes;
-					$this->mname=$member_arr['name'];
-				}
 			}
-	
+			if(isset($this->mid) && $this->mid>0){
+				$member = Users::model()->findByPk($this->mid);
+				$this->mname=$member?$member->linkuser:"";
+			}
 			return true;
 		}
 		else
