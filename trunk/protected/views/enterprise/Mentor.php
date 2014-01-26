@@ -103,7 +103,7 @@
          <ul class="droplist">
          <?php foreach($row['data'] as $item):?>
          	
-         	<li><a href="?r=User/view&uid=<?php echo $item['uid'];?>" target="_blank" ><?php echo $item['uname'];?></a></li>
+         	<li><a href="?r=Community/UserView&uid=<?php echo $item['uid'];?>" target="_blank" ><?php echo $item['uname'];?></a></li>
          <?php endforeach; ?>
         </ul>
         <li>
