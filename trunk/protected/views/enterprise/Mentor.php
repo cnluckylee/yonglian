@@ -112,7 +112,7 @@
             <?php 
 			 if(isset($item['data'])):
 					 foreach($item['data'] as $cont16):?>
-            <li><?php echo $cont16['title'];?></li>
+            <li><a href="?r=Community/UserView&uid=<?php echo $item['uid'];?>" target="_blank" ><?php echo $cont16['title'];?></a></li>
             <?php
 		  		 endforeach; 
 		  		  
