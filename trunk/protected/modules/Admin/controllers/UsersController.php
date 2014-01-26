@@ -2,7 +2,12 @@
 
 class UsersController extends AdminController
 {
-
+	protected $cid;
+	public function init()
+	{
+		$cid = Tools::getParam("type");
+		$this->cid = $cid;
+	}
 	/**
 	 * 首页列表.
 	 */
@@ -15,6 +20,7 @@ class UsersController extends AdminController
 
 		$this->render('index',array(
 			'model'=>$model,
+			'type' =>$this->cid,
 		));
 	}
 
@@ -59,9 +65,11 @@ class UsersController extends AdminController
 			}
 			unset($pdf);
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','type'=>$this->cid));
 		}
-
+		if($this->cid){
+			$model->type = $this->cid;
+		}
 		$this->render('create',array(
 			'model'=>$model,
 		));
@@ -77,6 +85,7 @@ class UsersController extends AdminController
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
 		$old_pdf = $model->pdf;
+		$this->cid = $model->type;
 // 		//AJAX 表单验证
  		$this->performAjaxValidation($model);
 
@@ -104,7 +113,7 @@ class UsersController extends AdminController
 				
 			unset($pdf);
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','type'=>$this->cid));
 		}
 
 		$this->render('update',array(
@@ -127,7 +136,7 @@ class UsersController extends AdminController
 			if (Yii::app()->request->isAjaxRequest) {
 				$this->success('删除成功！');
 			} else {
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','type'=>$this->cid));
 			}
 		}
 		else
@@ -136,7 +145,17 @@ class UsersController extends AdminController
 
 
 
-
+	/**
+	 * 获取用户
+	 */
+	public function actionGetUsers()
+	{
+		$type = intval(Tools::getParam('type',0,'post'));
+		$CompanyID = intval(Tools::getParam('CompanyID',0,'post'));
+		$users = Users::findUsersByType($type,$CompanyID);
+		echo json_encode($users);
+		exit;
+	}
 
 	/**
 	 * 载入

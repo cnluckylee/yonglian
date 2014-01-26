@@ -148,9 +148,6 @@
 	<div id="nav">
 		<div class="l"></div>
 		<ul class="c">
-			<li class="nav_lishw">
-				<span class="v"><a class="sele" href="<?php echo Yii::app()->params['siteUrl']; ?>" target="_blank">首页</a></span> 
-			</li>
 			<li class="">
 				<span class="v"><a href="javascript:void(0);">企业全貌</a></span> 
 				<div class="kind_menu" style="left:40px">

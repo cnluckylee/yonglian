@@ -72,6 +72,7 @@ class YlController extends Controller
 		$this->pageTitle = '永链产品';
 		$pageArray = array();
 		$pageArray['datalist'] = YlProduct::getDataList();
+
 		$pageArray['menus'] = $this->menus;
 		$this->render('Product',$pageArray);
 	 }

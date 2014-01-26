@@ -405,7 +405,7 @@ $(document).ready(function() {
 	{
 		var aid = arguments[0]>0?arguments[0]:0;
 		var CompanyIDs = arguments[1]>0?arguments[1]:0;
-		alert(CompanyIDs.length);
+
 		if(aid<0)
 			var aid = $("#hid_Ctid").val();
 		if(aid>0 )

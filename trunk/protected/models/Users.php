@@ -44,14 +44,14 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('state, type', 'numerical', 'integerOnly'=>true),
+			array('state, type,aid,CompanyID,IndustryID', 'numerical', 'integerOnly'=>true),
 			array('username, linkuser, tel', 'length', 'max'=>100),
 			array('password', 'length', 'max'=>50),
-			array('mail, website,companyname,pdf,imgurl', 'length', 'max'=>255),
+			array('mail, website,companyname,pdf,imgurl,aname,cname,IndustryName', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password,pdf,imgurl, linkuser, tel, mail, website, companyname,addtime, updtime, state, type', 'safe', 'on'=>'search'),
+			array('id, username, password,pdf,imgurl,aid,CompanyID,aname,cname,IndustryName, linkuser, tel, mail, website, companyname,addtime, updtime, state, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -85,7 +85,14 @@ class Users extends CActiveRecord
 			'type' => '类型',
 			'companyname' =>'企业名称',
 			'pdf' =>'媒体文件',
-			'imgurl' =>'头像'	
+			'imgurl' =>'头像',	
+			'aid' => '地区名称',
+			'CompanyID' =>'企业名称',
+			'aname' =>'地区名称',
+			'cname' =>'企业名称',
+			'IndustryName' =>'行业名称',
+			'IndustryID'=>'行业名称'
+			
 		);
 	}
 
@@ -93,7 +100,7 @@ class Users extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($type = null)
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
@@ -110,16 +117,36 @@ class Users extends CActiveRecord
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);		
 		$criteria->compare('state',$this->state);
-		$criteria->compare('type',$this->type);
+		if($type>0)
+				$criteria->compare('type',$type);
 		$criteria->compare('pdf',$this->pdf);
 		$criteria->compare('imgurl',$this->imgurl);
 		$criteria->compare('companyname',$this->companyname,true);
+		$criteria->order = 'updtime desc';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+	
+	/**
+	 * 根据类型获取相应用户
+	 */
+	public  static function findUsersByType($type,$CompanyID)
+	{
+		$where = array();
+		$where['type'] = $type;
+		$where['CompanyID'] = $CompanyID;
+		$data = Users::model()->findAllByAttributes($where);
+		$result = array();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[] = $arr;
+		}
+		return $result;
+	}
 	public static $isType= array(
-	'企业', '个人'
+	'企业', '个人','专家','舵主'
     );
 	
 	public static $isState= array(
@@ -161,7 +188,8 @@ class Users extends CActiveRecord
 			}else{
 				$this->updtime=date('Y-m-d H:i:s');
 			}
-	
+			if(strlen($this->password)<>32)
+			 $this->password = md5($this->password);
 			return true;
 		}
 		else

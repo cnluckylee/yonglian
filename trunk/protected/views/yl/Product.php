@@ -69,7 +69,7 @@
  <?php foreach($datalist as $k =>$v):?>
 <tr>
 <td><img src="images/w15.gif" width="20" height="15" /></td><!--<img src="images/w16.gif" width="20" height="15" />-->
-<td id="lb"><div id="type1" style="cursor:default"><div id="graphic2"><?php echo $k+1?>.<?php echo $v['title']?></div></div></td>
+<td id="lb"><div id="type1" style="cursor:default"><div id="graphic2" onclick="setPdfView(this)"><?php echo $k+1?>.<?php echo $v['title']?></div></div></td>
 </tr>
 <?php endforeach; ?>
 </table>
@@ -78,9 +78,63 @@
 </div><!--新闻目录结束-->
 </div>
 
-<div class="s_right">
-<!--多媒体开始-->
-我是pdf swf
+<div class="s_right" id="documentViewer">
+
 </div> 
 </div><!--内容结束-->
+
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/flexpaper/flexpaper.js"></script>
+ <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>js/flexpaper/flexpaper_handlers.js"></script>
  
+ <script type="text/javascript">
+   var startDocument = "Paper";
+ 	$(document).ready(function() {
+ 		 var pdffile = '<?php echo $datalist[0]["imgurl"]?>';
+   	 setPdf(pdffile);
+ 	});
+    function getDocumentUrl(document){
+        return "php/services/view.php?doc={doc}&format={format}&page={page}".replace("{doc}",document);
+    }
+
+  
+   
+	 function setPdf(pdffile)
+	 {
+		 $('#documentViewer').FlexPaperViewer(
+   		  { config : {
+
+                SWFFile : pdffile,
+                Scale : 0.6,
+                ZoomTransition : 'easeOut',
+                ZoomTime : 0.5,
+                ZoomInterval : 0.2,
+                FitPageOnLoad : true,
+                FitWidthOnLoad : false,
+                FullScreenAsMaxWindow : false,
+                ProgressiveLoading : false,
+                MinZoomSize : 0.2,
+                MaxZoomSize : 5,
+                SearchMatchAll : false,
+                InitViewMode : 'Portrait',
+                RenderingOrder : 'flash',
+                StartAtPage : '',
+
+                ViewModeToolsVisible : true,
+                ZoomToolsVisible : true,
+                NavToolsVisible : true,
+                CursorToolsVisible : true,
+                SearchToolsVisible : true,
+                WMode : 'window',
+                localeChain: 'zh_CN'
+            }}
+    		);
+	 
+	 }
+    
+    
+   function setPdfView(obj)
+    {
+    	var pdf = $(obj).attr("pdf");
+    	setPdf(pdf);
+    }
+</script>

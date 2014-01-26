@@ -112,8 +112,8 @@
       </tfoot>
     </table>
 
-    <input type="text" id="hid_IndustryID"  name="Article[IndustryID]" value="<?php echo $model->IndustryID;?>"/>
-    <input type="text" id="hid_Ctid"  name="Article[aid]" value="<?php echo $model->aid;?>"/>
+    <input type="hidden" id="hid_IndustryID"  name="Article[IndustryID]" value="<?php echo $model->IndustryID;?>"/>
+    <input type="hidden" id="hid_Ctid"  name="Article[aid]" value="<?php echo $model->aid;?>"/>
     
 <?php $this->endWidget(); ?>
 </div>

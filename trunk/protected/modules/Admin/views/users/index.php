@@ -1,6 +1,6 @@
 
 <div class="topBut">
-<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a>
+<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create',array('type'=>$type));?>"><span>添加</span></a>
 
 </div>
 
@@ -12,7 +12,7 @@
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
 	'id'=>'users-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search($type),
 	'filter'=>$model,
 	'columns'=>array(
 		array(

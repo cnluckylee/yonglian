@@ -45,4 +45,14 @@ class CommunityController extends Controller
 		$pageArray['sector'] = Sector::model()->findAll(array('limit' => 20));
 		$this->render('Sector',$pageArray);
 	}
+	public function actionUserView()
+	{
+		$id = Tools::getParam('uid');
+		$pageArray = array();
+		$pageArray['data'] = Mentor::getListByUid($id);
+		$model = Users::model()->findByPk($id);
+		
+		$pageArray['model'] = $model;
+		$this->render('UserView',$pageArray);
+	}
 }
