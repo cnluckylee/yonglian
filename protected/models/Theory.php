@@ -175,7 +175,11 @@ class Theory extends CActiveRecord
 		return array('pages'=>$pager,'posts'=>$list);
 	
 	}
-	
+	public static function getListByUid($uid)
+	{
+		$data = self::model()->findAllByAttributes(array('mid'=>$uid));
+		return $data;
+	}
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())

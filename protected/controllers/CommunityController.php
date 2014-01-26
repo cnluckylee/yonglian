@@ -49,10 +49,13 @@ class CommunityController extends Controller
 	{
 		$id = Tools::getParam('uid');
 		$pageArray = array();
-		$pageArray['data'] = Mentor::getListByUid($id);
 		$model = Users::model()->findByPk($id);
-		
 		$pageArray['model'] = $model;
+		if($model->type == 3)
+			$pageArray['data'] = Mentor::getListByUid($id);
+		else if($model->type == 2)
+			$pageArray['data'] = Theory::getListByUid($id);
+	
 		$this->render('UserView',$pageArray);
 	}
 }

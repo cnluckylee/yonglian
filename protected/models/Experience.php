@@ -45,14 +45,14 @@ class Experience extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('aid, IndustryID, CompanyID, type', 'numerical', 'integerOnly'=>true),
+			array('aid, IndustryID, CompanyID, type,cid,uid', 'numerical', 'integerOnly'=>true),
 			array('score', 'numerical'),
 			array('title', 'length', 'max'=>200),
-			array('imgurl,pdf', 'length', 'max'=>255),
+			array('imgurl,pdf,uname', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, aid, imgurl, pdf,content, remark, addtime, updtime, IndustryID, CompanyID, score, type', 'safe', 'on'=>'search'),
+			array('id, title, aid, imgurl,uid,uname, pdf,content,cid, remark, addtime, updtime, IndustryID, CompanyID, score, type', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -86,6 +86,9 @@ class Experience extends CActiveRecord
 			'score' => '评分',
 			'type' => '类型',
 			'pdf' => '媒体文件',
+			'cid' =>'城市',
+			'uname' => '用户名称',
+			'uid' => '用户名称',
 		);
 	}
 
@@ -103,6 +106,7 @@ class Experience extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
 		$criteria->compare('aid',$this->aid);
+		$criteria->compare('cid',$this->cid);
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('remark',$this->remark,true);
