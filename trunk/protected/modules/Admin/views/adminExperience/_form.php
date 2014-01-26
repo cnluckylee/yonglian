@@ -33,13 +33,35 @@
 		?> <?php echo $form->error($model,'pdf'); ?> </div></td>
       </tr>
 	<tr>
-          <th width="100" align="right">
+     <th width="100" align="right">
 		<?php echo $form->labelEx($model,'score'); ?>
         </th>
         <td >
         <div class="row">
-		<?php echo $form->textField($model,'score'); ?>
+		<?php echo $form->dropDownList($model,'score',CHtml::listData(BaseData::Pingyujibie(),'id','name')); ?>
 		<?php echo $form->error($model,'score'); ?>
+        </div>
+        </td>
+	</tr>	
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'cid'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->dropDownList($model,'cid',CHtml::listData(City::getCityList(),'id','name')); ?>
+		<?php echo $form->error($model,'cid'); ?>
+        </div>
+        </td>
+	</tr>
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'uname'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'uname');?>
+		<?php echo $form->error($model,'uname'); ?>
         </div>
         </td>
 	</tr>
