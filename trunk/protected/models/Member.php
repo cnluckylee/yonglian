@@ -182,33 +182,35 @@ class Member extends CActiveRecord
 		return $result;
 	}
 
-	public static function enterprise($Company_city_id = null,$Company_Industry_id=null,$keyword=null,$cid=null)
+	public static function enterprise($reData)
 	{
+		$Company_city_id = isset($reData['aid'])?$reData['aid']:'';
+		$Company_Industry_id= isset($reData['IndustryID'])?$reData['IndustryID']:'';
+		$keyword = isset($reData['cname'])?$reData['cname']:'';
+		$pid=isset($reData['pid'])?$reData['pid']:'';
+		
+		$aid_str = '';
 		//解析$Company_city_id,$Company_Industry_id
-		if($Company_city_id)
-			$city_arr = explode('_', $Company_city_id);
-		if($Company_Industry_id)
-			$Industry_arr = explode('_', $Company_Industry_id);
-
+		if($Company_city_id){
+			$area = new Area();
+			$ids = $area->findnextIdByAid($Company_city_id,'id');
+			$ids[] = $Company_city_id;
+			$aid_str = implode(",", $ids);
+		}
+		$IndustryID_str = '';
+		if($Company_Industry_id){
+			$industry = new AdminIndustry();
+			$inds = $industry->findnextIdByAid($Company_Industry_id,'id');
+			$inds[] = $Company_Industry_id;
+			$IndustryID_str = implode(",", $inds);
+		}
 		$criteria = new CDbCriteria();
-		if(isset($city_arr[0]))
-			$criteria->addCondition('city1='.$city_arr[0]);
-		if(isset($city_arr[1]))
-			$criteria->addCondition('city2='.$city_arr[1]);
-		if(isset($city_arr[2]))
-			$criteria->addCondition('city3='.$city_arr[2]);
-		if(isset($city_arr[3]))
-			$criteria->addCondition('city4='.$city_arr[3]);
-		if(isset($Industry_arr[0]))
-			$criteria->addCondition('IndustryID1='.$Industry_arr[0]);
-		if(isset($Industry_arr[1]))
-			$criteria->addCondition('IndustryID2='.$Industry_arr[1]);
-		if(isset($Industry_arr[2]))
-			$criteria->addCondition('IndustryID3='.$Industry_arr[2]);
-		if(isset($Industry_arr[3]))
-			$criteria->addCondition('IndustryID4='.$Industry_arr[3]);
+		if($aid_str)
+			$criteria->addCondition('aid in ('.$aid_str.')');
+		if($IndustryID_str)
+			$criteria->addCondition('t.IndustryID in('.$IndustryID_str.')');
 		if($keyword)
-			$criteria->addSearchCondition('c.name', $keyword);
+			$criteria->addSearchCondition('c.name', $keyword,true);
 
 		$criteria->select = 't.*';
 		$criteria->join = 'join {{company}} as c on c.id=t.CompanyID';
@@ -220,7 +222,7 @@ class Member extends CActiveRecord
 
 
 		$pager = new CPagination($count);
-		$pager->pageSize = 2;
+		$pager->pageSize = 10;
 		$pager->applyLimit($criteria);
 		$artList = Member::model()->findAll($criteria);
 		$list = array();
@@ -236,8 +238,10 @@ class Member extends CActiveRecord
 				if($cc){
 					$temp = $cc->attributes;
 					$companyName = $temp['name'];
+					$list[$arr['CompanyID']]['id'] = $cc->id;
 				}
 				$list[$arr['CompanyID']]['name'] = $companyName;
+				
 			}
 
 			$list[$arr['CompanyID']]['data'] = self::getMemberlByTypeAndCompanyID($arr['CompanyID'],$cid);

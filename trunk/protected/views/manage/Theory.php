@@ -135,9 +135,9 @@
       <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
         <li><a href="?r=Manage/TheoryView&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
-        <li><?php echo $row['MemName'];?></li>
+        <li><a href="?r=Community/UserView&uid=<?php echo $row['mid'] ?>" target="_blank"><?php echo $row['MemName'];?></a></li>
         <li><?php echo $row['updtime'];?></li>
-        <li><?php echo $row['CompanyName'];?></li>
+        <li><a href="?r=Enterprise/CPSingleEnterprise&mid=<?php echo $row['CompanyID'];?>" target="_blank"><?php echo $row['CompanyName'];?></a></li>
       </ul>
       <?php endforeach; ?>
       <?php 
