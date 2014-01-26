@@ -122,7 +122,7 @@ class WindowController extends Controller
 	 public function actionCWExperience()
 	 {
 	 	$this->pageTitle = '用户体验';
-	 	$CWExperience =isset($_GET['CWExperience'])?$_GET['CWExperience']:array();
+	 	$CWExperience =isset($_GET['Experience'])?$_GET['Experience']:array();
 	 	
 	 	$this->_result['data'] = Experience::getArticleList($CWExperience);
 	 	$this->_result['recColumn'] = AdminColumn::getColumnByCid(1);
@@ -134,8 +134,10 @@ class WindowController extends Controller
 	 		$this->render('CWExperienceAjax',$this->_result);
 	 	}else{
 	 		$model=new Experience;
-			$model->title = isset($Wctools['title'])?trim($CWExperience['title']):'';
-			$model->IndustryID = isset($Wctools['IndustryID'])?trim($CWExperience['IndustryID']):'';
+			$model->title = isset($CWExperience['title'])?trim($CWExperience['title']):'';
+			$model->IndustryID = isset($CWExperience['IndustryID'])?trim($CWExperience['IndustryID']):'';
+			$model->score = isset($CWExperience['score'])?trim($CWExperience['score']):'';
+			$model->cid = isset($CWExperience['cid'])?trim($CWExperience['cid']):'';
 	 		$this->_result['model'] = $model;
 	 		$this->render('CWExperience',$this->_result);
 	 	

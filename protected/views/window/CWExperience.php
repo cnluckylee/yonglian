@@ -83,9 +83,9 @@
 
 
   <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'wctools-form',
+	'id'=>'experience-form',
 	'enableAjaxValidation'=>false,
-	'action'=>array('window/Cwpolicy'),
+	'action'=>array('window/CWExperience'),
 	'method'=>'get',
 )); ?>
   <!--商标或标志结束（身体1）-->
@@ -95,7 +95,7 @@
       <td>政策名称</td>
       <td><?php echo $form->textField($model,'title',array('size'=>20,'maxlength'=>100)); ?></td>
       <td>地区选择</td>
-      <td ><?php echo $form->dropDownList($model,'aid',CHtml::listData(City::getCityList(),'id','name')); ?></td>
+      <td ><?php echo $form->dropDownList($model,'cid',CHtml::listData(City::getCityList(),'id','name')); ?></td>
     </tr>
     <tr>
     	<td >语音评级</td>
