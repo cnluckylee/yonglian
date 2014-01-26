@@ -158,13 +158,14 @@ class EnterpriseController extends Controller
 		$this->pageTitle = '舵主风采';
 		$reData =isset($_GET['Mentor'])?$_GET['Mentor']:array();
 		$result = Mentor::enterprise($reData);
+
 		$result['cat'] = BaseData::MentorCategary();
 
 		if(isset($_GET['_']) && $_GET['_']>0)
 		{
 
 			$this->layout = false;
-			$this->render('CompanyNewsAjax',$result);
+			$this->render('MentorAjax',$result);
 		}else{
 
 			$model=new Mentor();
@@ -176,7 +177,7 @@ class EnterpriseController extends Controller
 			$model->cname = isset($reData['cname'])?trim($reData['cname']):'';
 			$result['model'] = $model;
 			$result['menus'] = $this->menus;
-			$this->render('CompanyNews',$result);
+			$this->render('Mentor',$result);
 		}
 	 }
 	/**

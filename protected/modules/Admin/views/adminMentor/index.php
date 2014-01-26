@@ -19,13 +19,13 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						
 				),
 
 			array(
 
 						'name' => 'title',
-						'header' => '项目标题'
+						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -35,7 +35,7 @@
 
 						'name' => 'cid',
 						'value' =>array($this,"getValueByKey"),
-						'header' => '分类'
+					
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -52,12 +52,10 @@
 				),	
 
 			array(
-
-						'name' => 'imgurl',
-						'type' => 'image',
-						'header' => '图片',
+						'name' => 'uname',
+						
 						'htmlOptions' => array(
-								'class' => 'thumbimage_100',
+								//'class' => 'thumbimage_100',
 						),
 				),
 

@@ -48,6 +48,7 @@ class AdminMentorController extends AdminController
 
 				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
+
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
