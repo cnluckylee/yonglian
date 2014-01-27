@@ -65,4 +65,5 @@ left:30px;top:325px;width:%;height:%;z-index:1;font-family:"宋体";font-size:14
 #getId{width:310px;background:#fdfdfd;} 
 #getId a{text-decoration:none;color:#000;font-weight:normal}
 #getId a:hover{text-decoration:none;color:blue;}
+#getId p {overflow: hidden;width: 200px;}
 

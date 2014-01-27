@@ -11,66 +11,14 @@
 <li id="tabId4" onclick="tab('tabId4','tabC4');">技术信息</li>
 <li id="tabId5" onclick="tab('tabId5','tabC5');">随机信息</li>
 </ul></div>
-<div class="show" id="tabC1"><div class="con">
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">1.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">2.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">3.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">4.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">5.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">6.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">7.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">8.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">9.FT社评：聘用自闭患者是好事</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">10.FT社评：聘用自闭患者是好事</a></p>
+<?php foreach($IndexInfo as $k=>$MarketInfo):?>
+<div class="<?php if ($k !=1):?>hidden<?php else:?>show<?php endif;?>" id="tabC<?php echo $k;?>"><div class="con">
+<?php foreach($MarketInfo as $kk=>$i):?>
+<p align="left"><a href="javascript:void(0);"target="_blank"style="font-weight:normal"><?php echo ($kk+1).'.'.$i->title;?></a></p>
+<?php endforeach;?>
 </div></div>
-<div class="hidden" id="tabC2"><div class="con">
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">1.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">2.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">3.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">4.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">5.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">6.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">7.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">8.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">9.FT社评：聘用自闭患者是好事2</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">10.FT社评：聘用自闭患者是好事2</a></p>
-</div></div>
-<div class="hidden" id="tabC3"><div class="con">
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">1.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">2.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">3.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">4.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">5.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">6.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">7.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">8.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">9.FT社评：聘用自闭患者是好事3</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">10.FT社评：聘用自闭患者是好事3</a></p>
-</div></div>
-<div class="hidden" id="tabC4"><div class="con">
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">1.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">2.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">3.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">4.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">5.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">6.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">7.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">8.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">9.FT社评：聘用自闭患者是好事4</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">10.FT社评：聘用自闭患者是好事4</a></p>
-</div></div>
-<div class="hidden" id="tabC5"><div class="con">
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">1.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">2.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">3.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">4.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">5.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">6.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">7.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">8.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">9.FT社评：聘用自闭患者是好事5</a></p>
-<p align="left"><a href="OnlineCommunication.html"target="_blank"style="font-weight:normal">10.FT社评：聘用自闭患者是好事5</a></p>
-</div></div>
+<?php endforeach;?>
+
 </div> </div><!--信息索取结束-->
 <div id="inquires2"><div id="bt2"><!--按钮开始-->
 <a href="?r=yl/News"target="_blank"style="color:#0000FF">永链数据</a>　　　
@@ -293,6 +241,18 @@ function autoplay(start){for(i=start;i<button.length;i++){  //设置起始值为
 }
 autoplay(0);
 })();
+</script>
+<script type="text/javascript" language="javascript">
+//信息索取控制
+function tab(tabId, tabC){
+var len =document.getElementById('getId').getElementsByTagName('li').length;
+for(i=1; i <= len; i++){
+if ("tabId"+i==tabId){document.getElementById(tabId).className="current";}
+else{document.getElementById("tabId"+i).className="";}
+if ("tabC"+i==tabC){document.getElementById(tabC).className="show";}
+else{document.getElementById("tabC"+i).className="hidden";}
+    }
+    } 
 </script>
 </div><!--每日更新结束-->
 <div style="width:820px; margin:0pt auto; position:relative; height:10px;float:right;border:0px solid silver;"></div><!--间隔层-->

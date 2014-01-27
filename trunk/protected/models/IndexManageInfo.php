@@ -105,7 +105,11 @@ class IndexManageInfo extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-	
+	public static function getList()
+	{
+		$data = self::model()->findAll(array('limit'=>10,'order'=>'updtime'));
+		return $data;
+	}
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())

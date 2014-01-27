@@ -27,10 +27,7 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
 		
-
 		/**
 		 * 底部信息
 		 */
@@ -58,6 +55,12 @@ class SiteController extends Controller
 
 		$data['rec_company'] =$rec_company;
 		$data['company'] =$tmp_company;
+		$MarketInfo = IndexMarketInfo::getList();
+		$ManageInfo = IndexManageInfo::getList();
+		$LawInfo = IndexLawInfo::getList();
+		$TechnologyInfo = IndexTechnologyInfo::getList();
+		$RankInfo = IndexRankInfo::getList();
+		$data['IndexInfo'] = array(1=>$MarketInfo,2=>$ManageInfo,3=>$LawInfo,4=>$TechnologyInfo,5=>$RankInfo);
 		$this->render('newindex',$data);
 
 
@@ -69,28 +72,7 @@ class SiteController extends Controller
 	}
 
 
-	/**
-	 * 企业全貌
-	 */
-	public function actionCompanyshow()
-	{
 
-
-		$company = array_map(create_function('$company','return $company->attributes;'),
-								company::model()->findAll(array('select'=>'name, id,product , desct')));
-		$adv = array_map(create_function('$adv','return $adv->attributes;'),
-								adminPic::model()->findAll(array('select'=>'imgurl,imglink,id',
-																'condition'=>'type=:type',
-																'params'=>array(':type'=>'14'))));
-		$smarty = Yii::app()->smarty;
-		$data = array();
-		$data['company'] = $company;
-		$data['adv'] = $adv;
-		$data['city'] = AllType::getcity(1);
-		$data['industry'] = adminIndustry::model()->findAll();
-		$smarty->_smarty->assign($data);
-		$smarty->_smarty->display('site/company_show.html');
-	}
 
 
 	public function actionGetcity()
@@ -184,20 +166,4 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
-
-	/**
-	 * 新的首页
-	 */
-	public function actionNewIndex()
-	{
-		$this->render('newindex');
-	}
-	/**
-	 * 企业秀台
-	 */
-	public function actionCPBooth()
-	{
-		$this->render('CPBooth');
-	}
-
 }
