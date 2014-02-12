@@ -237,23 +237,22 @@ class YlTeam extends CActiveRecord
 	}
 	public static function getDataList($uid = null)
 	{
+		$result = array();
 		if(!$uid)
 		{
 			$model = self::model()->find(array('condition'=>'uid>0'));
 			if($model)
 				$uid = $model->uid;
-		}
-
-		$data = array();
-
-		$data = self::model()->findAll(array(
-						'condition'=>'uid=:uid','params'=>array(':uid'=>$uid)));
-
-		$result = array();
-		foreach($data as $i)
-		{
-			$arr = $i->attributes;
-			$result[] = $arr;
+			if(!$uid)
+				return array();
+			$data = array();
+			$data = self::model()->findAll(array(
+							'condition'=>'uid=:uid','params'=>array(':uid'=>$uid)));
+			foreach($data as $i)
+			{
+				$arr = $i->attributes;
+				$result[] = $arr;
+			}
 		}
 		return $result;
 	}

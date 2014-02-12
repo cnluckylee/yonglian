@@ -126,7 +126,8 @@ class YlProduct extends CActiveRecord
 			if($model)
 				$pid = $model->pid;
 		}
-
+		if(!$pid)
+			return array();
 		$data = array();
 
 		$data = self::model()->findAll(array(
