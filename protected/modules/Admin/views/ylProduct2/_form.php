@@ -1,6 +1,6 @@
 <div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'yl-area-form',
+	'id'=>'yl-product2-form',
 	'enableAjaxValidation'=>true,
 )); ?>
 <table width="100%" class="table_form table">

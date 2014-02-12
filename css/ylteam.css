@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+
+<!--
+/*网页字体*/
+body,td,th {font-family: 宋体;font-size: 12px;color: #000000;}
+/*栏目标题定位*/
+#SHP {position:absolute;left:0px;top:160px;width:%;height:%;z-index:1;}
+/*栏目标题字体*/
+.STYLE1 {font-family: "华文中宋";font-size: 18px;font-weight: bold;font-style: italic;color: #FFFFFF;}
+/*栏目标题三角形*/
+#triangle-bottomright {width: 0;height: 0;border-bottom: 60px solid #C6A300; border-left: 30px solid transparent;}
+/*介绍文本间距*/ 
+#jsnr p{margin:15px;}
+/*菜单栏属性*/
+#divMenu {font-family:宋体; font-size:14pt; font-weight:bold;margin-top:60px;}
+#divMenu a{text-decoration:none;color:#000000}
+#divMenu a:hover{color:blue;}
+.STYLE2 {color: coral}
+/*团队标题属性*/
+#tm {position:absolute;left:30px;top:1px;width:292px;height:12px;z-index:1;background:#4A4AFF;text-align:center; color:#fff;font-size:12px;padding:4px;}
+/*地区属性*/
+.team {font-family: 宋体; width:750px; position:relative; margin:0; font-size:12px; margin:0px 0;z-index:9;left:350px;cursor:default}
+.team ul li a, .team ul li a:visited {display:block; text-decoration:none; color:#000;width:104px; height:20px; text-align:center; color:#fff; border-right:1px solid #fff;  line-height:20px; font-size:12px; overflow:hidden;z-index:9;}
+.team ul {padding:0; margin:0;list-style-type: none; }
+.team ul li {float:left; margin-right:1px; position:relative;}
+
+.team ul li:hover a {color:#fff; background:#6a3;}
+/*省市属性*/
+.local{display:block; position:absolute; top:21px; left:0; width:105px;}
+.local ul li a, .local ul li a:visited {background:#F0F0F0;color:#000000;font-family: 宋体;font-size:14px;text-align:left;}
+.local ul li:hover ul li a.hide {background:#ccc; color:#000000;}
+.local ul li:hover a {color:#fff; background:#FF359A;}
+/*岗位属性*/
+.jobs{display:block; position:absolute; top:21px; left:107px; width:105px;}
+.jobs ul li a, .jobs ul li a:visited {background:#F0F0F0;color:#000000;font-family: 宋体;font-size:14px;text-align:left;}
+.jobs ul li:hover ul li a.hide {background:#6a3; color:#fff;}
+.jobs ul li:hover a {color:#fff; background:#FF00FF;}
+/*员工属性*/
+.employees{display:block; position:absolute; top:21px; left:214px; width:535px;border:0px solid silver;height:220px;}
+.employees ul li a, .employees ul li a:visited {background:#F0F0F0;color:#000000;font-family: 宋体;font-size:14px;}
+.employees ul li:hover ul li a.hide {background:#6a3; color:#fff;}
+.employees ul li:hover a {color:#fff; background:#02F78E;}
+/*简介内容定位*/
+#jj1,#jj2,#jj3,#jj4,#jj5{width:830px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*图文内容定位*/
+#ag1,#ag2,#ag3,#ag4,#ag5{width:830px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*图片内容定位*/
+#ap1,#ap2,#ap3,#ap4,#ap5{width:820px;border:0px solid orange;height:530px;margin-top:5px;margin-left:5px;overflow:hidden;}
+/*幻片内容定位*/
+#as1,#as2,#as3,#as4,#as5{width:830px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*视频内容定位*/
+#av1,#av2,#av3,#av4,#av5{width:672px;border:0px solid orange;height:540px;margin-top:0px;margin-left:0px;overflow:hidden;}
+/*视频文字定位*/
+#aw1,#aw2,#aw3,#aw4,#aw5{position:absolute;left:680px;top:0px;width:144px;height:520px;z-index:1;border:0px solid #96C2F1;margin-top:0px;margin-left:0px;margin-top:10px;background-color:#E8FFF5;}
+/*动画内容定位*/
+#aa1,#aa2,#aa3,#aa4,#aa5{width:820px;border:0px solid orange;height:530px;margin-top:5px;margin-left:5px;overflow:hidden;}
+/*各类号码定位*/
+#nb{width:820px;border:0px solid orange;height:13px;margin-top:0px;margin-left:0px;overflow:visible;position:relative;background-color:#B9B973;padding:5px;}
+/*类型按钮定位*/
+#bt{width:400px;border:0px solid red;height:30px;top:0px;left:320px;overflow:visible;position:relative;margin-top:3px;}
+/*显示顶部左侧挡板定位*/
+#d1 {position:absolute;left:0px;top:1px;width:%;height:%;z-index:1;}
+/*显示顶部右侧挡板定位*/
+#d2 {position:absolute;left:625px;top:0px;width:%;height:%;z-index:1;}
+/*显示左侧挡板定位*/
+#d3 {position:absolute;left:0px;top:37px;width:5;height:%;z-index:1;}
+/*目录抬头属性*/
+.STYLE4 {font-family:"宋体";font-size:12px;color:#000000;font-weight:bold;}
+
+/*在线交流定位*/
+#zxjl{position:absolute;left:50px;top:572px;width:%;height:%;z-index:1;background:#BEBEBE;cursor:pointer;font-family:"新宋体";font-size: 18px;font-weight: bold;color:#FF6600;}
+#zxjl a{text-decoration:none; cursor:pointer;color:#FF6600;font-weight:bold}
+#zxjl a:hover{text-decoration:none; cursor:pointer;color:blue;font-weight:bold}
+/*li属性*/
+li{ list-style-type:none;}

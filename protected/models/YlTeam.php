@@ -44,13 +44,13 @@ class YlTeam extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cid, IndustryID, CompanyID, pid', 'numerical', 'integerOnly'=>true),
+			array('cid, IndustryID, CompanyID, pid,uid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
-			array('imgurl', 'length', 'max'=>255),
+			array('imgurl,uname,pdf', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, cid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, pid', 'safe', 'on'=>'search'),
+			array('id, title, cid, imgurl, content, remark, addtime,uname, updtime, IndustryID, CompanyID, pid,uid,pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,7 +74,7 @@ class YlTeam extends CActiveRecord
 			'id' => 'ID',
 			'title' => '标题',
 			'cid' => '类型',
-			'imgurl' => '媒体文件',
+			'imgurl' => '图片',
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
@@ -82,6 +82,9 @@ class YlTeam extends CActiveRecord
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
 			'pid' => '类别',
+			'uid' => '职员',
+			'uname' => '职员',
+			'pdf' =>'媒体文件',
 		);
 	}
 
@@ -106,8 +109,11 @@ class YlTeam extends CActiveRecord
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
+		$criteria->compare('pdf',$this->pdf,true);
 		$criteria->compare('pid',$this->pid);
-
+		$criteria->compare('uid',$this->uid);
+		$criteria->compare('uname',$this->uname,true);
+		$criteria->order="updtime desc";
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -229,13 +235,26 @@ class YlTeam extends CActiveRecord
 		else
 			return false;
 	}
-	public static function getDataList()
+	public static function getDataList($uid = null)
 	{
-		$model = self::model()->getDbConnection()->createCommand()
-                ->from('{{yl_team}}')
-                ->order('updtime DESC')
-                ;
-		 $data = $model->queryAll();
-		return $data;
+		if(!$uid)
+		{
+			$model = self::model()->find(array('condition'=>'uid>0'));
+			if($model)
+				$uid = $model->uid;
+		}
+
+		$data = array();
+
+		$data = self::model()->findAll(array(
+						'condition'=>'uid=:uid','params'=>array(':uid'=>$uid)));
+
+		$result = array();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[] = $arr;
+		}
+		return $result;
 	}
 }

@@ -12,7 +12,7 @@
  * @property string $addTime
  * @property string $updTime
  */
-class YlArea extends CActiveRecord
+class YlProduct2 extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -30,7 +30,7 @@ class YlArea extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return '{{yl_area}}';
+		return '{{yl_product2}}';
 	}
 
 	/**
@@ -41,10 +41,10 @@ class YlArea extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('parentid, listorder', 'numerical', 'integerOnly'=>true),
+			array('parentid, listorder,pid', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>20),
 			array('pinyin', 'length', 'max'=>50),
-
+			array('pname', 'length', 'max'=>300),
 			array('addTime, updTime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -73,7 +73,7 @@ class YlArea extends CActiveRecord
 			'name' => '名称',
 			'pinyin' => '拼音',
 			'listorder' => '排序',
-			'parentid'=>'上级地区',
+			'parentid'=>'上级地区'
 		);
 	}
 
@@ -95,6 +95,7 @@ class YlArea extends CActiveRecord
 		$criteria->compare('listorder',$this->listorder);
 		$criteria->compare('addTime',$this->addTime,true);
 		$criteria->compare('updTime',$this->updTime,true);
+
 		$criteria->order = 'listorder desc ,updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -120,14 +121,14 @@ class YlArea extends CActiveRecord
 			return false;
 	}
 	public static function getTreeDATA($select = null,$cache = TRUE) {
-        $cacheId = 'yl_area'.($select !== null?'_'.$select:'');
+        $cacheId = 'yl_product2'.($select !== null?'_'.$select:'');
         if($cache) {
             $menus = Yii::app()->getCache()->get($cacheId);
             if($menus)
                 return $menus;
         }
         $model = self::model()->getDbConnection()->createCommand()
-                ->from('{{yl_area}}')
+                ->from('{{yl_product2}}')
                 ->order('listorder asc');
         if ($select !== null)
             $model->select($select);
@@ -173,17 +174,17 @@ class YlArea extends CActiveRecord
 
         $count = self::model()->count('parentid=:parentid', array('parentid'=>$this->id));
         if($count != 0)
-            throw new CDbException('有子地区不能删除！');
+            throw new CDbException('有子产品不能删除！');
         return true;
     }
 
     /**
      * 地区json数据
      */
-    public static function AreaArray()
+    public static function ProductArray()
     {
     	$model = self::model()->getDbConnection()->createCommand()
-                ->from('{{yl_area}}')
+                ->from('{{yl_product2}}')
        			->select ('id,parentid,name')
        			->order ('listorder asc');
         $data = $model->queryAll();

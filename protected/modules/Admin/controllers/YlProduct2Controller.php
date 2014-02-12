@@ -1,6 +1,6 @@
 <?php
 
-class YlAreaController extends AdminController
+class YlProduct2Controller extends AdminController
 {
 	/**
 	 * 首页列表.
@@ -8,13 +8,13 @@ class YlAreaController extends AdminController
 	public function actionIndex()
 	{
 
-		$menus = YlArea::getTreeDATA('*', false);
+		$menus = YlProduct2::getTreeDATA('*', false);
 		$tree = new Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
 		foreach ($menus as $r) {
 
-			$r['str_manage'] = '<a href="' . $this->createUrl('create', array('parentid' => $r['id'])) . '">添加子地区</a> |
+			$r['str_manage'] = '<a href="' . $this->createUrl('create', array('parentid' => $r['id'])) . '">添加子产品</a> |
 				<a  href="' . $this->createUrl('update', array('id' => $r['id'])) . '">修改</a> |
                                     <a class="del" href="' . $this->createUrl('delete', array('id' => $r['id'])) . '" msg="确定删除.' . $r['name'] . '">删除</a> ';
 			$array[] = $r;
@@ -40,13 +40,13 @@ class YlAreaController extends AdminController
 	 */
 	public function actionCreate($parentid = 0)
 	{
-		$model=new YlArea;
+		$model=new YlProduct2;
 
 		// AJAX 表单验证
 		$this->performAjaxValidation($model);
-		if(isset($_POST['YlArea']))
+		if(isset($_POST['YlProduct2']))
 		{
-			$model->attributes=$_POST['YlArea'];
+			$model->attributes=$_POST['YlProduct2'];
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -68,9 +68,9 @@ class YlAreaController extends AdminController
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
-		if(isset($_POST['YlArea']))
+		if(isset($_POST['YlProduct2']))
 		{
-			$model->attributes=$_POST['YlArea'];
+			$model->attributes=$_POST['YlProduct2'];
 
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
@@ -111,7 +111,7 @@ class YlAreaController extends AdminController
 	public function actionListorder() {
 		$orders = Yii::app()->getRequest()->getPost('listorders');
 		foreach ($orders as $k => $v) {
-			YlArea::model()->updateByPk($k, array('listorder' => $v));
+			YlProduct2::model()->updateByPk($k, array('listorder' => $v));
 		}
 		$this->success('更新排序成功！');
 	}
@@ -122,7 +122,7 @@ class YlAreaController extends AdminController
 	 */
 	public function loadModel($id)
 	{
-		$model=YlArea::model()->findByPk($id);
+		$model=YlProduct2::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'内容不存在！.');
 		return $model;
@@ -133,7 +133,7 @@ class YlAreaController extends AdminController
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='admin-YlArea-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='admin-YlProduct2-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
