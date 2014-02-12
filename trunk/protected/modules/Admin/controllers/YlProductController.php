@@ -2,7 +2,7 @@
 
 class YlProductController extends AdminController
 {
-	
+
 	/**
 	 * 首页列表.
 	 */
@@ -34,8 +34,25 @@ class YlProductController extends AdminController
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
-				$model->imgurl=FileUpload::createFile($upload,'mediafile','create');
+				$im = null;
+				$imagetype = strtolower($upload->extensionName);
+				if($imagetype == 'gif')
+				    $im = imagecreatefromgif($upload->tempName);
+				else if ($imagetype == 'jpg')
+				    $im = imagecreatefromjpeg($upload->tempName);
+				else if ($imagetype == 'png')
+				    $im = imagecreatefrompng($upload->tempName);
+				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
+
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}
+			unset($pdf);
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -54,6 +71,7 @@ class YlProductController extends AdminController
 		$model=$this->loadModel($id);
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
+		$old_pdf = $model->pdf;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -67,6 +85,15 @@ class YlProductController extends AdminController
 			}else{
 				$model->imgurl = $old_imgurl;
 			}
+			$pdf=CUploadedFile::getInstance($model,'pdf');
+
+			if(!empty($pdf))
+			{
+				$pdftype = strtolower($pdf->extensionName);
+				if($pdftype == 'swf')
+					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
+			}else
+				$model->pdf = $old_pdf;
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
@@ -84,7 +111,7 @@ class YlProductController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -98,9 +125,9 @@ class YlProductController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
 
-	
+
+
 
 	/**
 	 * 载入

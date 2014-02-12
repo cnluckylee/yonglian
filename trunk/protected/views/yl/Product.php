@@ -9,8 +9,52 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/DateNewCatalog.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/DateNewMultimedia.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ylteam.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/menu.css" />
 <div id="centers"><!--内容开始-->
- 
+  <div style="width:1130px; margin:0pt auto; position:relative; height:25px;float:left;">
+<div id="tm">服&#12288;务&#12288;产&#12288;品&#12288;分&#12288;类&#12288;列&#12288;表&#12288;------≥</div><!--成员表标题-->
+<div class="team" id="bmenu">
+ <ul class="menu">
+ <?php foreach($product as $i):?>
+      <li class="current"><a class="parent" href="javascript:void(0);"><span><?php echo $i['name'];?></span></a>
+        <div style="visibility: hidden;">
+          <ul>
+           <?php 
+		   if(isset($i['child']) && $i['child']):
+		   foreach($i['child'] as $ii):?>
+            <li><a class="parent" href="javascript:void(0);"><span style="color:#696969"><?php echo $ii['name'];?></span></a>
+              <div style="visibility: hidden;">
+                <ul>
+                 <?php 
+		   if(isset($ii['child']) && $ii['child']):
+		   foreach($ii['child'] as $iii):?>
+                   <li><a class="parent" href="javascript:void(0);"><span style="color:#696969"><?php echo $iii['name'];?></span></a>
+                      <div style="visibility: hidden;">
+                        <ul>
+                         <?php 
+							   if(isset($iii['child']) && $iii['child']):
+							   foreach($iii['child'] as $iiii):?>
+                       			   <li><a href="?r=yl/Team&id=<?php echo $iiii['id'];?>"><span><?php echo $iiii['name'];?></span></a></li>
+                           <?php endforeach;endif;?>
+                        
+                        </ul>
+                      </div>
+                    </li>	
+                    <?php endforeach;endif;?>
+
+                </ul>
+              </div>
+            </li>
+              <?php endforeach;endif;?>
+          </ul>
+        </div>
+      </li>
+  <?php endforeach;?>
+    </ul>
+
+</div><!--成员表结束-->
+</div>  
 <div class="f_left">
 
 <div id="vSite"><!--视频开始-->
@@ -69,7 +113,7 @@
  <?php foreach($datalist as $k =>$v):?>
 <tr>
 <td><img src="images/w15.gif" width="20" height="15" /></td><!--<img src="images/w16.gif" width="20" height="15" />-->
-<td id="lb"><div id="type1" style="cursor:default"><div id="graphic2" onclick="setPdfView(this)"><?php echo $k+1?>.<?php echo $v['title']?></div></div></td>
+<td id="lb"><div id="type1" style="cursor:default"><div id="graphic2" onclick="setPdfView(this)" pdf="<?php echo $v['pdf']?>"><?php echo $k+1?>.<?php echo $v['title']?></div></div></td>
 </tr>
 <?php endforeach; ?>
 </table>
@@ -82,14 +126,18 @@
 
 </div> 
 </div><!--内容结束-->
-
+<script type="text/javascript" src="js/jquery-1.js"></script>
+<script type="text/javascript" src="js/jquery.color.js"></script>
+<script type="text/javascript" src="js/jquery.easing.js"></script>
+<script type="text/javascript" src="js/jquery.lavaLamp.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
 <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/flexpaper/flexpaper.js"></script>
  <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>js/flexpaper/flexpaper_handlers.js"></script>
  
  <script type="text/javascript">
    var startDocument = "Paper";
  	$(document).ready(function() {
- 		 var pdffile = '<?php echo $datalist[0]["imgurl"]?>';
+ 		 var pdffile = '<?php echo $datalist[0]["pdf"]?>';
    	 setPdf(pdffile);
  	});
     function getDocumentUrl(document){
@@ -100,6 +148,7 @@
    
 	 function setPdf(pdffile)
 	 {
+	 alert(pdffile);
 		 $('#documentViewer').FlexPaperViewer(
    		  { config : {
 

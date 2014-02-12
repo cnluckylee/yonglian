@@ -43,7 +43,7 @@ $('.del').click(function(){
   <table width="100%" class="table_list table">
     <thead>
       <tr class="title">
-        <th colspan="4"> 永链数据－地区职位管理 </th>
+        <th colspan="4"> 永链数据－地区产品管理 </th>
       </tr>
       <tr>
         <th width="80" style="text-align:center">排序</th>

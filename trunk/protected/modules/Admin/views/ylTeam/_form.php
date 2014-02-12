@@ -22,7 +22,18 @@
         </div>
         </td>
 	</tr>
-
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'uname'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'uname',array('size'=>60,'maxlength'=>200,'id'=>'txt_uname')); ?>
+		<input type="button" id="ylArea" value="请选择">
+     
+        </div>
+        </td>
+	</tr>
 
 
 	<tr>
@@ -39,7 +50,20 @@
         </div>
         </td>
 	</tr>
-
+    <tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'pdf'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
+			 if(!empty($model->pdf))
+			  	echo $model->pdf;
+		?>
+		<?php echo $form->error($model,'pdf'); ?>
+        </div>
+        </td>
+	</tr>
    	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'remark'); ?>
@@ -74,10 +98,23 @@
       </tfoot>
     </table>
 	
-
+<?php echo $form->hiddenField($model,'uid',array('id'=>'hid_uid')); ?>
 <?php $this->endWidget(); ?>
 
 </div>
+<script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
+
+<script language="javascript">
+$(document).ready(function() {
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.pack.js','js');
+	loadCssAndJs(jsUrl+'/fancybox/jquery.fancybox-1.3.4.css','css');
+	setTimeout(function (){
+		bindiframe("ylArea");
+	},1000);	
+
+});
+
+</script>
 <script language="javascript">
  	var editor;
 	KindEditor.ready(function(K) {

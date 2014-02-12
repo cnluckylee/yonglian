@@ -55,11 +55,13 @@ class YlController extends Controller
 
 	 public function actionTeam()
 	{
-
+		$uid = Tools::getParam('id');
 		$this->pageTitle = '永链团队';
 		$pageArray = array();
-		$pageArray['datalist'] = YlTeam::getDataList();
+		$pageArray['datalist'] = YlTeam::getDataList($uid);
 		$pageArray['menus'] = $this->menus;
+		$pageArray['areas'] = YlArea::AreaArray();
+
 		$this->render('Team',$pageArray);
 	 }
 	/**
@@ -69,10 +71,12 @@ class YlController extends Controller
 	public function actionProduct()
 	{
 
+		$pid = Tools::getParam('id');
 		$this->pageTitle = '永链产品';
 		$pageArray = array();
-		$pageArray['datalist'] = YlProduct::getDataList();
+		$pageArray['datalist'] = YlProduct::getDataList($pid);
 
+		$pageArray['product'] = YlProduct2::ProductArray();
 		$pageArray['menus'] = $this->menus;
 		$this->render('Product',$pageArray);
 	 }
@@ -81,14 +85,14 @@ class YlController extends Controller
 	  */
 	 public function actionRecruit()
 	 {
-	 	
+
 	 	$this->pageTitle = '永链招聘';
 	 	$pageArray = array();
-	
+
 	 	$pageArray['datalist'] = YlRecruit::getDataList();
 	 	$pageArray['menus'] = $this->menus;
 	 	$this->render('Recruit',$pageArray);
-	 
-	 	
+
+
 	 }
 }

@@ -46,11 +46,12 @@ class YlProduct extends CActiveRecord
 		return array(
 			array('cid, IndustryID, CompanyID, pid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
-			array('imgurl', 'length', 'max'=>255),
+			array('pname', 'length', 'max'=>300),
+			array('imgurl,pdf', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, cid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, pid', 'safe', 'on'=>'search'),
+			array('id, title, cid, imgurl, content, remark, addtime, updtime, IndustryID, CompanyID, pid,pname,pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,14 +75,17 @@ class YlProduct extends CActiveRecord
 			'id' => 'ID',
 			'title' => '标题',
 			'cid' => '类型',
-			'imgurl' => '媒体文件',
+			'imgurl' => '图片',
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新时间',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
-			'pid' => '类别',
+			'pdf' =>'媒体文件',
+
+			'pid' =>'产品',
+			'pname' =>'产品'
 		);
 	}
 
@@ -107,22 +111,35 @@ class YlProduct extends CActiveRecord
 		$criteria->compare('IndustryID',$this->IndustryID);
 		$criteria->compare('CompanyID',$this->CompanyID);
 		$criteria->compare('pid',$this->pid);
-
+		$criteria->compare('pname',$this->pname,true);
+		$criteria->order = 'updtime desc';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-	
-	public static function getDataList()
+
+	public static function getDataList($uid = null)
 	{
-		$model = self::model()->getDbConnection()->createCommand()
-                ->from('{{yl_product}}')
-                ->order('updtime DESC')
-                ;
-		 $data = $model->queryAll();
-		return $data;
+		if(!$uid)
+		{
+			$model = self::model()->find(array('condition'=>'pid>0'));
+			if($model)
+				$pid = $model->pid;
+		}
+
+		$data = array();
+
+		$data = self::model()->findAll(array(
+						'condition'=>'pid=:pid','params'=>array(':pid'=>$pid)));
+		$result = array();
+		foreach($data as $i)
+		{
+			$arr = $i->attributes;
+			$result[] = $arr;
+		}
+		return $result;
 	}
-	
+
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())
@@ -131,12 +148,12 @@ class YlProduct extends CActiveRecord
 			if($this->isNewRecord)
 			{
 				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
-				
+
 			}
 			else
 			{
 				$this->updtime=date('Y-m-d H:i:s');
-				
+
 			}
 
 			return true;
