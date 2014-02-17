@@ -2,13 +2,13 @@
 
 class ArticleController extends AdminController
 {
-	
+
 	/**
 	 * 首页列表.
 	 */
 	public function actionIndex()
 	{
-		
+
 		$model=new Article('search');
 		$model->unsetAttributes();  // 清理默认值
 		if(isset($_GET['Article']))
@@ -84,7 +84,7 @@ class ArticleController extends AdminController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
-			
+
 			$this->loadModel($id)->delete();
 
 			// 如果是 AJAX 操作返回
@@ -98,7 +98,7 @@ class ArticleController extends AdminController
 			throw new CHttpException(400,'非法访问！');
 	}
 
-	
+
 	/**
 	 * 查看
 	 */
@@ -109,7 +109,7 @@ class ArticleController extends AdminController
 				'model'=>$model,
 		));
 	}
-	
+
 	public function actionGetCompany()
 	{
 		$aid = Tools::getParam("aid","",'post');
@@ -122,7 +122,7 @@ class ArticleController extends AdminController
 			$cids = implode(",", $ids);
 			if($cids)
 				$result = Company::getCompanyByAid($cids);
-				
+
 		}
 
 		if($result)
@@ -152,7 +152,7 @@ class ArticleController extends AdminController
 			$name = $NewsType[$data->cid]['name'];
 		return $name;
 	}
-	
+
 	/**
 	 * 取value
 	 */
@@ -164,7 +164,7 @@ class ArticleController extends AdminController
 			$name = $result->attributes['name'];
 		return $name;
 	}
-	
+
 	/**
 	 * 取value
 	 */
@@ -177,7 +177,7 @@ class ArticleController extends AdminController
 			$name = $result->attributes['name'];
 		return $name;
 	}
-	
+
 	/**
 	 * Ajax验证
 	 * @param CModel the model to be validated

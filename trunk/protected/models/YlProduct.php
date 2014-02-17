@@ -124,14 +124,14 @@ class YlProduct extends CActiveRecord
 		{
 			$model = self::model()->find(array('condition'=>'pid>0'));
 			if($model)
-				$pid = $model->pid;
+				$uid = $model->pid;
 		}
-		if(!$pid)
+		if(!$uid)
 			return array();
 		$data = array();
 
 		$data = self::model()->findAll(array(
-						'condition'=>'pid=:pid','params'=>array(':pid'=>$pid)));
+						'condition'=>'pid=:pid','params'=>array(':pid'=>$uid)));
 		$result = array();
 		foreach($data as $i)
 		{
