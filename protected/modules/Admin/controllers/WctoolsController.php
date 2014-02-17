@@ -39,9 +39,9 @@ class WctoolsController extends AdminController
 				$model->downurl=FileUpload::createFile($upload,'file','create');
 			}
 			unset($upload);
-			
+
 			$pdf=CUploadedFile::getInstance($model,'pdf');
-			
+
 			if(!empty($pdf))
 			{
 				$pdftype = strtolower($pdf->extensionName);
@@ -62,7 +62,7 @@ class WctoolsController extends AdminController
 				else if ($imagetype == 'png')
 				    $im = imagecreatefrompng($upload->tempName);
 				//CThumb::resizeImage($im,100, 100,"d:/1.jpg",$upload->tempName);
-				$model->imgurl=Upload::createFile($upload,'windows','create');
+				$model->imgurl=Upload::createFile($upload,'mediapic','create');
 			}
 
 			if($model->save())
@@ -94,25 +94,25 @@ class WctoolsController extends AdminController
 			$upload=CUploadedFile::getInstance($model,'imgurl');
 			if(!empty($upload))
 			{
-				$model->imgurl=Upload::createFile($upload,'cp','update');
+				$model->imgurl=Upload::createFile($upload,'mediapic','update');
 			}else{
 				$model->imgurl = $old_imgurl;
 			}
 			unset($upload);
-			
+
 			$pdf=CUploadedFile::getInstance($model,'pdf');
-				
+
 			if(!empty($pdf))
 			{
 				$pdftype = strtolower($pdf->extensionName);
 				if($pdftype == 'swf')
 					$model->pdf=FileUpload::createFile($pdf,'pdf','create');
-			}else 
+			}else
 				$model->pdf = $old_pdf;
-				
+
 			unset($pdf);
-			
-			
+
+
 			$upload=CUploadedFile::getInstance($model,'downurl');
 
 			if(!empty($upload))

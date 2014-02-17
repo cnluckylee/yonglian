@@ -137,7 +137,7 @@
  <script type="text/javascript">
    var startDocument = "Paper";
  	$(document).ready(function() {
- 		 var pdffile = '<?php echo $datalist[0]["pdf"]?>';
+ 		 var pdffile = '<?php if(isset($datalist[0])) echo $datalist[0]["pdf"];?>';
    	 setPdf(pdffile);
  	});
     function getDocumentUrl(document){
@@ -148,7 +148,6 @@
    
 	 function setPdf(pdffile)
 	 {
-	 alert(pdffile);
 		 $('#documentViewer').FlexPaperViewer(
    		  { config : {
 
