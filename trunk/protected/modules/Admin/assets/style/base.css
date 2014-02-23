@@ -145,3 +145,8 @@ body .fn-hide {
 	width: expression(this.width > 150 && this.width > this.height ? 150 : true);
     height: expresion(this.height > 150 ? 50 : true);
 }
+
+.ico_16 img{
+	height: 16px;
+	width: 16px;
+}

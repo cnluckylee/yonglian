@@ -137,14 +137,21 @@ class AdminMatchController extends AdminController
 	}
 	
 	/**
-	 * 删除
+	 * 评论
 	 * @param integer $id 主键
 	 */
-	public function actionView($id)
+	public function actionComment($id)
 	{
 		$this->redirect(array('/admin/MatchComment','mid'=>$id));
 	}
-
+	/**
+	 * 作品
+	 * @param integer $id 主键
+	 */
+	public function actionEntries($id)
+	{
+		$this->redirect(array('/admin/MatchEntries','mid'=>$id));
+	}
 
 
 

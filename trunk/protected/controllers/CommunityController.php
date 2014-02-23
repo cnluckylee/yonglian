@@ -55,7 +55,7 @@ class CommunityController extends Controller
 			$pageArray['data'] = Mentor::getListByUid($id);
 		else if($model->type == 2)
 			$pageArray['data'] = Theory::getListByUid($id);
-	
+		
 		$this->render('UserView',$pageArray);
 	}
 }

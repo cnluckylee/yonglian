@@ -1,11 +1,9 @@
-<?php if($mid>0):?>
+<!--
 <div class="topBut">
-<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create',array('mid'=>$mid));?>"><span>添加</span></a>
-&nbsp;&nbsp;&nbsp;&nbsp;(赛事名称:<font color="red"> <?php echo $matchname;?></font>)
+<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a>
+
 </div>
-<?php else:?>
-所有作品
-<? endif;?>
+-->
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
@@ -13,8 +11,8 @@
 </div><!-- search-form -->
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
-	'id'=>'match-entries-grid',
-	'dataProvider'=>$model->search($mid),
+	'id'=>'match-awards-grid',
+	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		array(
@@ -29,7 +27,7 @@
 
 			array(
 
-						'name' => 'title',
+						'name' => 'Prize',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -38,7 +36,7 @@
 
 			array(
 
-						'name' => 'mname',
+						'name' => 'Prize2',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -47,16 +45,7 @@
 
 			array(
 
-						'name' => 'type',
-						'value' =>array($this,"getValueByType"),
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'author',
+						'name' => 'Prize3',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -65,66 +54,64 @@
 
 			array(
 
-						'name' => 'content',
+						'name' => 'PostName',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
-			/*
+			array(
+
+						'name' => 'Post',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'Post2Name',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'Post2',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'Post3Name',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			array(
+
+						'name' => 'Post3',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
+
+			
 		array(
-
-						'name' => 'remark',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'addtime',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'updtime',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'pdf',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'mname',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-		
-
-			*/
-		array(
+			'header'=>'操作',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
-			'template' => '{update} {delete}',
+			'template' => '{update}',
 		),
 	),
 )); ?>

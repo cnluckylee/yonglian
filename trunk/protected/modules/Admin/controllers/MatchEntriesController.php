@@ -17,9 +17,16 @@ class MatchEntriesController extends AdminController
 		$model->unsetAttributes();  // 清理默认值
 		if(isset($_GET['MatchEntries']))
 			$model->attributes=$_GET['MatchEntries'];
+		$matchname='所有作品';
+		if($this->cid>0)
+		{
+			$match = Match::model()->findByPk($this->cid);
+			$matchname = $match?$match->title:'';
+		}
 		$this->render('index',array(
 			'model'=>$model,
-			'mid' =>$this->cid,
+			'mid'=>$this->cid,
+			'matchname'=>$matchname	
 		));
 	}
 
