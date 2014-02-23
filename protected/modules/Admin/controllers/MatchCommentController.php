@@ -18,10 +18,16 @@ class MatchCommentController extends AdminController
 		$model->unsetAttributes();  // 清理默认值
 		if(isset($_GET['MatchComment']))
 			$model->attributes=$_GET['MatchComment'];
-
+		$matchname='所有评论';
+		if($this->cid>0)
+		{
+			$match = Match::model()->findByPk($this->cid);
+			$matchname = $match?$match->title:'';
+		}
 		$this->render('index',array(
 			'model'=>$model,
-			'mid'=>$this->cid
+			'mid'=>$this->cid,
+			'matchname'=>$matchname	
 		));
 	}
 

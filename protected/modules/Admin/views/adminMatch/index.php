@@ -175,9 +175,25 @@
 
 			*/
 		array(
-			'class'=>'CButtonColumn',
-			'class' => 'CButtonColumn',
-			'template' => '{update} {view} {delete}',
-		),
+    		'header' => '操作',
+   		'class'=>'CButtonColumn',
+   	   'headerHtmlOptions' => array('width'=>'90'),
+   	   'htmlOptions' => array('align'=>'center'),
+  	      'template'=>'{update} {delete}{comment}{entries}',
+   	   'buttons'=>array(
+         'comment' => array(
+            'label'=>'评论',
+            'imageUrl'=>Yii::app()->request->baseUrl.'/images/ico/comment.png',
+            'options' => array('class'=>'ico_16'),
+            'url'=>'Yii::app()->createUrl("admin/AdminMatch/Comment", array("id"=>$data->id))',
+          ),
+          'entries' => array(
+            'label'=>'作品',
+            'imageUrl'=>Yii::app()->request->baseUrl.'/images/ico/entries.png',
+            'options' => array('class'=>'ico_16'),
+            'url'=>'Yii::app()->createUrl("admin/AdminMatch/Entries", array("id"=>$data->id))',
+          ),
+    ),
+),
 	),
 )); ?>

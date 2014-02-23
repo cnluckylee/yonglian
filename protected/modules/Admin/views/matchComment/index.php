@@ -1,9 +1,12 @@
-
+<?php if($mid>0):?>
 <div class="topBut">
+
 <a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create',array('mid'=>$mid));?>"><span>添加</span></a>
-
+&nbsp;&nbsp;&nbsp;&nbsp;(赛事名称:<font color="red"> <?php echo $matchname;?></font>)
 </div>
-
+<?php else:?>
+所有评论
+<? endif;?>
 <div class="search-form" style="display:none">
 <?php $this->renderPartial('_search',array(
 	'model'=>$model,
