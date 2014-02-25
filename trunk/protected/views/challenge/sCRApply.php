@@ -39,19 +39,19 @@ var clickNRXS=null;
 <p>海报二......</p>
 </div>
 </br>
-<div id="st3" onclick="setAab('st',3,5)"">
+<div id="st3" onclick="setAab('st',3,5)">
 <p>&nbsp;&nbsp;海报简介......</p>
 <p>简述内容......</p>
 <p>海报三......</p>
 </div>
 </br>
-<div id="st4" onclick="setAab('st',4,5)"">
+<div id="st4" onclick="setAab('st',4,5)">
 <p>&nbsp;&nbsp;海报简介......</p>
 <p>简述内容......</p>
 <p>海报四......</p>
 </div>
 </br>
-<div id="st5" onclick="setAab('st',5,5)"">
+<div id="st5" onclick="setAab('st',5,5)">
 <p>&nbsp;&nbsp;海报简介......</p>
 <p>简述内容......</p>
 <p>海报五......</p>
@@ -87,29 +87,24 @@ var clickNRXS=null;
 <div class="s_right"><!--广告开始-->
 <table width="%" cellspacing="3" cellpadding="0">
   <tr>
-    <td><img src="images/p1.gif"width="196" height="107" border="0"/></td>
-    <td><img src="images/p2.gif"width="196" height="107" border="0"/></td>
-    <td><img src="images/p3.gif"width="196" height="107" border="0"/></td>
-    <td><img src="images/p4.gif"width="196" height="107" border="0"/></td>
-    <td><img src="images/p5.gif"width="194" height="107" border="0"/></td>
+  <?php foreach($matchquery as $i):?>
+    <td><img title="<?php echo $i['title'];?>" src="<?php echo $i['imgurl'];?>"width="196" height="107" border="0" onClick="changeinfo(<?php echo $i['id'];?>)"/></td>
+    <?php endforeach;?>
+    
   </tr>
 </table>
 </div><!--广告结束-->
 
 <div class="t_left">
-<p>赛</p>
-<p>事</p>
-<p>标</p>
-<p>题</p>
-<p>一</p>
+<p class="shuli"><?php echo $matchquery[0]['title'];?></p>
 <div class="download">下载</div>
 </div>
 
 <div class="t_middle">
 <div id="con_sssm_1"><!--赛事1开始-->
-<div id="con_ssnra_1"><div id="zxjl">主旨内容1</div></div>
-<div id="con_ssnra_2" style="display:none"><div id="zxjm">条件内容1</div></div>
-<div id="con_ssnra_3" style="display:none"><div id="zxjn">其它内容1</div></div>
+<div id="con_ssnra_1"><div id="zxjl"><?php echo $matchquery[0]['subject'];?></div></div>
+<div id="con_ssnra_2" style="display:none"><div id="zxjm"><?php echo $matchquery[0]['condition'];?></div></div>
+<div id="con_ssnra_3" style="display:none"><div id="zxjn"><?php echo $matchquery[0]['other'];?></div></div>
 <div id="nb">
 <table width="%" border="0" align="center" cellpadding="1" cellspacing="1" bgcolor="#BEBEBE"><tr>
 <td width="100" id="hm"><div align="center" class="STYLE1"id="ssnra1" onclick="setAab('ssnra',1,10)"style="cursor:default">主　旨1</div></td>
@@ -128,7 +123,7 @@ clickNRXS=this;
 </script>
 </div>
 
-<div class="t_right">
+<div class="t_right" id="video">
 赛事视频
 </div>
 
@@ -137,8 +132,16 @@ clickNRXS=this;
 
 </div><!--内容结束-->
 
+</div>
 
- 
-</div><!--框架结束--> 
-</body>
-</html>
+<script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.swfobject.1-1-1.min.js"></script>
+
+<script language="javascript">
+$(function () {
+		$('#video').flash({
+			swf: '<?php echo $matchquery[0]["pdf"];?>',
+			height: 353,
+			width: 482
+		});
+});
+</script>

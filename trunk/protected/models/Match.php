@@ -162,6 +162,7 @@ class Match extends CActiveRecord
 	{
 		$criteria = new CDbCriteria();
 		$criteria->addCondition('imgurl!=""');
+		$criteria->limit = 5;
 		$data = self::model()->findAll($criteria);
 		$result = array();
 		foreach($data as $i)

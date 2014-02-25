@@ -20,9 +20,9 @@ class ChallengeController extends Controller
 	{
 		$this->pageTitle ="赛事报名";
 		$data = array();
-		$data['match'] = Match::getCRApply();
-		
-
+		$matchquery = MatchQuery::getCRApply();
+		$data['matchquery'] = $matchquery;
+		$data['matchqueryjson'] = json_encode($matchquery);
 		$this->render('sCRApply',$data);
 	}
 	/**
