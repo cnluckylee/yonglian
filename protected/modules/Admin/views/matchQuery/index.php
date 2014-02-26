@@ -1,6 +1,7 @@
 
 <div class="topBut">
-<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a>
+<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create',array('mid'=>$cid));?>"><span>添加</span></a>
+&nbsp;&nbsp;&nbsp;&nbsp;(赛事查询名称:<font color="red"> <?php echo $cname;?></font>)
 </div>
 
 <div class="search-form" style="display:none">
@@ -11,7 +12,7 @@
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
 	'id'=>'match-query-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search($cid),
 	'filter'=>$model,
 	'columns'=>array(
 		array(
@@ -23,7 +24,14 @@
 								//'width' => '60',
 						//),
 				),
+			array(
 
+						'name' => 'cname',
+
+						//'htmlOptions' => array(
+								//'width' => '60',
+						//),
+				),
 			array(
 
 						'name' => 'title',

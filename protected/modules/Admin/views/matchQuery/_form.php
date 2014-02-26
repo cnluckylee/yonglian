@@ -22,6 +22,17 @@
         </div>
         </td>
 	</tr>
+		<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'cname'); ?>
+        </th>
+        <td >
+        <div class="row">
+		<?php echo $form->textField($model,'cname',array('readonly'=>'true')); ?>
+		<?php echo $form->error($model,'cname'); ?>
+        </div>
+        </td>
+	</tr>
 <tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'imgurl'); ?>
@@ -98,7 +109,7 @@
         </tr>
       </tfoot>
     </table>
-	
+	<?php echo $form->hiddenField($model,'cid'); ?>
 
 <?php $this->endWidget(); ?>
 

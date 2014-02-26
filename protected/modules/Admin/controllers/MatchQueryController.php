@@ -2,7 +2,11 @@
 
 class MatchQueryController extends AdminController
 {
-	
+	protected  $cid;
+	public function init()
+	{
+		$this->cid = Tools::getParam('mid');
+	}
 	/**
 	 * 首页列表.
 	 */
@@ -12,9 +16,15 @@ class MatchQueryController extends AdminController
 		$model->unsetAttributes();  // 清理默认值
 		if(isset($_GET['MatchQuery']))
 			$model->attributes=$_GET['MatchQuery'];
-
+		if($this->cid>0)
+		{
+			$match = MatchApply::model()->findByPk($this->cid);
+			$matchname = $match?$match->title:'';
+		}
 		$this->render('index',array(
 			'model'=>$model,
+			'cid'=>$this->cid,
+			'cname'=>$matchname
 		));
 	}
 
@@ -61,7 +71,15 @@ class MatchQueryController extends AdminController
 			if($model->save())
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
-
+		if($this->cid){
+			$model->cid = $this->cid;
+			$match = MatchQuery::model()->findByPk($this->cid);
+			if($match)
+			{
+				$model->cname= $match->title;
+			}
+		
+		}
 		$this->render('create',array(
 			'model'=>$model,
 		));
