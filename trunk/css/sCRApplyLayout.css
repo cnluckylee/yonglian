@@ -38,9 +38,9 @@ font-family: "宋体";font-size:12px;font-weight:normal;font-style:normal;color: #
 
 #centers .t_middle{ float:left;width:502px;height:353px;border:0px solid #00CC66;background:#FAF4FF; margin-right:7px;margin-top:7px;border-bottom:3px solid #d0d0d0;border-left:0px solid #d0d0d0;padding:; 
 font-family: "宋体";font-size:12px;font-weight:normal;font-style:normal;color: #000000;text-align:left;line-height:25px}
-#zxjl {position:absolute;left:38px;top:658px;width:502px;height:353px;z-index:3;font-size:;background:blue}
-#zxjm {position:absolute;left:38px;top:658px;width:502px;height:353px;z-index:3;font-size:;background:yellow}
-#zxjn {position:absolute;left:38px;top:658px;width:502px;height:353px;z-index:3;font-size:;background:green}
+#zxjl {position:absolute;left:38px;width:502px;height:353px;z-index:3;font-size:;background:blue}
+#zxjm {position:absolute;left:38px;width:502px;height:353px;z-index:3;font-size:;background:yellow}
+#zxjn {position:absolute;left:38px;width:502px;height:353px;z-index:3;font-size:;background:green}
 /*说明按钮定位*/
 #nb{width:200px;border:0px solid orange;height:25px;top:295px;left:290px;overflow:visible;position:relative;z-index:9}
 

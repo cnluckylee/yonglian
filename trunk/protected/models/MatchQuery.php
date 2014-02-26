@@ -42,12 +42,13 @@ class MatchQuery extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('cid', 'numerical', 'integerOnly'=>true),
 			array('title', 'required'),
-			array('title, imgurl, pdf', 'length', 'max'=>255),
+			array('title, imgurl, pdf,cname', 'length', 'max'=>255),
 			array('subject, condition, other, addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, subject, condition, other, imgurl, pdf, addtime, updtime', 'safe', 'on'=>'search'),
+			array('id,cid,cname, title, subject, condition, other, imgurl, pdf, addtime, updtime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,6 +78,8 @@ class MatchQuery extends CActiveRecord
 			'pdf' => '媒体文件',
 			'addtime' => 'Addtime',
 			'updtime' => '更新时间',
+			'cid' =>'赛事查询名称',
+			'cname' =>'赛事查询名称',
 		);
 	}
 
@@ -100,6 +103,8 @@ class MatchQuery extends CActiveRecord
 		$criteria->compare('pdf',$this->pdf,true);
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);
+		$criteria->compare('cid',$this->cid,true);
+		$criteria->compare('cname',$this->cname,true);
 		$criteria->order = 'updtime desc';
 
 		return new CActiveDataProvider($this, array(
@@ -136,11 +141,14 @@ class MatchQuery extends CActiveRecord
 		else
 			return false;
 	}
-	public static function getCRApply()
+	public function getCRApply($cid=null,$limit =5)
 	{
 		$criteria=new CDbCriteria;
+		if($cid>0)
+			$criteria->compare('cid', $cid);
 		$criteria->order = 'updtime desc';
-		$criteria->limit = 5;
+		$criteria->limit = $limit;
+		
 		$models = self::model()->findAll($criteria);
 		foreach($models as $model)
 		{

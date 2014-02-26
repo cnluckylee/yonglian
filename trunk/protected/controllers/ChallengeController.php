@@ -20,10 +20,36 @@ class ChallengeController extends Controller
 	{
 		$this->pageTitle ="赛事报名";
 		$data = array();
-		$matchquery = MatchQuery::getCRApply();
+		
+		$apply = MatchApply::getApply();
+		$cid = $apply?$apply[0]['id']:"";
+		$matchmodel = new MatchQuery();
+		if($cid)
+		{
+			$matchquery = $matchmodel->getCRApply($cid);
+		}
+		
+		
+			
+		$matchall = $matchmodel->getCRApply();
+		
+		$data['apply'] = $apply;
 		$data['matchquery'] = $matchquery;
-		$data['matchqueryjson'] = json_encode($matchquery);
+		$data['matchqueryjson'] = json_encode($matchall);
 		$this->render('sCRApply',$data);
+	}
+	
+	public function actionGetmatchquery()
+	{
+		$id = Tools::getParam('id',null,'post');
+		if($id)
+		{
+			$matchquery = new MatchQuery();
+			$apply = $matchquery->getCRApply($id,5);
+			echo json_encode($apply);
+		}
+		$this->layout=false;
+		exit;	
 	}
 	/**
 	 * 赛事查询
