@@ -73,7 +73,7 @@ class MatchQueryController extends AdminController
 		}
 		if($this->cid){
 			$model->cid = $this->cid;
-			$match = MatchQuery::model()->findByPk($this->cid);
+			$match = MatchApply::model()->findByPk($this->cid);
 			if($match)
 			{
 				$model->cname= $match->title;
