@@ -32,19 +32,19 @@
         init();
         if(autoplay == "enable"){
             g.find(".switchBigPic").css("display","block");
-            g.find(".nav").css("display","block");
+            g.find(".navbg").css("display","block");
             g.css("background","none");
             play();
         }else{
             g.find(".switchBigPic").css("display","block");
-            g.find(".nav").css("display","block");
+            g.find(".navbg").css("display","block");
             g.css("background","none");
             current = 0;
             showpic();
         }
-        g.find(".nav").children("li").hover(
+        g.find(".navbg").children("li").hover(
             function(){
-                var index = g.find(".nav").children("li").index($(this));
+                var index = g.find(".navbg").children("li").index($(this));
                 if(index != current){
                     current = index;
                     showpic();
@@ -73,20 +73,20 @@
             g.find(".switchBigPic").css("position","relative");
             g.find(".switchBigPic").children("div").css("position","absolute").css("overflow","hidden");
             g.find(".switchBigPic").children("div").children("p").css("position","absolute").css("padding","5px").css("margin","0px").css("bottom","0px").css("opacity","0.6").css("background-color","#000").css("color","#FFF").css("font-size","12px").css("width","100%");
-            g.find(".nav").css("width",thumbnail_width+"px").css("height",slideshow_height+"px").css("position","absolute").css("right","0px");
-            g.find(".nav").children("li").css("height","49px").css("background-image","url("+directory+"flashtext-bg.jpg)").css("line-height","49px").css("border-bottom","1px solid #CCCCCC").css("border-right","1px solid #CCCCCC");
-            g.find(".nav").children("li").children("a").css("text-decoration","none").css("height","49px").css("display","block").css("padding-left","25px").css("font-size","14px");
-            g.find(".nav").children("li").css("margin-left","0px");
+            g.find(".navbg").css("width",thumbnail_width+"px").css("height",slideshow_height+"px").css("position","absolute").css("right","0px");
+            g.find(".navbg").children("li").css("height","49px").css("background-image","url("+directory+"flashtext-bg.jpg)").css("line-height","49px").css("border-bottom","1px solid #CCCCCC").css("border-right","1px solid #CCCCCC");
+            g.find(".navbg").children("li").children("a").css("text-decoration","none").css("height","49px").css("display","block").css("padding-left","25px").css("font-size","14px");
+            g.find(".navbg").children("li").css("margin-left","0px");
             g.find(".switchBigPic").children("div").hide();
         }
         function showpic(){
             clearTimeout(v);
-            g.find(".nav").children("li").css("background-image","url("+directory+"flashtext-bg.jpg)").css("border-bottom","1px solid #CCCCCC");
-            g.find(".nav").children("li").eq(current).css("background-image","url("+directory+"flash-on.gif)").css("border-bottom","none");
+            g.find(".navbg").children("li").css("background-image","url("+directory+"flashtext-bg.jpg)").css("border-bottom","1px solid #CCCCCC");
+            g.find(".navbg").children("li").eq(current).css("background-image","url("+directory+"flash-on.gif)").css("border-bottom","none");
             g.find(".switchBigPic").children("div").fadeOut();
             g.find(".switchBigPic").children("div").eq(current).fadeIn();
-            g.find(".nav").children("li").eq(current).animate({marginLeft: '-35px'}, "fast");
-            g.find(".nav").children("li").eq(w).animate({marginLeft: '0px'}, "fast");
+            g.find(".navbg").children("li").eq(current).animate({marginLeft: '-35px'}, "fast");
+            g.find(".navbg").children("li").eq(w).animate({marginLeft: '0px'}, "fast");
             w = current;
 
         }
