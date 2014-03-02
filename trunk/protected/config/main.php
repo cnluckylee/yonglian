@@ -77,10 +77,10 @@ return array(
 		// uncomment the following to use a MySQL database
 
 		'db'=>array(
-			'connectionString' => 'mysql:host=192.168.3.58;dbname=yonglian',
+			'connectionString' => 'mysql:host=localhost;dbname=yonglian',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+			'password' => 'lwjy1212',
 			'charset' => 'utf8',
 			'tablePrefix'=>'yl_',
 		),
