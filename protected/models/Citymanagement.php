@@ -38,12 +38,12 @@ class Citymanagement extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('status', 'numerical', 'integerOnly'=>true),
+			array('status,sort', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, addtime, updtime, status', 'safe', 'on'=>'search'),
+			array('id, name,sort, addtime, updtime, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +69,7 @@ class Citymanagement extends CActiveRecord
 			'addtime' => 'Addtime',
 			'updtime' => '更新时间',
 			'status' => 'Status',
+			'sort' => '排序',
 		);
 	}
 
@@ -88,10 +89,37 @@ class Citymanagement extends CActiveRecord
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('status',$this->status);
-		$criteria->order = 'updtime desc';
+		$criteria->compare('sort',$this->sort);
+		$criteria->order = 'sort desc';
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	public static function getList()
+	{
+		$criteria=new CDbCriteria;
+		$criteria->select='*';  // 只选择 'title' 列
+		$criteria->order = 'sort desc';
+		$data=self::model()->findAll($criteria); // $params 不需要了
+		return $data;
+	}
+	
+	public static function getListSelect()
+	{
+		$criteria=new CDbCriteria;
+		$criteria->select='*';  // 只选择 'title' 列
+		$criteria->order = 'sort desc';
+		$result = array();
+		$result[] = array('id'=>'','name'=>'请选择');
+		$data=self::model()->findAll($criteria); // $params 不需要了
+		foreach($data as $i)
+		{
+			
+			$arr = $i->attributes;
+			$result[$arr['id']] = $arr;
+		}
+
+		return $result;
 	}
 	
 		protected function beforeSave()
