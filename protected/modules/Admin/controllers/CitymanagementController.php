@@ -12,9 +12,10 @@ class CitymanagementController extends AdminController
 		$model->unsetAttributes();  // 清理默认值
 		if(isset($_GET['Citymanagement']))
 			$model->attributes=$_GET['Citymanagement'];
-
+		$data = Citymanagement::getList();
 		$this->render('index',array(
 			'model'=>$model,
+			'data'=>$data,
 		));
 	}
 
@@ -86,7 +87,16 @@ class CitymanagementController extends AdminController
 	}
 
 	
-
+	/**
+	 * 排序
+	 */
+	public function actionListorder() {
+		$orders = Yii::app()->getRequest()->getPost('listorders');
+		foreach ($orders as $k => $v) {
+			Citymanagement::model()->updateByPk($k, array('sort' => $v));
+		}
+		$this->success('更新排序成功！');
+	}
 	
 
 	/**
