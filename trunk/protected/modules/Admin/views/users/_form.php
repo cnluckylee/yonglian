@@ -11,6 +11,7 @@
         </tr>
       </thead>
       <tbody>
+
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'username'); ?>
@@ -124,18 +125,7 @@
         </div>
         </td>
 	</tr>
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'IndustryName'); ?>       </th>
-        <td>
-        <div class="row">
-        <?php echo $form->textField($model,'IndustryName',array('id'=>'Company_Industry','readonly'=>'true')); ?>
-       
-        <input type="button" id="industry" value="请选择">
-      
-	</div>
-        </td>
-	</tr>
+
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'aid'); ?>   </th>
