@@ -190,6 +190,11 @@ class Users extends CActiveRecord
 			}
 			if(strlen($this->password)<>32)
 			 $this->password = md5($this->password);
+			if($this->CompanyID>0)
+			{
+				$company = Company::model()->findByPk($this->CompanyID);
+				$this->companyname = $company?$company->name:"";
+			}
 			return true;
 		}
 		else

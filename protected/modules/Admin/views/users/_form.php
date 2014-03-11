@@ -11,17 +11,6 @@
         </tr>
       </thead>
       <tbody>
-  	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'companyname'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'companyname',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'companyname'); ?>
-        </div>
-        </td>
-	</tr>    
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'username'); ?>

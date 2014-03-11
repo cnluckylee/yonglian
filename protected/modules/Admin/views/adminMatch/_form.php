@@ -204,123 +204,6 @@
 	</tr>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Prize'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Prize',array('size'=>120,'maxlength'=>120)); ?>
-		<?php echo $form->error($model,'Prize'); ?>
-        </div>
-        </td>
-	</tr>	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Prize2'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Prize2',array('size'=>120,'maxlength'=>120)); ?>
-		<?php echo $form->error($model,'Prize2'); ?>
-        </div>
-        </td>
-	</tr>	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Prize3'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Prize3',array('size'=>120,'maxlength'=>120)); ?>
-		<?php echo $form->error($model,'Prize3'); ?>
-        </div>
-        </td>
-	</tr>	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'PostName'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'PostName',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'PostName'); ?>
-        </div>
-        </td>
-	</tr>	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Post'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Post',array('size'=>60,'maxlength'=>100)); ?>(请以“,”分割)
-		<?php echo $form->error($model,'Post'); ?>
-        </div>
-        </td>
-	</tr>	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Post2Name'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Post2Name',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'Post2Name'); ?>
-        </div>
-        </td>
-	</tr>	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Post2'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Post2',array('size'=>60,'maxlength'=>100)); ?>(请以“,”分割)
-		<?php echo $form->error($model,'Post2'); ?>
-        </div>
-        </td>
-	</tr>	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Post3Name'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Post3Name',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'Post3Name'); ?>
-        </div>
-        </td>
-	</tr>
-
-<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'Post3'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'Post3',array('size'=>60,'maxlength'=>100)); ?>(请以“,”分割)
-		<?php echo $form->error($model,'Post3'); ?>
-        </div>
-        </td>
-	</tr>
--->
-
-
-
-
-
-
-
-
-
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'remark'); ?>
@@ -380,7 +263,7 @@ $(document).ready(function() {
 			<?php endforeach;?>
 			fun3(<?php echo $model->aid?>,ssxb,'ssxb');			
 		<?php endif;?>
-	},1000);	
+	},2000);	
 
 });
 

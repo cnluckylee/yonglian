@@ -250,15 +250,7 @@ class Match extends CActiveRecord
 	{
 		$data = self::model()->findByPk($id);
 		$data = $data?$data->attributes:array();
-		if($data)
-		{
-			$data['PrizeArr'] = explode(",",$data['Prize']); 
-			$data['Prize2Arr'] = explode(",",$data['Prize2']);
-			$data['Prize3Arr'] = explode(",",$data['Prize3']);
-			$data['PostArr'] = explode(",",$data['Post']);
-			$data['Post2Arr'] = explode(",",$data['Post2']);
-			$data['Post3Arr'] = explode(",",$data['Post3']);
-		}
+		
 		$commentArr = array();
 		$comment = MatchComment::model()->findAllByAttributes(array('mid'=>$id));
 		foreach($comment as $i)
