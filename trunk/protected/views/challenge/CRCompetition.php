@@ -23,7 +23,7 @@
 <?php 
 
 $i=0;
-foreach($data['PrizeArr'] as $v):
+foreach($MatchAwards['PrizeArr'] as $v):
 
 ?>
 <?php if($i%4==0):?>
@@ -34,13 +34,13 @@ foreach($data['PrizeArr'] as $v):
 
 </tr>
 <?php endif;?>
-<?php if (isset($data['Prize2Arr']) && $data['Prize2Arr']):?>
+<?php if (isset($MatchAwards['Prize2Arr']) && $MatchAwards['Prize2Arr']):?>
 <tr><td height="30"><strong>二等奖</strong></td></tr>
 <tr>
 <?php 
 
 $i=0;
-foreach($data['Prize2Arr'] as $v):
+foreach($MatchAwards['Prize2Arr'] as $v):
 
 ?>
 <?php if($i%4==0):?>
@@ -50,14 +50,14 @@ foreach($data['Prize2Arr'] as $v):
 <?php endforeach;?>
 </tr>
 <?php endif;?>
-<?php if (isset($data['Prize3Arr']) && $data['Prize3Arr']):?>
+<?php if (isset($MatchAwards['Prize3Arr']) && $MatchAwards['Prize3Arr']):?>
 <tr><td height="30"><strong>三等奖</strong></td>
 </tr>
 <tr>
 <?php 
 
 $i=0;
-foreach($data['Prize3Arr'] as $v):
+foreach($MatchAwards['Prize3Arr'] as $v):
 
 ?>
 <?php if($i%4==0):?>
@@ -88,12 +88,12 @@ foreach($data['Prize3Arr'] as $v):
 <!--目录2-->
 <div id="con_ml_1"><!--组织成员1开始-->
 <table width="200" border="0">
-<tr><td height="30"><strong><?php echo $data['PostName'];?></strong></td></tr>
+<tr><td height="30"><strong><?php echo $MatchAwards['PostName'];?></strong></td></tr>
 <tr>
 <?php 
 
 $i=0;
-foreach($data['PostArr'] as $v):
+foreach($MatchAwards['PostArr'] as $v):
 
 ?>
 <?php if($i%4==0):?>
@@ -102,12 +102,12 @@ foreach($data['PostArr'] as $v):
 <td style="text-align: center;"><?php echo $v ;$i++;?></td>
 <?php endforeach;?>
 </tr>
-<tr><td height="30"><strong><?php echo $data['Post2Name'];?></strong></td></tr>
+<tr><td height="30"><strong><?php echo $MatchAwards['Post2Name'];?></strong></td></tr>
 <tr>
 <?php 
 
 $i=0;
-foreach($data['Post2Arr'] as $v):
+foreach($MatchAwards['Post2Arr'] as $v):
 
 ?>
 <?php if($i%4==0):?>
@@ -116,12 +116,12 @@ foreach($data['Post2Arr'] as $v):
 <td style="text-align: center;"><?php echo $v ;$i++;?></td>
 <?php endforeach;?>
 </tr>
-<tr><td height="30"><strong><?php echo $data['Post3Name'];?></strong></td></tr>
+<tr><td height="30"><strong><?php echo $MatchAwards['Post3Name'];?></strong></td></tr>
 <tr>
 <?php 
 
 $i=0;
-foreach($data['Post3Arr'] as $v):
+foreach($MatchAwards['Post3Arr'] as $v):
 
 ?>
 <?php if($i%4==0):?>

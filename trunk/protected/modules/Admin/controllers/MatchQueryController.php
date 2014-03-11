@@ -69,7 +69,7 @@ class MatchQueryController extends AdminController
 			}
 			unset($pdf);
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','mid'=>$this->cid));
 		}
 		if($this->cid){
 			$model->cid = $this->cid;
@@ -94,6 +94,7 @@ class MatchQueryController extends AdminController
 		$model=$this->loadModel($id);
 		$old_imgurl = $model->imgurl;
 		$old_pdf = $model->pdf;
+		$this->cid = $model->cid;
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 
@@ -120,7 +121,7 @@ class MatchQueryController extends AdminController
 				
 			unset($pdf);
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','mid'=>$this->cid));
 		}
 
 		$this->render('update',array(
@@ -143,7 +144,7 @@ class MatchQueryController extends AdminController
 			if (Yii::app()->request->isAjaxRequest) {
 				$this->success('删除成功！');
 			} else {
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index','mid'=>$this->cid));
 			}
 		}
 		else
