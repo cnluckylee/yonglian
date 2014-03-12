@@ -52,14 +52,14 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('class1, class2, class3, order, wap_ok, new_ok, com_ok, cid', 'numerical', 'integerOnly'=>true),
+			array('class1, class2, class3, order, wap_ok, new_ok, com_ok, cid,aid', 'numerical', 'integerOnly'=>true),
 			array('name, keywords', 'length', 'max'=>200),
 			array('imgurl, imgurls, pdf', 'length', 'max'=>255),
 			array('displayimg', 'length', 'max'=>999),
-			array('desc, content, updtime, addtime', 'safe'),
+			array('desc, content,aname, updtime, addtime', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, keywords, desc, content, class1, class2, class3, order, wap_ok, new_ok, imgurl, imgurls, displayimg, com_ok, cid, updtime, addtime, pdf', 'safe', 'on'=>'search'),
+			array('id, name, keywords, aid,aname,desc, content, class1, class2, class3, order, wap_ok, new_ok, imgurl, imgurls, displayimg, com_ok, cid, updtime, addtime, pdf', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -99,6 +99,8 @@ class Product extends CActiveRecord
 			'updtime' => 'Updtime',
 			'addtime' => 'Addtime',
 			'pdf' => '媒体文件',
+			'aid' => '地区',
+			'aname' => '地区',
 		);
 	}
 
@@ -132,6 +134,8 @@ class Product extends CActiveRecord
 		$criteria->compare('updtime',$this->updtime,true);
 		$criteria->compare('addtime',$this->addtime,true);
 		$criteria->compare('pdf',$this->pdf,true);
+		$criteria->compare('aid',$this->aid);
+		$criteria->compare('aname',$this->aname,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
