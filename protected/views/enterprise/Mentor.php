@@ -135,9 +135,9 @@
 		      ?>
           </ul>
         </li>
-        
+        </ul>
       <?php endforeach;?>
-      </ul>
+      
     
       <?php 
 	 //分页widget代码: 
