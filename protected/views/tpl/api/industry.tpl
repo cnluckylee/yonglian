@@ -146,16 +146,7 @@ function reloadParent()
 	if(c1<0)
 		alert("请选择行业");
 	else{
-		var Company_Industry_id = c1;
-		if(c2!=-1)
-			Company_Industry_id+='_'+c2;
-		if(c3!=-1)
-			Company_Industry_id+='_'+c3;
-		if(c4!=-1)
-			Company_Industry_id+='_'+c4;
-			
-			
-			
+		
 		var ctid = '';
 		if(c1!=-1){
 			cityname = $(".ind1_background a").text();			
@@ -176,20 +167,10 @@ function reloadParent()
 			cityname += '-'+$(".ind4_background a").text();
 			ctid = c4;
 		}
-		if($("#hid_IndustryID",parent.document).length>0){
-			$("#hid_IndustryID",parent.document).val(ctid);
-		}
-		if($("#hid_IndustryID1",parent.document).length>0)
-			$("#hid_IndustryID1",parent.document).val(c1);
-		if($("#hid_IndustryID2",parent.document).length>0)
-			$("#hid_IndustryID2",parent.document).val(c2);
-		if($("#hid_IndustryID3",parent.document).length>0)
-			$("#hid_IndustryID3",parent.document).val(c3);
-		if($("#hid_IndustryID4",parent.document).length>0)
-			$("#hid_IndustryID4",parent.document).val(c4);
+		
 		$("#Company_Industry",parent.document).val(cityname);
 		if($("#Company_Industry_id",parent.document).length>0)
-		$("#Company_Industry_id",parent.document).val(Company_Industry_id);
+		$("#Company_Industry_id",parent.document).val(ctid);
 		parent.$.fancybox.close(); 
 	}
 }
