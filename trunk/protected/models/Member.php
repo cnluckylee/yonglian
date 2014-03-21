@@ -185,6 +185,7 @@ class Member extends CActiveRecord
 	public static function enterprise($reData)
 	{
 		$Company_city_id = isset($reData['aid'])?$reData['aid']:'';
+		$cid = isset($reData['cid'])?$reData['cid']:'';
 		$Company_Industry_id= isset($reData['IndustryID'])?$reData['IndustryID']:'';
 		$keyword = isset($reData['cname'])?$reData['cname']:'';
 		$pid=isset($reData['pid'])?$reData['pid']:'';
