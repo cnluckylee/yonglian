@@ -12,17 +12,7 @@
       </thead>
       <tbody>
       
-      <tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'name'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'name'); ?>
-		<?php echo $form->error($model,'name'); ?>
-        </div>
-        </td>
-		</tr>
+
 	
 
 
@@ -55,14 +45,25 @@
         </th>
         <td >
         <div class="row">
-        <select name="Member[CompanyID]" id="Article_CompanyID">
+        <select name="Member[CompanyID]" id="Article_CompanyID" onchange="getUserName()">
             <option value=''>请选择</option>
         </select>
 
         </div>
         </td>
 	</tr>
-	
+	<tr>
+          <th width="100" align="right">
+		<?php echo $form->labelEx($model,'name'); ?>
+        </th>
+        <td >
+        <div class="row">
+		 <select name="Member[name]" id="Article_name">
+            <option value=''>请选择</option>
+        </select>
+        </div>
+        </td>
+	</tr>
 
 	<tr>
           <th width="100" align="right">
@@ -87,20 +88,24 @@
            <?php 
 		   $cat = BaseData::CPTeamCategary();
 		   foreach($cat as $cid =>$item):?>
-          <option value="<?php echo $cid; ?>"><?php echo $item ?></option>
+          <option value="<?php echo $cid; ?>" <?php if($model->cid == $cid):?>selected<?php endif;?>><?php echo $item ?></option>
           <?php endforeach; ?>
         </select>
 		<?php echo $form->error($model,'cid'); ?>
         </div>
         </td>
 	</tr>
+	
+
+		
+		
 	<tr>
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'entrydate'); ?>
         </th>
         <td >
         <div class="row">
-		<input id="Member_entrydate" type="text" name="Member[entrydate]" onclick="WdatePicker()">
+		<input id="Member_entrydate" type="text" name="Member[entrydate]" onclick="WdatePicker()" value="<?php echo $model->entrydate;?>">
 		<?php echo $form->error($model,'entrydate'); ?>
         </div>
         </td>
@@ -117,6 +122,8 @@
     </table>
 	  <?php echo $form->hiddenField($model,'IndustryID',array('id'=>'Company_Industry_id'));?>
     <?php echo $form->hiddenField($model,'aid',array('id'=>'hid_Ctid'));?>
+   
+    <input type="hidden" id="hid_name" value="<?php echo $model->name?>">
 
 <?php $this->endWidget(); ?>
 
@@ -132,9 +139,12 @@ $(document).ready(function() {
 	setTimeout(function (){
 		bindiframe("area");
 		bindiframe("industry");
-		<?php if ($model->aid>0):?>
+		<?php if ($model->aid>0 && $model->CompanyID>0):?>
 			fun(<?php echo $model->aid?>,<?php echo $model->CompanyID?>);
 		<?php endif;?>
+		<?php if($model->name):?>
+			getUserName(<?php echo $model->CompanyID?>);
+		<?php endif?>
 	},1000);	
 
 });
@@ -160,6 +170,35 @@ $(document).ready(function() {
 							else
 								var str = "<option value='"+v.id+"'>"+v.name+"</option>";
 								$("#Article_CompanyID").append(str); 						
+							});
+					}
+				});
+		}
+		
+	}
+	
+	function getUserName()
+	{
+		var Name = $("#hid_name").val();
+		var aid = arguments[0]>0?arguments[0]:0;
+		if(aid==0)
+			var aid = $("#Article_CompanyID").val();
+		if(aid>0 )
+		{
+			$.ajax({
+				url:'?r=admin/adminMember/Getuserbycompany',
+				data:{id:aid},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+					$("#Article_name option").remove();
+					$("#Article_name").append("<option value=''>请选择</option>"); 
+						$.each(obj,function(k,v){		
+							if(v.username == Name)		
+									var str = "<option value='"+v.username+"' selected='selected'>"+v.username+"</option>";
+							else
+								var str = "<option value='"+v.username+"'>"+v.username+"</option>";
+								$("#Article_name").append(str); 						
 							});
 					}
 				});
