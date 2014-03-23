@@ -87,7 +87,19 @@ class AdminMemberController extends AdminController
 	}
 
 	
-
+	/**
+	 * 根据公司获取用户
+	 * @param integer $id 主键
+	 */
+	public function actionGetuserbycompany()
+	{
+		$cid = intval($_POST['id']);
+		$cid = 36;
+		$this->layout = false;
+		$member = Users::findUsersByType(null,$cid);
+		echo json_encode($member);
+		exit;
+	}
 	
 
 	/**
