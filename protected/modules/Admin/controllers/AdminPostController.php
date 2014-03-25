@@ -11,6 +11,7 @@ class AdminPostController extends AdminController
 		$menus = Post::getTreeDATA('*', false);
 
 		$tree = new Tree();
+		$array = array();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
 		foreach ($menus as $r) {
