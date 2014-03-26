@@ -94,7 +94,6 @@ class AdminMemberController extends AdminController
 	public function actionGetuserbycompany()
 	{
 		$cid = intval($_POST['id']);
-		$cid = 36;
 		$this->layout = false;
 		$member = Users::findUsersByType(null,$cid);
 		echo json_encode($member);
