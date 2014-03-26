@@ -67,14 +67,12 @@
 
 	<tr>
           <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pid'); ?>
+		<?php echo $form->labelEx($model,'postname'); ?>
         </th>
         <td >
         <div class="row">
-		<select name="Member[pid]" id="Member_pid">
-            <?php echo Post::getSelectTree();?>
-        </select>
-		<?php echo $form->error($model,'pid'); ?>
+		<?php echo $form->textField($model,'postname',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->error($model,'postname'); ?>
         </div>
         </td>
 	</tr>

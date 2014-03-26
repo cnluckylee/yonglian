@@ -43,11 +43,11 @@ class Member extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('pid, IndustryID, CompanyID, cid,aid', 'numerical', 'integerOnly'=>true),
-			array('name,aname,IndustryName,pdf', 'length', 'max'=>255),
+			array('name,aname,IndustryName,pdf,postname', 'length', 'max'=>255),
 			array('addtime, updtime, entrydate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, name, pid, addtime, updtime,aid,aname,IndustryName,pdf, IndustryID, CompanyID, cid, entrydate', 'safe', 'on'=>'search'),
+			array('id, name, pid, addtime, updtime,aid,aname,postname,IndustryName,pdf, IndustryID, CompanyID, cid, entrydate', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -82,6 +82,7 @@ class Member extends CActiveRecord
 			'aname'=>'地区',
 			'IndustryName'=>'行业',
 			'pdf'=>'媒体文件',
+			'postname'=>'职位'
 				
 		);
 	}
@@ -110,6 +111,7 @@ class Member extends CActiveRecord
 		$criteria->compare('aname',$this->aname,true);
 		$criteria->compare('IndustryName',$this->IndustryName,true);
 		$criteria->compare('pdf',$this->pdf,true);
+		$criteria->compare('postname',$this->postname,true);
 		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -156,27 +158,21 @@ class Member extends CActiveRecord
 // 			return $menus;
 		$criteria = new CDbCriteria();
 		$criteria->select = 'id,name,pid,CompanyID,entrydate,cid';
-		$criteria->addCondition('CompanyID='.$CompanyID);
+		if($CompanyID)
+			$criteria->addCondition('CompanyID='.$CompanyID);
 		if($cid)
-		$criteria->addCondition('cid='.$cid);
+			$criteria->addCondition('cid='.$cid);
 		$data = self::model()->findAll($criteria);
 		$result = array();
-		$post = Post::model()->findAll();
-		$postArr = array();
-		foreach($post as $ii)
-		{
-			$key = $ii->getAttribute('id');
-			$name = $ii->getAttribute('name');
-			$postArr[$key] = $name;
-		}
+		
 		foreach($data as $i)
 		{
 			$arr = $i->attributes;
-			$arr['pname'] = $postArr[$arr['pid']];
-			$arr['cname'] = BaseData::CPTeamCategary($arr['cid']);
+			$arr['pname'] = $arr['postname'];
+			if($arr['cid'])
+				$arr['cname'] = BaseData::CPTeamCategary($arr['cid']);
 			$result[] = $arr;
 		}
-
 		if($result)
 			Yii::app()->getCache()->set($cacheId,$result,86400);
 		return $result;
