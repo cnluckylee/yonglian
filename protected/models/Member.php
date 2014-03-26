@@ -157,7 +157,7 @@ class Member extends CActiveRecord
 // 		if($menus)
 // 			return $menus;
 		$criteria = new CDbCriteria();
-		$criteria->select = 'id,name,pid,CompanyID,entrydate,cid';
+		$criteria->select = 'id,name,pid,CompanyID,entrydate,cid,postname';
 		if($CompanyID)
 			$criteria->addCondition('CompanyID='.$CompanyID);
 		if($cid)
