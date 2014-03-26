@@ -43,8 +43,8 @@
 
 			array(
 
-						'name' => 'pid',
-						'value' =>array($this,"getPostByKey"),
+						'name' => 'postname',
+						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
