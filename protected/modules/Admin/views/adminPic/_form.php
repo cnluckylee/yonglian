@@ -31,7 +31,7 @@
         <td >
         <div class="row">
 		<select name="adminPic[type]" id="adminPic_type">
-            <?php echo AllType::getSelectTree('',$model->type,2);?>
+            <?php echo Alltype::getSelectTree('',$model->type,2);?>
         </select>
         (一定要选择具体的位置)
 		<?php echo $form->error($model,'type'); ?>

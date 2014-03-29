@@ -131,12 +131,13 @@ class Users extends CActiveRecord
 	/**
 	 * 根据类型获取相应用户
 	 */
-	public  static function findUsersByType($type=null,$CompanyID)
+	public  static function findUsersByType($type=null,$CompanyID=null)
 	{
 		$where = array();
 		if($type)
 			$where['type'] = $type;
-		$where['CompanyID'] = $CompanyID;
+		if($CompanyID)
+			$where['CompanyID'] = $CompanyID;
 		$data = Users::model()->findAllByAttributes($where);
 		$result = array();
 		foreach($data as $i)

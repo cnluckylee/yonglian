@@ -2,7 +2,13 @@
 
 class AllTypeController extends AdminController
 {
-
+	protected  $type;
+	protected  $parentid;
+	public function init()
+	{
+		$this->type = Tools::getParam('type');
+		$this->parentid = Tools::getParam('parentid');
+	}
 	/**
 	 * 首页列表.
 	 */
@@ -13,6 +19,7 @@ class AllTypeController extends AdminController
 		$tree = new Tree();
 		$tree->icon = array('&nbsp;&nbsp;&nbsp;│ ', '&nbsp;&nbsp;&nbsp;├─ ', '&nbsp;&nbsp;&nbsp;└─ ');
 		$tree->nbsp = '&nbsp;&nbsp;&nbsp;';
+		$array = array();
 		foreach ($menus as $r) {
 
 			$r['str_manage'] = '<a href="' . $this->createUrl('create', array('parentid' => $r['id'],'type' => $r['type'])) . '">添加子栏目</a> |
@@ -28,9 +35,11 @@ class AllTypeController extends AdminController
 				</tr>";
 
 		$tree->init($array);
-		$this->render('index', array(
-				'menuTree' => $tree->get_tree('0', $str)
-		));
+		$result = array();
+		$result['menuTree'] = $tree->get_tree('0', $str);
+		$result['parentid'] = $this->parentid;
+		$result['type'] = $this->type;
+		$this->render('index', $result);
 
 
 	}
@@ -50,7 +59,7 @@ class AllTypeController extends AdminController
 
 			$type = $model->attributes['type'];
 			if($model->save())
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index&type='.$type));
+				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index&type='.$type."&parentid=".$this->parentid));
 		}
 		if ($parentid){
 			$model->parentid = $parentid;
@@ -58,6 +67,7 @@ class AllTypeController extends AdminController
 		}
 		$this->render('create',array(
 			'model'=>$model,
+			'type'=>$model->type,
 		));
 	}
 
