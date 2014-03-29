@@ -38,7 +38,7 @@ $('.del').click(function(){
 	});
 });
 </script>
-<div class="topBut"><a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a></div>
+<div class="topBut"><a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create',array('parentid'=>$parentid,'type'=>$type));?>"><span>添加</span></a></div>
 <form action="<?php echo $this->createUrl('listorder');?>" method="post" name="form1" id="form1">
   <table width="100%" class="table_list table">
     <thead>

@@ -99,7 +99,7 @@
     Email:<?php echo $settings['met_fd_usename'] ;?>
     All Rights Reserved.<br/>
     <script language="javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/common.js"></script>
-   
+   <script src="http://livingim.com/welive.php" language="javascript"></script>
   </div>
   <!-- footer -->
 </div>
