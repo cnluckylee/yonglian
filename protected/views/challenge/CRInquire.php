@@ -116,8 +116,8 @@
     </tr>
     <tr>
      <td colspan="2" class="tdcenter"><input type="submit" value="搜索" /></td>
-      <td colspan="2"><input type="reset" value="重置" /></td>
-     
+    <td><input type="reset" value="重置" /></td>
+     <td><input type="button" onclick="goback()" value="返回" /></td>
     </tr>
   </table>
 <?php $this->endWidget(); ?>
