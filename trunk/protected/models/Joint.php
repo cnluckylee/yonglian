@@ -217,6 +217,24 @@ class Joint extends CActiveRecord
 		return array('pages'=>$pager,'posts'=>$list);
 	
 	}
+	
+	function getListForIndex($limit = 5)
+	{
+		$criteria = new CDbCriteria();
+		$criteria->select = '*';
+		$criteria->order = 'updtime desc';
+		$criteria->group = 'CompanyId';
+		$criteria->limit = $limit;
+		$data =  self::model()->findAll($criteria);
+		$result = array();
+		foreach($data as $i)
+		{
+			$result[] = $i->attributes;
+		}
+		return $result;
+	}
+	
+	
 	protected function beforeSave()
 	{
 		if(parent::beforeSave())

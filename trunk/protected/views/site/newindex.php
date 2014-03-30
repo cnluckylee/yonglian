@@ -194,16 +194,42 @@
 <!--企业版块-->
 <li class="show" id="four"><br />
 <p></p>
-<p><span id="zt">　[秀台]</span>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">FT社评：聘用自闭患者是好事</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">有些工作是否不宜公开做?</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">股东民主通过购买表决权</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p>　　　　　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p><span id="zt">　[动态]</span>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">FT社评：聘用自闭患者是好事</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">有些工作是否不宜公开做?</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">股东民主通过购买表决权</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p>　　　　　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p><span id="zt">　[发展]</span>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">FT社评：聘用自闭患者是好事</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">有些工作是否不宜公开做?</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">股东民主通过购买表决权</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p>　　　　　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p><span id="zt">　[舵主]</span>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">FT社评：聘用自闭患者是好事</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">有些工作是否不宜公开做?</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">股东民主通过购买表决权</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p>　　　　　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p><span id="zt">　[团队]</span>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">FT社评：聘用自闭患者是好事</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">有些工作是否不宜公开做?</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">股东民主通过购买表决权</a>　<a href="CPSingleEnterprise.html?#maoid=ba"target="_blank"style="font-weight:normal">实现网络公开课让教育民主化?</a></p>
-<p></p>
+<p><span id="zt">　[秀台]</span>　
+<?php foreach($CPBooth as $k=>$v):?>
+<a href="?r=Enterprise/CPSingleEnterprise&mid=<?php echo $v['CompanyID'];?>"target="_blank"style="font-weight:normal"><?php echo $v['title'];?></a>
+<?if (($k+1)%4==0):?>
+</p><p>
+<?php endif;?>
+<?php endforeach;?>
+</p>
+<p><span id="zt">　[动态]</span>
+<?php foreach($CompanyNews as $k=>$v):?>
+<a href="?r=Enterprise/CPSingleEnterprise&mid=<?php echo $v['CompanyID'];?>"target="_blank"style="font-weight:normal"><?php echo $v['title'];?></a>
+<?if (($k+1)%4==0):?>
+</p><p>
+<?php endif;?>
+<?php endforeach;?>
+</p>
+
+<p><span id="zt">　[发展]</span>　
+<?php foreach($Joint as $k=>$v):?>
+<a href="?r=Enterprise/CPSingleEnterprise&mid=<?php echo $v['CompanyID'];?>"target="_blank"style="font-weight:normal"><?php echo $v['title'];?></a>
+<?if (($k+1)%4==0):?>
+</p><p>
+<?php endif;?>
+<?php endforeach;?>
+</p>
+
+<p><span id="zt">　[舵主]</span>
+<?php foreach($Mentor as $k=>$v):?>
+<a href="?r=Enterprise/CPSingleEnterprise&mid=<?php echo $v['CompanyID'];?>"target="_blank"style="font-weight:normal"><?php echo $v['title'];?></a>
+<?if (($k+1)%4==0):?>
+</p><p>
+<?php endif;?>
+<?php endforeach;?>
+</p>
+
+
 </li>
 <!--待插版块-->
 <li id="five"><br /></li>

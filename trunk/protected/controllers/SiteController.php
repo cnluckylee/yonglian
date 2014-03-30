@@ -43,7 +43,27 @@ class SiteController extends Controller
 						);
 
 		$data['adv'] = array_map(create_function('$record','return $record->attributes;'),$ad_arr);
-
+		/**
+		 * 企业秀台
+		 */
+		$data['CPBooth'] = Article::getListForIndex();
+		/**
+		 * 动态
+		 */
+		$data['CompanyNews'] = CompanyNews::getListForIndex();
+		/**
+		 * 携手发展
+		 */
+		$data['Joint'] = Joint::getListForIndex();
+		
+		/**
+		 * 托主
+		 */
+		$data['Mentor'] = Mentor::getListForIndex();
+		/**
+		 * 团队闪耀
+		 */
+		$data['CPTeam'] = Member::getListForIndex();
 		/**
 		 * 推荐企业信息
 		 */
