@@ -97,7 +97,7 @@ class UserArticle extends CActiveRecord
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
 	 */
-	public function search()
+	public function search($uid = null)
 	{
 		// Warning: Please modify the following code to remove attributes that
 		// should not be searched.
@@ -106,7 +106,8 @@ class UserArticle extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('title',$this->title,true);
-		$criteria->compare('uid',$this->uid);
+		if($uid>0)
+			$criteria->compare('uid',$uid);
 		$criteria->compare('imgurl',$this->imgurl,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('remark',$this->remark,true);
@@ -119,7 +120,7 @@ class UserArticle extends CActiveRecord
 		$criteria->compare('aname',$this->aname,true);
 		$criteria->compare('url',$this->url,true);
 		$criteria->compare('pdf',$this->pdf,true);
-
+		$criteria->order = 'updtime DESC' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

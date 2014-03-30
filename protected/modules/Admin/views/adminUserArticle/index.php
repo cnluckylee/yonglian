@@ -1,7 +1,9 @@
 
 <div class="topBut">
-<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create');?>"><span>添加</span></a>
-
+<a class="button" href="javascript:void(0)" buttype="link" url="<?php echo $this->createUrl('create',array('uid'=>$uid));?>"><span>添加</span></a>
+ (用户名称:
+<font color="red"><?php echo $username;?></font>
+) 
 </div>
 
 <div class="search-form" style="display:none">
@@ -12,7 +14,7 @@
 
 <?php $this->widget('admin.widgets.grid.AdminGridView', array(
 	'id'=>'article-grid',
-	'dataProvider'=>$model->search(),
+	'dataProvider'=>$model->search($uid),
 	'filter'=>$model,
 	'columns'=>array(
 		array(

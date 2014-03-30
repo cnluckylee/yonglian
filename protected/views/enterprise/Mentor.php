@@ -77,7 +77,9 @@
       <td class="title">栏目类别</td>
       <td><?php echo $form->dropDownList($model,'cid',CHtml::listData(Alltype::getAllType(4),'id','name')); ?>
       
-      <input type="submit"  value="搜索" /></td>
+      <input type="submit"  value="搜索" />
+		<input type="button" onclick="returnback();"  value="返回" />        
+      </td>
       <td></td>
     </tr>
   </table>
@@ -162,4 +164,8 @@ $(function () {
 			width: 330
 		});
 });
+function returnback()
+{
+	javascript:history.go(-1);
+}
 </script>

@@ -120,7 +120,15 @@
 		array(
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
-			'template' => '{update} {delete}',
-		),
+			'template' => '{update} {delete}{article}',
+			'buttons'=>array(
+         'article' => array(
+            'label'=>'评论',
+            'imageUrl'=>Yii::app()->request->baseUrl.'/images/ico/comment.png',
+            'options' => array('class'=>'ico_16'),
+            'url'=>'Yii::app()->createUrl("admin/adminUserArticle/Article", array("id"=>$data->id))',
+          ),
+    ),
+),
 	),
 )); ?>

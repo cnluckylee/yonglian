@@ -72,4 +72,8 @@
                 localeChain: 'zh_CN'
             }}
     );
+function returnback()
+{
+	javascript:history.go(-1);
+}
 </script>

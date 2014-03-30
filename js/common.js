@@ -1,5 +1,5 @@
-var httpUrl = "http://www.yonglian.net.tf";
-var favorite ="永链";
+var httpUrl = "http://test.kankanbang.com";
+var favorite ="姘歌繛";
 function FormatFloat(src, pos)
 {
     return Math.round(src*Math.pow(10, pos))/Math.pow(10, pos);
@@ -7,9 +7,9 @@ function FormatFloat(src, pos)
 
 
 /**
-*	动态加载js,css
-*	e:路径
-*	d:类型 css js
+*	露炉脤卢录脫脭脴js,css
+*	e:脗路戮露
+*	d:脌脿脨脥 css js
 */
 function loadCssAndJs(e, d) {
   var fun=arguments[2]?arguments[2]:null; 
@@ -33,7 +33,7 @@ function loadCssAndJs(e, d) {
 };
 
 
-//设为首页
+//脡猫脦陋脢脳脪鲁
 function setHomepage() {
   if (document.all) {
     document.body.style.behavior = "url(#default#homepage)";
@@ -44,7 +44,7 @@ function setHomepage() {
         try {
           netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect")
         } catch(c) {
-          alert("该操作被浏览器拒绝，如果想启用该功能，请在地址栏内输入 about:config,然后将项 signed.applets.codebase_principal_support 值该为true")
+          alert("赂脙虏脵脳梅卤禄盲炉脌脌脝梅戮脺戮酶拢卢脠莽鹿没脧毛脝么脫脙赂脙鹿娄脛脺拢卢脟毛脭脷碌脴脰路脌赂脛脷脢盲脠毛 about:config,脠禄潞贸陆芦脧卯 signed.applets.codebase_principal_support 脰碌赂脙脦陋true")
         }
       }
       var d = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
@@ -52,7 +52,7 @@ function setHomepage() {
     }
   }
 }
-//加入收藏夹
+//录脫脠毛脢脮虏脴录脨
 function bookmark() {
 	
   if (document.all) {
@@ -60,7 +60,7 @@ function bookmark() {
   }else if(window.sidebar){
   	window.sidebar.addPanel(favorite, httpUrl, "");
   }else{
-  	alert("您的浏览器无法完成此操作,请您手动添加或按Ctrl+D。谢谢您的关注。");
+  	alert("脛煤碌脛盲炉脌脌脝梅脦脼路篓脥锚鲁脡麓脣虏脵脳梅,脟毛脛煤脢脰露炉脤铆录脫禄貌掳麓Ctrl+D隆拢脨禄脨禄脛煤碌脛鹿脴脳垄隆拢");
   }
 }
 
@@ -191,10 +191,10 @@ function SetString(str,len)
 
 
  /*
-  *倒计时公用方法
-  *s:开始时间时间戳
-  *e:结束时间时间戳
-  *d:需要展示倒计时的div的id
+  *碌鹿录脝脢卤鹿芦脫脙路陆路篓
+  *s:驴陋脢录脢卤录盲脢卤录盲麓脕
+  *e:陆谩脢酶脢卤录盲脢卤录盲麓脕
+  *d:脨猫脪陋脮鹿脢戮碌鹿录脝脢卤碌脛div碌脛id
  */
  
  
@@ -203,17 +203,17 @@ function SetString(str,len)
  function timer(s,e,d){
  	 var n = Math.round(new Date().getTime()/1000);
  	 var diff;
- 	 var type;//标识 1:离开始 2：距结束
+ 	 var type;//卤锚脢露 1:脌毛驴陋脢录 2拢潞戮脿陆谩脢酶
  	 if(n < s){
- 	 	//离开始
+ 	 	//脌毛驴陋脢录
  	 	diff = s - n;
  	 	type = 1;
  	 }else if(n > e){
- 	 	//已结束
- 	 	$("#"+d).html('已结束');
+ 	 	//脪脩陆谩脢酶
+ 	 	$("#"+d).html('脪脩陆谩脢酶');
 	 	return;
  	 }else{
- 	 	//距开始
+ 	 	//戮脿驴陋脢录
  	 	diff = e - n;
  	 	type = 2;
  	 }
@@ -224,9 +224,9 @@ function SetString(str,len)
 	 		 diff--;
 	 	 }else{
 	 	 	 if(type == 1){
-	 	 	 	$("#"+d).html('已开始');
+	 	 	 	$("#"+d).html('脪脩驴陋脢录');
 	 	 	 }else if(type == 2){
-	 	 	 	$("#"+d).html('已结束');
+	 	 	 	$("#"+d).html('脪脩陆谩脢酶');
 	 	 	 }
 	 	 	clearInterval(pageTimer[d]);
 	 	 }
@@ -250,15 +250,15 @@ function formatTime(t,format){
 	}else if(format==3){ //00:00:00
 		return numberFormatLeadZero(t/3600,2)+":"+numberFormatLeadZero(t/60%60,2)+":"+numberFormatLeadZero(t%60,2);
 	}else if(format==4){
-		return t<60?"刚才":t<3600?""+Math.floor(t/60)+"分钟前":t<86400?""+Math.floor(t/3600)+"小时"+Math.floor(t/60%60)+"分钟前":""+Math.floor(t/86400)+"天前";
+		return t<60?"赂脮虏脜":t<3600?""+Math.floor(t/60)+"路脰脰脫脟掳":t<86400?""+Math.floor(t/3600)+"脨隆脢卤"+Math.floor(t/60%60)+"路脰脰脫脟掳":""+Math.floor(t/86400)+"脤矛脟掳";
 	}else if(format==5){
-		return t<=0?"0分":t<60?t+"秒":t<3600?Math.floor(t/60)+"分":t<86400?Math.floor(t/3600)+"时"+Math.floor(t/60%60)+"分":Math.floor(t/86400)+"天";
+		return t<=0?"0路脰":t<60?t+"脙毛":t<3600?Math.floor(t/60)+"路脰":t<86400?Math.floor(t/3600)+"脢卤"+Math.floor(t/60%60)+"路脰":Math.floor(t/86400)+"脤矛";
 	}else if(format==6){
-		return t<=0?"0分":t<60?numberFormatLeadZero(t,2)+"秒":t<3600?numberFormatLeadZero(Math.floor(t/60),2)+"分":t<86400?numberFormatLeadZero(Math.floor(t/3600),2)+"时"+numberFormatLeadZero(Math.floor(t/60%60),2)+"分":Math.floor(t/86400)+"天"+numberFormatLeadZero(Math.floor(t%86400/3600),2)+"时"+numberFormatLeadZero(Math.floor(t/60%60),2)+"分";
+		return t<=0?"0路脰":t<60?numberFormatLeadZero(t,2)+"脙毛":t<3600?numberFormatLeadZero(Math.floor(t/60),2)+"路脰":t<86400?numberFormatLeadZero(Math.floor(t/3600),2)+"脢卤"+numberFormatLeadZero(Math.floor(t/60%60),2)+"路脰":Math.floor(t/86400)+"脤矛"+numberFormatLeadZero(Math.floor(t%86400/3600),2)+"脢卤"+numberFormatLeadZero(Math.floor(t/60%60),2)+"路脰";
 	}else if(format==7){
-		return t<=0?"00天00时00分00秒":t<60?"00天00时00分"+numberFormatLeadZero(t,2)+"秒":t<3600?"00天00时"+numberFormatLeadZero(Math.floor(t/60),2)+"分"+numberFormatLeadZero(Math.floor(t%60),2)+"秒":t<86400?"00天"+numberFormatLeadZero(Math.floor(t/3600),2)+"时"+numberFormatLeadZero(Math.floor(t/60%60),2)+"分"+numberFormatLeadZero(Math.floor(t%60),2)+"秒":Math.floor(t/86400)+"天"+numberFormatLeadZero(Math.floor(t%86400/3600),2)+"时"+numberFormatLeadZero(Math.floor(t/60%60),2)+"分"+numberFormatLeadZero(Math.floor(t%60),2)+"秒";
+		return t<=0?"00脤矛00脢卤00路脰00脙毛":t<60?"00脤矛00脢卤00路脰"+numberFormatLeadZero(t,2)+"脙毛":t<3600?"00脤矛00脢卤"+numberFormatLeadZero(Math.floor(t/60),2)+"路脰"+numberFormatLeadZero(Math.floor(t%60),2)+"脙毛":t<86400?"00脤矛"+numberFormatLeadZero(Math.floor(t/3600),2)+"脢卤"+numberFormatLeadZero(Math.floor(t/60%60),2)+"路脰"+numberFormatLeadZero(Math.floor(t%60),2)+"脙毛":Math.floor(t/86400)+"脤矛"+numberFormatLeadZero(Math.floor(t%86400/3600),2)+"脢卤"+numberFormatLeadZero(Math.floor(t/60%60),2)+"路脰"+numberFormatLeadZero(Math.floor(t%60),2)+"脙毛";
 	}else if(format==8){
-		return t<=0?"0分钟":t<60?"00天"+"00时"+"00分":t<3600?"00天"+"00时"+numberFormatLeadZero(Math.floor(t/60),2)+"分":t<86400?"00天"+numberFormatLeadZero(Math.floor(t/3600),2)+"时"+numberFormatLeadZero(Math.floor(t/60%60),2)+"分":Math.floor(t/86400)+"天"+numberFormatLeadZero(Math.floor(t%86400/3600),2)+"时"+numberFormatLeadZero(Math.floor(t/60%60),2)+"分";
+		return t<=0?"0路脰脰脫":t<60?"00脤矛"+"00脢卤"+"00路脰":t<3600?"00脤矛"+"00脢卤"+numberFormatLeadZero(Math.floor(t/60),2)+"路脰":t<86400?"00脤矛"+numberFormatLeadZero(Math.floor(t/3600),2)+"脢卤"+numberFormatLeadZero(Math.floor(t/60%60),2)+"路脰":Math.floor(t/86400)+"脤矛"+numberFormatLeadZero(Math.floor(t%86400/3600),2)+"脢卤"+numberFormatLeadZero(Math.floor(t/60%60),2)+"路脰";
 	}else{
 		bug();
 	}
@@ -292,7 +292,7 @@ function cartdel(PKID,stid){
 		   		$("#cart_"+PKID+"_"+stid).remove();
 		   		$("#cart_"+PKID+"_"+stid).next().remove();
 		   		$("#allamount").html(newAllAmount);
-		   		$("#allprice").html('￥'+newAllPrice);
+		   		$("#allprice").html('拢陇'+newAllPrice);
 				$("#hidAllPrice").val(newhidAllPrice);
 		   		$("#in_cart_num").html(newAllAmount);
 				delflag = true;
@@ -301,4 +301,10 @@ function cartdel(PKID,stid){
 			   delflag = true;
 		  }
 	});
+}
+
+
+function goback()
+{
+	javascript:history.go(-1);
 }
