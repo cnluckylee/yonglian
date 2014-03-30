@@ -82,7 +82,9 @@
       <option value="<?php echo $cid;?>" <?php if($get['cid'] == $cid): echo 'selected'; endif; ?>><?php echo $item['name']; ?></option>
       <?php endforeach; ?>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      </select><input type="submit"  value="搜索" /></td>
+      </select><input type="submit"  value="搜索" />
+		<input type="button" onclick="returnback();"  value="返回" />        
+      </td>
       <td></td>
     </tr>
   </table>
@@ -166,4 +168,8 @@ $(function () {
 			width: 330
 		});
 });
+function returnback()
+{
+	javascript:history.go(-1);
+}
 </script>

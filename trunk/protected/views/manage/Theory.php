@@ -115,7 +115,8 @@
     </tr>
     <tr>
      <td colspan="2" class="tdcenter"><input type="submit" value="搜索" /></td>
-      <td colspan="2"><input type="reset" value="重置" /></td>
+      <td><input type="reset" value="重置" /></td>
+     <td><input type="button" onclick="returnback();"  value="返回" /> </td>
      
     </tr>
   </table>
@@ -182,5 +183,9 @@ $(function () {
 			width: 330
 		});*/
 });
+function returnback()
+{
+	javascript:history.go(-1);
+}
 </script>
 
