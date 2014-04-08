@@ -125,4 +125,19 @@ class UserArticle extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	protected function beforeSave()
+	{
+		if(parent::beforeSave())
+		{
+			if($this->isNewRecord)
+			{
+				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
+			}else{
+				$this->updtime=date('Y-m-d H:i:s');
+			}
+			return true;
+		}
+		else
+			return false;
+	}
 }
