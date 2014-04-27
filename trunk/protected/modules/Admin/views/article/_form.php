@@ -3,7 +3,7 @@
 	'id'=>'article-form',
 	'enableAjaxValidation'=>true,
 	'focus'=>array($model,'title'),
-	'htmlOptions'=>array('enctype'=>'multipart/form-data','onsubmit'=>'setData()'),
+
 )); ?>
 <table width="100%" class="table_form table">
       <thead>
@@ -75,28 +75,7 @@
         </div>
         </td>
 	</tr>
-    <tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'remark'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'remark'); ?>
-        </div>
-        </td>
-	</tr>
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'content'); ?>
-        </th>
-        <td >
-        <div class="row" style="width:800px; height:500px">
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'content'); ?>
-        </div>
-        </td>
-	</tr>
+  
 
 
 
@@ -136,19 +115,7 @@ $(document).ready(function() {
 
 </script>
 <script language="javascript">
- 	var editor;
-	KindEditor.ready(function(K) {
-		editor = K.create('#Article_content', {
-					width:'800px',
-					height:'500px',
-					resizeType : 2,
-					uploadJson : '<?php echo $this->module->assetsUrl;?>/js/plugins/kindeditor/php/upload_json.php' // 相对于当前页面的路径
-		});
-	});
-	function setData()
-	{
-		editor.sync(); 
-	}
+ 
 	function fun()
 	{
 		var aid = arguments[0]>0?arguments[0]:0;

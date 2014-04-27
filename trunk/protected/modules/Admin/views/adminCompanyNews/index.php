@@ -54,15 +54,6 @@
 
 			array(
 
-						'name' => 'remark',
-						'header' => '摘要',
-						'value' => 'Helper::truncate_utf8_string($data->remark,30)',
-						'htmlOptions' => array(
-								'width' => '60',
-						),
-				),
-			array(
-
 						'name' => 'updtime',
 						
 						//'htmlOptions' => array(

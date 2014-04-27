@@ -19,6 +19,7 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
+						'header' => '序号'
 						
 				),
 
@@ -56,16 +57,6 @@
 						
 						'htmlOptions' => array(
 								//'class' => 'thumbimage_100',
-						),
-				),
-
-			array(
-
-						'name' => 'remark',
-						'header' => '摘要',
-						'value' => 'Helper::truncate_utf8_string($data->remark,30)',
-						'htmlOptions' => array(
-								'width' => '60',
 						),
 				),
 
