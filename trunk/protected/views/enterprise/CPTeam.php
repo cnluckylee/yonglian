@@ -74,9 +74,8 @@
        
       <td class="title">企业名称</td>
       <td> <?php echo $form->textField($model,'cname'); ?></td>
-      <td class="title">栏目类别</td>
-      <td><?php echo $form->dropDownList($model,'cid',CHtml::listData(Alltype::getAllType(4),'id','name')); ?>
-      
+      <td class="title"></td>
+      <td>
       <input type="submit"  value="搜索" />
 <input type="button" onclick="returnback();"  value="返回" />          
       </td>

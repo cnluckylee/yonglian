@@ -29,7 +29,7 @@
         </th>
         <td >
         <div class="row">
-		<?php echo $form->dropDownList($model,'cid',CHtml::listData(JointSite::model->findAll(),'id','name')); ?>
+		<?php echo $form->dropDownList($model,'cid',CHtml::listData(MentorSite::model()->findAll(),'id','name')); ?>
 		<?php echo $form->error($model,'cid'); ?>
         </div>
         </td>

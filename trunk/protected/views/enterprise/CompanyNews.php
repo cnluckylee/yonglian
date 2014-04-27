@@ -75,17 +75,11 @@
        
       <td class="title">企业名称</td>
       <td><input type="text" width="150px"  name="keyword" value="<?php echo $get['keyword'];?>"/></td>
-      <td class="title">栏目类别</td>
-      <td><select name="cid">
-      <?php foreach($cat as $cid =>$item):?>
-      
-      <option value="<?php echo $cid;?>" <?php if($get['cid'] == $cid): echo 'selected'; endif; ?>><?php echo $item['name']; ?></option>
-      <?php endforeach; ?>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      </select><input type="submit"  value="搜索" />
+      <td class="title"></td>
+      <td>
+      <input type="submit"  value="搜索" />
 		<input type="button" onclick="returnback();"  value="返回" />        
       </td>
-      <td></td>
     </tr>
   </table>
 <?php $this->endWidget(); ?>
