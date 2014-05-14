@@ -114,7 +114,7 @@ class Alltype extends CActiveRecord
 		$model = self::model()->getDbConnection()->createCommand()
 		->from('{{all_type}}')
 		->where($where)
-		->order('listorder DESC');
+		->order(' listorder asc');
 
 		if ($select !== null)
 			$model->select($select);

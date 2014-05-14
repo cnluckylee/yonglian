@@ -21,7 +21,7 @@
     display: table-cell;
     font-size: 12px;
     font-weight:normal;
-    text-align: center;
+    text-align: left;
     width: 200px;
 }
 .searchDataForm .searchData .droplist
@@ -33,7 +33,7 @@
 	display:list-item;
 	 text-align: left;
 	 overflow:hidden;
-	 width:150px;
+	 width:165px;
 	
 }
 

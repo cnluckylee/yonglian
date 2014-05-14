@@ -54,7 +54,7 @@
     <ul class="imglist">
     <?php foreach($recColumn as $key=>$item):?>
       <li> <a href='<?php echo $item['url'];?>'><img src=<?php echo $item['imgurl'];?> width="310" height="310" alt=<?php echo $item['title'];?> /></a>
-        <p><a href='<?php echo $item['url'];?>'><?php echo $item['title'];?></a></p>
+        <p><a href='<?php echo $item['url'];?>'><?php echo mb_substr($item['title'],0,12,'utf-8');?></a></p>
         <p class="store"><?php echo $item['title'];?></p>
        
       </li>

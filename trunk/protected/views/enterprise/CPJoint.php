@@ -101,7 +101,7 @@
             <?php 
 		 if(isset($row['data'])):
 		 foreach($row['data'] as $cont16):?>
-            <li><?php echo $cont16['title'];?></li>
+            <li><?php echo mb_substr($cont16['title'],0,12,'utf-8');?></li>
             <?php
 		   endforeach; 
 		   endif;
