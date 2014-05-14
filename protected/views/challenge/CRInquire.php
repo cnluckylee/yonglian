@@ -54,8 +54,8 @@
     <ul class="imglist">
     <?php foreach($recColumn as $key=>$item):?>
       <li> <a href='<?php echo $item['url'];?>'><img src=<?php echo $item['imgurl'];?> width="310" height="310" alt=<?php echo $item['title'];?> /></a>
-        <p><a href='<?php echo $item['url'];?>'><?php echo $item['title'];?></a></p>
-        <p class="store"><?php echo $item['title'];?></p>
+        <p><a href='<?php echo $item['url'];?>'><?php echo mb_substr($item['title'],0,12,'utf-8');?></a></p>
+        <p class="store"><?php echo mb_substr($item['title'],0,12,'utf-8');?></p>
        
       </li>
       <?php endforeach?>
@@ -134,7 +134,7 @@
     <div class="searchData" id="info">
       <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
-        <li><a href="?r=Challenge/View&id=<?php echo $row['id'] ?>" target="_blank"><?php echo $row['title'];?></a></li>
+        <li><a href="?r=Challenge/View&id=<?php echo $row['id'] ?>" target="_blank"><?php echo mb_substr($row['title'],0,12,'utf-8');?></a></li>
         <li><?php echo date("Y-m-d",strtotime($row['stopdate']));?></li>
         <li>
         		<ul class="UV">

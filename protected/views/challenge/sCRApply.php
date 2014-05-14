@@ -105,7 +105,7 @@ clickNRXS=this;
 </div><!--内容结束-->
 
 </div>
-<input type="text" id='hid_json' value='<?php echo $matchqueryjson;?>'>
+<input type="hidden" id='hid_json' value='<?php echo $matchqueryjson;?>'>
 <script type="text/javascript" charset="utf-8" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.swfobject.1-1-1.min.js"></script>
 
 <script type="text/javascript" src="js/desSlideshow.js"></script>

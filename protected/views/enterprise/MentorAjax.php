@@ -15,7 +15,7 @@
             <?php 
 			 if(isset($item['data'])):
 					 foreach($item['data'] as $cont16):?>
-            <li><a href="?r=Community/UserView&uid=<?php echo $item['uid'];?>" target="_blank" ><?php echo $cont16['title'];?></a></li>
+            <li><a href="?r=Community/UserView&uid=<?php echo $item['uid'];?>" target="_blank" ><?php echo mb_substr($cont16['title'],0,12,'utf-8');?></a></li>
             <?php
 		  		 endforeach; 
 		  		  

@@ -97,7 +97,7 @@
             <?php 
 		 if(isset($row['data'][16])):
 		 foreach($row['data'][16] as $cont16):?>
-            <li><?php echo $cont16['title'];?></li>
+            <li><?php echo mb_substr($cont16['title'],0,12,'utf-8');?></li>
             <?php
 		   endforeach; 
 		   endif;
@@ -109,7 +109,7 @@
             <?php 
 		 if(isset($row['data'][15])):
 		 foreach($row['data'][15] as $cont15):?>
-            <li><?php echo $cont15['title'];?></li>
+            <li><?php echo mb_substr($cont15['title'],0,12,'utf-8');?></li>
             <?php
 		   endforeach; 
 		   endif;
@@ -121,7 +121,7 @@
             <?php 
 		 if(isset($row['data'][17])):
 		 foreach($row['data'][17] as $cont17):?>
-            <li><?php echo $cont17['title'];?></li>
+            <li><?php echo mb_substr($cont17['title'],0,12,'utf-8');?></li>
             <?php
 		   endforeach; 
 		   endif;

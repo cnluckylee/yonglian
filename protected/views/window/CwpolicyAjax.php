@@ -1,7 +1,7 @@
      <?php foreach($data['posts'] as $row):?>
       <ul class="searchData_ul">
         <li><?php echo $row['level'];?></li>
-        <li><a href="?r=window/CwpolicyView&id=<?php echo $row['id'];?>" target="_blank"><?php echo $row['title'];?></a></li>
+        <li><a href="?r=window/CwpolicyView&id=<?php echo $row['id'];?>" target="_blank"><?php echo mb_substr($item['title'],0,12,'utf-8');?></a></li>
         <li><?php echo $row['remark'];?></li>
         <li><?php echo $row['policy'];?></li>
         <li><?php echo $row['updtime'];?></li>
