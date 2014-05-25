@@ -185,7 +185,7 @@ function getnews()
 				dataType:'json',
 				success:function(obj){
 						$.each(obj.newslist,function(k,v){	
-								 var str = "<li>"+v+"</li>";
+								var str = "<li><a href='"+v.url+"'>"+v.title+"</a></li>";
 								 $("#scrollli").append(str); 					
 							});
 					}

@@ -130,7 +130,7 @@ class ScrollNews extends CActiveRecord
         public static function getScrollnewsbyCid($cid,$limit=5)
         {
             $criteria = new CDbCriteria();
-            $criteria->select = 'title';
+            $criteria->select = 'title,url';
             $criteria->addCondition('cid='.$cid);
             $criteria->limit = $limit;
             $criteria->order = 'updtime desc';
@@ -139,7 +139,7 @@ class ScrollNews extends CActiveRecord
             foreach($data as $i)
             {
                     $arr = $i->attributes;
-                    $result['newslist'][] = $arr['title'];
+                    $result['newslist'][] = array('title'=>$arr['title'],'url'=>$arr['url']);
             }
             return $result;
         }
