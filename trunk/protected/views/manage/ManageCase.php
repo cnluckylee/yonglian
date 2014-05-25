@@ -38,7 +38,11 @@
     </ul>
   </div>
   <!--餐单定位结束-->
-  <div class="report"><a href="CPSingleEnterprise.html?#maoid=ba">站长特效网一号滚动新闻</a></div>
+    <div class="report" id="scrollDiv">
+	<ul id="scrollli">
+   
+  </ul>
+  </div>
   <div class="r">
     <div id ="right2"></div>
   </div>
@@ -184,6 +188,32 @@ $(function () {
 function returnback()
 {
 	javascript:history.go(-1);
+}
+function AutoScroll(obj){
+        $(obj).find("ul:first").animate({
+                marginTop:"-35px"
+        },500,function(){
+                $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+        });
+}
+$(document).ready(function(){
+	getnews();
+setInterval('AutoScroll("#scrollDiv")',3000);
+});
+function getnews()
+{
+	$.ajax({
+				url:'?r=ajaxnews/getnews',
+				data:{wid:164},
+				type:'POST',
+				dataType:'json',
+				success:function(obj){
+						$.each(obj.newslist,function(k,v){	
+								 var str = "<li>"+v+"</li>";
+								 $("#scrollli").append(str); 					
+							});
+					}
+				});
 }
 </script>
 

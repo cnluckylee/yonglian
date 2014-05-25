@@ -121,6 +121,29 @@ class ScrollNews extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        /**
+         * 获取滚动新闻内容
+         * @return boolean
+         */
+        
+        public static function getScrollnewsbyCid($cid,$limit=5)
+        {
+            $criteria = new CDbCriteria();
+            $criteria->select = 'title';
+            $criteria->addCondition('cid='.$cid);
+            $criteria->limit = $limit;
+            $criteria->order = 'updtime desc';
+            $data = self::model()->findAll($criteria);
+            $result = array();
+            foreach($data as $i)
+            {
+                    $arr = $i->attributes;
+                    $result['newslist'][] = $arr['title'];
+            }
+            return $result;
+        }
+                
 	
 	protected function beforeSave()
 	{
