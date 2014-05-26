@@ -81,7 +81,7 @@
         <td >
         <div class="row">
 
-        <?php echo $form->dropDownList($model,'pid',CHtml::listData(BaseData::CPDevelopCategary(),'id','name')); ?>
+        <?php echo $form->dropDownList($model,'pid',CHtml::listData(CompanyNewsSite::getList(),'id','name')); ?>
         
 		<?php echo $form->error($model,'pid'); ?>
         </div>
