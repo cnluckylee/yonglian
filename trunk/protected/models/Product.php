@@ -52,6 +52,7 @@ class Product extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('name,aid,cid,imgurl', 'required'),
 			array('class1, class2, class3, order, wap_ok, new_ok, com_ok, cid,aid', 'numerical', 'integerOnly'=>true),
 			array('name, keywords', 'length', 'max'=>200),
 			array('imgurl, imgurls, pdf', 'length', 'max'=>255),
@@ -80,8 +81,8 @@ class Product extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
+			'id' => '自动序号',
+			'name' => '产品名称',
 			'keywords' => '关键词',
 			'desc' => '描述',
 			'content' => '详情',
@@ -91,16 +92,16 @@ class Product extends CActiveRecord
 			'order' => '排序',
 			'wap_ok' => 'Wap Ok',
 			'new_ok' => 'New Ok',
-			'imgurl' => '图片',
+			'imgurl' => '产品图片',
 			'imgurls' => 'Imgurls',
 			'displayimg' => 'Displayimg',
 			'com_ok' => 'Com Ok',
-			'cid' => '所属公司',
+			'cid' => '用户名称',
 			'updtime' => 'Updtime',
 			'addtime' => 'Addtime',
 			'pdf' => '媒体文件',
-			'aid' => '地区',
-			'aname' => '地区',
+			'aid' => '所在地区',
+			'aname' => '所在地区',
 		);
 	}
 

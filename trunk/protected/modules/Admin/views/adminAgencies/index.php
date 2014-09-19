@@ -32,8 +32,16 @@
 								//'width' => '60',
 						//),
 				),
-
 			array(
+			
+					'name' => 'updtime',
+			
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
+			array(
+					'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

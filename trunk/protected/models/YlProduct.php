@@ -44,6 +44,7 @@ class YlProduct extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('title,pname,imgurl,pdf', 'required'),
 			array('cid, IndustryID, CompanyID, pid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('pname', 'length', 'max'=>300),
@@ -72,20 +73,20 @@ class YlProduct extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => '标题',
+			'id' => '自动序号',
+			'title' => '文章标题',
 			'cid' => '类型',
-			'imgurl' => '图片',
+			'imgurl' => '图片上传',
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
-			'updtime' => '更新时间',
+			'updtime' => '更新日期',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
-			'pdf' =>'媒体文件',
+			'pdf' =>'媒体上传',
 
-			'pid' =>'产品',
-			'pname' =>'产品'
+			'pid' =>'产品名称',
+			'pname' =>'产品名称'
 		);
 	}
 

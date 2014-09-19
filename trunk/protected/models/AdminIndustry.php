@@ -41,6 +41,7 @@ class AdminIndustry extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('parentid,listorder,name', 'required'),
 			array('parentid, listorder', 'numerical', 'integerOnly'=>true),
 			array('name, pinyin', 'length', 'max'=>255),
 			array('addTime, updTime', 'safe'),
@@ -68,9 +69,9 @@ class AdminIndustry extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => '名称',
+			'name' => '行业名称',
 			'pinyin' => '拼音',
-			'listorder' => '排序',
+			'listorder' => '排列序号',
 			'parentid' =>'上级行业',
 		);
 	}

@@ -40,6 +40,15 @@
 								//'width' => '60',
 						//),
 				),
+			array(
+			
+					'name' => 'pid',
+					'value' =>array($this,"getValueByPid"),
+			
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 
 			array(
 
@@ -63,7 +72,7 @@
 						//),
 				),
 		array(
-			'header'=>'操作',
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

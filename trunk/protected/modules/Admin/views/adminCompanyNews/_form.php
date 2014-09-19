@@ -11,7 +11,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -23,7 +23,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'cid'); ?>
         </th>
         <td >
@@ -35,7 +35,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'IndustryName'); ?>       </th>
         <td>
         <div class="row">
@@ -47,7 +47,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'aid'); ?>   </th>
         <td>
         <div class="row">
@@ -58,7 +58,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'CompanyID'); ?>
         </th>
         <td >
@@ -75,7 +75,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'pid'); ?>
         </th>
         <td >
@@ -152,4 +152,5 @@ $(document).ready(function() {
 		}
 		
 	}
+
 </script>

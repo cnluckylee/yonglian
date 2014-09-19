@@ -38,6 +38,7 @@ class ConsolidatedOther extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('name', 'required'),
 			array('state', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
@@ -64,10 +65,10 @@ class ConsolidatedOther extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
+			'id' => '自动序号',
+			'name' => '类别名称',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新日期',
 			'state' =>'状态'
 		);
 	}

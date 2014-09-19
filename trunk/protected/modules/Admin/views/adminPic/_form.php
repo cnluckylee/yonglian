@@ -13,8 +13,8 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'标题'); ?>
+          <th width="100" align="right"><span style="float:left;">*</span>
+		<?php echo $form->labelEx($model,'广告标题'); ?>
         </th>
         <td >
         <div class="row">
@@ -25,8 +25,8 @@
 	</tr>
 
 	<tr>
-      <th width="100" align="right">
-		<?php echo $form->labelEx($model,'类型'); ?>
+      <th width="100" align="right"><span style="float:left;">*</span>
+		<?php echo $form->labelEx($model,'栏目位置'); ?>
         </th>
         <td >
         <div class="row">
@@ -39,8 +39,8 @@
         </td>
 	</tr>
     <tr>
-      <th width="100" align="right">
-		<?php echo $form->labelEx($model,'图片链接'); ?>
+      <th width="100" align="right"><span style="float:left;">*</span>
+		<?php echo $form->labelEx($model,'用户跳码'); ?>
         </th>
         <td >
         <div class="row">
@@ -51,8 +51,8 @@
         </td>
 	</tr>
     <tr>
-      <th width="100" align="right">
-		<?php echo $form->labelEx($model,'上传图片'); ?>
+      <th width="100" align="right"><span style="float:left;">*</span>
+		<?php echo $form->labelEx($model,'图片上传'); ?>
         </th>
         <td >
         <div class="row">
@@ -66,18 +66,7 @@
         
         </td>
 	</tr>
-    <tr>
-      <th width="100" align="right">
-		<?php echo $form->labelEx($model,'摘要'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textArea($model,'remark',array('rows'=>5, 'cols'=>75)); ?>
-			
-		<?php echo $form->error($model,'remark'); ?>
-        </div>
-        </td>
-	</tr>    
+    
 </tbody>
       <tfoot>
         <tr class="title">

@@ -11,14 +11,14 @@
       </thead>
       <tbody>
       <tr>
-        <th width="100" align="right"><?php echo $form->labelEx($model,'parentid'); ?></th>
+        <th width="100" align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'parentid'); ?></th>
         <td><select name="AdminIndustry[parentid]" id="adminIndustry_parentid">
             <?php echo AdminIndustry::getSelectTree('顶级菜单',$model->parentid);?>
           </select>
           <?php echo $form->error($model,'parentid'); ?> </td>
       </tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -29,20 +29,10 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pinyin'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'pinyin',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'pinyin'); ?>
-        </div>
-        </td>
-	</tr>
+	
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'listorder'); ?>
         </th>
         <td >

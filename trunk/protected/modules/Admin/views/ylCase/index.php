@@ -19,7 +19,7 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						'header' => '自动序号'
 				),
 
 			array(
@@ -34,21 +34,10 @@
 
 
 			array(
-
-						'name' => 'imgurl',
-						
-						
-				),
-
-			array(
-
-						'name' => 'remark',
-						'header' => '摘要',
-						'value' => 'Helper::truncate_utf8_string($data->remark,30)',
-						'htmlOptions' => array(
-								'width' => '60',
-						),
-				),
+			
+					'name' => 'updtime',
+			
+			),
 
 			
 			

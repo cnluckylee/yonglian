@@ -39,6 +39,7 @@ class Alltype extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('parentid,name,type,listorder,display', 'required'),
 			array('parentid, type, listorder, display', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>50),
 			// The following rule is used by search().
@@ -66,9 +67,9 @@ class Alltype extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'parentid' => '上级菜单',
-			'name' => '名称',
-			'type' => '类型',
-			'listorder' => '排序',
+			'name' => '网页名称',
+			'type' => '位置类型',
+			'listorder' => '排列序号',
 			'display' => '是否显示',
 		);
 	}

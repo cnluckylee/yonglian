@@ -35,34 +35,36 @@
 				),
 
 		
-
+			array(
+			
+					'name' => 'sszb',
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
+			array(
+						
+					'name' => 'ssxb',
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 			array(
 
-						'name' => 'imgurl',
+						'name' => 'IndustryID',
 
-						'type' => 'image',
-						'htmlOptions' => array(
-														'class' => 'thumbimage_100',
-						),
 				),
 
 			array(
 
-						'name' => 'content',
+						'name' => 'stopdate',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
 
-			array(
-
-						'name' => 'remark',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+			
 
 			/*
 		array(

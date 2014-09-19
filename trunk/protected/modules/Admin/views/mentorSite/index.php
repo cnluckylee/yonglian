@@ -32,7 +32,15 @@
 								//'width' => '60',
 						//),
 				),
-
+			array(
+			
+					'name' => 'updtime',
+			
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
+				
 		
 
 			array(

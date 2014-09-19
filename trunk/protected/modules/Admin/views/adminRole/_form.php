@@ -11,7 +11,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -22,30 +22,6 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'description'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'description'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'disabled'); ?>
-        </th>
-        <td >
-        <div class="row">
-		
-		<?php echo $form->radioButtonList($model,'disabled', AdminRole::$iSDisabled); ?>
-		<?php echo $form->error($model,'disabled'); ?>
-        </div>
-        </td>
-	</tr>
 
 </tbody>
       <tfoot>

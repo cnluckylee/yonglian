@@ -35,6 +35,7 @@ class Agencies extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('name', 'required'),
 			array('name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -59,8 +60,9 @@ class Agencies extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
+			'id' => '自动序号',
+			'name' => '机构名称',
+			'updtime' => '更新日期',
 		);
 	}
 
@@ -77,7 +79,8 @@ class Agencies extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
-
+		$criteria->compare('updtime',$this->updtime,true);
+		$criteria->order = 'updtime desc' ;
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
@@ -92,5 +95,10 @@ class Agencies extends CActiveRecord
 			$result[$arr['id']] = $arr['name'];
 		}
 		return $result;
+	}
+	protected function beforeSave()
+	{
+		$this->updtime=date('Y-m-d H:i:s');
+		return true;
 	}
 }

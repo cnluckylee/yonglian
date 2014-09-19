@@ -46,8 +46,8 @@ $('.del').click(function(){
         <th colspan="4"> 地区管理 </th>
       </tr>
       <tr>
-        <th width="80" style="text-align:center">排序</th>
-        <th>菜单名称</th>
+        <th width="80" style="text-align:center">排列序号</th>
+        <th>地区名称</th>
         <th>管理操作</th>
       </tr>
     </thead>

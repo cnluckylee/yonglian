@@ -11,7 +11,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -22,17 +22,7 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'mark'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'mark',array('size'=>60,'maxlength'=>100)); ?>
-		<?php echo $form->error($model,'mark'); ?>
-        </div>
-        </td>
-	</tr>
+	
     
 </tbody>
       <tfoot>

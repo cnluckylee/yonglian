@@ -229,4 +229,6 @@ class AdminViewPointController extends AdminController
 			Yii::app()->end();
 		}
 	}
+	
+	
 }

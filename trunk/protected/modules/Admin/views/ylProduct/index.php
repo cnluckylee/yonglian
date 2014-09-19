@@ -19,7 +19,6 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
 				),
 
 			array(
@@ -33,18 +32,10 @@
 
 
 
-			array(
-						
-						'name' => 'imgurl',
-						'type' => 'image',
-						'htmlOptions' => array(
-								'class' => 'thumbimage_100',
-							),
-						
-				),
+			
 			array(
 
-						'name' => 'pdf',
+						'name' => 'pname',
 						
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -53,12 +44,8 @@
 
 			array(
 
-						'name' => 'remark',
-						'header' => '摘要',
-						'value' => 'Helper::truncate_utf8_string($data->remark,30)',
-						'htmlOptions' => array(
-								'width' => '60',
-						),
+						'name' => 'updtime',
+						
 				),
 
 			

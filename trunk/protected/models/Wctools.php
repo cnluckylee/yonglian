@@ -45,6 +45,7 @@ class Wctools extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,score,IndustryID,type,remark', 'required'),
 			array('IndustryID, type', 'numerical', 'integerOnly'=>true),
 			array('score', 'numerical'),
 			array('title, downurl', 'length', 'max'=>100),
@@ -73,16 +74,16 @@ class Wctools extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => '名称',
-			'score' => '评分',
+			'id' => '自动序号',
+			'title' => '工具名称',
+			'score' => '评定级别',
 			'imgurl' => '图片',
-			'remark' => '简介',
+			'remark' => '工具简述',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
-			'IndustryID' => '行业',
+			'updtime' => '更新日期',
+			'IndustryID' => '所属行业',
 			'downurl' => '上传软件',
-			'type' => '类型',
+			'type' => '工具类型',
 			'pdf' => 'pdf文件',
 			'content' => '详情'
 		);

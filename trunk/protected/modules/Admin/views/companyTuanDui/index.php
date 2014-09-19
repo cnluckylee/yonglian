@@ -51,7 +51,7 @@
 								//'width' => '60',
 						//),
 				),
-			array(
+	/*		array(
 
 						'name' => 'desc',
 
@@ -60,7 +60,7 @@
 						//),
 				),
 
-			/*
+			
 		array(
 
 						'name' => 'order',
@@ -135,6 +135,7 @@
 
 			*/
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {view}{delete}',

@@ -13,7 +13,8 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
+          
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -24,7 +25,8 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
+          
 		<?php echo $form->labelEx($model,'url'); ?>
         </th>
         <td >
@@ -35,7 +37,8 @@
         </td>
 	</tr>
 	<tr>
-        <th width="100" align="right">
+        <th width="100" align="right"><span style="float:left;">*</span>
+        
 		<?php echo $form->labelEx($model,'cid'); ?>
         </th>
         <td >
@@ -48,7 +51,8 @@
         </td>
 	</tr>
 		<tr>
-        <th width="100" align="right">
+        <th width="100" align="right"><span style="float:left;">*</span>
+        
 		<?php echo $form->labelEx($model,'imgurl'); ?>
         </th>
         <td >
@@ -62,22 +66,10 @@
         </td>
 	</tr>
 
-	<tr>
-        <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pdf'); ?>
-        </th>
-        <td >
-        <div class="row">
-        <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
-			 if(!empty($model->pdf))
-			  	echo $model->pdf;
-		?>
-		<?php echo $form->error($model,'pdf'); ?>
-        </div>
-        </td>
-	</tr>
+	
     <tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
+          
 		<?php echo $form->labelEx($model,'remark'); ?>
         </th>
         <td >
@@ -87,7 +79,8 @@
         </div>
         </td>
 	</tr>
-	<tr>
+	
+<tr style="display:none;">
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
         </th>
@@ -130,4 +123,5 @@
 	{
 		editor.sync(); 
 	}
+
 </script>

@@ -39,6 +39,7 @@ class Journal extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,remark,imgurl,downurl,pdf', 'required'),
 			array('title, imgurl,downurl', 'length', 'max'=>100),
 			array('remark, addtime, updtime', 'safe'),
 			array('imgurl,pdf', 'length', 'max'=>255),
@@ -65,12 +66,12 @@ class Journal extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => '标题',
-			'remark' => '备注',
+			'id' => '自动序号',
+			'title' => '文章标题',
+			'remark' => '文章简介',
 			'addtime' => '添加时间',
 			'updtime' => '更新时间',
-			'imgurl' => '图片地址',
+			'imgurl' => '期刊图片',
 			'downurl' => '文件地址',
 			'pdf' => '媒体文件',
 		);

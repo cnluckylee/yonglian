@@ -19,7 +19,7 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						'header' => '自动序号'
 				),
 
 			array(
@@ -35,12 +35,12 @@
 
 						'name' => 'cid',
 						'value' =>array($this,"getValueByKey"),
-						'header' => '文章分类'
+						'header' => '文章栏目'
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),
-			array(
+	/*		array(
 
 						'name' => 'IndustryID',
 						'value' =>array($this,"getValueByIndustryID"),
@@ -56,26 +56,26 @@
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),	
+				),	*/
 			array(
 
 						'name' => 'CompanyID',
 						'value' =>array($this,"getValueByCompanyID"),
-						'header' => '公司'
+						'header' => '用户名称'
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
 				),	
-			array(
+		/*	array(
 
 						'name' => 'updtime',
 						
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),
+				),*/
 		array(
-			'header'=>'操作',
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

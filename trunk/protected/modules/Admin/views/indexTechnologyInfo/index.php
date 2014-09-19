@@ -34,7 +34,7 @@
 						//),
 				),
 
-			array(
+	/*		array(
 
 						'name' => 'imgurl',
 
@@ -59,10 +59,10 @@
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),
+				),*/
 
 
-			/*
+			
 		array(
 
 						'name' => 'updtime',
@@ -72,7 +72,7 @@
 						//),
 				),
 
-			array(
+		/*	array(
 
 						'name' => 'pid',
 
@@ -83,6 +83,7 @@
 
 			*/
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

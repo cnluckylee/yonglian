@@ -43,7 +43,7 @@ $('.del').click(function(){
   <table width="100%" class="table_list table">
     <thead>
       <tr>
-        <th width="80" style="text-align:center">排序</th>
+        <th width="80" style="text-align:center">排列序号</th>
         <th>地区名称</th>
        
         <th>管理操作</th>

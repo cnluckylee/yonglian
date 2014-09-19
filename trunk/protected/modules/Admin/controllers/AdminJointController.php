@@ -164,4 +164,12 @@ class AdminJointController extends AdminController
 			$name = $result->attributes['name'];
 		return $name;
 	}
+	
+	public function getValueByPid($data, $row, $c)
+	{
+		$tmp = BaseData::CPDevelopCategary();
+		$name = $tmp?$tmp[$data->pid]['name']:"";
+
+		return $name;
+	}
 }

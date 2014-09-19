@@ -41,6 +41,7 @@ class Area extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('parentid,listorder,name', 'required'),
 			array('parentid, listorder', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>20),
 			array('pinyin', 'length', 'max'=>50),
@@ -69,10 +70,10 @@ class Area extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => '名称',
+			'id' => '排列序号',
+			'name' => '地区名称',
 			'pinyin' => '拼音',
-			'listorder' => '排序',
+			'listorder' => '排列序号',
 			'parentid'=>'上级地区',
 		);
 	}

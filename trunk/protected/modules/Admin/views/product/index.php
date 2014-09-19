@@ -45,8 +45,16 @@
 								//'width' => '60',
 						//),
 				),
-
 			array(
+			
+					'name' => 'cid',
+					'value' =>array($this,"getValueByKey"),
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
+
+	/*		array(
 
 						'name' => 'keywords',
 
@@ -74,7 +82,7 @@
 				),
 
 		
-			/*
+			
 		array(
 
 						'name' => 'class2',
@@ -194,6 +202,7 @@
 
 			*/
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

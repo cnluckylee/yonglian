@@ -44,8 +44,9 @@ class Article extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,cid,IndustryID,aname,CompanyID', 'required'),
 			array('cid, IndustryID, CompanyID,aid', 'numerical', 'integerOnly'=>true),
-			array('title,aname', 'length', 'max'=>200),
+			array('title,aname', 'length', 'max'=>70),
 			array('imgurl','file','allowEmpty'=>true,'types'=>'jpg, gif, png','maxSize'=>1024 * 1024 * 10,'tooLarge'=>'上传图片已超过10M'),
 			array('miniContent', 'length', 'max'=>255),
 			array('content, remark', 'safe'),
@@ -73,7 +74,7 @@ class Article extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => '标题',
+			'title' => '文章标题',
 			'cid' => '文章栏目',
 			'imgurl' => '图片',
 			'content' => '内容',
@@ -82,7 +83,7 @@ class Article extends CActiveRecord
 			'updtime' => '修改日期',
 			'miniContent' => 'Mini Content',
 			'IndustryID' => '行业',
-			'CompanyID' => '公司',
+			'CompanyID' => '用户名称',
 			'aid' => '地区',
 			'aname' => '地区',
 		);

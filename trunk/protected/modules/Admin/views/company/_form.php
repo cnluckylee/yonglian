@@ -12,7 +12,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -24,7 +24,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'pinyin'); ?>
         </th>
         <td >
@@ -35,7 +35,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'city'); ?>
         </th>
         <td >
@@ -50,7 +50,7 @@
 
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'Industry'); ?>
         </th>
         <td >
@@ -63,7 +63,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'imgurl'); ?>
         </th>
         <td >
@@ -77,22 +77,9 @@
         </td>
 	</tr>
     
-    <tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pdf'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
-			 if(!empty($model->pdf))
-			  	echo $model->pdf;
-		?>
-		<?php echo $form->error($model,'pdf'); ?>
-        </div>
-        </td>
-	</tr>
+   
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'accountdate'); ?>
         </th>
         <td >
@@ -104,7 +91,7 @@
 	</tr>
 	
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'desc'); ?>
         </th>
         <td >
@@ -117,11 +104,11 @@
 	</tr>
 
       <tr>
-        <th align="right"><?php echo $form->labelEx($model,'recommend'); ?></th>
+        <th align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'recommend'); ?></th>
         <td valign="middle"><?php echo $form->radioButtonList($model,'recommend', Company::$isDisplay); ?><?php echo $form->error($model,'recommend'); ?> </td>
       </tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'rank'); ?>
         </th>
         <td >

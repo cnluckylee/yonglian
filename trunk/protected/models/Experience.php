@@ -45,6 +45,7 @@ class Experience extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,aid,score,cid,uname,IndustryID', 'required'),
 			array('aid, IndustryID, CompanyID, type,cid,uid', 'numerical', 'integerOnly'=>true),
 			array('score', 'numerical'),
 			array('title', 'length', 'max'=>200),
@@ -73,20 +74,20 @@ class Experience extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'title' => '标题',
-			'aid' => '项目',
-			'imgurl' => '图片',
+			'id' => '自动序号',
+			'title' => '文章标题',
+			'aid' => '产品服务',
+			'imgurl' => '图片内容',
 			'content' => '内容',
 			'remark' => '简介',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
-			'IndustryID' => '行业',
+			'updtime' => '更新日期',
+			'IndustryID' => '所属行业',
 			'CompanyID' => '公司',
-			'score' => '评分',
-			'type' => '类型',
-			'pdf' => '媒体文件',
-			'cid' =>'城市',
+			'score' => '评定级别',
+			'type' => '类型图标',
+			'pdf' => '媒体内容',
+			'cid' =>'所在地区',
 			'uname' => '用户名称',
 			'uid' => '用户名称',
 		);

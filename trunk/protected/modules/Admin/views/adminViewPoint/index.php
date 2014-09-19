@@ -35,7 +35,7 @@
 						//),
 				),
 
-			array(
+		/*	array(
 
 						'name' => 'zzid',
 						'value' =>array($this,"getValueByzzid"),
@@ -58,36 +58,45 @@
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),
+				),*/
 			array(
-
-						'name' => 'CompanyID',
-						'value' =>array($this,"getValueByCompanyID"),
-					
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),		
-			array(
+			
+					'name' => 'mname',
+			
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
+			
+		/*	array(
 
 						'name' => 'IndustryID',
 						'value' =>array($this,"getValueByIndustryID"),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
-				),	
+				),	*/
+			
 			
 			array(
-
-						'name' => 'mname',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
+			
+					'name' => 'remark',
+			
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
+			array(
+			
+					'name' => 'updtime',
+			
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 		
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

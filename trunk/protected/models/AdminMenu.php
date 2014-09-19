@@ -43,7 +43,7 @@ class AdminMenu extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('modules', 'required'),
+            array('modules,parentid,name,controller,action,data,display', 'required'),
             array('listorder, display', 'numerical', 'integerOnly' => true),
             array('name, modules', 'length', 'max' => 50),
             array('parentid, controller, action, ico', 'length', 'max' => 20),
@@ -72,11 +72,11 @@ class AdminMenu extends CActiveRecord {
     public function attributeLabels() {
         return array(
             'id' => 'ID',
-            'name' => '名称',
+            'name' => '菜单名称',
             'parentid' => '上级菜单',
-            'modules' => '模块',
-            'controller' => '控制器',
-            'action' => '动作',
+            'modules' => '指定模快',
+            'controller' => '目标控制',
+            'action' => '目标动作',
             'data' => '附加参数',
             'ico' => '图标',
             'listorder' => '排序',

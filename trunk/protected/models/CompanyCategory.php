@@ -38,7 +38,7 @@ class CompanyCategory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('cid', 'required'),
+			array('cid,name', 'required'),
 			array('cid, order', 'numerical', 'integerOnly'=>true),
 			array('name,companyName', 'length', 'max'=>255),
 			// The following rule is used by search().
@@ -64,11 +64,11 @@ class CompanyCategory extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'cid' => '公司',
-			'name' => '分类名称',
+			'id' => '自动序号',
+			'cid' => '用户名称',
+			'name' => '大类名称',
 			'order' => '排序',
-			'companyName'=>'公司名称'
+			'companyName'=>'用户名称'
 		);
 	}
 

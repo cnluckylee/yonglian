@@ -56,9 +56,11 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 			'htmlOptions' => array(
 				'width' => '60',
 			),
+				'header'=>'自动序号',
 		),
 		array(
 			'name' => 'username',
+				'header'=>'用户名称',
 		//'htmlOptions' => array(
 		//'width' => '60',
 		//),
@@ -66,6 +68,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 		
 		array(
 			'name' => 'name',
+				'header'=>'员工姓名',
 		//'htmlOptions' => array(
 		//'width' => '60',
 		//),
@@ -74,6 +77,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 			'name' => 'role_id',
 			'value' => 'AdminRole::getDataList($data->role_id)',
 			'filter' => AdminRole::getDataList(),
+				'header'=>'角色名称',
 		//'htmlOptions' => array(
 		//'width' => '60',
 		//),
@@ -82,6 +86,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 			'name' => 'disabled',
 			'value' => 'AdminUser::$iSDisabled[$data->disabled]',
 			'filter' => AdminUser::$iSDisabled, //显示一个下拉列表，多个,所以是复数
+				'header'=>'禁用控制',
 		//'htmlOptions' => array(
 		//'width' => '60',
 		//),
@@ -101,7 +106,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 			
 			'class' => 'CButtonColumn',
 			'class' => 'CButtonColumn',
-			'header' => '操作',
+			'header' => '操作功能',
 			'template' => '{update} {delete}',
 		),
 	),

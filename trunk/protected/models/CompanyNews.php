@@ -44,8 +44,9 @@ class CompanyNews extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,cid,IndustryName,aid,CompanyID,pid', 'required'),
 			array('cid, IndustryID, CompanyID, pid,aid', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>200),
+			array('title', 'length', 'max'=>70),
 			array('imgurl,aname,IndustryName', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
@@ -72,17 +73,17 @@ class CompanyNews extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => '标题',
-			'cid' => '类型',
+			'title' => '文章标题',
+			'cid' => '类型图标',
 			'imgurl' => '图片',
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
-			'updtime' => '更新时间',
-			'IndustryID' => '行业',
-			'CompanyID' => '公司',
-			'pid' => '类别',
-			'aid' =>'地区',
+			'updtime' => '更新日期',
+			'IndustryID' => '所属行业',
+			'CompanyID' => '用户名称',
+			'pid' => '文章类别',
+			'aid' =>'所在地区',
 			'aname' =>'地区',
 			'IndustryName'=>'所属行业'
 		);
@@ -237,6 +238,7 @@ class CompanyNews extends CActiveRecord
 			{
 				$this->addtime=$this->updtime=date('Y-m-d H:i:s');
 			}else{
+				date_default_timezone_set('PRC');
 				$this->updtime=date('Y-m-d H:i:s');
 			}
 	

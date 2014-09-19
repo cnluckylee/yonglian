@@ -32,14 +32,7 @@
 								//'width' => '60',
 						//),
 				),
-			array(
-
-						'name' => 'CompanyID',
-						'value' =>array($this,"getCompanyByKey"),
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+			
 
 			array(
 
@@ -49,6 +42,14 @@
 								//'width' => '60',
 						//),
 				),
+			array(
+						
+					'name' => 'entrydate',
+				//	'value' =>array($this,"getCompanyByKey"),
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 			array(
 
 						'name' => 'cid',
@@ -60,10 +61,18 @@
 
 
 
-	
+			array(
+			
+					'name' => 'CompanyID',
+					'value' =>array($this,"getCompanyByKey"),
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 
 			
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

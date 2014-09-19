@@ -13,7 +13,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -25,7 +25,7 @@
 	</tr>
 
 	<tr>
-        <th width="100" align="right">
+        <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'cid'); ?>
         </th>
         <td >
@@ -38,8 +38,8 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
-		<label for="Article_IndustryID">行业</label>        </th>
+          <th width="100" align="right"><span style="float:left;">*</span>
+		<label for="Article_IndustryID">所属行业</label>        </th>
         <td>
         <div class="row">
 			<input type="text" size="30" maxlength="50" name="Article[IndustryID]" id="Company_Industry" value="<?php echo $model->IndustryID;?>">
@@ -49,8 +49,8 @@
 	</tr>
 	
 	<tr>
-          <th width="100" align="right">
-		<label for="Article_aid">地区</label>        </th>
+          <th width="100" align="right"><span style="float:left;">*</span>
+		<label for="Article_aid">所在地区</label>        </th>
         <td>
         <div class="row">
         <input type="text" size="30" maxlength="50" name="Article[aname]" id="Company_city" value="<?php echo $model->aname;?>">
@@ -60,7 +60,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'CompanyID'); ?>
         </th>
         <td >
@@ -144,4 +144,5 @@ $(document).ready(function() {
 		}
 		
 	}
+
 </script>
