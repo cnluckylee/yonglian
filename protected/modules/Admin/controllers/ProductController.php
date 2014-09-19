@@ -171,4 +171,14 @@ class ProductController extends AdminController
 			Yii::app()->end();
 		}
 	}
+	
+	public function getValueByKey($data, $row, $c)
+	{
+	
+		$name = '';
+		$result = Alltype::model()->findByPk($data->cid);
+		if($result)
+			$name = $result->attributes['name'];
+		return $name;
+	}
 }

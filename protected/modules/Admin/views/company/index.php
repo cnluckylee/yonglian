@@ -65,17 +65,10 @@
 						
 				),
 
-			array(
-
-						'name' => 'recommend',
-						'value'=>array($this,'isrecommend'),
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+			
 
 		array(
-		'header'=>'操作',
+		'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {view} {delete}',

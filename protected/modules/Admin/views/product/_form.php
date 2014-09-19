@@ -12,7 +12,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -25,7 +25,7 @@
 	
 	
 		<tr>
-       <th width="100" align="right">
+       <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'aid'); ?>
         </th>
         <td >
@@ -40,7 +40,7 @@
 
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'cid'); ?>
         </th>
         <td >
@@ -58,7 +58,7 @@
 	
 	
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'imgurl'); ?>
         </th>
         <td >
@@ -71,37 +71,7 @@
         </div>
         </td>
 	</tr>
-	
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pdf'); ?>
-        </th>
-        <td >
-        <div class="row">
-        <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
-			 if(!empty($model->pdf))
-			  	echo $model->pdf;
-		?>
-		<?php echo $form->error($model,'pdf'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'keywords'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'keywords',array('size'=>60,'maxlength'=>200)); ?>(关键词间请用“，”隔开)
-		<?php echo $form->error($model,'keywords'); ?>
-        </div>
-        </td>
-	</tr>
-
-	
-
-	<tr>
+	<tr style="display:none;">
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
         </th>
@@ -112,9 +82,6 @@
         </div>
         </td>
 	</tr>
-
-
-
 	
 </tbody>
       <tfoot>
@@ -222,4 +189,5 @@ $(document).ready(function() {
 		}
 		
 	}
+
 </script>

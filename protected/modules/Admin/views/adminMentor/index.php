@@ -18,8 +18,7 @@
 		array(
 
 						'name' => 'id',
-						'value' => '$row+1',
-						'header' => '序号'
+						'value' => '$row+1'
 						
 				),
 
@@ -46,7 +45,6 @@
 
 						'name' => 'CompanyID',
 						'value' =>array($this,"getValueByCompanyID"),
-						'header' => '公司'
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -64,7 +62,7 @@
 			
 
 		array(
-			'header'=>'操作',
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

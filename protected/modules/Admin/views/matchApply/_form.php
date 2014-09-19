@@ -14,7 +14,7 @@
 
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -29,7 +29,7 @@
 		<?php echo $form->labelEx($model,'imgurl'); ?>
         </th>
         <td >
-        <div class="row">
+        <div class="row"><span style="float:left;">*</span>
 		 <?php echo $form->fileField($model,'imgurl',array('size'=>50)); 
 			 if(!empty($model->imgurl))
 			  	echo "<img src='".$model->imgurl."' title='缩略图' class='thumbimage'/>";
@@ -41,7 +41,7 @@
 
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'remark'); ?>
         </th>
         <td >
@@ -52,7 +52,7 @@
         </td>
 	</tr>
 
-	<tr>
+	<tr style="display:none;">
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
         </th>

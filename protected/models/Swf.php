@@ -41,6 +41,7 @@ class Swf extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('name,url,pdf', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
 			array('name, url, pdf, imgurl', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
@@ -67,8 +68,8 @@ class Swf extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
+			'id' => '自动序号',
+			'name' => '视频名称',
 			'url' => '链接地址',
 			'addtime' => 'Addtime',
 			'updtime' => '更新时间',

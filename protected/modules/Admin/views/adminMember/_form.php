@@ -17,7 +17,7 @@
 
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'IndustryName'); ?>       </th>
         <td>
         <div class="row">
@@ -29,7 +29,7 @@
         </td>
 	</tr>
 	<tr>
-      <th width="100" align="right">
+      <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'aname'); ?>   </th>
         <td>
         <div class="row">
@@ -40,7 +40,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'CompanyID'); ?>
         </th>
         <td >
@@ -53,7 +53,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -66,7 +66,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'postname'); ?>
         </th>
         <td >
@@ -77,7 +77,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'cid'); ?>
         </th>
         <td >
@@ -103,7 +103,7 @@
         </th>
         <td >
         <div class="row">
-		<input id="Member_entrydate" type="text" name="Member[entrydate]" onclick="WdatePicker()" value="<?php echo $model->entrydate;?>">
+		<input id="Member_entrydate" type="text" name="Member[entrydate]" value="<?php echo $model->entrydate;?>">
 		<?php echo $form->error($model,'entrydate'); ?>
         </div>
         </td>
@@ -203,4 +203,5 @@ $(document).ready(function() {
 		}
 		
 	}
+
 </script>

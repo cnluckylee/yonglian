@@ -36,17 +36,14 @@
 
 			array(
 
-						'name' => 'imgurl',
-						'type' => 'image',
-						'htmlOptions' => array(
-								'class' => 'thumbimage_100',
-						),
+						'name' => 'title',
+						
 				),
 
 			
 			array(
 
-						'name' => 'remark',
+						'name' => 'uname',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -54,7 +51,7 @@
 				),
 			array(
 
-						'name' => 'content',
+						'name' => 'updtime',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -118,6 +115,7 @@
 
 			*/
 		array(
+				'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

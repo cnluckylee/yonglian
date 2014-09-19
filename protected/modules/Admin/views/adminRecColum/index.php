@@ -19,7 +19,7 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						'header' => '自动序号'
 				),
 
 			array(
@@ -42,7 +42,15 @@
 				),
 	
 			
-		
+			array(
+						
+					'name' => 'remark',
+				//	'value' =>array($this,"getPositionByCid"),
+						
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 
 			array(
 
@@ -52,6 +60,7 @@
 								//'width' => '60',
 						//),
 				),
+			
 		array(
 			'header'=>'操作',
 			'class'=>'CButtonColumn',

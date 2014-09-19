@@ -12,7 +12,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -24,7 +24,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'remark'); ?>
         </th>
         <td >
@@ -35,7 +35,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'imgurl'); ?>
         </th>
         <td >
@@ -50,7 +50,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'downurl'); ?>
         </th>
         <td >
@@ -64,7 +64,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'pdf'); ?>
         </th>
         <td >

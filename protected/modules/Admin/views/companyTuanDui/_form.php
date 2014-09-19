@@ -12,7 +12,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -24,7 +24,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'keywords'); ?>
         </th>
         <td >
@@ -35,7 +35,7 @@
         </td>
 	</tr>
 	<tr>
-        <th width="100" align="right">
+        <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'class1'); ?>
         </th>
         <td >
@@ -49,7 +49,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'aname'); ?>
         </th>
         <td >
@@ -62,7 +62,7 @@
 	</tr>
 	
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'cid'); ?>
         </th>
         <td >
@@ -103,19 +103,8 @@
         </div>
         </td>
 	</tr>
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'desc'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textArea($model,'desc',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'desc'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
+	
+	<tr style="display:none;">
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
         </th>
@@ -210,4 +199,5 @@ $(document).ready(function() {
 		}
 		
 	}
+	
 </script>

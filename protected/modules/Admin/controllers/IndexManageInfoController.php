@@ -77,6 +77,7 @@ class IndexManageInfoController extends AdminController
 		$model->setScenario('update');
 		$old_imgurl = $model->imgurl;
 		$old_pdf = $model->pdf;
+		
 		//AJAX 表单验证
 		$this->performAjaxValidation($model);
 

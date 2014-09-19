@@ -69,20 +69,14 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 			'htmlOptions' => array(
 				'width' => '60',
 			),
+				'header'=>'自动序号',
 		),
 	
 		array(
 			'name' => 'name',
-			
+				'header'=>'用户名称',
 		),
-		array(
-			'name' => 'disabled',
-			'value' => 'AdminRole::$iSDisabled[$data->disabled]',
-			'filter' => AdminRole::$iSDisabled, //显示一个下拉列表，多个,所以是复数
-			'htmlOptions' => array(
-				'width' => '60',
-			),
-		),
+		
 		array(
 			'header' => '操作',
 			'class' => 'CButtonColumn',

@@ -11,7 +11,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'parentid'); ?>
         </th>
         <td >
@@ -25,7 +25,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -37,7 +37,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'type'); ?>
         </th>
         <td >
@@ -51,7 +51,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'listorder'); ?>
         </th>
         <td >
@@ -63,7 +63,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'display'); ?>
         </th>
         <td >

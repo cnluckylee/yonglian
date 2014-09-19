@@ -28,6 +28,9 @@
 	<?php echo CHtml::encode($data->addtime); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('pid')); ?>:</b>
+	<?php echo CHtml::encode($data->pid); ?>
+	<br />
 	<?php /*
 	<b><?php echo CHtml::encode($data->getAttributeLabel('updtime')); ?>:</b>
 	<?php echo CHtml::encode($data->updtime); ?>

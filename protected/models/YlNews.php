@@ -44,6 +44,7 @@ class YlNews extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('title,imgurl', 'required'),
 			array('cid, IndustryID, CompanyID, pid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('imgurl', 'length', 'max'=>255),
@@ -72,13 +73,13 @@ class YlNews extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => '标题',
+			'title' => '文章标题',
 			'cid' => '类型',
-			'imgurl' => '媒体文件',
+			'imgurl' => '媒体上传',
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新日期',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
 			'pid' => '类别',

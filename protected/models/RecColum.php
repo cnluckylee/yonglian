@@ -47,6 +47,7 @@ class RecColum extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('title,url,cid,imgurl,remark', 'required'),
 			array('cid, IndustryID, CompanyID, aid', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('imgurl, miniContent, aname, url,pdf', 'length', 'max'=>255),
@@ -75,19 +76,19 @@ class RecColum extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => '标题',
-			'cid' => '推荐位置',
-			'imgurl' => '图片',
+			'title' => '文章标题',
+			'cid' => '栏目位置',
+			'imgurl' => '图片上传',
 			'content' => '内容',
-			'remark' => '摘要',
+			'remark' => '文章说明',
 			'addtime' => '添加日期',
-			'updtime' => '修改日期',
+			'updtime' => '更新日期',
 			'miniContent' => 'Mini Content',
 			'IndustryID' => '行业',
 			'CompanyID' => '公司',
 			'aid' => '地区',
 			'aname' => '地区',
-			'url'=>"跳转链接",
+			'url'=>"详情跳码",
 			'pdf'=>'媒体文件'
 		);
 	}

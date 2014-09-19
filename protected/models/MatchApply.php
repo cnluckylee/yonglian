@@ -41,7 +41,7 @@ class MatchApply extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title', 'required'),
+			array('title,remark', 'required'),
 			array('imgurl, title, remark, pdf', 'length', 'max'=>255),
 			array('content, addtime, updtime', 'safe'),
 			// The following rule is used by search().
@@ -67,13 +67,13 @@ class MatchApply extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'imgurl' => '图片',
-			'title' => '赛事标题',
-			'remark' => '简介',
+			'id' => '自动序号',
+			'imgurl' => '图片上传',
+			'title' => '赛事名称',
+			'remark' => '赛事简介',
 			'content' => '内容',
 			'pdf' => '媒体文件',
-			'addtime' => 'Addtime',
+			'addtime' => '更新日期',
 			'updtime' => '更新时间',
 		);
 	}

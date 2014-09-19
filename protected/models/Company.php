@@ -51,6 +51,7 @@ class Company extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('name,pinyin,city,Industry,imgurl,accountdate,desc,recommend,rank', 'required'),
 			array('city1, city2, city3, city4, IndustryID1, IndustryID2, IndustryID3, IndustryID4, recommend, rank,IndustryID,Ctid', 'numerical', 'integerOnly'=>true),
 			array('name, city', 'length', 'max'=>20),
 			array('pdf,imgurl', 'length', 'max'=>255),
@@ -80,29 +81,29 @@ class Company extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
-			'pinyin' => '简称',
-			'city' => '地区',
+			'id' => '自动序号',
+			'name' => '用户名称',
+			'pinyin' => '用户简称',
+			'city' => '所在地区',
 			'city1' => 'City1',
 			'city2' => 'City2',
 			'city3' => 'City3',
 			'city4' => 'City4',
-			'Industry' => '行业',
+			'Industry' => '所属行业',
 			'IndustryID1' => 'Industry Id1',
 			'IndustryID2' => 'Industry Id2',
 			'IndustryID3' => 'Industry Id3',
 			'IndustryID4' => 'Industry Id4',
-			'desc' => '描述',
+			'desc' => '用户描述',
 			'recommend' => '是否推荐',
-			'rank' => '权重',
+			'rank' => '首页权重',
 			'updTime' => 'Upd Time',
 			'addTime' => 'Add Time',
-			'accountdate' => '账期',
+			'accountdate' => '用户账期',
 			'IndustryID' => 'IndustryID',
 			'Ctid' => 'Ctid',
 			'pdf' => '媒体文件',
-			'imgurl' => '图片'
+			'imgurl' => '图片上传'
 		);
 	}
 

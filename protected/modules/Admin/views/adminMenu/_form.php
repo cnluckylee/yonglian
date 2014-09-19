@@ -13,38 +13,35 @@
     </thead>
     <tbody>
       <tr>
-        <th width="100" align="right"><?php echo $form->labelEx($model,'parentid'); ?></th>
+        <th width="100" align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'parentid'); ?></th>
         <td><select name="AdminMenu[parentid]" id="AdminMenu_parentid">
             <?php echo AdminMenu::getSelectTree('顶级菜单',$model->parentid);?>
           </select>
           <?php echo $form->error($model,'parentid'); ?> </td>
       </tr>
       <tr>
-        <th width="100" align="right"><?php echo $form->labelEx($model,'name'); ?> </th>
+        <th width="100" align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'name'); ?> </th>
         <td><?php echo $form->textField($model,'name',array('size'=>50,'maxlength'=>50)); ?> <?php echo $form->error($model,'name'); ?> </td>
       </tr>
       <tr>
-        <th width="100" align="right"><?php echo $form->labelEx($model,'modules'); ?> </th>
+        <th width="100" align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'modules'); ?> </th>
         <td><?php echo $form->textField($model,'modules',array('size'=>50,'maxlength'=>50)); ?> <?php echo $form->error($model,'modules'); ?></td>
       </tr>
       <tr>
-        <th width="100" align="right"><?php echo $form->labelEx($model,'controller'); ?> </th>
+        <th width="100" align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'controller'); ?> </th>
         <td><?php echo $form->textField($model,'controller',array('size'=>20,'maxlength'=>20)); ?> <?php echo $form->error($model,'controller'); ?></td>
       </tr>
       <tr>
-        <th width="100" align="right"><?php echo $form->labelEx($model,'action'); ?></th>
+        <th width="100" align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'action'); ?></th>
         <td><?php echo $form->textField($model,'action',array('size'=>20,'maxlength'=>20)); ?> <?php echo $form->error($model,'action'); ?> </td>
       </tr>
       <tr>
-        <th align="right"><?php echo $form->labelEx($model,'data'); ?> </th>
+        <th align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'data'); ?> </th>
         <td><?php echo $form->textField($model,'data',array('size'=>60,'maxlength'=>100)); ?> <?php echo $form->error($model,'data'); ?> </td>
       </tr>
+     
       <tr>
-        <th align="right"><?php echo $form->labelEx($model,'ico'); ?></th>
-        <td><?php echo $form->textField($model,'ico',array('size'=>20,'maxlength'=>20)); ?> <?php echo $form->error($model,'ico'); ?></td>
-      </tr>
-      <tr>
-        <th align="right"><?php echo $form->labelEx($model,'display'); ?></th>
+        <th align="right"><span style="float:left;">*</span><?php echo $form->labelEx($model,'display'); ?></th>
         <td valign="middle"><?php echo $form->radioButtonList($model,'display', AdminMenu::$isDisplay); ?><?php echo $form->error($model,'display'); ?> </td>
       </tr>
       <?php if($model->isNewRecord):?>

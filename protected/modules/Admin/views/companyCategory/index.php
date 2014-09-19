@@ -44,16 +44,9 @@
 						//),
 				),
 
+			
 			array(
-
-						'name' => 'order',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
+					'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

@@ -161,4 +161,18 @@ class CwpolicyController extends AdminController
 			Yii::app()->end();
 		}
 	}
+	public function getpolicy($data, $row, $c)
+	{
+		$tmp = Policytype::model()->findAll();
+		$name = $tmp?$tmp[$data->policy]['name']:"";
+	
+		return $name;
+	}
+	public function getAgency($data, $row, $c)
+	{
+		$tmp = Agencies::model()->findAll();
+		$name = $tmp?$tmp['Agency']:"";
+	
+		return $name;
+	}
 }

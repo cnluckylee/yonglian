@@ -51,6 +51,7 @@ class Match extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('title,IndustryID,zzid,hxid,zxid,fid,stopdate,sszb,ssxb,ssxs,ctid', 'required'),
 			array('fid, IndustryID, CompanyID, zzid, hxid, zxid, ssxs, ctid,aid,aid2', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>100),
 			array('imgurl, sszb, ssxb,Prize,Prize2,Prize3,PostName,Post,Post2Name,Post2,Post3Name,Post3,pdf,aname,aname2', 'length', 'max'=>255),
@@ -78,24 +79,24 @@ class Match extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'title' => '标题',
+			'id' => '自动序号',
+			'title' => '赛事名称',
 			'fid' => '综合其他',
 			'imgurl' => '图片',
 			'content' => '内容',
 			'remark' => '摘要',
 			'addtime' => 'Addtime',
 			'updtime' => 'Updtime',
-			'IndustryID' => '行业',
+			'IndustryID' => '所属行业',
 			'CompanyID' => 'Company',
-			'zzid' => '主旨管理',
-			'hxid' => '横向管理',
-			'zxid' => '纵向管理',
-			'stopdate' => '停止时间',
+			'zzid' => '主旨类别',
+			'hxid' => '横向类别',
+			'zxid' => '纵向类别',
+			'stopdate' => '截至日期',
 			'sszb' => '赛事主办',
 			'ssxb' => '赛事协办',
 			'ssxs' => '赛事形式',
-			'ctid' => '城市',
+			'ctid' => '所在地区',
 			'Prize'=>'一等奖',
 			'Prize2'=>'二等奖',
 			'Prize3'=>'三等奖',

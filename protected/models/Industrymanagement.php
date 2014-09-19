@@ -38,6 +38,7 @@ class Industrymanagement extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('name', 'required'),
 			array('state', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
@@ -64,8 +65,8 @@ class Industrymanagement extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
+			'id' => '自动序号',
+			'name' => '行业名称',
 			'addtime' => 'Addtime',
 			'updtime' => 'Updtime',
 			'state' =>'状态'

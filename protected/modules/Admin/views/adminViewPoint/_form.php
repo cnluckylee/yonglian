@@ -12,7 +12,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -22,37 +22,9 @@
         </div>
         </td>
 	</tr>
+	
 	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'imgurl'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->fileField($model,'imgurl',array('size'=>50)); 
-			 if(!empty($model->imgurl))
-			  	echo "<img src='".$model->imgurl."' title='缩略图' class='thumbimage'/>";
-		?>
-		<?php echo $form->error($model,'imgurl'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pdf'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
-			 if(!empty($model->pdf))
-			  	echo $model->pdf;
-		?>
-		<?php echo $form->error($model,'pdf'); ?>
-        </div>
-        </td>
-	</tr>
-	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'zzid'); ?>
         </th>
         <td >
@@ -64,7 +36,7 @@
 	</tr>
 
 <tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'hxid'); ?>
         </th>
         <td >
@@ -76,7 +48,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'zxid'); ?>
         </th>
         <td >
@@ -87,7 +59,7 @@
         </td>
 	</tr>
 		<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'IndustryID'); ?>
         </th>
         <td >
@@ -98,7 +70,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'mname'); ?>
         </th>
         <td >
@@ -109,7 +81,7 @@
         </td>
 	</tr>
 	<tr>
-       <th width="100" align="right">
+       <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'aid'); ?>
         </th>
         <td >
@@ -124,7 +96,7 @@
 
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'CompanyID'); ?>
         </th>
         <td >
@@ -141,7 +113,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'remark'); ?>
         </th>
         <td >
@@ -152,7 +124,7 @@
         </td>
 	</tr>
     
-	<tr>
+	<tr style="display:none;">
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
         </th>
@@ -234,4 +206,5 @@ $(document).ready(function() {
 		}
 		
 	}
+
 </script>

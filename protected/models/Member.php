@@ -42,6 +42,7 @@ class Member extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('IndustryName,aname,CompanyID,name,postname,cid,entrydate', 'required'),
 			array('pid, IndustryID, CompanyID, cid,aid', 'numerical', 'integerOnly'=>true),
 			array('name,aname,IndustryName,pdf,postname', 'length', 'max'=>255),
 			array('addtime, updtime, entrydate', 'safe'),
@@ -68,21 +69,21 @@ class Member extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '姓名',
-			'pid' => '职位',
+			'id' => '自动序号',
+			'name' => '团员姓名',
+			'pid' => '团员职位',
 			'addtime' => 'Addtime',
 			'updtime' => '更新时间',
 			'imgurl' => '图片',
 			'IndustryID' => '行业',
-			'CompanyID' => '公司名称',
-			'cid' => '管理类型',
-			'entrydate' => '入职日期',
-			'aid'=>'地区',
-			'aname'=>'地区',
-			'IndustryName'=>'行业',
+			'CompanyID' => '用户名称',
+			'cid' => '团员类别',
+			'entrydate' => '服务年限',
+			'aid'=>'所在地区',
+			'aname'=>'所在地区',
+			'IndustryName'=>'所属行业',
 			'pdf'=>'媒体文件',
-			'postname'=>'职位'
+			'postname'=>'团员职位'
 				
 		);
 	}

@@ -162,4 +162,11 @@ class AdminCompanyNewsController extends AdminController
 			$name = $result->attributes['name'];
 		return $name;
 	}
+	public function getValueByPid($data, $row, $c)
+	{
+		$tmp = CompanyNewsSite::getList();
+		$name = $tmp?$tmp[$data->pid]['name']:"";
+
+		return $name;
+	}
 }

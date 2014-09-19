@@ -48,13 +48,7 @@ $this->widget('admin.widgets.grid.AdminGridView', array(
 				'class' => 'thumbimage_100',
 			),
 		),
-		array(
-			'name' => 'addtime',
-			'value'=>'date("Y-m-d", $data->addtime)',
-		//'htmlOptions' => array(
-		//'width' => '60',
-		//),
-		),
+		
 		array(
 			'name' => 'updtime',
 			'value'=>'date("Y-m-d", $data->updtime)',

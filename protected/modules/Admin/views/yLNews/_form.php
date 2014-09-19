@@ -12,7 +12,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -26,7 +26,7 @@
 
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'imgurl'); ?>
         </th>
         <td >
@@ -40,18 +40,8 @@
         </td>
 	</tr>
 
-   	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'remark'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'remark'); ?>
-        </div>
-        </td>
-	</tr>
-	<tr>
+   	
+	<tr style="display:none;">
           <th width="100" align="right">
 		<?php echo $form->labelEx($model,'content'); ?>
         </th>

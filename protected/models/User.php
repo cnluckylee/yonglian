@@ -42,6 +42,7 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('username,password,name,role_id,disabled', 'required'),
 			array('comp_id, create_time, edit_time, last_login_time', 'numerical', 'integerOnly'=>true),
 			array('username, comp_name', 'length', 'max'=>100),
 			array('password', 'length', 'max'=>50),

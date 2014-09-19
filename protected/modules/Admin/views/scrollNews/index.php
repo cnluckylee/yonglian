@@ -19,7 +19,7 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						'header' => '自动序号'
 				),
 
 			array(
@@ -35,7 +35,7 @@
 
 						'name' => 'cid',
 						'value' =>array($this,"getPositionByCid"),
-						'header' => '文章分类'
+						'header' => '栏目位置'
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -60,7 +60,7 @@
 			array(
 
 						'name' => 'updtime',
-						
+					'header' => '更新日期'
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),

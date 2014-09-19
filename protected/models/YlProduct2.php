@@ -41,6 +41,7 @@ class YlProduct2 extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('parentid,name,listorder', 'required'),
 			array('parentid, listorder,pid', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>20),
 			array('pinyin', 'length', 'max'=>50),
@@ -70,10 +71,10 @@ class YlProduct2 extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => '名称',
+			'name' => '产品名称',
 			'pinyin' => '拼音',
-			'listorder' => '排序',
-			'parentid'=>'上级地区'
+			'listorder' => '排列序号',
+			'parentid'=>'所在地区'
 		);
 	}
 

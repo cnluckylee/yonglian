@@ -41,6 +41,7 @@ class adminPic extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('title,imglink,type,imgurl', 'required'),
 			array('type, clickcount, addtime, updtime', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('imglink', 'length', 'max'=>255),
@@ -67,14 +68,14 @@ class adminPic extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'title' => '标题',
-			'type' => '类型',
+			'id' => '自动序号',
+			'title' => '广告标题',
+			'type' => '栏目位置',
 			'imgurl' => '缩略图',
 			'imglink' => '缩略图',
 			'clickcount' => '点击次数',
 			'addtime' => '添加时间',
-			'updtime' => '更新时间',
+			'updtime' => '更新日期',
 		);
 	}
 

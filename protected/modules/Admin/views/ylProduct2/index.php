@@ -46,8 +46,8 @@ $('.del').click(function(){
         <th colspan="4"> 永链数据－地区产品管理 </th>
       </tr>
       <tr>
-        <th width="80" style="text-align:center">排序</th>
-        <th>菜单名称</th>
+        <th width="80" style="text-align:center">排列序号</th>
+        <th>产品名称</th>
         <th>管理操作</th>
       </tr>
     </thead>

@@ -11,7 +11,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'companyName'); ?>
         </th>
         <td >
@@ -24,7 +24,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'name'); ?>
         </th>
         <td >
@@ -35,17 +35,7 @@
         </td>
 	</tr>
 
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'order'); ?>
-        </th>
-        <td >
-        <div class="row">
-		<?php echo $form->textField($model,'order'); ?>
-		<?php echo $form->error($model,'order'); ?>
-        </div>
-        </td>
-	</tr>
+	
 
 </tbody>
       <tfoot>

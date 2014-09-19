@@ -44,6 +44,7 @@ class Cwpolicy extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,aid,IndustryID,imgurl,Agency,level,policy,remark', 'required'),
 			array('aid, IndustryID, CompanyID,Agency,level,policy', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>200),
 			array('imgurl', 'length', 'max'=>255),
@@ -72,20 +73,20 @@ class Cwpolicy extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'title' => '标题',
-			'aid' => '地区',
-			'imgurl' => '图片',
+			'id' => '自动序号',
+			'title' => '文章标题',
+			'aid' => '所在地区',
+			'imgurl' => '期刊图片',
 			'content' => '内容',
-			'remark' => '摘要',
+			'remark' => '文章简介',
 			'addtime' => '添加时间',
-			'updtime' => '更新时间',
-			'IndustryID' => '行业',
+			'updtime' => '更新日期',
+			'IndustryID' => '所属行业',
 			'CompanyID' => '公司',
-			'Agency' => '发布机构',
+			'Agency' => '颁布机构',
 			'level' => '行政级别',
 			'pdf' => '媒体文件',
-			'policy' => '政策类型',
+			'policy' => '文章类型',
 		);
 	}
 

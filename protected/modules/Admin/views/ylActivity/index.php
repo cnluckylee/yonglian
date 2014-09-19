@@ -19,7 +19,7 @@
 
 						'name' => 'id',
 						'value' => '$row+1',
-						'header' => '序号'
+						'header' => '自动序号'
 				),
 
 			array(
@@ -33,28 +33,18 @@
 
 
 
+			
 			array(
 
-						'name' => 'imgurl',
+						'name' => 'updtime',
 						
-						
-				),
-
-			array(
-
-						'name' => 'remark',
-						'header' => '摘要',
-						'value' => 'Helper::truncate_utf8_string($data->remark,30)',
-						'htmlOptions' => array(
-								'width' => '60',
-						),
 				),
 
 			
 			
 
 		array(
-			'header'=>'操作',
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

@@ -35,18 +35,7 @@
 								//'width' => '60',
 						//),
 				),
-			array(
-
-						'name' => 'imgurl',
-						'type' => 'image',
-						'htmlOptions' => array(
-									'class' => 'thumbimage_100',
-									),
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+			
 			array(
 
 						'name' => 'remark',
@@ -56,14 +45,7 @@
 						//),
 				),
 
-			array(
-
-						'name' => 'content',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+			
 			array(
 
 						'name' => 'updtime',

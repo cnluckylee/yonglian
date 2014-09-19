@@ -48,6 +48,7 @@ class CompanyXieShou extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('name,keywords,class1,aname,cid', 'required'),
 			array('class1, class2, class3, order, cid,aid', 'numerical', 'integerOnly'=>true),
 			array('name, keywords,cname', 'length', 'max'=>200),
 			array('imgurl, imgurls, pdf,aname', 'length', 'max'=>255),
@@ -75,24 +76,24 @@ class CompanyXieShou extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
-			'keywords' => '关键词',
+			'id' => '自动序号',
+			'name' => '文章标题',
+			'keywords' => '关键词语',
 			'desc' => '摘要',
 			'content' => '内容',
-			'class1' => '分类',
+			'class1' => '携手分类',
 			'class2' => 'Class2',
 			'class3' => 'Class3',
 			'order' => '排序',
-			'imgurl' => '图片',
+			'imgurl' => '图片内容',
 			'imgurls' => 'Imgurls',
-			'cid' => '公司',
-			'cname' => '公司名称',
+			'cid' => '用户名称',
+			'cname' => '用户名称',
 			'updtime' => 'Updtime',
 			'addtime' => 'Addtime',
-			'pdf' => '媒体文件',
-			'aid' => '地区',
-			'aname'=>'地区'
+			'pdf' => '媒体内容',
+			'aid' => '所在地区',
+			'aname'=>'所在地区'
 		);
 	}
 

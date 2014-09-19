@@ -41,8 +41,9 @@ class IndexMarketInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,remark', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
-			array('title', 'length', 'max'=>200),
+			array('title,remark', 'length', 'max'=>70),
 			array('imgurl,pdf', 'length', 'max'=>255),
 			array('content, remark, addtime, updtime', 'safe'),
 			// The following rule is used by search().
@@ -68,13 +69,13 @@ class IndexMarketInfo extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'title' => '标题',
+			'id' => '自动序号',
+			'title' => '信息标题',
 			'imgurl' => '图片',
 			'content' => '内容',
-			'remark' => '摘要',
+			'remark' => '信息备注',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新日期',
 			'status' =>'状态',
 			'pdf' =>'媒体文件'	
 		);

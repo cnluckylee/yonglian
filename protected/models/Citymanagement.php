@@ -38,6 +38,7 @@ class Citymanagement extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+				array('name,sort', 'required'),
 			array('status,sort', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			array('addtime, updtime', 'safe'),
@@ -64,12 +65,12 @@ class Citymanagement extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'name' => '名称',
+			'id' => '排列序号',
+			'name' => '地区名称',
 			'addtime' => 'Addtime',
 			'updtime' => '更新时间',
 			'status' => 'Status',
-			'sort' => '排序',
+			'sort' => '排列序号',
 		);
 	}
 

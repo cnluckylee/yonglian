@@ -48,6 +48,7 @@ class Theory extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
+			array('title,zzid,hxid,zxid,IndustryID,aid,CompanyID,mname,remark', 'required'),
 			array('zzid, hxid, zxid', 'required'),
 			array('IndustryID, CompanyID, mid, zzid, hxid, zxid,aid', 'numerical', 'integerOnly'=>true),
 			array('title, mname', 'length', 'max'=>100),
@@ -76,23 +77,23 @@ class Theory extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => '序号',
-			'title' => '标题',
+			'id' => '自动序号',
+			'title' => '文章标题',
 			'imgurl' => '图片',
 			'content' => '内容',
-			'remark' => '摘要',
+			'remark' => '类别摘要',
 			'addtime' => 'Addtime',
-			'updtime' => 'Updtime',
+			'updtime' => '更新时间',
 			'IndustryID' => '所属行业',
-			'CompanyID' => '企业名称',
+			'CompanyID' => '用户名称',
 			'mid' => '专家名称',
 			'mname' => '专家名称',
 			'pdf' => '媒体文件',
 			'zzid' => '主旨管理',
 			'hxid' => '横向行里',
 			'zxid' => '纵向管理',
-			'aid' =>'地区',
-			'aname' =>'地区'
+			'aid' =>'所在地区',
+			'aname' =>'所在地区'
 		);
 	}
 
@@ -184,7 +185,7 @@ class Theory extends CActiveRecord
 	{
 		if(parent::beforeSave())
 		{
-	
+			date_default_timezone_set('PRC');
 			if($this->isNewRecord)
 			{
 				$this->addtime=$this->updtime=date('Y-m-d H:i:s');

@@ -33,14 +33,7 @@
 						//),
 				),
 
-			array(
-
-						'name' => 'score',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
+			
 /*
 			array(
 
@@ -91,8 +84,16 @@
 						//),
 				),
 
+			array(
 			
+					'name' => 'updtime',
+			
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

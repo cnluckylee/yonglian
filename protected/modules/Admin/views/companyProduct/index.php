@@ -33,6 +33,14 @@
 								//'width' => '60',
 						//),
 				),
+			array(
+			
+					'name' => 'class1',
+					'value'=>array($this,'getValueBykey'),
+					//'htmlOptions' => array(
+					//'width' => '60',
+					//),
+			),
 		array(
 
 						'name' => 'cname',
@@ -42,15 +50,8 @@
 						//),
 				),
 		
-			array(
-
-						'name' => 'class1',
-						'value'=>array($this,'getValueBykey'),
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-			array(
+			
+		/*	array(
 
 						'name' => 'desc',
 
@@ -63,7 +64,7 @@
 
 		
 
-			/*
+			
 		array(
 
 						'name' => 'class2',
@@ -147,6 +148,7 @@
 
 			*/
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {view} {delete}',

@@ -36,8 +36,8 @@
 
 			array(
 
-						'name' => 'aid',
-
+						'name' => 'policy',
+						'value' =>array($this,"getpolicy"),
 						//'htmlOptions' => array(
 								//'width' => '60',
 						//),
@@ -45,25 +45,15 @@
 
 			array(
 
-						'name' => 'imgurl',
-						'type' => 'image',
-						'htmlOptions' => array(
-														'class' => 'thumbimage_100',
-												),
+						'name' => 'Agency',
+					'value' =>array($this,"getAgency"),
 				),
 
+			
+			
 			array(
 
-						'name' => 'content',
-
-						//'htmlOptions' => array(
-								//'width' => '60',
-						//),
-				),
-
-			array(
-
-						'name' => 'remark',
+						'name' => 'updtime',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -73,7 +63,7 @@
 			/*
 		array(
 
-						'name' => 'addtime',
+						'name' => 'imgurl',
 
 						//'htmlOptions' => array(
 								//'width' => '60',
@@ -118,6 +108,7 @@
 
 			*/
 		array(
+			'header'=>'操作功能',
 			'class'=>'CButtonColumn',
 			'class' => 'CButtonColumn',
 			'template' => '{update} {delete}',

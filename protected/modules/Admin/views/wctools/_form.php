@@ -12,7 +12,7 @@
       </thead>
       <tbody>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'title'); ?>
         </th>
         <td >
@@ -24,7 +24,7 @@
 	</tr>
 
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'score'); ?>
         </th>
         <td >
@@ -35,7 +35,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'IndustryID'); ?>
         </th>
         <td >
@@ -47,59 +47,9 @@
         </div>
         </td>
 	</tr>
+	
 	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'imgurl'); ?>
-        </th>
-        <td >
-        <div class="row">
-		 <?php echo $form->fileField($model,'imgurl',array('size'=>50)); 
-			 if(!empty($model->imgurl))
-			  	echo "<img src='".$model->imgurl."' title='缩略图' class='thumbimage'/>";
-		?>
-		<?php echo $form->error($model,'imgurl'); ?>
-        </div>
-        </td>
-	</tr>
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'pdf'); ?>
-        </th>
-        <td >
-        <div class="row">
-		
-         <?php echo $form->fileField($model,'pdf',array('size'=>50)); 
-		  if(!empty($model->pdf))
-			  	echo $model->pdf;
-		 ?>
-		<?php echo $form->error($model,'pdf'); ?>
-        </div>
-        </td>
-	</tr>
-
-
-
-
-
-
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'downurl'); ?>
-        </th>
-        <td >
-        <div class="row">
-		
-         <?php echo $form->fileField($model,'downurl',array('size'=>50)); 
-		  if(!empty($model->downurl))
-			  	echo $model->downurl;
-		 ?>
-		<?php echo $form->error($model,'downurl'); ?>
-        </div>
-        </td>
-	</tr>
-
-	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'type'); ?>
         </th>
         <td >
@@ -110,7 +60,7 @@
         </td>
 	</tr>
 	<tr>
-          <th width="100" align="right">
+          <th width="100" align="right"><span style="float:left;">*</span>
 		<?php echo $form->labelEx($model,'remark'); ?>
         </th>
         <td >
@@ -120,17 +70,7 @@
         </div>
         </td>
 	</tr>
-	<tr>
-          <th width="100" align="right">
-		<?php echo $form->labelEx($model,'content'); ?>
-        </th>
-        <td >
-        <div class="row" style="width:800px; height:500px">
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'content'); ?>
-        </div>
-        </td>
-	</tr>
+	
 </tbody>
       <tfoot>
         <tr class="title">
